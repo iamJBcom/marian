@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: >-
+  If you use the Marian Protocol v1.0, cite the technical specification below.
+  The manuscript book is separately copyrighted; no DOI has yet been assigned.
+title: "Marian Protocol v1.0: An Operating Calendar for Human Mars"
+type: generic
+version: "1.0"
+authors:
+  - name: "JB Bullock"
+abstract: >-
+  Author-ratified civil-calendar specification for Mars: 668/669-sol years,
+  59/100 intercalation, 12 months, 24 minths, shortened terminal civil weeks,
+  Airy Mean Time reference profile and parameterized future MY1 epoch.

@@ -1,0 +1,32 @@
+{
+  "audit_date": "2026-10-08",
+  "engine": "Swiss Ephemeris built-in Moshier (MOSEPH); IAU Mars pole RA/DEC; NOT SPICE",
+  "version": "2.10.03",
+  "swisseph_flags_requested": 6444,
+  "period": "1900-01-01 to 2100-01-01 (uniform ET approx)",
+  "crossing_count": 106,
+  "interval_count": 105,
+  "mean_interval_sols": 668.5893689192073,
+  "min_interval_sols": 668.5618342108083,
+  "max_interval_sols": 668.6167567248438,
+  "mars24_comparison_crossing_residual_min_sols": -0.012251676801321984,
+  "mars24_comparison_crossing_residual_max_sols": 0.016905141950871914,
+  "mars24_comparison_crossing_residual_mean_sols": 0.0015837030407747255,
+  "mars24_comparison_crossing_residual_max_abs_sols": 0.016905141950871914,
+  "mars24_comparison_ls_sample_count": 402,
+  "mars24_comparison_ls_sample_max_abs_deg": 0.01403233594919584,
+  "mars24_comparison_ls_sample_mean_abs_deg": 0.002674824586825547,
+  "civil_100yr_66859_sols": 66859,
+  "100yr_start_index": 4,
+  "100yr_end_index": 104,
+  "100yr_astronomical_elapsed_sols": 66858.970439031,
+  "100yr_civil_minus_astro_sols": 0.029560968992882408,
+  "100yr_mars24_astro_sols": 66858.95217036319,
+  "100yr_civil_minus_mars24_sols": 0.047829636809183285,
+  "100yr_phase_range_with_Mars24_Airy_lag_sols": [
+    -0.5982457673144381,
+    1.4396850382181583
+  ],
+  "mars24_airy_lag_source": "M2b synthetic fixture, not independently checked; illustrative only",
+  "external_numerical_precision_claim": "Not supplied. No SPICE or JPL-kernel verification performed."
+}

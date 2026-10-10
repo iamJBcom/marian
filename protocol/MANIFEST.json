@@ -1,0 +1,353 @@
+{
+  "protocol": "Marian Protocol v1.0",
+  "title": "Marian: An Operating Calendar for Human Mars",
+  "creator": "JB Bullock",
+  "document_id": "marian-protocol-v1.0",
+  "civil_rule_id": "marian-civil-v1.0",
+  "clock_profile_id": "MARIAN-AIRY-AMT-MARS24-2025-01-07-v1",
+  "ratification": {
+    "by": "JB Bullock",
+    "date": "2026-10-08",
+    "method": "explicit_conversation_approval",
+    "decision_count": 10,
+    "decision_ids": [
+      "M2c2-D01",
+      "M2c2-D02",
+      "M2c2-D03",
+      "M2c2-D04",
+      "M3a-D05",
+      "M3a-D06",
+      "M3a-D07",
+      "M3a-D08",
+      "M3a-D09",
+      "M3a-D10"
+    ]
+  },
+  "status": "AUTHOR_RATIFIED_NORMATIVELY_FROZEN",
+  "external_publication_status": "NOT_PUBLISHED",
+  "doi": null,
+  "scope": {
+    "core": "CONFORMANCE_TESTED",
+    "absolute_epoch": "UNINSTANTIATED",
+    "epoch_adapter_real_world": "NOT_TESTED",
+    "astronomy": "CONDITIONAL_ANALYTIC",
+    "spice_kernel_verification": "NOT_PERFORMED"
+  },
+  "year_rule": {
+    "years_per_cycle": 100,
+    "leap_years_per_cycle": 59,
+    "sols_per_cycle": 66859,
+    "common_sols": 668,
+    "leap_sols": 669,
+    "months": 12,
+    "minths": 24,
+    "sixths": 6,
+    "quarters": 4,
+    "nominal_week_slots": 96,
+    "year_anchor_Ls_degrees": 15
+  },
+  "licenses": {
+    "marked_technical_documents": "CC-BY-4.0",
+    "marked_original_code": "Apache-2.0",
+    "literary_book_and_illustrations": "ALL_RIGHTS_RESERVED_EXCLUDED",
+    "mapping": "LICENSES/README.md"
+  },
+  "package_kind": "standalone author-ratified technical standard and tested CORE-DATE implementation",
+  "full_source_book_included": false,
+  "versioning": "immutable v1.0 content checkpoint",
+  "source_ledger_sha256": "22ab9b1384a23aea8d386e35eade49d0789e13f19740d9eb298e2efd52244c69",
+  "acceptance": {
+    "python_unittest_pass": 29,
+    "oracle_records": 66859,
+    "positive_vectors": 81,
+    "negative_vectors": 24,
+    "node_bigint_oracle": "PASS"
+  },
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 1022,
+      "sha256": "59803ab90da2d87696dcc9a7f4c444c25fd15e0f247334294d1a198904a1e6c3"
+    },
+    {
+      "path": "CITATION.cff",
+      "bytes": 556,
+      "sha256": "fe6795483467cddab37ec007127e3c49d16aa10ef43bca22382d381874bda868"
+    },
+    {
+      "path": "LICENSES/Apache-2.0.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "LICENSES/CC-BY-4.0.txt",
+      "bytes": 18657,
+      "sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411"
+    },
+    {
+      "path": "LICENSES/README.md",
+      "bytes": 2882,
+      "sha256": "a21a7e221bfa2ed413434a13362a6e295978e3fa3654c28babb226e5de082975"
+    },
+    {
+      "path": "PROTOCOL.json",
+      "bytes": 1472,
+      "sha256": "776d9ef07418433d8179e15e224768845a0d72f94dea9c3cce4881dcdb389160"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2309,
+      "sha256": "fe85920487588b7c004e31afca30ef19ce5c38ae2a7ae92ba9346bd364b580dd"
+    },
+    {
+      "path": "RIGHTS.md",
+      "bytes": 728,
+      "sha256": "c08f785a7a960139ef03178196752be6b778d8ddf618cb4ac09efd923ce82d14"
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 1183,
+      "sha256": "1f41310982ed0c302afb17c7e0e13e8032a81a7ca754f445823ebd8d8e8e9eec"
+    },
+    {
+      "path": "author/AUTHOR-RATIFICATION.md",
+      "bytes": 862,
+      "sha256": "8927a33b6a66f6305985b118ce31102c5d871dd693ba1e1cba9e278d24d8e0c4"
+    },
+    {
+      "path": "author/M3c-author-ratification-record.json",
+      "bytes": 1331,
+      "sha256": "9bc2e9d3d9bd51758d8163d15852299e351cf3deb5eeff7aca27cb13604936ce"
+    },
+    {
+      "path": "author/M3c-ratification-register.csv",
+      "bytes": 2609,
+      "sha256": "0f0519081f41744532f94a5c730874165dd6f81e3cc0e3b25bcd92698660b224"
+    },
+    {
+      "path": "evidence/M3c-final-test-report.md",
+      "bytes": 1887,
+      "sha256": "bfcf0ea753b5d5a4c7f0e131caa18f8dbff61a7a7317294917e087847f18502d"
+    },
+    {
+      "path": "evidence/M3c-javascript-tests.txt",
+      "bytes": 114,
+      "sha256": "5cd14349451ba8e15f7066031fe1d89b5a989bfa6ea97b3526eb36796202bb85"
+    },
+    {
+      "path": "evidence/M3c-python-tests.txt",
+      "bytes": 3120,
+      "sha256": "2ee5ad256129b2c7972de9dfa743e8d2c9801423398ff2f2c0f6e578284a57cd"
+    },
+    {
+      "path": "evidence/M3c-vector-tests.txt",
+      "bytes": 98,
+      "sha256": "9536c09722e2e07cfc9138cbe5ab651c385bd67b70f6261efc1afead2320b1ec"
+    },
+    {
+      "path": "evidence/m3b-historical/provenance/M3b-source-digests.json",
+      "bytes": 1102,
+      "sha256": "4864e019a32456d6465ec7d0bb96c760f2ad860da66115de6d2e5fef694aa4d0"
+    },
+    {
+      "path": "evidence/m3b-historical/reports/M3b-local-install-test.txt",
+      "bytes": 1118,
+      "sha256": "bede214900b2bdd3aabfdaea1b3a72456237fa2e213c8dcc4625bd0ad8345433"
+    },
+    {
+      "path": "evidence/m3b-historical/reports/M3b-node-oracle-test.txt",
+      "bytes": 113,
+      "sha256": "e879902f84e7eb9a1a54454de9f698a702b9b37dff209ece2ddd030846daa430"
+    },
+    {
+      "path": "evidence/m3b-historical/reports/M3b-oracle-test.txt",
+      "bytes": 97,
+      "sha256": "a185d533d64f10eb01ba8bebd89740b8cf6fd2d1c972a88e1c8125eda2a6f2d1"
+    },
+    {
+      "path": "evidence/m3b-historical/reports/M3b-python-tests.txt",
+      "bytes": 3119,
+      "sha256": "af8320e9b9750923bf6cf7738f8603d835e88fed7f8774972dc335476ff18e36"
+    },
+    {
+      "path": "evidence/m3b-historical/reports/M3b-verification.md",
+      "bytes": 2508,
+      "sha256": "93f5e22e928f061b105ecda6c31cc30cdc7e57198bcdda160f47897fd271c74c"
+    },
+    {
+      "path": "governance/SOURCE-EVIDENCE-CHAIN.md",
+      "bytes": 1061,
+      "sha256": "43859df26dffc39e0610bacccc7a98e23ab009bbcab39554a2e4667b86ff817e"
+    },
+    {
+      "path": "governance/VERSIONING-AND-CHANGE-CONTROL.md",
+      "bytes": 1349,
+      "sha256": "29f379b58e813ade26d50d347c1a400f7a324105861fe6b05bc503eb535be2ee"
+    },
+    {
+      "path": "reference-conformance/.github/workflows/m3b-conformance.yml",
+      "bytes": 1371,
+      "sha256": "5432fc4749ddea4fbc7d2e84052550af17e76c5552d0b40439d6b835cbe70959"
+    },
+    {
+      "path": "reference-conformance/MANIFEST.json",
+      "bytes": 386,
+      "sha256": "c19698f273f9b42d70d5edeee06e0da73b2337b52e28c3c3cd8dbfb747ef6877"
+    },
+    {
+      "path": "reference-conformance/README.md",
+      "bytes": 2561,
+      "sha256": "c109800c6dbedb0f22606f6974ed7d0e76221bbe7d8c4e24d2bf00fb2d153af2"
+    },
+    {
+      "path": "reference-conformance/RIGHTS.md",
+      "bytes": 543,
+      "sha256": "f20cf116e189ba34d3f4f66a683c431607ca93832a30e621123660f0deda18fe"
+    },
+    {
+      "path": "reference-conformance/SHA256SUMS.txt",
+      "bytes": 2785,
+      "sha256": "893eed9aba5e540a8902ab4d82a658cc2831434c675052d66be0608241250cb4"
+    },
+    {
+      "path": "reference-conformance/STATUS.md",
+      "bytes": 661,
+      "sha256": "0b27fbbe29b251be17c08cac249f961baa5e87999ce061406105eec49ae5e8c7"
+    },
+    {
+      "path": "reference-conformance/conformance/build_m3b_vectors.py",
+      "bytes": 4257,
+      "sha256": "22d8802aedd68577465058dc0b4137043f394b9e4271c7326a49f44dc42ce661"
+    },
+    {
+      "path": "reference-conformance/conformance/verify_vectors.py",
+      "bytes": 2144,
+      "sha256": "778ce36f17e0c50d0832a58ad880b0faad27454ffdf4578b5a4995040cf4c9b1"
+    },
+    {
+      "path": "reference-conformance/docs/API.md",
+      "bytes": 4151,
+      "sha256": "23c24efcf60e35fe3d91f841e7bbe4cfc62fbd5750a5f010c96305b71c8f8ca9"
+    },
+    {
+      "path": "reference-conformance/docs/CONFORMANCE.md",
+      "bytes": 3597,
+      "sha256": "87ab304f1983c5e9cd14fd0c2c1d96c3087dc0621c270048811533f3a2921110"
+    },
+    {
+      "path": "reference-conformance/docs/RATIFICATION.md",
+      "bytes": 643,
+      "sha256": "dbe41780b8120233d4384cfed37bbf4a18c133d7f1730a5739bc71264f27d975"
+    },
+    {
+      "path": "reference-conformance/docs/TRACEABILITY.md",
+      "bytes": 1985,
+      "sha256": "9b3501243b48eb48498c0db95ae22d86211c1ad2f4eb84502891e69ab0a2367f"
+    },
+    {
+      "path": "reference-conformance/examples/requests.jsonl",
+      "bytes": 312,
+      "sha256": "b20a828fa3d26d8a3c33449e19fcd74a58baf9982a9a0e7fd25aac7a498c63bd"
+    },
+    {
+      "path": "reference-conformance/fixtures/M2a-first-century-oracle.csv",
+      "bytes": 2853808,
+      "sha256": "22ab9b1384a23aea8d386e35eade49d0789e13f19740d9eb298e2efd52244c69"
+    },
+    {
+      "path": "reference-conformance/fixtures/M3a-golden-vectors.json",
+      "bytes": 1111,
+      "sha256": "e10cf7fb0a003db2364431ce7258005308d219bbfa56e156bb3b3f3ff01c75f3"
+    },
+    {
+      "path": "reference-conformance/fixtures/M3b-conformance-vectors.json",
+      "bytes": 20409,
+      "sha256": "fd9433d2b71df7b6c32ec721cc27e665624df1700550a35c7162af2a9e4093b1"
+    },
+    {
+      "path": "reference-conformance/js/marian-core.mjs",
+      "bytes": 2710,
+      "sha256": "f2d7c8ed9060f19861249ca7bcea676b41c08268942ba3a5ee7f8fbd3fa5b398"
+    },
+    {
+      "path": "reference-conformance/js/verify.mjs",
+      "bytes": 1998,
+      "sha256": "9a1c8750921322b1a447dbfa108cf39d7895f5801809e7a3733172b69df6cec9"
+    },
+    {
+      "path": "reference-conformance/pyproject.toml",
+      "bytes": 464,
+      "sha256": "e4d23ad40426bde6bb9294a07e0844a41b7766bd5b04df6b9efb51b056a9edd1"
+    },
+    {
+      "path": "reference-conformance/schemas/marian-api-request.schema.json",
+      "bytes": 4840,
+      "sha256": "0e78c1b27cc4529b987fe85ee8115480b70abe10cfdaf362ea2454d1442872d1"
+    },
+    {
+      "path": "reference-conformance/schemas/marian-api-response.schema.json",
+      "bytes": 1563,
+      "sha256": "46ad67f673f722f5beeda005e29254b5a6623a58d21b70a1ff9e551a3cbf149c"
+    },
+    {
+      "path": "reference-conformance/schemas/marian-civil-date.schema.json",
+      "bytes": 1114,
+      "sha256": "64b40bf765467c62080cd76902edfe483e53fd0575389ae633d44a5a312fd0a6"
+    },
+    {
+      "path": "reference-conformance/schemas/marian-epoch-certificate-UNINSTANTIATED-template.json",
+      "bytes": 1286,
+      "sha256": "6375291eab70435f152b4d4719902ed2a1e9ce7559fe26aa86d5cb0722ba6acb"
+    },
+    {
+      "path": "reference-conformance/schemas/marian-ordinal-date.schema.json",
+      "bytes": 777,
+      "sha256": "bbd6bec119615b068c58fff9f281d75ab95baabeda5478628ddd14f0f5952993"
+    },
+    {
+      "path": "reference-conformance/src/marian_protocol/__init__.py",
+      "bytes": 854,
+      "sha256": "9e43388ac17bbf7492ee2c7c68a80fd722c265920bef49cf5f035f4544ab4deb"
+    },
+    {
+      "path": "reference-conformance/src/marian_protocol/__main__.py",
+      "bytes": 1186,
+      "sha256": "5169d58ac65df196b74431efe598363e6f8dd5a2fa857b9ff1dd2c268666a912"
+    },
+    {
+      "path": "reference-conformance/src/marian_protocol/api.py",
+      "bytes": 3373,
+      "sha256": "0921e5d4c8b66e1aeede0b4247a078d0a03d2977ee8688c013b5dab5ff673883"
+    },
+    {
+      "path": "reference-conformance/src/marian_protocol/core.py",
+      "bytes": 8920,
+      "sha256": "033c70b228f527e09315274ffcc67f1afb760b5966f820cb1860bd7c1502213d"
+    },
+    {
+      "path": "reference-conformance/tests/test_core.py",
+      "bytes": 9242,
+      "sha256": "ee08275f315970224b7a4f0b0db69a3fd1b499ff6994de07519b6bee1ebfad80"
+    },
+    {
+      "path": "reference-conformance/tests/test_schemas.py",
+      "bytes": 3011,
+      "sha256": "8aa9b1ce955fc566d9a4513d377b094093b15bdec0927ee8cd69451fd9bba636"
+    },
+    {
+      "path": "reference-conformance/tools/verify_checksums.py",
+      "bytes": 757,
+      "sha256": "476d3d952384d4ffafd2eb37ff59ffea6ba1edc420a36c559203622b88592cd0"
+    },
+    {
+      "path": "spec/MARIAN-PROTOCOL-v1.0.md",
+      "bytes": 25614,
+      "sha256": "04865415f81a09574000299186bd26bd8074f20d236f64fcffb1dd57a36aacf8"
+    },
+    {
+      "path": "tools/verify_release.py",
+      "bytes": 591,
+      "sha256": "816f2d931fdd43f72f840bd6607ef201a06c7544c47da57535d263cb59f400d3"
+    }
+  ]
+}

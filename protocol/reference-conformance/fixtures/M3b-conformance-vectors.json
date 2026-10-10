@@ -1,0 +1,1014 @@
+{
+  "status": "Marian Protocol v1.0 AUTHOR-RATIFIED — frozen conformance vectors",
+  "source": "Frozen M2a-first-century-oracle.csv, independently generated in M2a; negative cases are author-ratified v1.0 grammar/validity rules",
+  "source_sha256": "22ab9b1384a23aea8d386e35eade49d0789e13f19740d9eb298e2efd52244c69",
+  "positive": [
+    {
+      "offset_sols": "0",
+      "civil": "MY1-01-01-01",
+      "ordinal": "MY1-S001",
+      "year": "1",
+      "month": 1,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 1
+    },
+    {
+      "offset_sols": "1",
+      "civil": "MY1-01-01-02",
+      "ordinal": "MY1-S002",
+      "year": "1",
+      "month": 1,
+      "week": 1,
+      "day": 2,
+      "ordinal_sol": 2
+    },
+    {
+      "offset_sols": "6",
+      "civil": "MY1-01-01-07",
+      "ordinal": "MY1-S007",
+      "year": "1",
+      "month": 1,
+      "week": 1,
+      "day": 7,
+      "ordinal_sol": 7
+    },
+    {
+      "offset_sols": "7",
+      "civil": "MY1-01-02-01",
+      "ordinal": "MY1-S008",
+      "year": "1",
+      "month": 1,
+      "week": 2,
+      "day": 1,
+      "ordinal_sol": 8
+    },
+    {
+      "offset_sols": "27",
+      "civil": "MY1-01-04-07",
+      "ordinal": "MY1-S028",
+      "year": "1",
+      "month": 1,
+      "week": 4,
+      "day": 7,
+      "ordinal_sol": 28
+    },
+    {
+      "offset_sols": "28",
+      "civil": "MY1-01-05-01",
+      "ordinal": "MY1-S029",
+      "year": "1",
+      "month": 1,
+      "week": 5,
+      "day": 1,
+      "ordinal_sol": 29
+    },
+    {
+      "offset_sols": "54",
+      "civil": "MY1-01-08-06",
+      "ordinal": "MY1-S055",
+      "year": "1",
+      "month": 1,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 55
+    },
+    {
+      "offset_sols": "55",
+      "civil": "MY1-01-08-07",
+      "ordinal": "MY1-S056",
+      "year": "1",
+      "month": 1,
+      "week": 8,
+      "day": 7,
+      "ordinal_sol": 56
+    },
+    {
+      "offset_sols": "56",
+      "civil": "MY1-02-01-01",
+      "ordinal": "MY1-S057",
+      "year": "1",
+      "month": 2,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 57
+    },
+    {
+      "offset_sols": "110",
+      "civil": "MY1-02-08-06",
+      "ordinal": "MY1-S111",
+      "year": "1",
+      "month": 2,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 111
+    },
+    {
+      "offset_sols": "111",
+      "civil": "MY1-02-08-07",
+      "ordinal": "MY1-S112",
+      "year": "1",
+      "month": 2,
+      "week": 8,
+      "day": 7,
+      "ordinal_sol": 112
+    },
+    {
+      "offset_sols": "166",
+      "civil": "MY1-03-08-06",
+      "ordinal": "MY1-S167",
+      "year": "1",
+      "month": 3,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 167
+    },
+    {
+      "offset_sols": "167",
+      "civil": "MY1-04-01-01",
+      "ordinal": "MY1-S168",
+      "year": "1",
+      "month": 4,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 168
+    },
+    {
+      "offset_sols": "334",
+      "civil": "MY1-07-01-01",
+      "ordinal": "MY1-S335",
+      "year": "1",
+      "month": 7,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 335
+    },
+    {
+      "offset_sols": "407",
+      "civil": "MY1-08-03-04",
+      "ordinal": "MY1-S408",
+      "year": "1",
+      "month": 8,
+      "week": 3,
+      "day": 4,
+      "ordinal_sol": 408
+    },
+    {
+      "offset_sols": "408",
+      "civil": "MY1-08-03-05",
+      "ordinal": "MY1-S409",
+      "year": "1",
+      "month": 8,
+      "week": 3,
+      "day": 5,
+      "ordinal_sol": 409
+    },
+    {
+      "offset_sols": "667",
+      "civil": "MY1-12-08-06",
+      "ordinal": "MY1-S668",
+      "year": "1",
+      "month": 12,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 668
+    },
+    {
+      "offset_sols": "668",
+      "civil": "MY1-12-08-07",
+      "ordinal": "MY1-S669",
+      "year": "1",
+      "month": 12,
+      "week": 8,
+      "day": 7,
+      "ordinal_sol": 669
+    },
+    {
+      "offset_sols": "669",
+      "civil": "MY2-01-01-01",
+      "ordinal": "MY2-S001",
+      "year": "2",
+      "month": 1,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 1
+    },
+    {
+      "offset_sols": "696",
+      "civil": "MY2-01-04-07",
+      "ordinal": "MY2-S028",
+      "year": "2",
+      "month": 1,
+      "week": 4,
+      "day": 7,
+      "ordinal_sol": 28
+    },
+    {
+      "offset_sols": "697",
+      "civil": "MY2-01-05-01",
+      "ordinal": "MY2-S029",
+      "year": "2",
+      "month": 1,
+      "week": 5,
+      "day": 1,
+      "ordinal_sol": 29
+    },
+    {
+      "offset_sols": "723",
+      "civil": "MY2-01-08-06",
+      "ordinal": "MY2-S055",
+      "year": "2",
+      "month": 1,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 55
+    },
+    {
+      "offset_sols": "724",
+      "civil": "MY2-01-08-07",
+      "ordinal": "MY2-S056",
+      "year": "2",
+      "month": 1,
+      "week": 8,
+      "day": 7,
+      "ordinal_sol": 56
+    },
+    {
+      "offset_sols": "725",
+      "civil": "MY2-02-01-01",
+      "ordinal": "MY2-S057",
+      "year": "2",
+      "month": 2,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 57
+    },
+    {
+      "offset_sols": "779",
+      "civil": "MY2-02-08-06",
+      "ordinal": "MY2-S111",
+      "year": "2",
+      "month": 2,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 111
+    },
+    {
+      "offset_sols": "835",
+      "civil": "MY2-03-08-06",
+      "ordinal": "MY2-S167",
+      "year": "2",
+      "month": 3,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 167
+    },
+    {
+      "offset_sols": "836",
+      "civil": "MY2-04-01-01",
+      "ordinal": "MY2-S168",
+      "year": "2",
+      "month": 4,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 168
+    },
+    {
+      "offset_sols": "1076",
+      "civil": "MY2-08-03-04",
+      "ordinal": "MY2-S408",
+      "year": "2",
+      "month": 8,
+      "week": 3,
+      "day": 4,
+      "ordinal_sol": 408
+    },
+    {
+      "offset_sols": "1077",
+      "civil": "MY2-08-03-05",
+      "ordinal": "MY2-S409",
+      "year": "2",
+      "month": 8,
+      "week": 3,
+      "day": 5,
+      "ordinal_sol": 409
+    },
+    {
+      "offset_sols": "1336",
+      "civil": "MY2-12-08-06",
+      "ordinal": "MY2-S668",
+      "year": "2",
+      "month": 12,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 668
+    },
+    {
+      "offset_sols": "1337",
+      "civil": "MY3-01-01-01",
+      "ordinal": "MY3-S001",
+      "year": "3",
+      "month": 1,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 1
+    },
+    {
+      "offset_sols": "6017",
+      "civil": "MY10-01-01-01",
+      "ordinal": "MY10-S001",
+      "year": "10",
+      "month": 1,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 1
+    },
+    {
+      "offset_sols": "6044",
+      "civil": "MY10-01-04-07",
+      "ordinal": "MY10-S028",
+      "year": "10",
+      "month": 1,
+      "week": 4,
+      "day": 7,
+      "ordinal_sol": 28
+    },
+    {
+      "offset_sols": "6045",
+      "civil": "MY10-01-05-01",
+      "ordinal": "MY10-S029",
+      "year": "10",
+      "month": 1,
+      "week": 5,
+      "day": 1,
+      "ordinal_sol": 29
+    },
+    {
+      "offset_sols": "6071",
+      "civil": "MY10-01-08-06",
+      "ordinal": "MY10-S055",
+      "year": "10",
+      "month": 1,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 55
+    },
+    {
+      "offset_sols": "6072",
+      "civil": "MY10-01-08-07",
+      "ordinal": "MY10-S056",
+      "year": "10",
+      "month": 1,
+      "week": 8,
+      "day": 7,
+      "ordinal_sol": 56
+    },
+    {
+      "offset_sols": "6073",
+      "civil": "MY10-02-01-01",
+      "ordinal": "MY10-S057",
+      "year": "10",
+      "month": 2,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 57
+    },
+    {
+      "offset_sols": "6127",
+      "civil": "MY10-02-08-06",
+      "ordinal": "MY10-S111",
+      "year": "10",
+      "month": 2,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 111
+    },
+    {
+      "offset_sols": "6183",
+      "civil": "MY10-03-08-06",
+      "ordinal": "MY10-S167",
+      "year": "10",
+      "month": 3,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 167
+    },
+    {
+      "offset_sols": "6184",
+      "civil": "MY10-04-01-01",
+      "ordinal": "MY10-S168",
+      "year": "10",
+      "month": 4,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 168
+    },
+    {
+      "offset_sols": "6424",
+      "civil": "MY10-08-03-04",
+      "ordinal": "MY10-S408",
+      "year": "10",
+      "month": 8,
+      "week": 3,
+      "day": 4,
+      "ordinal_sol": 408
+    },
+    {
+      "offset_sols": "6425",
+      "civil": "MY10-08-03-05",
+      "ordinal": "MY10-S409",
+      "year": "10",
+      "month": 8,
+      "week": 3,
+      "day": 5,
+      "ordinal_sol": 409
+    },
+    {
+      "offset_sols": "6684",
+      "civil": "MY10-12-08-06",
+      "ordinal": "MY10-S668",
+      "year": "10",
+      "month": 12,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 668
+    },
+    {
+      "offset_sols": "6685",
+      "civil": "MY10-12-08-07",
+      "ordinal": "MY10-S669",
+      "year": "10",
+      "month": 12,
+      "week": 8,
+      "day": 7,
+      "ordinal_sol": 669
+    },
+    {
+      "offset_sols": "27413",
+      "civil": "MY42-01-01-01",
+      "ordinal": "MY42-S001",
+      "year": "42",
+      "month": 1,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 1
+    },
+    {
+      "offset_sols": "27440",
+      "civil": "MY42-01-04-07",
+      "ordinal": "MY42-S028",
+      "year": "42",
+      "month": 1,
+      "week": 4,
+      "day": 7,
+      "ordinal_sol": 28
+    },
+    {
+      "offset_sols": "27441",
+      "civil": "MY42-01-05-01",
+      "ordinal": "MY42-S029",
+      "year": "42",
+      "month": 1,
+      "week": 5,
+      "day": 1,
+      "ordinal_sol": 29
+    },
+    {
+      "offset_sols": "27467",
+      "civil": "MY42-01-08-06",
+      "ordinal": "MY42-S055",
+      "year": "42",
+      "month": 1,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 55
+    },
+    {
+      "offset_sols": "27468",
+      "civil": "MY42-01-08-07",
+      "ordinal": "MY42-S056",
+      "year": "42",
+      "month": 1,
+      "week": 8,
+      "day": 7,
+      "ordinal_sol": 56
+    },
+    {
+      "offset_sols": "27469",
+      "civil": "MY42-02-01-01",
+      "ordinal": "MY42-S057",
+      "year": "42",
+      "month": 2,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 57
+    },
+    {
+      "offset_sols": "27523",
+      "civil": "MY42-02-08-06",
+      "ordinal": "MY42-S111",
+      "year": "42",
+      "month": 2,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 111
+    },
+    {
+      "offset_sols": "27579",
+      "civil": "MY42-03-08-06",
+      "ordinal": "MY42-S167",
+      "year": "42",
+      "month": 3,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 167
+    },
+    {
+      "offset_sols": "27580",
+      "civil": "MY42-04-01-01",
+      "ordinal": "MY42-S168",
+      "year": "42",
+      "month": 4,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 168
+    },
+    {
+      "offset_sols": "27820",
+      "civil": "MY42-08-03-04",
+      "ordinal": "MY42-S408",
+      "year": "42",
+      "month": 8,
+      "week": 3,
+      "day": 4,
+      "ordinal_sol": 408
+    },
+    {
+      "offset_sols": "27821",
+      "civil": "MY42-08-03-05",
+      "ordinal": "MY42-S409",
+      "year": "42",
+      "month": 8,
+      "week": 3,
+      "day": 5,
+      "ordinal_sol": 409
+    },
+    {
+      "offset_sols": "28080",
+      "civil": "MY42-12-08-06",
+      "ordinal": "MY42-S668",
+      "year": "42",
+      "month": 12,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 668
+    },
+    {
+      "offset_sols": "65522",
+      "civil": "MY99-01-01-01",
+      "ordinal": "MY99-S001",
+      "year": "99",
+      "month": 1,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 1
+    },
+    {
+      "offset_sols": "65549",
+      "civil": "MY99-01-04-07",
+      "ordinal": "MY99-S028",
+      "year": "99",
+      "month": 1,
+      "week": 4,
+      "day": 7,
+      "ordinal_sol": 28
+    },
+    {
+      "offset_sols": "65550",
+      "civil": "MY99-01-05-01",
+      "ordinal": "MY99-S029",
+      "year": "99",
+      "month": 1,
+      "week": 5,
+      "day": 1,
+      "ordinal_sol": 29
+    },
+    {
+      "offset_sols": "65576",
+      "civil": "MY99-01-08-06",
+      "ordinal": "MY99-S055",
+      "year": "99",
+      "month": 1,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 55
+    },
+    {
+      "offset_sols": "65577",
+      "civil": "MY99-01-08-07",
+      "ordinal": "MY99-S056",
+      "year": "99",
+      "month": 1,
+      "week": 8,
+      "day": 7,
+      "ordinal_sol": 56
+    },
+    {
+      "offset_sols": "65578",
+      "civil": "MY99-02-01-01",
+      "ordinal": "MY99-S057",
+      "year": "99",
+      "month": 2,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 57
+    },
+    {
+      "offset_sols": "65632",
+      "civil": "MY99-02-08-06",
+      "ordinal": "MY99-S111",
+      "year": "99",
+      "month": 2,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 111
+    },
+    {
+      "offset_sols": "65688",
+      "civil": "MY99-03-08-06",
+      "ordinal": "MY99-S167",
+      "year": "99",
+      "month": 3,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 167
+    },
+    {
+      "offset_sols": "65689",
+      "civil": "MY99-04-01-01",
+      "ordinal": "MY99-S168",
+      "year": "99",
+      "month": 4,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 168
+    },
+    {
+      "offset_sols": "65929",
+      "civil": "MY99-08-03-04",
+      "ordinal": "MY99-S408",
+      "year": "99",
+      "month": 8,
+      "week": 3,
+      "day": 4,
+      "ordinal_sol": 408
+    },
+    {
+      "offset_sols": "65930",
+      "civil": "MY99-08-03-05",
+      "ordinal": "MY99-S409",
+      "year": "99",
+      "month": 8,
+      "week": 3,
+      "day": 5,
+      "ordinal_sol": 409
+    },
+    {
+      "offset_sols": "66189",
+      "civil": "MY99-12-08-06",
+      "ordinal": "MY99-S668",
+      "year": "99",
+      "month": 12,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 668
+    },
+    {
+      "offset_sols": "66190",
+      "civil": "MY99-12-08-07",
+      "ordinal": "MY99-S669",
+      "year": "99",
+      "month": 12,
+      "week": 8,
+      "day": 7,
+      "ordinal_sol": 669
+    },
+    {
+      "offset_sols": "66191",
+      "civil": "MY100-01-01-01",
+      "ordinal": "MY100-S001",
+      "year": "100",
+      "month": 1,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 1
+    },
+    {
+      "offset_sols": "66218",
+      "civil": "MY100-01-04-07",
+      "ordinal": "MY100-S028",
+      "year": "100",
+      "month": 1,
+      "week": 4,
+      "day": 7,
+      "ordinal_sol": 28
+    },
+    {
+      "offset_sols": "66219",
+      "civil": "MY100-01-05-01",
+      "ordinal": "MY100-S029",
+      "year": "100",
+      "month": 1,
+      "week": 5,
+      "day": 1,
+      "ordinal_sol": 29
+    },
+    {
+      "offset_sols": "66245",
+      "civil": "MY100-01-08-06",
+      "ordinal": "MY100-S055",
+      "year": "100",
+      "month": 1,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 55
+    },
+    {
+      "offset_sols": "66246",
+      "civil": "MY100-01-08-07",
+      "ordinal": "MY100-S056",
+      "year": "100",
+      "month": 1,
+      "week": 8,
+      "day": 7,
+      "ordinal_sol": 56
+    },
+    {
+      "offset_sols": "66247",
+      "civil": "MY100-02-01-01",
+      "ordinal": "MY100-S057",
+      "year": "100",
+      "month": 2,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 57
+    },
+    {
+      "offset_sols": "66301",
+      "civil": "MY100-02-08-06",
+      "ordinal": "MY100-S111",
+      "year": "100",
+      "month": 2,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 111
+    },
+    {
+      "offset_sols": "66357",
+      "civil": "MY100-03-08-06",
+      "ordinal": "MY100-S167",
+      "year": "100",
+      "month": 3,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 167
+    },
+    {
+      "offset_sols": "66358",
+      "civil": "MY100-04-01-01",
+      "ordinal": "MY100-S168",
+      "year": "100",
+      "month": 4,
+      "week": 1,
+      "day": 1,
+      "ordinal_sol": 168
+    },
+    {
+      "offset_sols": "66598",
+      "civil": "MY100-08-03-04",
+      "ordinal": "MY100-S408",
+      "year": "100",
+      "month": 8,
+      "week": 3,
+      "day": 4,
+      "ordinal_sol": 408
+    },
+    {
+      "offset_sols": "66599",
+      "civil": "MY100-08-03-05",
+      "ordinal": "MY100-S409",
+      "year": "100",
+      "month": 8,
+      "week": 3,
+      "day": 5,
+      "ordinal_sol": 409
+    },
+    {
+      "offset_sols": "66858",
+      "civil": "MY100-12-08-06",
+      "ordinal": "MY100-S668",
+      "year": "100",
+      "month": 12,
+      "week": 8,
+      "day": 6,
+      "ordinal_sol": 668
+    }
+  ],
+  "negative": [
+    {
+      "request": {
+        "action": "parse_civil",
+        "civil": "MY2-03-08-07"
+      },
+      "error": "INVALID_DATE"
+    },
+    {
+      "request": {
+        "action": "parse_civil",
+        "civil": "MY2-12-08-07"
+      },
+      "error": "INVALID_DATE"
+    },
+    {
+      "request": {
+        "action": "parse_civil",
+        "civil": "MY1-03-08-07"
+      },
+      "error": "INVALID_DATE"
+    },
+    {
+      "request": {
+        "action": "parse_civil",
+        "civil": "MY42-13-01-01"
+      },
+      "error": "INVALID_DATE"
+    },
+    {
+      "request": {
+        "action": "parse_civil",
+        "civil": "MY042-08-03-05"
+      },
+      "error": "SYNTAX_ERROR"
+    },
+    {
+      "request": {
+        "action": "parse_civil",
+        "civil": "my42-08-03-05"
+      },
+      "error": "SYNTAX_ERROR"
+    },
+    {
+      "request": {
+        "action": "parse_civil",
+        "civil": "MY42-8-03-05"
+      },
+      "error": "SYNTAX_ERROR"
+    },
+    {
+      "request": {
+        "action": "parse_civil",
+        "civil": "MY42-08-03-5"
+      },
+      "error": "SYNTAX_ERROR"
+    },
+    {
+      "request": {
+        "action": "parse_civil",
+        "civil": "MY0-01-01-01"
+      },
+      "error": "SYNTAX_ERROR"
+    },
+    {
+      "request": {
+        "action": "parse_civil",
+        "civil": "MY42-08-03-０５"
+      },
+      "error": "SYNTAX_ERROR"
+    },
+    {
+      "request": {
+        "action": "parse_ordinal",
+        "ordinal": "MY2-S669"
+      },
+      "error": "INVALID_DATE"
+    },
+    {
+      "request": {
+        "action": "parse_ordinal",
+        "ordinal": "MY42-S000"
+      },
+      "error": "INVALID_DATE"
+    },
+    {
+      "request": {
+        "action": "parse_ordinal",
+        "ordinal": "MY42-S670"
+      },
+      "error": "INVALID_DATE"
+    },
+    {
+      "request": {
+        "action": "parse_ordinal",
+        "ordinal": "MY042-S409"
+      },
+      "error": "SYNTAX_ERROR"
+    },
+    {
+      "request": {
+        "action": "from_offset",
+        "offset_sols": "-1"
+      },
+      "error": "SYNTAX_ERROR"
+    },
+    {
+      "request": {
+        "action": "from_offset",
+        "offset_sols": "01"
+      },
+      "error": "SYNTAX_ERROR"
+    },
+    {
+      "request": {
+        "action": "from_offset",
+        "offset_sols": 1
+      },
+      "error": "SYNTAX_ERROR"
+    },
+    {
+      "request": {
+        "action": "from_ordinal",
+        "year": "0",
+        "ordinal_sol": 1
+      },
+      "error": "SYNTAX_ERROR"
+    },
+    {
+      "request": {
+        "action": "from_ordinal",
+        "year": "2",
+        "ordinal_sol": 669
+      },
+      "error": "INVALID_DATE"
+    },
+    {
+      "request": {
+        "action": "year_info",
+        "year": "0002"
+      },
+      "error": "SYNTAX_ERROR"
+    },
+    {
+      "request": {
+        "action": "absolute_time"
+      },
+      "error": "UNINSTANTIATED_EPOCH"
+    },
+    {
+      "request": {
+        "action": "validate_civil_object",
+        "date": {
+          "calendar": "marian",
+          "rule_version": "wrong",
+          "year": "1",
+          "month": 1,
+          "week": 1,
+          "day": 1
+        }
+      },
+      "error": "UNSUPPORTED_PROFILE"
+    },
+    {
+      "request": {
+        "action": "validate_civil_object",
+        "date": {
+          "calendar": "marian",
+          "rule_version": "marian-civil-v1.0",
+          "year": "2",
+          "month": 3,
+          "week": 8,
+          "day": 7
+        }
+      },
+      "error": "INVALID_DATE"
+    },
+    {
+      "request": {
+        "action": "validate_civil_object",
+        "date": {
+          "calendar": "marian",
+          "rule_version": "marian-civil-v1.0",
+          "year": "1",
+          "month": true,
+          "week": 1,
+          "day": 1
+        }
+      },
+      "error": "INVALID_DATE"
+    }
+  ],
+  "identity_example": {
+    "civil": "MY42-08-03-05",
+    "ordinal": "MY42-S409"
+  },
+  "notes": "These fixtures prove integer-date behaviour, not astronomy or a historical epoch."
+}

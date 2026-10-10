@@ -1,0 +1,18 @@
+{
+  "status": "DRAFT_GOLDEN_VECTORS",
+  "source": "Marian final Appendix D.32 plus exact M2a century offsets",
+  "leap_years": {"1": true, "2": false, "10": true, "50": true, "51": true, "99": true, "100": false, "101": true, "200": false, "1000": false, "1001": true},
+  "year_start_offsets": {"1": 0, "2": 669, "3": 1337, "100": 66191, "101": 66859},
+  "valid_dates": ["MY1-01-01-01", "MY2-03-08-06", "MY1-12-08-07", "MY42-08-03-05", "MY100-12-08-06", "MY101-12-08-07"],
+  "invalid_dates": ["MY2-03-08-07", "MY2-12-08-07", "MY42-09-08-07", "MY2-13-03-05", "MY42-08-09-05"],
+  "invalid_canonical_syntax": ["MY042-08-03-05", "MY42-8-03-05", "MY42-08-3-05", "my42-08-03-05", "MY0-01-01-01", "MY42-S409"],
+  "sample_equivalence": {"civil": "MY42-08-03-05", "ordinal": "MY42-S409"},
+  "boundary_pairs": [
+    ["MY2-03-08-06", "MY2-04-01-01"],
+    ["MY1-12-08-07", "MY2-01-01-01"],
+    ["MY2-12-08-06", "MY3-01-01-01"],
+    ["MY99-12-08-07", "MY100-01-01-01"],
+    ["MY100-12-08-06", "MY101-01-01-01"]
+  ],
+  "model_only": "These are integer-core vectors, not true historical timestamp or Ls ephemeris fixtures."
+}

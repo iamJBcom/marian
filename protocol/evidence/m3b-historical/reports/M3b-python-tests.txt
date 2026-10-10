@@ -1,0 +1,34 @@
+test_01_leap_golden_years (test_core.TestMarianM3bCore.test_01_leap_golden_years) ... ok
+test_02_leap_exact_every_century (test_core.TestMarianM3bCore.test_02_leap_exact_every_century) ... ok
+test_03_offsets_from_prior_goldens (test_core.TestMarianM3bCore.test_03_offsets_from_prior_goldens) ... ok
+test_04_all_year_templates (test_core.TestMarianM3bCore.test_04_all_year_templates) ... ok
+test_05_derived_partition_tables (test_core.TestMarianM3bCore.test_05_derived_partition_tables) ... ok
+test_06_absent_terminal_sunsols (test_core.TestMarianM3bCore.test_06_absent_terminal_sunsols) ... ok
+test_07_source_example (test_core.TestMarianM3bCore.test_07_source_example) ... ok
+test_08_source_boundary_examples (test_core.TestMarianM3bCore.test_08_source_boundary_examples) ... ok
+test_09_every_month_ends_without_gaps (test_core.TestMarianM3bCore.test_09_every_month_ends_without_gaps) ... ok
+test_10_prior_independent_century_oracle (test_core.TestMarianM3bCore.test_10_prior_independent_century_oracle) ... ok
+test_11_large_years_and_precision (test_core.TestMarianM3bCore.test_11_large_years_and_precision) ... ok
+test_12_century_endpoints (test_core.TestMarianM3bCore.test_12_century_endpoints) ... ok
+test_13_parse_valid_golden (test_core.TestMarianM3bCore.test_13_parse_valid_golden) ... ok
+test_14_parse_invalid_golden (test_core.TestMarianM3bCore.test_14_parse_invalid_golden) ... ok
+test_15_error_vectors (test_core.TestMarianM3bCore.test_15_error_vectors) ... ok
+test_16_positive_vectors_all_routes (test_core.TestMarianM3bCore.test_16_positive_vectors_all_routes) ... ok
+test_17_json_interchange (test_core.TestMarianM3bCore.test_17_json_interchange) ... ok
+test_18_reject_bool_and_floats (test_core.TestMarianM3bCore.test_18_reject_bool_and_floats) ... ok
+test_19_fails_closed_on_epoch (test_core.TestMarianM3bCore.test_19_fails_closed_on_epoch) ... ok
+test_20_cli_jsonl (test_core.TestMarianM3bCore.test_20_cli_jsonl) ... ok
+test_21_no_unsafe_epoch_data (test_core.TestMarianM3bCore.test_21_no_unsafe_epoch_data) ... ok
+test_22_schema_loads_and_accepts_valid_objects (test_core.TestMarianM3bCore.test_22_schema_loads_and_accepts_valid_objects) ... ok
+test_23_requests_whitelist_and_errors (test_core.TestMarianM3bCore.test_23_requests_whitelist_and_errors) ... ok
+test_24_no_week_continuity_claim (test_core.TestMarianM3bCore.test_24_no_week_continuity_claim) ... ok
+test_25_all_four_schemas_are_json (test_schemas.TestPortableSchemas.test_25_all_four_schemas_are_json) ... ok
+test_26_request_schema_is_self_contained (test_schemas.TestPortableSchemas.test_26_request_schema_is_self_contained) ... ok
+test_27_all_good_requests_and_responses_pass_schema (test_schemas.TestPortableSchemas.test_27_all_good_requests_and_responses_pass_schema) ... ok
+test_28_shape_can_pass_but_calendar_can_fail (test_schemas.TestPortableSchemas.test_28_shape_can_pass_but_calendar_can_fail) ... ok
+test_29_javascript_port_newline_is_invalid (test_schemas.TestPortableSchemas.test_29_javascript_port_newline_is_invalid) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 2.744s
+
+OK

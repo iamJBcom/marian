@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:marian:m3b-draft:civil-date.schema.json",
+  "title": "Marian regular civil date (M3b conformance DRAFT)",
+  "description": "Draft interchange shape; ALL year-specific validity and leap rules require algorithmic validation. Not a ratified public URL or officially published schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "calendar",
+    "rule_version",
+    "year",
+    "month",
+    "week",
+    "day"
+  ],
+  "properties": {
+    "calendar": {
+      "const": "marian"
+    },
+    "rule_version": {
+      "const": "marian-civil-v1.0"
+    },
+    "year": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*$"
+    },
+    "month": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 12
+    },
+    "week": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 8
+    },
+    "day": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 7
+    }
+  },
+  "$comment": "Marian v1.0 ratified interchange shape. Applications MUST use calendar algorithm to reject e.g. MY2-03-08-07."
+}

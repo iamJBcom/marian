@@ -1,0 +1,30 @@
+{
+  "record_kind": "marian_protocol_v1_author_ratification",
+  "protocol_id": "marian-protocol-v1.0",
+  "civil_rule_id": "marian-civil-v1.0",
+  "work": "Marian: An Operating Calendar for Human Mars",
+  "author": "JB Bullock",
+  "date_yyyy_mm_dd": "2026-10-08",
+  "approval_method": "Explicit author statement in this ChatGPT project conversation",
+  "author_statement": "I explicitly approve all ten decisions D01–D10 as recommended for Marian Protocol v1.0. Proceed with the author-ratified normative freeze and final package.",
+  "scope": "All M3c RC1 recommended decisions D01–D10, without amendments",
+  "decision_ids": [
+    "M2c2-D01",
+    "M2c2-D02",
+    "M2c2-D03",
+    "M2c2-D04",
+    "M3a-D05",
+    "M3a-D06",
+    "M3a-D07",
+    "M3a-D08",
+    "M3a-D09",
+    "M3a-D10"
+  ],
+  "ratification_state": "AUTHOR_RATIFIED",
+  "signature_type": "UNSIGNED_CONVERSATIONAL_AUTHOR_APPROVAL",
+  "cryptographic_signature": null,
+  "actual_historical_epoch": "UNINSTANTIATED",
+  "scientific_proof_scope": "M2a exact mathematical core; M2b and M2c1 conditional analytical corroboration; no independent SPICE verification",
+  "publication_state": "NOT_PUBLISHED_EXTERNALLY",
+  "provenance": "M3c author-review candidate; user approval in current turn; no claim of an authenticated public timestamp or formal institutional adoption"
+}

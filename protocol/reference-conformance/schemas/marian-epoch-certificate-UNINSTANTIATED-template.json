@@ -1,0 +1,42 @@
+{
+  "type": "MarianEpochCertificateDraft",
+  "status": "UNINSTANTIATED_FUTURE_HISTORICAL_EVENT",
+  "calendar_version": "marian-civil-v1.0",
+  "clock_profile_id": "MARIAN-AIRY-AMT-MARS24-2025-01-07-v1",
+  "epoch_realization_id": null,
+  "recognised_first_human_step": {
+    "instant_jd_tt": null,
+    "original_reported_timescale": null,
+    "original_reported_timestamp": null,
+    "uncertainty_seconds": null,
+    "recognition_criteria_and_authority": null,
+    "source_record_sha256": null
+  },
+  "selected_Ls15_crossing": {
+    "instant_jd_tt": null,
+    "ephemeris_kernels_and_hashes": [],
+    "solar_longitude_method": null,
+    "reference_frame_and_mars_spin_model": null,
+    "aberration_correction": null,
+    "ephemeris_timescale_and_TT_TDB_transform": null,
+    "uncertainty_seconds": null
+  },
+  "MY1_first_AMT_midnight": {
+    "instant_jd_tt": null,
+    "AMT_cycle_index": null,
+    "uncertainty_seconds": null
+  },
+  "rules": {
+    "H_to_C": "strict_after",
+    "C_to_E": "strict_after",
+    "MY0_interval": "[H,E)",
+    "regular_MY1_day_zero": "MY1-01-01-01",
+    "other_versions_require_new_certificate": true
+  },
+  "ratification": {
+    "authority": null,
+    "adopted_at": null,
+    "signature_or_verification": null
+  },
+  "protocol_status": "AUTHOR_RATIFIED_V1.0"
+}

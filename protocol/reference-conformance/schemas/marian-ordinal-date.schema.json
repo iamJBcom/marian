@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:marian:m3b-draft:ordinal-date.schema.json",
+  "title": "Marian ordinal civil sol (M3b conformance DRAFT)",
+  "description": "Year-local ordinal, NOT Mars Sol Date. Not an officially published schema URL. Algorithm must test 668/669 boundary by year.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "calendar",
+    "rule_version",
+    "year",
+    "ordinal_sol"
+  ],
+  "properties": {
+    "calendar": {
+      "const": "marian"
+    },
+    "rule_version": {
+      "const": "marian-civil-v1.0"
+    },
+    "year": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*$"
+    },
+    "ordinal_sol": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 669
+    }
+  }
+}

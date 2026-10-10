@@ -1,0 +1,14 @@
+{
+  "package": "Marian Protocol v1.0 CORE-DATE reference implementation",
+  "protocol_id": "marian-protocol-v1.0",
+  "rule_version": "marian-civil-v1.0",
+  "ratified": "2026-10-08",
+  "real_epoch": "UNINSTANTIATED",
+  "tests_expected": {
+    "python_unittest": 29,
+    "oracle_sols": 66859,
+    "vectors_positive": 81,
+    "vectors_negative": 24
+  },
+  "external_publication": "NONE"
+}

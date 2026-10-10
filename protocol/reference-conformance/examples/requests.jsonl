@@ -1,0 +1,7 @@
+{"action":"parse_civil","civil":"MY42-08-03-05"}
+{"action":"parse_ordinal","ordinal":"MY42-S409"}
+{"action":"from_ordinal","year":"42","ordinal_sol":409}
+{"action":"from_offset","offset_sols":"27821"}
+{"action":"year_info","year":"100"}
+{"action":"parse_civil","civil":"MY2-03-08-07"}
+{"action":"absolute_time"}

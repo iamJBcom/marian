@@ -1,0 +1,54 @@
+{
+  "description": "Historical copied M2 evidence, byte-identical; non-normative",
+  "capture_date": "2026-10-08",
+  "records": [
+    {
+      "path": "research/M2a-integer-structural-proof.md",
+      "source_checkpoint": "marian-M2a/reports/M2a-structural-proof.md",
+      "sha256": "0e952e665f1fc00dd7887e5c8830be8b780ad629f1c8e6af8be744c68b48f90a",
+      "status": "historic_non_normative"
+    },
+    {
+      "path": "research/M2a-integer-findings.md",
+      "source_checkpoint": "marian-M2a/reports/M2a-technical-findings.md",
+      "sha256": "28e46f4da0c2dc21d1fb6271a0bb3c98f3ac2644ce88281d8747a55018d92993",
+      "status": "historic_non_normative"
+    },
+    {
+      "path": "research/M2b-astronomical-model-findings.md",
+      "source_checkpoint": "marian-M2b/reports/M2b-scientific-findings.md",
+      "sha256": "4e0dae4970eaa0beb5d870583df67cd7bd4cd93be4336bfcb4acba2efa2c3409",
+      "status": "historic_non_normative"
+    },
+    {
+      "path": "research/M2c1-conditional-scientific-closure.md",
+      "source_checkpoint": "marian-M2c1c/reports/M2c1-final-closure.md",
+      "sha256": "07eb61c8a619766c50678d5ab376d2a3b19462b6aaa9309daac827b2ef6b21a0",
+      "status": "historic_non_normative"
+    },
+    {
+      "path": "research/M2c1-independent-analytical-findings.md",
+      "source_checkpoint": "marian-M2c1c/reports/M2c1c-scientific-findings.md",
+      "sha256": "03b1f562905cf54639588daac22325f9b84f614a79acae68a0c4356f85608d60",
+      "status": "historic_non_normative"
+    },
+    {
+      "path": "research/M2c2-epoch-clock-audit.md",
+      "source_checkpoint": "marian-M2c2/reports/M2c2-epoch-and-clock-closure.md",
+      "sha256": "356b9397a2264854b80617d8a8be47b0984bd80e48ae3b9abc9149f56448cb42",
+      "status": "historic_non_normative"
+    },
+    {
+      "path": "research/data/M2b-model-summary.json",
+      "source_checkpoint": "marian-M2b/fixtures/M2b-results.json",
+      "sha256": "84a6d5c494741da13c22d833dee761717ca7f23df8215a7df07497dc675f324e",
+      "status": "historic_non_normative"
+    },
+    {
+      "path": "research/data/M2c1-independent-model-summary.json",
+      "source_checkpoint": "marian-M2c1c/fixtures/M2c1c-results.json",
+      "sha256": "4f8a578ce2e8fa3e0467407ceb7b85db04410df0f86ee06633e50d4d4f9e248a",
+      "status": "historic_non_normative"
+    }
+  ]
+}

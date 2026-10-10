@@ -1,0 +1,33 @@
+{
+  "status": "M3b DRAFT UNRATIFIED",
+  "source_hierarchy": "DOCX literary source > M3a technical draft > M2a frozen independent oracle > M3b implementation",
+  "source_digests": {
+    "book_source_docx_outside_archive": {
+      "basename": "Marian - Calendar v06F - 2_10_2026.docx",
+      "sha256": "4fde2ba6cfd08051af8b367acd9e2265922284ebe3761d5c3b869be89a8e1ba6",
+      "bytes": 35178867
+    },
+    "M3a_normative_draft_outside_archive": {
+      "basename": "MARIAN-PROTOCOL-v1.0-DRAFT.md",
+      "sha256": "dcf45972e6ef5a706a92d4764bfd3cc009cf125d97079cff8783ef00dcc28a40",
+      "bytes": 24378
+    },
+    "frozen_M2a_oracle_embedded": {
+      "basename": "M2a-first-century-oracle.csv",
+      "sha256": "22ab9b1384a23aea8d386e35eade49d0789e13f19740d9eb298e2efd52244c69",
+      "bytes": 2853808
+    }
+  },
+  "local_runtime": {
+    "python": "3.13.5",
+    "node": "v22.16.0",
+    "platform": "Linux"
+  },
+  "version": "marian-civil-v1.0",
+  "notes": [
+    "No real founding epoch",
+    "No SPICE result",
+    "No public licence adopted",
+    "Local tests are not institutional certification"
+  ]
+}

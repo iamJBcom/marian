@@ -1,0 +1,12 @@
+WARNING: The directory '/home/oai/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+Processing /mnt/data/marian-M3b
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: marian-protocol-core-draft
+  Building wheel for marian-protocol-core-draft (pyproject.toml): started
+  Building wheel for marian-protocol-core-draft (pyproject.toml): finished with status 'done'
+  Created wheel for marian-protocol-core-draft: filename=marian_protocol_core_draft-0.3.0-py3-none-any.whl size=7068 sha256=841ec4ed11ea3bd4dfac47b829c06aa97fc652d18a8f2bef93e27c3f617d4db4
+  Stored in directory: /tmp/pip-ephem-wheel-cache-e567zpt9/wheels/f7/c2/0c/0c5d48006b11852ea8956232e57feb7acb91d40fc840bfa931
+Successfully built marian-protocol-core-draft
+Installing collected packages: marian-protocol-core-draft
+Successfully installed marian-protocol-core-draft-0.3.0

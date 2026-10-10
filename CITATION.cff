@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "Please cite Marian Protocol v1.0 by Jonathan Bullock. The distinct protocol has no Zenodo DOI unless one is subsequently assigned."
+title: "Marian Protocol v1.0"
+type: software
+authors:
+  - family-names: Bullock
+    given-names: Jonathan
+    orcid: https://orcid.org/0009-0009-2044-5043
+version: "1.0"
+preferred-citation:
+  type: generic
+  title: "Marian Protocol v1.0"
+  authors:
+    - family-names: Bullock
+      given-names: Jonathan
+  year: 2026

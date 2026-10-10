@@ -1,0 +1,51 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 JB Bullock
+# Prepared workflow only — has NOT been published or executed on GitHub.
+name: Marian Protocol v1.0 CORE-DATE conformance
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'fixtures/**'
+      - 'conformance/**'
+      - 'js/**'
+      - 'schemas/**'
+      - 'pyproject.toml'
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'fixtures/**'
+      - 'conformance/**'
+      - 'js/**'
+      - 'schemas/**'
+      - 'pyproject.toml'
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10','3.11','3.12','3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install author-ratified reference package
+        run: python -m pip install -e .
+      - name: Python unit suite
+        run: python -m unittest discover -s tests -v
+      - name: Frozen-oracle conformance suite
+        run: python conformance/verify_vectors.py
+  javascript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Independent BigInt verification
+        run: node js/verify.mjs

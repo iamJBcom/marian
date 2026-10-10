@@ -1,0 +1,15 @@
+id,category,decision,recommended_approval,ratification_state,author_choice,authority
+M2c2-D01,epoch,Canonical Airy-0 midnight,"Use Airy Mean Time (AMT), not local apparent/true solar time",AUTHOR_APPROVED_2026-10-08,APPROVED_AS_RECOMMENDED,JB Bullock
+M2c2-D02,epoch,Reference clock realization,"Freeze published NASA Mars24 (updated 2025-01-07) TT-based affine AMT profile, ID versioned",AUTHOR_APPROVED_2026-10-08,APPROVED_AS_RECOMMENDED,JB Bullock
+M2c2-D03,epoch,Boundary tie semantics,"Require strictly subsequent crossings and midnight: H<C<E, even in exact-tie cases",AUTHOR_APPROVED_2026-10-08,APPROVED_AS_RECOMMENDED,JB Bullock
+M2c2-D04,epoch,MY0 representation,"MY0 is historical interval [H,E), without a regular MY0 civil tuple or local ordinal",AUTHOR_APPROVED_2026-10-08,APPROVED_AS_RECOMMENDED,JB Bullock
+M3a-D05,interchange,Canonical grammar,"Year unpadded positive ASCII decimal, two-digit MM-WW-DD, canonical MY...-SNNN ordinal",AUTHOR_APPROVED_2026-10-08,APPROVED_AS_RECOMMENDED,JB Bullock
+M3a-D06,interchange,Epoch adapter gating,Require ratified epoch certificate and approved versioned clock profile; otherwise fail closed,AUTHOR_APPROVED_2026-10-08,APPROVED_AS_RECOMMENDED,JB Bullock
+M3a-D07,interchange,Error identifiers,Adopt M3a section 17 stable machine error-code vocabulary; human messages nonnormative,AUTHOR_APPROVED_2026-10-08,APPROVED_AS_RECOMMENDED,JB Bullock
+M3a-D08,interchange,JSON interchange representation,Year and sol offset as decimal strings; subordinate fields as JSON integers,AUTHOR_APPROVED_2026-10-08,APPROVED_AS_RECOMMENDED,JB Bullock
+M3a-D09,rights,Technical document license,Grant CC BY 4.0 to specifically marked original standalone technical documents only,AUTHOR_APPROVED_2026-10-08,APPROVED_AS_RECOMMENDED,JB Bullock
+M3a-D10,rights,Software license,Grant Apache-2.0 to specifically marked original reference code/software only,AUTHOR_APPROVED_2026-10-08,APPROVED_AS_RECOMMENDED,JB Bullock
+FUTURE-01,future-fact,Recognised first human step H,Future authority authenticates,UNINSTANTIATED,NOT_A_PRESENT_AUTHOR_DECISION,Future Martian authority
+FUTURE-02,future-fact,First qualifying Ls crossing C,Future authority authenticates,UNINSTANTIATED,NOT_A_PRESENT_AUTHOR_DECISION,Future Martian authority
+FUTURE-03,future-fact,Actual MY1 boundary E,Future epoch certificate authenticates,UNINSTANTIATED,NOT_A_PRESENT_AUTHOR_DECISION,Future Martian authority
+SCI-01,future-validation,Kernel-backed SPICE comparison,Optional additional scientific verification,OPTIONAL_FUTURE_VALIDATION,NOT_A_PRESENT_AUTHOR_DECISION,Independent technical verification

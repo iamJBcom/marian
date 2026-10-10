@@ -1,0 +1,55 @@
+{
+  "protocol": "Marian Protocol v1.0",
+  "title": "Marian: An Operating Calendar for Human Mars",
+  "creator": "JB Bullock",
+  "document_id": "marian-protocol-v1.0",
+  "civil_rule_id": "marian-civil-v1.0",
+  "clock_profile_id": "MARIAN-AIRY-AMT-MARS24-2025-01-07-v1",
+  "ratification": {
+    "by": "JB Bullock",
+    "date": "2026-10-08",
+    "method": "explicit_conversation_approval",
+    "decision_count": 10,
+    "decision_ids": [
+      "M2c2-D01",
+      "M2c2-D02",
+      "M2c2-D03",
+      "M2c2-D04",
+      "M3a-D05",
+      "M3a-D06",
+      "M3a-D07",
+      "M3a-D08",
+      "M3a-D09",
+      "M3a-D10"
+    ]
+  },
+  "status": "AUTHOR_RATIFIED_NORMATIVELY_FROZEN",
+  "external_publication_status": "NOT_PUBLISHED",
+  "doi": null,
+  "scope": {
+    "core": "CONFORMANCE_TESTED",
+    "absolute_epoch": "UNINSTANTIATED",
+    "epoch_adapter_real_world": "NOT_TESTED",
+    "astronomy": "CONDITIONAL_ANALYTIC",
+    "spice_kernel_verification": "NOT_PERFORMED"
+  },
+  "year_rule": {
+    "years_per_cycle": 100,
+    "leap_years_per_cycle": 59,
+    "sols_per_cycle": 66859,
+    "common_sols": 668,
+    "leap_sols": 669,
+    "months": 12,
+    "minths": 24,
+    "sixths": 6,
+    "quarters": 4,
+    "nominal_week_slots": 96,
+    "year_anchor_Ls_degrees": 15
+  },
+  "licenses": {
+    "marked_technical_documents": "CC-BY-4.0",
+    "marked_original_code": "Apache-2.0",
+    "literary_book_and_illustrations": "ALL_RIGHTS_RESERVED_EXCLUDED",
+    "mapping": "LICENSES/README.md"
+  }
+}

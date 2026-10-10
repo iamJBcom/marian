@@ -1,0 +1,21 @@
+# Marian glossary
+
+- **Sol:** the successive Martian civil day; no physical sol is skipped by an omitted weekday label.
+- **Monsol…Sunsol:** suggested English names for weekday positions D1…D7; these are optional interface names, not fixed cultural law.
+- **Nominal week position:** one of eight weekly slots within a month. A terminal slot in a 55-sol month has only D1–D6.
+- **Sunsol:** D7; absent at Week 8 of Months 3, 6, 9 and common-year Month 12.
+- **Minth:** one of 24 periods, normally 28 sols, exceptionally 27; two per month. A–X shorthand is optional.
+- **Month:** one of 12 annual positions; 55 or 56 sols, with two minths.
+- **Sixth:** two consecutive months; six per year, overlaps quarter boundaries.
+- **Quarter:** three consecutive months; four per year.
+- **MY0:** transitional interval starting at the future first recognised human step, before the first complete regular year; not a normal CORE-DATE year.
+- **MY1:** the first complete 668/669-sol Marian calendar year after an established founding epoch.
+- **Ls:** areocentric solar longitude; Marian's seasonal-year anchor is Ls = 15°.
+- **Airy-0:** the Mars prime-meridian reference; **Airy Mean Time (AMT)** is the approved computational midnight convention for the v1.0 profile.
+- **CORE-DATE:** ratified, tested integer date operations for MY1+.
+- **EPOCH-ADAPTER:** separate timestamp bridge requiring a future authenticated real epoch certificate; not yet instantiated.
+- **Ordinal sol:** numbered sol within a regular year, beginning S001.
+- **Absolute sol offset:** zero-based integer number of regular sols elapsed since MY1 start, only relative until the epoch is authenticated.
+- **Conformance oracle:** frozen 66,859-row MY1–MY100 date ledger, independently generated before current implementations.
+- **Civil mean:** exact 668.59-sol arithmetic average of the calendar's 100-year pattern, not a measured immutable Martian orbital period.
+- **Ratification:** author's approval of normative technical rules, not public publication or planetary adoption.

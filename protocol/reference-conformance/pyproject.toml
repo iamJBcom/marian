@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=65"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "marian-protocol-core"
+version = "1.0.0"
+description = "Marian calendar: author-ratified v1.0 CORE-DATE reference implementation"
+requires-python = ">=3.10"
+authors = [{name = "JB Bullock"}]
+keywords = ["Mars", "Marian", "calendar", "civil date"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+marian-core = "marian_protocol.__main__:main"

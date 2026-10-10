@@ -1,0 +1,92 @@
+{
+  "model": "NASA Mars24 short-series reproduction; not high-precision independent ephemeris",
+  "model_validity": "approximately +/-100 terrestrial years of J2000 per NASA notes",
+  "time_scale": "TT days, no automatic UTC leap-second conversion",
+  "sol_duration_earth_days": 1.0274912517,
+  "sol_duration_SI_seconds": 88775.24414688001,
+  "mars24_worked_example": {
+    "test_case": "NASA Mars24 2000-01-06T00:00:00 UTC, with NASA historical TT-UTC=64.184 seconds",
+    "delta_t_J2000_TT_days": 4.50074287037037,
+    "mars24_ls_degrees": 277.18758943722383,
+    "mars24_airy_mean_time_hours": 23.994249464711174,
+    "nasa_expected_Ls_degrees": 277.18758,
+    "nasa_expected_MST_hours": 23.99425,
+    "ls_tolerance_degrees": 3e-05,
+    "MST_tolerance_hours": 5e-05
+  },
+  "crossing_count": 106,
+  "interval_count": 105,
+  "interval_summary": {
+    "mean": 668.5891752527905,
+    "min": 668.556124205,
+    "max": 668.624821518
+  },
+  "civil_trials": [
+    {
+      "trial": "historical_100_year_proxy",
+      "years_tested": 100,
+      "start_k": -48,
+      "start_jd_tt": 2418065.49951287,
+      "end_jd_tt": 2486762.48796574,
+      "initial_lag_sols": 0.113447,
+      "mean_Ls15_recurrence_sols": 668.589521704,
+      "calendar_mean_year_sols": 668.59,
+      "phase_including_initial_lag_min_sols": -0.59491,
+      "phase_including_initial_lag_max_sols": 1.4540742,
+      "civil_minus_astro_endpoint_sols": 0.04782964,
+      "civil_newyear_minus_astro_endpoint_sols": 0.16127663
+    },
+    {
+      "trial": "21st_century_proxy",
+      "years_tested": 35,
+      "start_k": 15,
+      "start_jd_tt": 2461344.59412219,
+      "end_jd_tt": 2485388.5472886,
+      "initial_lag_sols": 0.9814785,
+      "mean_Ls15_recurrence_sols": 668.589722134,
+      "calendar_mean_year_sols": 668.6,
+      "phase_including_initial_lag_min_sols": 0.2641985,
+      "phase_including_initial_lag_max_sols": 1.6894053,
+      "civil_minus_astro_endpoint_sols": 0.35972532,
+      "civil_newyear_minus_astro_endpoint_sols": 1.34120383
+    }
+  ],
+  "sample_Ls15_heliocentric_longitude_range": [
+    99.8488012,
+    100.2455261
+  ],
+  "synthetic_epoch_scenarios": [
+    {
+      "scenario": "before_Ls15",
+      "step_jd_tt": 2461344.08037657,
+      "next_Ls15_jd_tt": 2461344.59412219,
+      "first_marian_year1_airy_midnight_jd_tt": 2461345.60258277,
+      "MY0_elapsed_sols_from_step": 1.4814785
+    },
+    {
+      "scenario": "at_Ls15",
+      "step_jd_tt": 2461344.59412219,
+      "next_Ls15_jd_tt": 2462031.53822264,
+      "first_marian_year1_airy_midnight_jd_tt": 2462031.96673891,
+      "MY0_elapsed_sols_from_step": 668.9814785
+    },
+    {
+      "scenario": "after_Ls15",
+      "step_jd_tt": 2461345.10786782,
+      "next_Ls15_jd_tt": 2462031.53822264,
+      "first_marian_year1_airy_midnight_jd_tt": 2462031.96673891,
+      "MY0_elapsed_sols_from_step": 668.4814785
+    },
+    {
+      "scenario": "after_annual_rollover",
+      "step_jd_tt": 2461346.6491047,
+      "next_Ls15_jd_tt": 2462031.53822264,
+      "first_marian_year1_airy_midnight_jd_tt": 2462031.96673891,
+      "MY0_elapsed_sols_from_step": 666.9814785
+    }
+  ],
+  "source_urls": [
+    "https://www.giss.nasa.gov/tools/mars24/help/algorithm.html",
+    "https://www.giss.nasa.gov/tools/mars24/help/notes.html"
+  ]
+}
