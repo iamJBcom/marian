@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="no-referrer" name="referrer"/><meta content="default-src 'none'; style-src 'self'; img-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" http-equiv="Content-Security-Policy"/>
+<title>Appendix A: Marian Calendar Specification | Marian — An Operating Calendar for Human Mars</title><meta content="Read Appendix A: Marian Calendar Specification. Marian: An Operating Calendar for Human Mars. Written by JB Bullock." name="description"/><link href="../css/book.css" rel="stylesheet"/><link rel="canonical" href="https://iamjbcom.github.io/marian/appendices/appendix-a.html"/><meta property="og:type" content="article"/><meta property="og:title" content="Appendix A: Marian Calendar Specification | Marian — An Operating Calendar for Human Mars"/><meta property="og:url" content="https://iamjbcom.github.io/marian/appendices/appendix-a.html"/></head>
+<body><a class="skip" href="#main">Skip to reading content</a><header class="mast"><a class="brand" href="../index.html">MARIAN<span>Operating Architecture Series</span></a><nav aria-label="Site"><a href="../index.html">Contents</a></nav></header>
+
+<main class="reading" id="main"><div class="crumbs"><a href="../index.html">Marian</a> / Appendix A: Marian Calendar Specification</div><article class="book-section" data-section="appendix-a"><h1 class="source-heading" data-source-block="2671">A - Marian Calendar Specification</h1>
+<p data-source-block="2672"><em>Normative Definition of the Marian Civil Calendar</em></p>
+<h2 data-source-block="2673">A.1 Purpose and status</h2>
+<p data-source-block="2674">This appendix defines the normative structure of the <strong>Marian Calendar</strong>, a civil calendar intended for permanent human settlement on Mars.</p>
+<p data-source-block="2675">The specification defines the calendar's civil units, annual structure, weekday recurrence, intercalation rule, astronomical anchor, civil rollover and historical epoch. It is intended to be sufficiently precise for independent implementations to produce the same Marian dates from the same underlying chronology.</p>
+<p data-source-block="2676">The explanatory chapters of this book describe the reasoning behind the design. Where explanatory prose and this specification differ in level of detail, this appendix defines the intended calendar structure.</p>
+<p data-source-block="2677">One element cannot yet be numerically instantiated: the historical epoch depends upon the future first recognised human step on Mars. The rule defining that epoch is specified here; its eventual timestamp must be established after the event occurs.</p>
+<p data-source-block="2678">For the purposes of this appendix:</p>
+<ul class="source-list" data-word-list-id="15">
+<li data-source-block="2679"><strong>MUST</strong> identifies a requirement of a conforming Marian implementation.</li>
+<li data-source-block="2680"><strong>SHOULD</strong> identifies a recommended convention that may be varied for a legitimate local or technical reason.</li>
+<li data-source-block="2681"><strong>MAY</strong> identifies an optional convention.</li>
+</ul>
+<h2 data-source-block="2682">A.2 Scope</h2>
+<p data-source-block="2683">Marian is a <strong>civil calendar</strong>, not a complete Martian timekeeping system.</p>
+<p data-source-block="2684">It defines how Martian sols are organised into weekday positions, minths, months, Sixths, quarters and years. It also defines the recurring structure of common and leap years, the astronomical position to which the calendar is anchored, the canonical planetary date boundary and the origin of Marian year numbering.</p>
+<p data-source-block="2685">Marian does <strong>not</strong> prescribe the subdivision of the sol into hours, minutes or seconds; local time zones; local mean solar time conventions; daylight adjustments; holidays; religious observances; working weeks; school terms; fiscal practices; or other cultural and institutional uses of civil time.</p>
+<p data-source-block="2686">Those systems may use Marian dates without becoming part of the Marian Calendar specification.</p>
+<h2 data-source-block="2687">A.3 Fundamental civil unit</h2>
+<p data-source-block="2688">The fundamental Marian civil unit is the <strong>sol</strong>, defined by the Martian mean solar day.</p>
+<p data-source-block="2689">No physical sol is omitted, repeated or shortened by the Marian Calendar.</p>
+<p data-source-block="2690">Civil calendar rules may alter the sequence of weekday <strong>labels</strong>, but they do not alter the continuous physical succession of Martian sols.</p>
+<h2 data-source-block="2691">A.4 The Marian year</h2>
+<p data-source-block="2692">A regular Marian year contains either:</p>
+<p data-source-block="2693"><strong>668 sols — common year</strong></p>
+<p data-source-block="2694">or:</p>
+<p data-source-block="2695"><strong>669 sols — leap year</strong></p>
+<p data-source-block="2696">Every regular Marian year contains:</p>
+<div aria-label="Table 1 in Appendix A: Marian Calendar Specification; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="2697"><caption class="sr-only">Table 1 in Appendix A: Marian Calendar Specification</caption><thead><tr><th scope="col">Civil structure</th><th scope="col">Count per year</th></tr></thead><tbody><tr><td>Years</td><td>1</td></tr><tr><td>Quarters</td><td>4</td></tr><tr><td>Sixths</td><td>6</td></tr><tr><td>Months</td><td>12</td></tr><tr><td>Minths</td><td>24</td></tr><tr><td>Nominal week positions</td><td>96</td></tr><tr><td>Sols</td><td>668 or 669</td></tr></tbody></table></div>
+<p data-source-block="2698">The relationship may therefore be summarised as:</p>
+<p data-source-block="2699"><strong>1 year = 4 quarters = 6 Sixths = 12 months = 24 minths = 96 nominal week positions = 668 or 669 sols</strong></p>
+<p data-source-block="2700">These are overlapping partitions of one annual civil frame. They MUST NOT be interpreted as a single chain in which every larger unit nests exclusively inside the next.</p>
+<h2 data-source-block="2701">A.5 Months</h2>
+<p data-source-block="2702">Every regular Marian year contains <strong>12 months</strong>.</p>
+<p data-source-block="2703">The common-year month pattern is:</p>
+<p data-source-block="2704"><strong>56 – 56 – 55 | 56 – 56 – 55 | 56 – 56 – 55 | 56 – 56 – 55</strong></p>
+<p data-source-block="2705">Accordingly:</p>
+<ul class="source-list" data-word-list-id="31">
+<li data-source-block="2706">Months 1, 2, 4, 5, 7, 8, 10 and 11 contain <strong>56 sols</strong>.</li>
+<li data-source-block="2707">Months 3, 6, 9 and 12 contain <strong>55 sols</strong> in a common year.</li>
+<li data-source-block="2708">In a leap year, Month 12 contains <strong>56 sols</strong>.</li>
+</ul>
+<p data-source-block="2709">Months 1 through 11 are therefore identical in common and leap years.</p>
+<p data-source-block="2710">Every regular month MUST begin at the first weekday position of the Marian week.</p>
+<p data-source-block="2711">The twelve-month layer provides the calendar's principal twelve-part annual orientation. Human-readable month names MAY be adopted separately; canonical implementation MUST remain possible without them.</p>
+<h2 data-source-block="2712">A.6 Minths</h2>
+<p data-source-block="2713">Every month contains exactly <strong>two minths</strong>, giving <strong>24 minths per regular Marian year</strong>.</p>
+<p data-source-block="2714">A 56-sol month divides as:</p>
+<p data-source-block="2715"><strong>28 + 28 sols</strong></p>
+<p data-source-block="2716">A 55-sol month divides as:</p>
+<p data-source-block="2717"><strong>28 + 27 sols</strong></p>
+<p data-source-block="2718">In a common year, Minths 06, 12, 18 and 24 therefore contain 27 sols. All other minths contain 28.</p>
+<p data-source-block="2719">In a leap year, Minth 24 contains 28 sols because the leap sol occupies the final position of Month 12. Minths 06, 12 and 18 remain 27 sols.</p>
+<p data-source-block="2720">Every minth MUST begin at the first weekday position.</p>
+<p data-source-block="2721">The canonical minth identifiers are <strong>01 through 24</strong>. The letters <strong>A through X</strong> MAY be used as compact human shorthand, mapped sequentially to Minths 01 through 24.</p>
+<p data-source-block="2722">Natural-language minth names MAY be used by communities or institutions, but such names MUST NOT replace the canonical identity of the underlying minth in machine-readable interchange.</p>
+<h2 data-source-block="2723">A.7 The Marian week</h2>
+<p data-source-block="2724">The Marian civil week contains seven nominal weekday positions.</p>
+<p data-source-block="2725">The recommended human-readable weekday sequence runs from <strong>Monsol through Sunsol</strong>. Implementations MUST preserve the ordering of the seven positions even if localised names are used.</p>
+<p data-source-block="2726">The normal civil week contains all seven weekday positions. In designated terminal weeks, however, the seventh position is absent.</p>
+<p data-source-block="2727">This occurs because a 27-sol minth consists of:</p>
+<p data-source-block="2728"><strong>7 + 7 + 7 + 6 sols</strong></p>
+<p data-source-block="2729">rather than four complete seven-sol weeks.</p>
+<p data-source-block="2730">Accordingly, in a common year the terminal civil weeks of Months 3, 6, 9 and 12 contain six occupied weekday positions. In a leap year, the terminal civil weeks of Months 3, 6 and 9 contain six; Month 12 contains a complete seven-position terminal week.</p>
+<p data-source-block="2731">After a six-position terminal week, the following month begins again at the first weekday position.</p>
+<p data-source-block="2732">This is a discontinuity in the <strong>weekday naming sequence</strong>, not in physical time. No sol is skipped.</p>
+<p data-source-block="2733">The effect is that every regular Marian month and minth begins on the same weekday position, and corresponding dates retain recurring weekday relationships from year to year.</p>
+<h2 data-source-block="2734">A.8 Quarters</h2>
+<p data-source-block="2735">The Marian year contains four <strong>quarters</strong>, each comprising three consecutive months:</p>
+<div aria-label="Table 2 in Appendix A: Marian Calendar Specification; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="2736"><caption class="sr-only">Table 2 in Appendix A: Marian Calendar Specification</caption><thead><tr><th scope="col">Quarter</th><th scope="col">Months</th></tr></thead><tbody><tr><td>Q1</td><td>1–3</td></tr><tr><td>Q2</td><td>4–6</td></tr><tr><td>Q3</td><td>7–9</td></tr><tr><td>Q4</td><td>10–12</td></tr></tbody></table></div>
+<p data-source-block="2737">In a common year, each quarter contains:</p>
+<p data-source-block="2738"><strong>167 sols</strong></p>
+<p data-source-block="2739">because:</p>
+<p data-source-block="2740"><strong>56 + 56 + 55 = 167</strong></p>
+<p data-source-block="2741">In a leap year, Q1, Q2 and Q3 remain 167 sols while Q4 contains 168.</p>
+<p data-source-block="2742">The canonical identifiers are <strong>Q1 through Q4</strong>. The corresponding human-readable names are:</p>
+<div aria-label="Table 3 in Appendix A: Marian Calendar Specification; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="2743"><caption class="sr-only">Table 3 in Appendix A: Marian Calendar Specification</caption><thead><tr><th scope="col">Identifier</th><th scope="col">Name</th></tr></thead><tbody><tr><td>Q1</td><td>Primiv</td></tr><tr><td>Q2</td><td>Secondiv</td></tr><tr><td>Q3</td><td>Tertiv</td></tr><tr><td>Q4</td><td>Quartiv</td></tr></tbody></table></div>
+<p data-source-block="2744">The quarter represents a four-part division of the Marian annual cycle. It is not required to reproduce the elapsed duration or institutional use of a terrestrial thirteen-week quarter.</p>
+<h2 data-source-block="2745">A.9 Sixths</h2>
+<p data-source-block="2746">The Marian year also contains six <strong>Sixths</strong>, each comprising two consecutive months:</p>
+<div aria-label="Table 4 in Appendix A: Marian Calendar Specification; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="2747"><caption class="sr-only">Table 4 in Appendix A: Marian Calendar Specification</caption><thead><tr><th scope="col">Sixth</th><th scope="col">Months</th></tr></thead><tbody><tr><td>S1</td><td>1–2</td></tr><tr><td>S2</td><td>3–4</td></tr><tr><td>S3</td><td>5–6</td></tr><tr><td>S4</td><td>7–8</td></tr><tr><td>S5</td><td>9–10</td></tr><tr><td>S6</td><td>11–12</td></tr></tbody></table></div>
+<p data-source-block="2748">Their common-year lengths are:</p>
+<p data-source-block="2749"><strong>112 – 111 – 111 – 112 – 111 – 111 sols</strong></p>
+<p data-source-block="2750">In a leap year, S6 contains 112 sols.</p>
+<p data-source-block="2751">The canonical identifiers are <strong>S1 through S6</strong>. The corresponding human-readable names are:</p>
+<div aria-label="Table 5 in Appendix A: Marian Calendar Specification; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="2752"><caption class="sr-only">Table 5 in Appendix A: Marian Calendar Specification</caption><thead><tr><th scope="col">Identifier</th><th scope="col">Name</th></tr></thead><tbody><tr><td>S1</td><td>Primus</td></tr><tr><td>S2</td><td>Secundus</td></tr><tr><td>S3</td><td>Tertius</td></tr><tr><td>S4</td><td>Quartus</td></tr><tr><td>S5</td><td>Quintus</td></tr><tr><td>S6</td><td>Sextus</td></tr></tbody></table></div>
+<p data-source-block="2753">Sixths and quarters deliberately overlap. A Sixth is not a subdivision of a quarter, nor is a quarter a grouping of Sixths.</p>
+<p data-source-block="2754">They are separate civil grids applied to the same twelve-month year.</p>
+<h2 data-source-block="2755">A.10 Functional structure</h2>
+<p data-source-block="2756">The principal civil roles of Marian's middle-scale units are:</p>
+<div aria-label="Table 6 in Appendix A: Marian Calendar Specification; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="2757"><caption class="sr-only">Table 6 in Appendix A: Marian Calendar Specification</caption><thead><tr><th scope="col">Unit</th><th scope="col">Principal civil function</th></tr></thead><tbody><tr><td>Minth</td><td>Short operating cadence</td></tr><tr><td>Month</td><td>Twelve-part annual orientation</td></tr><tr><td>Sixth</td><td>Medium-range cadence</td></tr><tr><td>Quarter</td><td>Four-part annual orientation</td></tr></tbody></table></div>
+<p data-source-block="2758">This distinction reflects the governing design principle of <strong>Functional Separation</strong>: civil functions that happen to share one unit on Earth need not remain bundled when the Martian annual cycle separates them.</p>
+<p data-source-block="2759">The existence of a standard civil interval does not require individuals or institutions to use it for any particular activity.</p>
+<h2 data-source-block="2760">A.11 Leap-year rule</h2>
+<p data-source-block="2761">Leap status is determined entirely from the Marian year number.</p>
+<p data-source-block="2762">For regular Marian years MY1 onward:</p>
+<ol class="source-list" data-word-list-id="5">
+<li data-source-block="2763"><strong>Odd-numbered years are leap years.</strong></li>
+<li data-source-block="2764"><strong>Years divisible by 10 are also leap years.</strong></li>
+<li data-source-block="2765"><strong>Years divisible by 100 are common years.</strong></li>
+<li data-source-block="2766">The century rule takes precedence over the preceding rules.</li>
+</ol>
+<p data-source-block="2767">Equivalent decision logic is:</p>
+<p data-source-block="2768"><strong>If year mod 100 = 0 → common</strong></p>
+<p data-source-block="2769"><strong>Else if year mod 2 = 1 → leap</strong></p>
+<p data-source-block="2770"><strong>Else if year mod 10 = 0 → leap</strong></p>
+<p data-source-block="2771"><strong>Else → common</strong></p>
+<p data-source-block="2772">This rule produces exactly <strong>59 leap years per 100 regular Marian years</strong>.</p>
+<p data-source-block="2773">The mean civil-year length is therefore:</p>
+<p data-source-block="2774"><strong>668 + 59/100 = 668.590000 sols</strong></p>
+<p data-source-block="2775">Leap frequency and leap placement are separate design properties. The 59/100 ratio determines the long-run frequency required to track the selected astronomical cycle; the odd / decennial / century rule determines the civil placement of those leap years.</p>
+<h2 data-source-block="2776">A.12 Leap-sol position</h2>
+<p data-source-block="2777">The leap sol occupies exactly one possible civil position:</p>
+<p data-source-block="2778"><strong>Month 12 · Week 8 · Day 7</strong></p>
+<p data-source-block="2779">In a common year, that position does not exist.</p>
+<p data-source-block="2780">In a leap year, it exists as the final weekday position of the final civil week of Month 12.</p>
+<p data-source-block="2781">The leap sol therefore:</p>
+<ul class="source-list" data-word-list-id="8">
+<li data-source-block="2782">changes Month 12 from 55 to 56 sols;</li>
+<li data-source-block="2783">changes Minth 24 from 27 to 28 sols;</li>
+<li data-source-block="2784">changes Sixth 6 from 111 to 112 sols;</li>
+<li data-source-block="2785">changes Quarter 4 from 167 to 168 sols; and</li>
+<li data-source-block="2786">changes the year from 668 to 669 sols.</li>
+</ul>
+<p data-source-block="2787">No earlier civil date changes between common and leap-year templates.</p>
+<h2 data-source-block="2788">A.13 Astronomical anchor</h2>
+<p data-source-block="2789">The Marian annual astronomical anchor is:</p>
+<p data-source-block="2790"><strong>Ls = 15°</strong></p>
+<p data-source-block="2791">where Ls is areocentric solar longitude.</p>
+<p data-source-block="2792">This reference defines where the regular Marian civil year belongs within the Martian seasonal cycle.</p>
+<p data-source-block="2793">Ls = 15° is an <strong>astronomical target</strong>, not a requirement to begin every subsequent civil year by observing or recalculating the instantaneous astronomical crossing.</p>
+<p data-source-block="2794">Once the Marian epoch has been instantiated, the civil calendar MUST advance deterministically through its prescribed 668- and 669-sol years. Intercalation keeps that civil sequence tracking the astronomical reference over time.</p>
+<p data-source-block="2795">Exact seasonal position remains an astronomical quantity and SHOULD be expressed using Ls or another appropriate scientific coordinate rather than inferred from the Marian civil date when precision is required.</p>
+<h2 data-source-block="2796">A.14 Canonical civil rollover</h2>
+<p data-source-block="2797">The canonical planetary civil date boundary is:</p>
+<p data-source-block="2798"><strong>midnight at Airy-0</strong></p>
+<p data-source-block="2799">The astronomical passage through Ls = 15° and the canonical civil rollover are deliberately separate.</p>
+<p data-source-block="2800">For the establishment of MY1, Mars first passes through Ls = 15°. The <strong>first Airy-0 midnight following that passage</strong> begins the first complete regular Marian year.</p>
+<p data-source-block="2801">Marian does not prescribe how settlements elsewhere on Mars must display local time. Local mean solar time, future time-zone systems or shared administrative clocks MAY coexist with Marian dates, provided they can be related unambiguously to the canonical planetary chronology.</p>
+<h2 data-source-block="2802">A.15 Historical epoch</h2>
+<p data-source-block="2803">Marian year numbering begins with direct human history on Mars.</p>
+<p data-source-block="2804">The <strong>recognised first human step onto the Martian surface</strong> establishes the historical epoch and begins <strong>Marian Year 0 (MY0)</strong>.</p>
+<p data-source-block="2805">MY0 is a transitional epoch interval. It is not required to contain 668 or 669 sols and is not a normal regular Marian year.</p>
+<p data-source-block="2806">The sequence is:</p>
+<p data-source-block="2807"><strong>recognised first human step → MY0 begins</strong></p>
+<p data-source-block="2808"><strong>next passage through Ls = 15°</strong></p>
+<p data-source-block="2809"><strong>first Airy-0 midnight after that passage → MY1 begins</strong></p>
+<p data-source-block="2810">From MY1 onward, all years follow the regular Marian structure and leap-year rule.</p>
+<p data-source-block="2811">The precise timestamp and authoritative definition of the recognised first human step cannot be instantiated before the event occurs. A future standards authority MUST record that event sufficiently precisely to establish the epoch reproducibly.</p>
+<h2 data-source-block="2812">A.16 Year numbering</h2>
+<p data-source-block="2813">Regular Marian years are numbered sequentially:</p>
+<p data-source-block="2814"><strong>MY1, MY2, MY3, ...</strong></p>
+<p data-source-block="2815">MY0 precedes MY1 and is reserved for the transitional interval beginning with the recognised first human step.</p>
+<p data-source-block="2816">The Marian Calendar does not require the projection of ordinary Marian year numbers into pre-human Martian history.</p>
+<p data-source-block="2817">Any extension before MY0 would require an explicitly defined separate convention and MUST NOT be confused with the primary Marian civil chronology.</p>
+<h2 data-source-block="2818">A.17 Canonical identities and localisation</h2>
+<p data-source-block="2819">A conforming implementation MUST preserve stable numeric identities for the structural elements of the calendar regardless of the human-readable language used to display them.</p>
+<p data-source-block="2820">At minimum, the following canonical identities exist:</p>
+<ul class="source-list" data-word-list-id="17">
+<li data-source-block="2821">Marian year number: <strong>MYn</strong></li>
+<li data-source-block="2822">Month: <strong>01–12</strong></li>
+<li data-source-block="2823">Minth: <strong>01–24</strong></li>
+<li data-source-block="2824">Quarter: <strong>Q1–Q4</strong></li>
+<li data-source-block="2825">Sixth: <strong>S1–S6</strong></li>
+<li data-source-block="2826">Weekday position: <strong>1–7</strong></li>
+</ul>
+<p data-source-block="2827">Compact or natural-language forms MAY be layered above those identities.</p>
+<p data-source-block="2828">Localisation MUST NOT change the underlying structural mapping. For example, a locally named minth remains canonically the same numbered minth, and a translated weekday remains the same weekday position.</p>
+<p data-source-block="2829">The exact canonical date syntax, ordinal-sol representation, machine interchange formats and conversion rules are defined in Appendix D.</p>
+<h2 data-source-block="2830">A.18 Validity requirements</h2>
+<p data-source-block="2831">A Marian date is valid only if every component exists in the specified year template.</p>
+<p data-source-block="2832">In particular:</p>
+<ul class="source-list" data-word-list-id="12">
+<li data-source-block="2833">common years contain 668 sols;</li>
+<li data-source-block="2834">leap years contain 669 sols;</li>
+<li data-source-block="2835">Months 3, 6 and 9 always contain 55 sols;</li>
+<li data-source-block="2836">Month 12 contains 55 sols in a common year and 56 in a leap year;</li>
+<li data-source-block="2837">no date may occupy the seventh weekday position of a six-position terminal civil week;</li>
+<li data-source-block="2838">Minths 06, 12 and 18 contain 27 sols in all regular years;</li>
+<li data-source-block="2839">Minth 24 contains 27 sols in a common year and 28 in a leap year;</li>
+<li data-source-block="2840">the leap-sol position exists only in a leap year.</li>
+</ul>
+<p data-source-block="2841">A conforming implementation MUST reject structurally impossible dates rather than silently reinterpret them.</p>
+<p data-source-block="2842">Detailed date-validity tables are provided in Appendix B.</p>
+<h2 data-source-block="2843">A.19 Determinism</h2>
+<p data-source-block="2844">For MY1 onward, the complete shape of any Marian year MUST be calculable from the year number alone.</p>
+<p data-source-block="2845">An implementation MUST NOT require an astronomical observation, ephemeris lookup or discretionary authority decision to determine whether an ordinary Marian year is common or leap.</p>
+<p data-source-block="2846">Astronomy defines the physical cycle the calendar is intended to track. The civil algorithm determines the calendar.</p>
+<p data-source-block="2847">This separation is fundamental to reproducible implementation.</p>
+<h2 data-source-block="2848">A.20 Long-term alignment</h2>
+<p data-source-block="2849">The ordinary Marian intercalation regime has a mean year length of <strong>668.590000 sols</strong> and is intended to track the Ls = 15° recurrence closely around the founding era.</p>
+<p data-source-block="2850">It is not claimed to constitute an exact astronomical rule for geological timescales.</p>
+<p data-source-block="2851">If future astronomical modelling or accumulated phase behaviour eventually justifies a rare long-period correction, such a correction SHOULD be handled as a higher-order maintenance rule rather than by altering the ordinary definitions of the sol, week, minth, month, Sixth, quarter or 668/669-sol annual templates.</p>
+<p data-source-block="2852">Any such future modification would constitute a revision or extension of this specification and MUST be explicitly versioned.</p>
+<h2 data-source-block="2853">A.21 Matters deliberately outside the specification</h2>
+<p data-source-block="2854">The Marian Calendar does not define:</p>
+<ul class="source-list" data-word-list-id="21">
+<li data-source-block="2855">sub-sol horology;</li>
+<li data-source-block="2856">Martian time zones;</li>
+<li data-source-block="2857">daylight-saving or seasonal clock changes;</li>
+<li data-source-block="2858">working or rest days;</li>
+<li data-source-block="2859">religious observance;</li>
+<li data-source-block="2860">public holidays;</li>
+<li data-source-block="2861">birthday conventions;</li>
+<li data-source-block="2862">age-of-majority rules;</li>
+<li data-source-block="2863">school or university terms;</li>
+<li data-source-block="2864">fiscal years;</li>
+<li data-source-block="2865">payroll schedules;</li>
+<li data-source-block="2866">organisational planning cadence;</li>
+<li data-source-block="2867">exact astronomical position implied by a civil date;</li>
+<li data-source-block="2868">cultural names for months or minths beyond any separately adopted nomenclature; or</li>
+<li data-source-block="2869">political authority over future Martian civil time.</li>
+</ul>
+<p data-source-block="2870">Such conventions MAY use Marian units but remain separate from the calendar's normative civil structure.</p>
+<h2 data-source-block="2871">A.22 Minimum conforming Marian implementation</h2>
+<p data-source-block="2872">A system may be described as implementing the Marian Calendar if it can, at minimum:</p>
+<ol class="source-list" data-word-list-id="38">
+<li data-source-block="2873">represent regular Marian years as either 668 or 669 sols;</li>
+<li data-source-block="2874">apply the <strong>56–56–55 × 4</strong> common-year month structure;</li>
+<li data-source-block="2875">place the leap sol only at the final position of Month 12;</li>
+<li data-source-block="2876">represent 24 minths, 12 months, six Sixths and four quarters with the mappings defined above;</li>
+<li data-source-block="2877">implement the seven-position weekday system, including six-position terminal civil weeks where required;</li>
+<li data-source-block="2878">preserve continuous physical sol counting while allowing the weekday naming sequence to omit the seventh position in those terminal weeks;</li>
+<li data-source-block="2879">determine leap status using the <strong>odd / divisible-by-10 / divisible-by-100</strong> rule;</li>
+<li data-source-block="2880">preserve <strong>Ls = 15°</strong> as the annual astronomical anchor;</li>
+<li data-source-block="2881">recognise <strong>Airy-0 midnight</strong> as the canonical planetary civil rollover;</li>
+<li data-source-block="2882">recognise the first human step as the origin of MY0 and the prescribed subsequent boundary as the beginning of MY1;</li>
+<li data-source-block="2883">preserve canonical numeric identities independently of localised human names; and</li>
+<li data-source-block="2884">reject dates that do not exist in the applicable common- or leap-year template.</li>
+</ol>
+<p data-source-block="2885">Everything beyond those requirements is implementation, interface or culture.</p></article><nav aria-label="Previous and next section" class="pager"><a href="index.html" rel="prev">← Appendices</a><a href="appendix-b.html" rel="next">Appendix B: Marian Calendar Tables →</a></nav></main>
+<footer>© JB Bullock 2026. Book text, cover and illustrations: all rights reserved. Marian Protocol v1.0 is separately licensed.</footer></body></html>

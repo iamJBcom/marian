@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="no-referrer" name="referrer"/><meta content="default-src 'none'; style-src 'self'; img-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" http-equiv="Content-Security-Policy"/>
+<title>Chapter 15: A Date That Survives Translation | Marian — An Operating Calendar for Human Mars</title><meta content="Read Chapter 15: A Date That Survives Translation. Marian: An Operating Calendar for Human Mars. Written by JB Bullock." name="description"/><link href="../css/book.css" rel="stylesheet"/><link rel="canonical" href="https://iamjbcom.github.io/marian/chapters/chapter-15.html"/><meta property="og:type" content="article"/><meta property="og:title" content="Chapter 15: A Date That Survives Translation | Marian — An Operating Calendar for Human Mars"/><meta property="og:url" content="https://iamjbcom.github.io/marian/chapters/chapter-15.html"/></head>
+<body><a class="skip" href="#main">Skip to reading content</a><header class="mast"><a class="brand" href="../index.html">MARIAN<span>Operating Architecture Series</span></a><nav aria-label="Site"><a href="../index.html">Contents</a></nav></header>
+
+<main class="reading" id="main"><div class="crumbs"><a href="../index.html">Marian</a> / Chapter 15: A Date That Survives Translation</div><article class="book-section" data-section="chapter-15"><h1 class="source-heading" data-source-block="1237"><span class="heading-lead">IDENTITY</span><br/><span class="heading-main">15) A Date That Survives Translation</span><br/><span class="heading-sub">Dates, Names and Machine Identity</span></h1>
+<p data-source-block="1238">A calendar has two audiences.</p>
+<p data-source-block="1239">People need dates they can read, say and remember. Machines need dates they can identify without ambiguity, regardless of language, typography or local custom. Those requirements overlap, but they are not the same.</p>
+<p data-source-block="1240">A future Martian resident may be perfectly happy saying that an appointment falls on Frisol in Augiix. A database exchanging records between settlements should not need to know what <em>Augiix</em> means, what language the user speaks or whether that community has renamed the month entirely.</p>
+<p data-source-block="1241">Marian therefore separates <strong>structure from vocabulary</strong>. The underlying calendar is numeric and deterministic; human-facing names sit on top as an interface.</p>
+<p data-source-block="1242">That is more than a software convenience. A calendar intended to serve a civilisation should survive translation, cultural change and the entirely reasonable possibility that future Martians dislike some of the names invented for them on Earth.</p>
+<p data-source-block="1243">The machinery should not care.</p>
+<h2 data-source-block="1244">The canonical civil date</h2>
+<p data-source-block="1245">The primary Marian Civil Date contains four components:</p>
+<p data-source-block="1246"><strong>Year · Month · Week · Day</strong></p>
+<p data-source-block="1247">Its structural form is:</p>
+<p data-source-block="1248"><strong>(Y, M, W, D)</strong></p>
+<p data-source-block="1249">A canonical machine-readable example is:</p>
+<p data-source-block="1250"><strong>MY42-08-03-05</strong></p>
+<p data-source-block="1251">This means Marian Year 42, Month 8, Week 3 within that month, and Day 5 within that week. Under Marian's recommended weekday names, Day 5 is <strong>Frisol</strong>.</p>
+<p data-source-block="1252">The same civil date can therefore appear in several human-facing forms, such as:</p>
+<p data-source-block="1253"><strong>42 Augiix · Week 3 · Frisol</strong></p>
+<p data-source-block="1254">or:</p>
+<p data-source-block="1255"><strong>MY42 · Month 8 · Week 3 · Day 5</strong></p>
+<p data-source-block="1256">These are not different dates. They are different representations of the same structural address.</p>
+<p data-source-block="1257">The Year–Month–Week–Day form is deliberate. Marian months already have a stable eight-position weekly structure, so the date exposes that structure directly rather than hiding the week inside an ordinal month-day number.</p>
+<p data-source-block="1258">The easiest way to think about the civil date is as an address:</p>
+<p data-source-block="1259"><strong>MY42-08-03-05</strong></p>
+<p data-source-block="1260">means:</p>
+<p data-source-block="1261"><strong>Year 42 → Month 08 → Week 03 → Day 05</strong></p>
+<p data-source-block="1262">Because every month begins at Day 1, that relationship is stable. Month 8, Week 3, Day 5 does not happen to be Frisol in MY42. It <strong>is</strong> Day 5 by construction, and the same structural position remains Day 5 in MY43, MY44 and every other year in which that date is valid.</p>
+<p data-source-block="1263">That invariance is one reason Marian uses a four-part civil address rather than simply copying the Gregorian Year–Month–Day pattern.</p>
+<p data-source-block="1264">For everyday speech, of course, nobody needs to recite the complete tuple whenever they arrange coffee. Standards and conversation have different bandwidth requirements.</p>
+<h2 data-source-block="1265">Invalid dates should be invalid on purpose</h2>
+<p data-source-block="1266">A machine-readable date system also needs an unambiguous definition of dates that do not exist.</p>
+<p data-source-block="1267">Every Marian month contains eight nominal week positions. A 56-sol month fills all seven weekday positions of Week 8; a 55-sol month ends after Week 8, Day 6.</p>
+<figure class="art" data-editorial-status="AUTHOR_APPROVED_PLACEMENT_AND_CAPTION" id="image13"><img alt="Illustration: One Date, Several Interfaces. Expanded text description follows." decoding="async" height="1086" loading="lazy" src="../assets/image13.webp" width="1448"/><figcaption><strong>One Date, Several Interfaces</strong></figcaption><details class="figure-description"><summary>Detailed figure description</summary><p>Six boxes present the same example date at different interface levels. They include the complete Marian date, its month and weekday position, its minth position, its ordinal position in the year, and a human-readable notation. Directional relationships show that these are alternative descriptions of the same civil sol, not different dates. The example is an illustration of stable structural identity under varied formatting.</p><p>Editorial note: this is a descriptive summary, not an independently verified transcription of every diagram label. Refer to the surrounding text and the Marian technical specification for authoritative numeric details where applicable.</p></details></figure>
+<p data-source-block="1268">So:</p>
+<p data-source-block="1269"><strong>MY2-03-08-06</strong></p>
+<p data-source-block="1270">is valid, while:</p>
+<p data-source-block="1271"><strong>MY2-03-08-07</strong></p>
+<p data-source-block="1272">is not.</p>
+<p data-source-block="1273">Month 3 contains only 55 sols, so there is no Week 8, Day 7 in that month. The same rule applies to Month 12: its final Day 7 exists in a leap year but not in a common year.</p>
+<p data-source-block="1274">Validation is therefore mechanical:</p>
+<ul class="source-list" data-word-list-id="23">
+<li data-source-block="1275">Month must be 01–12.</li>
+<li data-source-block="1276">Week must be 01–08.</li>
+<li data-source-block="1277">Day must be 01–07.</li>
+<li data-source-block="1278">The resulting position must fall within the actual length of that month.</li>
+</ul>
+<p data-source-block="1279">This matters because invalidity should belong to the calendar specification rather than being reinvented by every programmer who encounters it. A date parser should know that a particular address cannot occur, and a recurrence system should know that a schedule requesting Week 8, Day 7 needs a rule for months in which that position is absent.</p>
+<p data-source-block="1280">That is the sort of detail nobody puts on a wall calendar and everybody eventually wishes somebody had specified.</p>
+<h2 data-source-block="1281">The ordinal-sol form</h2>
+<p data-source-block="1282">Not every application needs the full civil address. Sometimes the useful question is simply:</p>
+<p data-source-block="1283"><strong>Which sol of the year is this?</strong></p>
+<p data-source-block="1284">Marian therefore also supports a year-plus-ordinal-sol representation. For example:</p>
+<p data-source-block="1285"><strong>MY42-S409</strong></p>
+<p data-source-block="1286">means the 409th sol of Marian Year 42.</p>
+<p data-source-block="1287">The civil date:</p>
+<p data-source-block="1288"><strong>MY42-08-03-05</strong></p>
+<p data-source-block="1289">maps to:</p>
+<p data-source-block="1290"><strong>MY42-S409</strong></p>
+<p data-source-block="1291">Both identify the same physical civil sol. The ordinal form is useful for computation, elapsed-time arithmetic, scientific records and systems that do not need to expose the richer month-and-week structure.</p>
+<p data-source-block="1292">A common year runs from <strong>MYxx-S001</strong> to <strong>MYxx-S668</strong>. A leap year continues to <strong>MYxx-S669</strong>. The ordinal identity always restarts with the Marian year.</p>
+<p data-source-block="1293">That last point matters because another Martian coordinate already uses very similar terminology.</p>
+<h2 data-source-block="1294">Marian ordinal sol is not Mars Sol Date</h2>
+<p data-source-block="1295"><strong>Mars Sol Date</strong>, usually abbreviated <strong>MSD</strong>, is an established continuous count of Martian solar days used in scientific timekeeping. It does not restart at Marian New Year, is not organised into Marian months or weeks, and is not the same thing as <strong>MY42-S409</strong>.</p>
+<p data-source-block="1296">The distinction is simple:</p>
+<div aria-label="Table 1 in Chapter 15: A Date That Survives Translation; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="1297"><caption class="sr-only">Table 1 in Chapter 15: A Date That Survives Translation</caption><thead><tr><th scope="col">System</th><th scope="col">Example</th><th scope="col">What it represents</th></tr></thead><tbody><tr><td>Marian Civil Date</td><td>MY42-08-03-05</td><td>Civil year, month, week and day</td></tr><tr><td>Marian ordinal sol</td><td>MY42-S409</td><td>Sol 409 within Marian Year 42</td></tr><tr><td>Mars Sol Date</td><td>MSD …</td><td>Continuous scientific Martian sol count</td></tr></tbody></table></div>
+<p data-source-block="1298">The similarity of terminology is unfortunate but manageable. Calling a Marian ordinal date an “MSD” would not be harmless shorthand; it would collapse two different coordinates into one label.</p>
+<p data-source-block="1299"><strong>Marian Civil Date and Mars Sol Date are different systems.</strong></p>
+<p data-source-block="1300">One provides a civil address. The other provides a continuous scientific count. They can coexist because they answer different questions.</p>
+<h2 data-source-block="1301">Names are an interface</h2>
+<p data-source-block="1302">The structural weekday positions are simply <strong>Day 1 through Day 7</strong>. Marian recommends the following human-facing names:</p>
+<div aria-label="Table 2 in Chapter 15: A Date That Survives Translation; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="1303"><caption class="sr-only">Table 2 in Chapter 15: A Date That Survives Translation</caption><thead><tr><th scope="col">Position</th><th scope="col">Recommended name</th></tr></thead><tbody><tr><td>D1</td><td>Monsol</td></tr><tr><td>D2</td><td>Tuesol</td></tr><tr><td>D3</td><td>Wedsol</td></tr><tr><td>D4</td><td>Thursol</td></tr><tr><td>D5</td><td>Frisol</td></tr><tr><td>D6</td><td>Satsol</td></tr><tr><td>D7</td><td>Sunsol</td></tr></tbody></table></div>
+<p data-source-block="1304">The principle is <strong>recognition without equivalence</strong>.</p>
+<p data-source-block="1305">The familiar stems make the sequence immediately legible to many Earth-origin users, while the <strong>-sol</strong> ending signals that these are Martian civil weekdays built around Martian sols, not terrestrial Mondays and Tuesdays transferred unchanged.</p>
+<p data-source-block="1306">A Monsol is not literally a Monday transported to Mars. Its physical day is different, and Marian's weekday sequence has different boundary behaviour. The familiar stem helps recognition; the changed form warns against false equivalence.</p>
+<p data-source-block="1307">Whether people ultimately like these names is a human-interface question. The mathematics does not depend on them. Day 5 remains Day 5 if a future community calls it Frisol, translates it or replaces the word entirely.</p>
+<p data-source-block="1308">The same principle applies to the twelve months:</p>
+<div aria-label="Table 3 in Chapter 15: A Date That Survives Translation; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="1309"><caption class="sr-only">Table 3 in Chapter 15: A Date That Survives Translation</caption><thead><tr><th scope="col">Month</th><th scope="col">Recommended name</th></tr></thead><tbody><tr><td>01</td><td>Janiix</td></tr><tr><td>02</td><td>Febiix</td></tr><tr><td>03</td><td>Mariix</td></tr><tr><td>04</td><td>Apriix</td></tr><tr><td>05</td><td>Mayiix</td></tr><tr><td>06</td><td>Juniix</td></tr><tr><td>07</td><td>Juliix</td></tr><tr><td>08</td><td>Augiix</td></tr><tr><td>09</td><td>Sepiix</td></tr><tr><td>10</td><td>Octiix</td></tr><tr><td>11</td><td>Noviix</td></tr><tr><td>12</td><td>Deciix</td></tr></tbody></table></div>
+<p data-source-block="1310">The stems deliberately preserve the familiar January-to-December ordering. The altered forms signal that these are not terrestrial months. A Janiix lasts 55 or 56 sols, not 31 Earth days.</p>
+<p data-source-block="1311">The stylised <strong>-iix</strong> suffix is intended partly to distinguish the Marian form visually and to echo the nominal eight-week structure of the month. It is not a Roman numeral. Eight in standard Roman notation is <strong>VIII</strong>, not IIX.</p>
+<p data-source-block="1312">That clarification may sound absurdly specific until one remembers that any unusual typography introduced into a standard will eventually generate several thousand confident explanations on the internet about what the designer “obviously meant”.</p>
+<p data-source-block="1313">So:</p>
+<p data-source-block="1314"><strong>-iix is a stylised suffix.</strong></p>
+<p data-source-block="1315">Nothing more mysterious is hiding inside it.</p>
+<p data-source-block="1316">Marian could instead have invented twelve entirely new month names, and there is a respectable argument for doing so. A 56-sol Martian month is sufficiently different from an Earth month that any resemblance to January or August may create confusion as well as familiarity.</p>
+<p data-source-block="1317">The proposed names give some weight to transition. An early Martian population would already know a twelve-position annual sequence, so retaining recognisable stems means the ordering need not be learnt from scratch. Janiix is visibly first, Augiix eighth and Deciix closes the year.</p>
+<p data-source-block="1318">The modification is intended to preserve recognition while signalling difference. Whether it succeeds is unproven. Some users may find the names helpful; others may conclude that they are slightly tortured Earth months wearing space helmets.</p>
+<p data-source-block="1319">Both reactions would be useful evidence.</p>
+<p data-source-block="1320">The important architectural point is that neither reaction affects the calendar itself.</p>
+<p data-source-block="1321"><strong>Month 08 remains Month 08.</strong></p>
+<p data-source-block="1322">A community may call it Augiix, transliterate it, translate it or replace the name completely. The structural identity survives.</p>
+<p data-source-block="1323">This is where machine identity matters most. An English-language application might display:</p>
+<p data-source-block="1324"><strong>Frisol, Week 3, Augiix, MY42</strong></p>
+<p data-source-block="1325">Another community might use completely different words. Both can still exchange:</p>
+<p data-source-block="1326"><strong>MY42-08-03-05</strong></p>
+<p data-source-block="1327">The database key does not have to share the label on the screen.</p>
+<p data-source-block="1328">Not romantic. Very useful.</p>
+<h2 data-source-block="1329">Minths need a different naming strategy</h2>
+<p data-source-block="1330">The minth presents a harder interface problem because there are twenty-four of them. Giving every minth a mandatory independent proper name would ask users to memorise twice as many annual positions as the familiar twelve-month sequence.</p>
+<p data-source-block="1331">Marian therefore begins with the least glamorous and most durable solution:</p>
+<p data-source-block="1332"><strong>01 through 24</strong></p>
+<p data-source-block="1333">These are the canonical minth identities. Minth 01 is always the first minth of the year and Minth 24 always the last. The structure is transparent because each month contains two consecutive minths:</p>
+<p data-source-block="1334"><strong>Month 01 → Minths 01–02<br/>Month 02 → Minths 03–04<br/>Month 03 → Minths 05–06<br/></strong>…<br/><strong>Month 12 → Minths 23–24</strong></p>
+<p data-source-block="1335">Those numbers are sufficient for software, archives, formal schedules and interoperability.</p>
+<p data-source-block="1336">For more compact human use, Marian recommends a second layer:</p>
+<p data-source-block="1337"><strong>A through X</strong></p>
+<p data-source-block="1338">The mapping is direct:</p>
+<p data-source-block="1339"><strong>A = 01<br/>B = 02<br/>C = 03<br/></strong>…<br/><strong>X = 24</strong></p>
+<p data-source-block="1340">So:</p>
+<p data-source-block="1341"><strong>MY42 · Minth Q</strong></p>
+<p data-source-block="1342">is shorthand for:</p>
+<p data-source-block="1343"><strong>MY42 · Minth 17</strong></p>
+<p data-source-block="1344">The alphabetic sequence has a useful mnemonic quality because it exposes both order and grouping. Months become:</p>
+<p data-source-block="1345"><strong>AB · CD · EF · GH · IJ · KL · MN · OP · QR · ST · UV · WX</strong></p>
+<p data-source-block="1346">Quarters become:</p>
+<p data-source-block="1347"><strong>ABCDEF · GHIJKL · MNOPQR · STUVWX</strong></p>
+<p data-source-block="1348">Sixths become:</p>
+<p data-source-block="1349"><strong>ABCD · EFGH · IJKL · MNOP · QRST · UVWX</strong></p>
+<p data-source-block="1350">A–X therefore gives the human interface more than twenty-four arbitrary labels. It makes the architecture visible.</p>
+<p data-source-block="1351">But it remains an interface. The Latin alphabet is not part of the mathematics. A community using another script could adopt its own ordered shorthand while continuing to exchange <strong>Minth 17</strong> with everybody else.</p>
+<p data-source-block="1352">The distinction Marian tries to preserve is:</p>
+<p data-source-block="1353"><strong>01–24 = canonical identity</strong></p>
+<p data-source-block="1354"><strong>A–X = recommended shorthand</strong></p>
+<p data-source-block="1355"><strong>proper names = optional vocabulary</strong></p>
+<h2 data-source-block="1356">An illustrative naming layer</h2>
+<p data-source-block="1357">A reference vocabulary can still be useful, provided it is understood as an interface rather than part of the underlying mathematics. One possible English-language sequence follows the A–X shorthand:</p>
+<p data-source-block="1358"><strong>Aurex · Bloomox · Clearex · Dewdrox · Evolvex · Florax · Glintrex · Humidox · Ignitex · Jettox · Kindlex · Lumax · Magnex · Nudgox · Opulex · Pausox · Questex · Rumax · Silvex · Threnox · Umbriex · Velcrox · Winterex · Xenax</strong></p>
+<p data-source-block="1359">The names are deliberately suggestive rather than prescriptive. Their initial letters preserve the A–X ordering, so somebody hearing <em>Lumax</em> or <em>Threnox</em> can still recover something about its position without memorising an entirely arbitrary list of twenty-four terms.</p>
+<p data-source-block="1360">They are also deliberately expendable. A future Martian community might adopt them, modify them or reject the lot. None of those outcomes changes Minth 12 or Minth 20 underneath.</p>
+<p data-source-block="1361">The final minth provides one optional flourish. In the reference vocabulary, <strong>Xenax</strong> denotes its ordinary 27-sol form and <strong>Xenex</strong> its 28-sol leap-year form. Whether people find that distinction useful is a linguistic question rather than a structural one. In both cases, the machine identity remains simply <strong>Minth 24</strong>.</p>
+<p data-source-block="1362">That is enough naming for a specification written before the people who might eventually use it have even arrived.</p>
+<p data-source-block="1363">If such names become natural in ordinary speech, excellent. If future communities replace them, the machine layer remains unchanged.</p>
+<p data-source-block="1364">Minth 24 also demonstrates why structural identity should not depend on natural-language labels. In a common year it contains 27 sols; in a leap year the final Sunsol extends it to 28. Its identity does not change. It remains <strong>Minth 24</strong>, or <strong>Minth X</strong> using the recommended shorthand.</p>
+<p data-source-block="1365">The larger principle is simple: <strong>language may describe variation without becoming the key on which the data model depends.</strong></p>
+<h2 data-source-block="1366">Twenty-four names are not unprecedented</h2>
+<p data-source-block="1367">Nor is a named sequence of twenty-four annual positions quite as strange as it may initially sound to an English-speaking reader.</p>
+<p data-source-block="1368">Chinese calendrical tradition already contains the <strong>Twenty-Four Solar Terms: 二十四节气 (èrshísì jiéqì).</strong> This is a sequence of named seasonal markers distributed through the terrestrial annual solar cycle. They are not months, and they are not equivalent to Marian minths. The jiéqì are astronomical and seasonal terms rooted in the Sun's apparent annual motion; Marian minths are approximately equal-duration civil intervals. The comparison is therefore cultural and structural, not astronomical.</p>
+<p data-source-block="1369">But the precedent is useful. A civilisation can become perfectly comfortable navigating an annual cycle through twenty-four named positions rather than twelve.</p>
+<p data-source-block="1370">A future Sinophone Martian community could therefore build its own naming layer on top of the same canonical Minths 01–24. One deliberately illustrative adaptation developed during the design work was:</p>
+<p data-source-block="1371"><strong>Aihan · Bahan · Chunli · Dushui · Ezhe · Fenhua · Guanming · Huyu · Ignixia · Jiman · Kangzhong · Luxia · Mushu · Nushu · Oqiu · Pushu · Qilou · Runfen · Silu · Tongjiang · Undong · Vaxue · Wanxue · Xianzhi</strong></p>
+<p data-source-block="1372">Those names are not proposed as the Chinese names of the Marian Calendar. That decision would belong to future Chinese-speaking users, not to an English-language specification written on Earth. Their value here is simply demonstrative: <strong>the same Minth 01–24 structure can support a culturally different human vocabulary without changing a single date underneath it.</strong></p>
+<p data-source-block="1373">That is exactly what localisation should mean.</p>
+<h2 data-source-block="1374">One date, several legitimate views</h2>
+<p data-source-block="1375">Human-readable and machine-readable dates are not rival systems. Modern civil infrastructure requires both.</p>
+<p data-source-block="1376">A legal contract may display a friendly date while storing a normalised representation underneath. A hospital interface may show weekday and month names to a clinician while transmitting numeric fields to another system. A transport application may localise every visible label while its API exchanges only canonical identities.</p>
+<p data-source-block="1377">Marian can therefore represent the same civil position in several legitimate ways:</p>
+<div aria-label="Table 4 in Chapter 15: A Date That Survives Translation; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="1378"><caption class="sr-only">Table 4 in Chapter 15: A Date That Survives Translation</caption><thead><tr><th scope="col">Purpose</th><th scope="col">Example</th></tr></thead><tbody><tr><td>Canonical structure</td><td>Year 42 · Month 08 · Week 03 · Day 05</td></tr><tr><td>Machine form</td><td>MY42-08-03-05</td></tr><tr><td>Human civil form</td><td>42 Augiix · Week 3 · Frisol</td></tr><tr><td>Ordinal-sol form</td><td>MY42-S409</td></tr><tr><td>Minth shorthand</td><td>MY42 · Minth Q</td></tr></tbody></table></div>
+<p data-source-block="1379">These are views of one underlying calendar. The important requirement is deterministic conversion among them. Moving a date from a database to a human interface should not change what date it is.</p>
+<h2 data-source-block="1380">What Marian actually standardises</h2>
+<p data-source-block="1381">The line between structure and interface can now be drawn clearly.</p>
+<p data-source-block="1382">The formal Marian structure includes:</p>
+<ul class="source-list" data-word-list-id="7">
+<li data-source-block="1383">Marian year identity;</li>
+<li data-source-block="1384">Months 01–12;</li>
+<li data-source-block="1385">Weeks 01–08 within a month;</li>
+<li data-source-block="1386">Days 01–07 where valid;</li>
+<li data-source-block="1387">Minths 01–24;</li>
+<li data-source-block="1388">deterministic mapping among those units;</li>
+<li data-source-block="1389">common- and leap-year validity rules;</li>
+<li data-source-block="1390">the Year–Month–Week–Day civil tuple;</li>
+<li data-source-block="1391">the year-plus-ordinal-sol representation.</li>
+</ul>
+<p data-source-block="1392">Those are part of the calendar machinery.</p>
+<p data-source-block="1393">Human-facing vocabulary is more adaptable. That includes Monsol through Sunsol, Janiix through Deciix, A through X for minths, proposed natural-language minth names, and localised or future names for larger periods.</p>
+<p data-source-block="1394">The distinction is not that names are unimportant. Names affect learning, recognition, culture and error rates. The distinction is that replacing them need not change the mathematical calendar.</p>
+<p data-source-block="1395">That is a useful form of design humility. The visible vocabulary is the part a pre-settlement calendar designer is most likely to become attached to and least entitled to control indefinitely.</p>
+<p data-source-block="1396">Nobody puts the date-validation algorithm on a T-shirt. But future Martian communities will develop their own accents, slang, institutions, jokes and identities, and those cannot responsibly be designed from Earth.</p>
+<p data-source-block="1397">The arithmetic can be proposed now because it can be examined now. The eventual vocabulary belongs much more directly to the people who have to live with it.</p>
+<p data-source-block="1398">If Monsol survives, fine. If Janiix becomes ordinary Martian speech, fine. If every proposed human-facing name is replaced while <strong>MY42-08-03-05</strong> remains interoperable across settlements, the calendar has still done its job.</p>
+<p data-source-block="1399"><strong>Infrastructure should survive people improving the signs.</strong></p>
+<h2 data-source-block="1400">A civil date is not every kind of time</h2>
+<p data-source-block="1401">One final boundary matters.</p>
+<p data-source-block="1402"><strong>MY42-08-03-05</strong> identifies a civil sol. It does not tell us the hour within that sol, specify local time, provide Ls, equal Mars Sol Date or encode Earth–Mars communications delay.</p>
+<p data-source-block="1403">Those quantities may all matter in particular contexts, and when they do they should be carried alongside the civil date.</p>
+<p data-source-block="1404">A hospital appointment needs a civil date and local time. A scientific observation may need MSD and precise ephemeris data. A seasonal record may need Ls. An interplanetary communications system needs actual geometry and light-time.</p>
+<p data-source-block="1405">Marian Civil Date does not replace those coordinates.</p>
+<p data-source-block="1406">It gives civil society a common address.</p>
+<p data-source-block="1407"><strong>That is enough.</strong></p></article><nav aria-label="Previous and next section" class="pager"><a href="chapter-14.html" rel="prev">← Chapter 14: Odd Years Leap</a><a href="../parts/part-04.html" rel="next">Part 4 →</a></nav></main>
+<footer>© JB Bullock 2026. Book text, cover and illustrations: all rights reserved. Marian Protocol v1.0 is separately licensed.</footer></body></html>

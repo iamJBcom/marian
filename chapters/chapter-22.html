@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="no-referrer" name="referrer"/><meta content="default-src 'none'; style-src 'self'; img-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" http-equiv="Content-Security-Policy"/>
+<title>Chapter 22: What Marian Gives Up | Marian — An Operating Calendar for Human Mars</title><meta content="Read Chapter 22: What Marian Gives Up. Marian: An Operating Calendar for Human Mars. Written by JB Bullock." name="description"/><link href="../css/book.css" rel="stylesheet"/><link rel="canonical" href="https://iamjbcom.github.io/marian/chapters/chapter-22.html"/><meta property="og:type" content="article"/><meta property="og:title" content="Chapter 22: What Marian Gives Up | Marian — An Operating Calendar for Human Mars"/><meta property="og:url" content="https://iamjbcom.github.io/marian/chapters/chapter-22.html"/></head>
+<body><a class="skip" href="#main">Skip to reading content</a><header class="mast"><a class="brand" href="../index.html">MARIAN<span>Operating Architecture Series</span></a><nav aria-label="Site"><a href="../index.html">Contents</a></nav></header>
+
+<main class="reading" id="main"><div class="crumbs"><a href="../index.html">Marian</a> / Chapter 22: What Marian Gives Up</div><article class="book-section" data-section="chapter-22"><h1 class="source-heading" data-source-block="2209"><span class="heading-lead">ADMIT</span><br/><span class="heading-main">22) What Marian Gives Up</span><br/><span class="heading-sub">Trade-offs, Uncertainties and Boundaries</span></h1>
+<p data-source-block="2210">A serious design should be able to describe its disadvantages without immediately trying to win them back.</p>
+<p data-source-block="2211">Marian has disadvantages.</p>
+<p data-source-block="2212">Some are direct consequences of deliberate choices. Others are uncertainties that cannot be resolved until people actually use the system. A third category consists of problems Marian does not attempt to solve at all.</p>
+<p data-source-block="2213">Keeping those categories separate matters. A <strong>trade-off</strong> is a property surrendered in order to gain another. An <strong>uncertainty</strong> is something we do not yet know about the design. An <strong>out-of-scope problem</strong> belongs to another system.</p>
+<p data-source-block="2214">Marian should not disguise a genuine cost by calling it somebody else's problem. Equally, it should not be criticised for failing to be a clock, an ephemeris, a constitution and a complete Martian culture.</p>
+<p data-source-block="2215">The limits belong in the design.</p>
+<h2 data-source-block="2216">The trade-offs Marian accepts</h2>
+<p data-source-block="2217">The first cost is the month.</p>
+<p data-source-block="2218">A Marian month contains 55 or 56 sols, roughly twice the duration people currently associate with an Earth month. That is the price of retaining twelve primary annual divisions.</p>
+<p data-source-block="2219">The minth restores a roughly four-week scale, but introduces another cost: <strong>more terminology</strong>. Marian asks users to understand months and minths as different units, and potentially Sixths as well.</p>
+<p data-source-block="2220">That is what functional separation costs.</p>
+<p data-source-block="2221">If those scales prove independently useful, the vocabulary earns its place. If they do not, the architecture will feel over-designed.</p>
+<p data-source-block="2222">The Sixth is the most exposed case. Its 111- or 112-sol interval provides a clean medium-range scale between the Marian month and quarter, but its practical value remains unproved. Future institutions may use it heavily or almost completely ignore it.</p>
+<p data-source-block="2223">Either outcome would be legitimate evidence.</p>
+<p data-source-block="2224">A design should be allowed to discover that one of its rooms is rarely entered.</p>
+<h3 data-source-block="2225">The weekly cost</h3>
+<p data-source-block="2226">The strongest structural compromise remains the weekday sequence.</p>
+<p data-source-block="2227">Marian preserves fixed recurring date–weekday relationships by allowing selected terminal civil weeks to contain six weekday positions rather than seven. The physical sequence of sols continues normally, but the civil weekday naming sequence is interrupted at those boundaries.</p>
+<p data-source-block="2228">The previous chapter examined the alternative architectures in detail. The important point here is simpler: this is a genuine social cost.</p>
+<p data-source-block="2229">Some communities may care deeply about uninterrupted weekly succession. Religious observance may depend on it. Work-rest traditions may become organised around it. People may simply dislike a civil calendar in which Satsol can be followed by Monsol.</p>
+<p data-source-block="2230">Marian has chosen fixed recurrence over uninterrupted civil weekday naming.</p>
+<p data-source-block="2231">That choice may prove acceptable. It may prove to be the calendar's most important human-interface weakness.</p>
+<p data-source-block="2232">The calendar itself cannot decide what shortened terminal weeks should mean for employment, rest or religious practice. Those consequences belong to the communities using it.</p>
+<h3 data-source-block="2233">Regular civil months, weaker seasonal meaning</h3>
+<p data-source-block="2234">Marian also gives up stronger correspondence between its months and Mars's orbital progression.</p>
+<p data-source-block="2235">Its months are designed to contain almost equal amounts of <strong>elapsed civil time</strong>. Mars does not move through equal amounts of orbital angle during equal durations because its orbital speed changes. Similar civil month lengths therefore do not imply equal changes in Ls.</p>
+<p data-source-block="2236">A calendar could make its periods correspond more closely to equal seasonal angles by allowing their elapsed durations to vary more substantially.</p>
+<p data-source-block="2237">Marian does not.</p>
+<p data-source-block="2238">Its division of labour is deliberate:</p>
+<p data-source-block="2239"><strong>Marian Civil Date provides regular civil position.</strong></p>
+<p data-source-block="2240"><strong>Ls and ephemerides provide precise seasonal position.</strong></p>
+<p data-source-block="2241">That works cleanly, but the cost remains real. A Marian month carries less exact astronomical information than a more seasonally oriented civil period would.</p>
+<h3 data-source-block="2242">Earth alignment is allowed to age</h3>
+<p data-source-block="2243">The Ls = 15° year origin makes another exchange.</p>
+<p data-source-block="2244">Around the intended founding era, it gives Marian New Year a useful relationship with the heliocentric direction associated with Gregorian New Year. That supports the Earth–Mars month-gap intuition developed earlier.</p>
+<p data-source-block="2245">The relationship will not remain equally neat forever.</p>
+<p data-source-block="2246">Marian could attempt to move its year boundary over the centuries in order to preserve the Earth-facing alignment more closely. It deliberately does not. Ls = 15° remains a Martian tropical reference, and the Earth-facing geometry is allowed to evolve around it.</p>
+<p data-source-block="2247">The year stays attached to Mars.</p>
+<p data-source-block="2248">The convenience is allowed to age.</p>
+<h3 data-source-block="2249">The leap rule is memorable rather than phase-optimal</h3>
+<p data-source-block="2250">The 59/100 intercalation rule also makes a conscious trade.</p>
+<p data-source-block="2251">Its ordinary form is easy to remember:</p>
+<p data-source-block="2252"><strong>odd years leap; decennial years leap; century years are common.</strong></p>
+<p data-source-block="2253">That gives Marian the required long-run proportion of leap years and an excellent founding-era mean civil year.</p>
+<p data-source-block="2254">The same 59 leap sols could be distributed more evenly to keep intermediate civil boundaries closer to the smooth astronomical target. Marian does not use that more phase-balanced pattern.</p>
+<p data-source-block="2255">It gives up some phase optimality for mnemonic transparency.</p>
+<p data-source-block="2256">That trade is now explicit. The long-run mean is preserved; the short verbal rule is preserved; some intermediate astronomical neatness is not.</p>
+<p data-source-block="2257">The rule also cannot claim mathematical perfection for every future century. Mars's tropical recurrence changes slowly over long timescales, so a future standards authority may eventually need to decide whether a rare correction is warranted.</p>
+<p data-source-block="2258">The ordinary calendar is deterministic.</p>
+<p data-source-block="2259">Its very-long-range maintenance policy is deliberately unfinished.</p>
+<h2 data-source-block="2260">The main uncertainties are human</h2>
+<p data-source-block="2261">The arithmetic has been examined considerably more thoroughly than the users.</p>
+<p data-source-block="2262">That remains Marian's largest unresolved issue.</p>
+<p data-source-block="2263">The design can prove that minths contain 27 or 28 sols. It cannot prove that people will find the concept natural. It can demonstrate recurring-date invariance. It cannot demonstrate that users will value that property enough to tolerate the interrupted weekday sequence.</p>
+<p data-source-block="2264">It can define Sixths precisely. It cannot show that anyone will use them.</p>
+<p data-source-block="2265">It can demonstrate the Earth–Mars month-gap relationship. It cannot establish that ordinary users will find the heuristic intuitive or remember it.</p>
+<p data-source-block="2266">It can propose Monsol, Janiix and A–X. It cannot prove that those interfaces reduce errors or make the calendar easier to learn.</p>
+<p data-source-block="2267">These are not mathematical weaknesses. They are missing human evidence.</p>
+<p data-source-block="2268">That matters because Marian's practical claim is larger than “the arithmetic works”. The architecture is intended to be usable civil infrastructure. Eventually, the interface has to encounter people.</p>
+<p data-source-block="2269">The experiments need not be exotic. Users could be taught competing calendar structures and asked to navigate dates, schedule recurring events and recover annual position. Continuous-week and fixed-recurrence systems could be compared for errors and learning time. The month/minth distinction could be tested against a twenty-four-month alternative. Sixths could be tested to see whether they improve medium-range orientation enough to justify another formal unit. Familiar, modified and entirely novel naming schemes could be compared directly.</p>
+<p data-source-block="2270">In other words, subject the calendar to the indignity of actual users.</p>
+<p data-source-block="2271">This is usually good for design.</p>
+<p data-source-block="2272">Some apparently elegant choices may not survive the experience.</p>
+<p data-source-block="2273">That possibility should remain open.</p>
+<h2 data-source-block="2274">What Marian deliberately does not solve</h2>
+<p data-source-block="2275">A different category of limitation needs no experiment. The correct answer is simply:</p>
+<p data-source-block="2276"><strong>another system handles it.</strong></p>
+<p data-source-block="2277">Marian is a civil calendar. Its scope should stop before the word <em>time</em> becomes an excuse to annex everything nearby.</p>
+<h3 data-source-block="2278">Clocks and time zones</h3>
+<p data-source-block="2279">Marian does not prescribe how a sol must be divided into hours, minutes or seconds.</p>
+<p data-source-block="2280">Its canonical date boundary uses Airy-0 as a reference, but this does not require every settlement to live permanently on an Airy-0 clock. A future Mars might use familiar 24-hour notation, another horological scheme, local solar time, regional zones or a shared administrative clock.</p>
+<p data-source-block="2281">Those systems need defined relationships to the canonical civil date.</p>
+<p data-source-block="2282">They do not need to become part of the calendar itself.</p>
+<p data-source-block="2283">Calendar and clock must interoperate. They do not have to be the same standard.</p>
+<p data-source-block="2284">Earth has managed something broadly similar, occasionally with enthusiasm bordering on administrative performance art.</p>
+<h3 data-source-block="2285">Navigation and precise astronomy</h3>
+<p data-source-block="2286">Marian also does not tell a spacecraft where Mars is.</p>
+<p data-source-block="2287">A civil date is not an ephemeris. Precise seasonal position belongs to Ls. Navigation, orbital mechanics and trajectory planning require proper astronomical systems. Earth–Mars light time should come from the actual geometry, not from a civil heuristic.</p>
+<p data-source-block="2288">Anyone planning orbital insertion using “probably Month 4” has misunderstood the division of labour rather comprehensively.</p>
+<p data-source-block="2289">The calendar can make astronomy more legible.</p>
+<p data-source-block="2290">It does not replace astronomy.</p>
+<h3 data-source-block="2291">Mission chronology</h3>
+<p data-source-block="2292">Nor does Marian make mission-relative sol counts obsolete.</p>
+<p data-source-block="2293">A rover team may still care that an experiment occurs on Mission Sol 214. A crewed expedition may maintain an elapsed mission clock. Scientific systems may use Mars Sol Date or another continuous coordinate.</p>
+<p data-source-block="2294">Those systems remain useful because they answer different questions.</p>
+<p data-source-block="2295">Mission chronology describes a bounded operation. Scientific coordinates describe continuous physical time. Marian describes recurring civil time.</p>
+<p data-source-block="2296">A mature Martian civilisation would probably use several simultaneously.</p>
+<p data-source-block="2297">Success does not mean forcing Marian into every temporal problem. It means nobody has to use Marian for work it was not designed to do.</p>
+<h3 data-source-block="2298">Politics, law and culture</h3>
+<p data-source-block="2299">Marian also cannot grant itself legitimacy.</p>
+<p data-source-block="2300">A mathematically coherent calendar may remain socially irrelevant forever. Adoption would depend on institutions and communities deciding to use it, alongside existing practice, migration costs, law and politics.</p>
+<p data-source-block="2301">Publishing a specification does not create a civilisation-wide standard.</p>
+<p data-source-block="2302">Technical coherence is not adoption.</p>
+<p data-source-block="2303">Nor does Marian decide what future Martians should make culturally significant. It does not prescribe holidays, religion, adulthood, birthday practice or which historical events deserve annual remembrance. It cannot know whether Janiix survives as ordinary speech, whether some minths become culturally important or whether whole parts of the proposed vocabulary disappear.</p>
+<p data-source-block="2304">That is not missing specification.</p>
+<p data-source-block="2305">It is proper scope control.</p>
+<p data-source-block="2306">The structural layer can be defined now because interoperability benefits from stability.</p>
+<p data-source-block="2307">Meaning cannot.</p>
+<h2 data-source-block="2308">Three kinds of limitation</h2>
+<p data-source-block="2309">Marian's limits can therefore be summarised cleanly.</p>
+<h3 data-source-block="2310">Deliberate trade-offs</h3>
+<p data-source-block="2311">It gives up:</p>
+<ul class="source-list" data-word-list-id="16">
+<li data-source-block="2312"><strong>short primary months</strong> to preserve twelve-part annual orientation;</li>
+<li data-source-block="2313"><strong>vocabulary economy</strong> to separate civil functions;</li>
+<li data-source-block="2314"><strong>continuous weekday naming</strong> to preserve recurring date–weekday structure;</li>
+<li data-source-block="2315"><strong>strong month-to-season correspondence</strong> to preserve elapsed-time regularity;</li>
+<li data-source-block="2316"><strong>permanent Earth-facing alignment</strong> to keep the year attached to a fixed Martian tropical reference;</li>
+<li data-source-block="2317">some <strong>short-period phase optimality</strong> to keep intercalation memorable.</li>
+</ul>
+<p data-source-block="2318">These are costs attached directly to design choices.</p>
+<h3 data-source-block="2319">Genuine uncertainties</h3>
+<p data-source-block="2320">We do not yet know:</p>
+<ul class="source-list" data-word-list-id="11">
+<li data-source-block="2321">whether minths feel natural;</li>
+<li data-source-block="2322">whether Sixths earn their place;</li>
+<li data-source-block="2323">whether shortened terminal civil weeks prove socially tolerable;</li>
+<li data-source-block="2324">whether the proposed nomenclature helps;</li>
+<li data-source-block="2325">whether fixed recurrence provides enough practical benefit to justify the weekly cost;</li>
+<li data-source-block="2326">whether the layered architecture is genuinely easier to live with than simpler alternatives.</li>
+</ul>
+<p data-source-block="2327">These questions need evidence.</p>
+<h3 data-source-block="2328">Deliberate exclusions</h3>
+<p data-source-block="2329">Marian does not define:</p>
+<ul class="source-list" data-word-list-id="22">
+<li data-source-block="2330">hours, minutes or seconds;</li>
+<li data-source-block="2331">local time zones;</li>
+<li data-source-block="2332">navigation;</li>
+<li data-source-block="2333">precise astronomy;</li>
+<li data-source-block="2334">mission chronology;</li>
+<li data-source-block="2335">labour policy;</li>
+<li data-source-block="2336">religious practice;</li>
+<li data-source-block="2337">public holidays;</li>
+<li data-source-block="2338">political legitimacy;</li>
+<li data-source-block="2339">future Martian culture.</li>
+</ul>
+<p data-source-block="2340">These questions need other systems.</p>
+<p data-source-block="2341">The distinctions matter. Trade-offs should be defended or reconsidered. Uncertainties should be tested. Exclusions should remain outside the calendar.</p>
+<h2 data-source-block="2342">A smaller claim is stronger</h2>
+<p data-source-block="2343">There is always a temptation near the end of a design project to expand its territory.</p>
+<p data-source-block="2344">If the calendar defines dates, perhaps it should define hours. If it has an astronomical anchor, perhaps it should solve navigation. If it creates a civil year, perhaps it should prescribe festivals. If the arithmetic is coherent, perhaps the same document should decide how Mars adopts it.</p>
+<p data-source-block="2345">Resist that temptation.</p>
+<p data-source-block="2346">Marian is a proposed <strong>civil calendar architecture for Mars</strong>. It organises physical sols into recurring civil structures, provides deterministic dates and remains traceable to Martian astronomy. It supplies several standard timescales without prescribing how institutions must use them, and it gives the technical structure a stable identity without trying to freeze future culture around it.</p>
+<p data-source-block="2347">That is already a substantial job.</p>
+<p data-source-block="2348">The costs are real. The uncertainties are real. The boundaries are real.</p>
+<p data-source-block="2349"><strong>A design that admits all three is more credible than one that turns every limitation into another feature.</strong></p></article><nav aria-label="Previous and next section" class="pager"><a href="chapter-21.html" rel="prev">← Chapter 21: No Calendar Gets Everything</a><a href="chapter-23.html" rel="next">Chapter 23: When Other Things Depend on It →</a></nav></main>
+<footer>© JB Bullock 2026. Book text, cover and illustrations: all rights reserved. Marian Protocol v1.0 is separately licensed.</footer></body></html>

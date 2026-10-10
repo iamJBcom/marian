@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="no-referrer" name="referrer"/><meta content="default-src 'none'; style-src 'self'; img-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" http-equiv="Content-Security-Policy"/>
+<title>Chapter 21: No Calendar Gets Everything | Marian — An Operating Calendar for Human Mars</title><meta content="Read Chapter 21: No Calendar Gets Everything. Marian: An Operating Calendar for Human Mars. Written by JB Bullock." name="description"/><link href="../css/book.css" rel="stylesheet"/><link rel="canonical" href="https://iamjbcom.github.io/marian/chapters/chapter-21.html"/><meta property="og:type" content="article"/><meta property="og:title" content="Chapter 21: No Calendar Gets Everything | Marian — An Operating Calendar for Human Mars"/><meta property="og:url" content="https://iamjbcom.github.io/marian/chapters/chapter-21.html"/></head>
+<body><a class="skip" href="#main">Skip to reading content</a><header class="mast"><a class="brand" href="../index.html">MARIAN<span>Operating Architecture Series</span></a><nav aria-label="Site"><a href="../index.html">Contents</a></nav></header>
+
+<main class="reading" id="main"><div class="crumbs"><a href="../index.html">Marian</a> / Chapter 21: No Calendar Gets Everything</div><article class="book-section" data-section="chapter-21"><h1 class="source-heading" data-source-block="2058"><span class="heading-lead">COMPARE</span><br/><span class="heading-main">21) No Calendar Gets Everything</span><br/><span class="heading-sub">Marian Among Martian Calendars</span></h1>
+<p data-source-block="2059">The most useful thing about comparing Martian calendars is that they all have the same planet to deal with.</p>
+<p data-source-block="2060">Mars does not rotate differently for Darian. It does not become less eccentric for Zubrin. It does not shorten its year for Exodus or rearrange its seasons for Marian. The physical problem is substantially shared; the civil answers are not.</p>
+<p data-source-block="2061">That tells us something important. Calendar architecture cannot be derived from astronomy alone. Somewhere between the length of the sol and the date printed on a wall calendar, human priorities enter the system.</p>
+<p data-source-block="2062">One design preserves something close to the familiar duration of a terrestrial month. Another preserves twelve annual divisions. One gives orbital position greater weight; another prioritises equal elapsed periods. One protects an uninterrupted weekly cycle; another protects recurring date–weekday relationships. Another reduces the learning burden by retaining familiar names.</p>
+<p data-source-block="2063">Marian adds its own emphasis: several standard civil horizons inside a long Martian year.</p>
+<p data-source-block="2064">The useful question is therefore not which calendar wins. It is:</p>
+<p data-source-block="2065"><strong>What is each calendar trying hardest to preserve, and where does it place the resulting inconvenience?</strong></p>
+<h2 data-source-block="2066">The comparison in one view</h2>
+<p data-source-block="2067">The main architectures considered in this book can be reduced to a handful of design choices.</p>
+<div aria-label="Table 1 in Chapter 21: No Calendar Gets Everything; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="2068"><caption class="sr-only">Table 1 in Chapter 21: No Calendar Gets Everything</caption><thead><tr><th scope="col">Approach</th><th scope="col">What it gives strongest weight to</th><th scope="col">How that appears structurally</th><th scope="col">Main cost or trade-off</th></tr></thead><tbody><tr><td>Levitt</td><td>Twelve-part annual regularity and fixed recurrence</td><td>12 months; 56–56–55 pattern; equal 167-sol common-year quarters; shortened terminal weeks</td><td>Long months; interrupted weekday sequence</td></tr><tr><td>Darian</td><td>Familiar-duration primary months and regular recurrence</td><td>24 months of 27/28 sols; fixed month starts; Ls = 0° annual origin</td><td>24 primary annual divisions; interrupted weekday sequence</td></tr><tr><td>Exodus</td><td>Familiarity and reduced learning burden</td><td>12 Earth-named months; first 11 at 56 sols; variable final month</td><td>Familiar names attached to much longer units; irregularity concentrated at year end</td></tr><tr><td>Hargitai 12 × 56/270</td><td>Equal elapsed blocks for climate-data comparison</td><td>11 × 56-sol periods; shorter final period; annual origin near Ls = 270°</td><td>Large terminal exception; designed primarily for scientific-data use</td></tr><tr><td>Zubrin</td><td>Orbital and seasonal correspondence</td><td>12 periods with stronger relation to equal orbital angle</td><td>Less equal elapsed duration</td></tr><tr><td>Šurán</td><td>Week continuity and explicit intercalation design</td><td>Perpetual structure using whole-week adjustment</td><td>Civil-year length varies by complete seven-sol blocks</td></tr><tr><td>Marian</td><td>Functional separation, recurrence, multiple civil cadences and Earth–Mars legibility</td><td>12 months + 24 minths + 6 Sixths + 4 quarters; shortened terminal weeks; Ls = 15°</td><td>More layers and terminology; interrupted weekday sequence; civil months only approximate seasonal position</td></tr></tbody></table></div>
+<p data-source-block="2069">There is no neutral weighting hidden behind the table. A climate researcher may value equal elapsed blocks more than a civil administrator does. A religious community may attach unusual importance to uninterrupted weekly succession. An early Earth-born settlement may place more value on familiar terminology than a later Mars-born population.</p>
+<p data-source-block="2070">The table therefore does not identify a best calendar.</p>
+<p data-source-block="2071">It identifies different design briefs.</p>
+<h2 data-source-block="2072">Levitt, Darian and Marian: the same arithmetic at two scales</h2>
+<p data-source-block="2073">The closest structural comparison to Marian lies in the Levitt and Darian lineages.</p>
+<p data-source-block="2074">Levitt's 1954 proposal uses twelve Martian months arranged in the repeating common-year pattern:</p>
+<p data-source-block="2075"><strong>56 – 56 – 55</strong></p>
+<p data-source-block="2076">four times.</p>
+<p data-source-block="2077">That produces twelve primary annual divisions and four equal 167-sol common-year quarters. The cost is obvious: a 55- or 56-sol Martian month is almost twice as long as the terrestrial interval normally associated with the word <em>month</em>.</p>
+<p data-source-block="2078">Darian chooses differently. Its primary months are normally 27 or 28 sols long, much closer to terrestrial month duration, but the Martian year now contains twenty-four primary annual divisions rather than twelve.</p>
+<p data-source-block="2079">The arithmetic relationship between the two approaches is remarkably close. A Levitt-style month is approximately two Darian months.</p>
+<p data-source-block="2080">Marian turns that relationship into an explicit functional architecture. The 55/56-sol scale becomes the Marian <strong>month</strong>, preserving twelve-part annual orientation. The 27/28-sol scale becomes the Marian <strong>minth</strong>, preserving the shorter cadence.</p>
+<p data-source-block="2081">It therefore does not resolve the Levitt–Darian choice by declaring one scale correct. It treats the two scales as answers to different questions.</p>
+<p data-source-block="2082">Levitt makes the twelve-part annual scale primary. Darian makes the familiar-duration scale primary. Marian formalises both and assigns them different jobs.</p>
+<p data-source-block="2083">The price is another unit.</p>
+<p data-source-block="2084">Darian users do not need to distinguish between month and minth. Its roughly four-week period simply <em>is</em> the month. Marian accepts additional vocabulary in exchange for making annual orientation and shorter cadence simultaneously explicit.</p>
+<p data-source-block="2085">This is probably the clearest example of Marian's characteristic move: when Mars separates functions that Earth conveniently bundles, give the functions different homes.</p>
+<h2 data-source-block="2086">Exodus: familiarity versus false equivalence</h2>
+<p data-source-block="2087">Exodus places much greater weight on continuity with terrestrial habits.</p>
+<p data-source-block="2088">Its twelve-month structure retains familiar Earth month names. January through November contain 56 sols, with much of the annual adjustment concentrated in December.</p>
+<p data-source-block="2089">That approach takes a serious human-factors position:</p>
+<p data-source-block="2090"><strong>people do not arrive on Mars culturally empty.</strong></p>
+<p data-source-block="2091">Early settlers already understand January, Tuesday and a twelve-month year. Preserving familiar structures can reduce the amount they have to relearn.</p>
+<p data-source-block="2092">The trade-off is that familiar names may imply more equivalence than actually exists. An Exodus January is 56 sols long, so it shares a name with an Earth January while describing a substantially different interval.</p>
+<p data-source-block="2093">Marian makes a different interface choice. It preserves recognisable roots while changing the visible labels: January becomes Janiix; Monday becomes Monsol. The intention is not to deny the terrestrial inheritance, but to signal that the Martian unit is not identical to the Earth one.</p>
+<p data-source-block="2094">The contrast can be put simply.</p>
+<p data-source-block="2095">Exodus says:</p>
+<p data-source-block="2096"><strong>make the new calendar feel as familiar as practical.</strong></p>
+<p data-source-block="2097">Marian says:</p>
+<p data-source-block="2098"><strong>make it recognisable, but visibly Martian.</strong></p>
+<p data-source-block="2099">The structural difference is equally revealing. Exodus concentrates much of the annual irregularity in the final month, allowing eleven months to remain identical at 56 sols. Marian distributes four one-sol reductions through Months 3, 6, 9 and 12.</p>
+<p data-source-block="2100">One concentrates irregularity.</p>
+<p data-source-block="2101">The other distributes it.</p>
+<p data-source-block="2102">Neither removes it.</p>
+<h2 data-source-block="2103">Hargitai and Zubrin: what should the month represent?</h2>
+<p data-source-block="2104">Hargitai and Zubrin reveal another axis of calendar design: should a civil month primarily represent <strong>elapsed time</strong> or <strong>orbital position</strong>?</p>
+<p data-source-block="2105">The Hargitai 12 × 56/270 climate calendar gives high priority to repeated equal-duration blocks. Eleven periods contain 56 sols, with the remaining annual difference absorbed by a shorter final period.</p>
+<p data-source-block="2106">For climate-data presentation, that is attractive. Researchers repeatedly compare like with like in elapsed time. The conspicuously shorter terminal period is the price of keeping most of the year in equal blocks.</p>
+<p data-source-block="2107">Marian has a different brief. Its months participate in recurring civil structure, equal common-year quarters and several operating scales. Distributing the shorter periods through the year suits those objectives better than concentrating nearly all the adjustment at the end.</p>
+<p data-source-block="2108">Zubrin moves along another dimension. His twelve-part approach gives stronger weight to orbital progression, so the civil periods carry more information about where Mars sits in its seasonal orbit.</p>
+<p data-source-block="2109">The cost is less equal elapsed duration. Mars moves at different speeds around its eccentric orbit, so equal angular sectors take different numbers of sols to traverse.</p>
+<p data-source-block="2110">Marian assigns those jobs differently. Its civil months remain close to equal in elapsed duration, while precise seasonal position remains available separately through Ls.</p>
+<p data-source-block="2111">Zubrin asks the month to carry more astronomical information.</p>
+<p data-source-block="2112">Marian asks the month to remain a more regular civil interval and lets another coordinate carry the astronomy.</p>
+<p data-source-block="2113">Neither choice is free. Equal elapsed duration and equal orbital angle cannot both be maximised in the same fixed twelve-part structure.</p>
+<h2 data-source-block="2114">The hardest choice: what happens to the week?</h2>
+<p data-source-block="2115">The weekly comparison matters more than the month comparison because a week is not merely an administrative interval. It can become a social rhythm: work and rest, school and family, ritual and recurrence.</p>
+<p data-source-block="2116">This is where Marian makes one of its clearest — and most contestable — design judgements.</p>
+<p data-source-block="2117">Levitt, Darian and Marian all give strong weight to three properties:</p>
+<ul class="source-list" data-word-list-id="10">
+<li data-source-block="2118">civil years kept tightly around the Martian astronomical target;</li>
+<li data-source-block="2119">stable month starts;</li>
+<li data-source-block="2120">invariant recurring Month–Week–Day relationships.</li>
+</ul>
+<p data-source-block="2121">In Marian, those priorities produce 668- and 669-sol civil years, a repeating month structure and dates that retain the same weekday identity from year to year.</p>
+<p data-source-block="2122">The cost is that selected terminal civil weeks contain six weekday positions rather than seven.</p>
+<p data-source-block="2123">The physical point must be stated precisely:</p>
+<p data-source-block="2124"><strong>No physical sol is skipped or removed.</strong></p>
+<p data-source-block="2125"><strong>There is no circadian discontinuity.</strong></p>
+<p data-source-block="2126"><strong>Physical time continues normally.</strong></p>
+<p data-source-block="2127">Mars keeps rotating. One sol follows another. At the end of a 55-sol month, the terminal civil week ends after Day 6 and the next physical sol begins the following month as Day 1 rather than receiving the otherwise expected Day 7 label.</p>
+<p data-source-block="2128">What is interrupted is the <strong>civil weekday naming sequence</strong>.</p>
+<p data-source-block="2129">That makes the sacrifice social and calendrical rather than physical.</p>
+<p data-source-block="2130">It does not make it trivial.</p>
+<p data-source-block="2131">A continuous seven-sol weekly rhythm may matter deeply to a community. Religious observance may depend upon uninterrupted weekly succession. Work-rest patterns may become socially significant in their own right. People may simply prefer a system in which the seventh weekday always follows the sixth.</p>
+<p data-source-block="2132">Marian asks them to surrender that property in the civil labels in exchange for invariant recurring dates and tightly bounded year lengths.</p>
+<p data-source-block="2133">That is a real trade-off, not a semantic trick.</p>
+<h2 data-source-block="2134">Šurán shows that another answer is possible</h2>
+<p data-source-block="2135">Šurán's work matters because it demonstrates that the Levitt–Darian–Marian solution is not forced by Martian astronomy.</p>
+<p data-source-block="2136">A calendar can preserve both <strong>uninterrupted seven-sol weekly succession</strong> and <strong>fixed recurring dates</strong> if its annual adjustment is made in whole weeks.</p>
+<p data-source-block="2137">In the Šurán approach considered earlier, one annual form contains:</p>
+<p data-source-block="2138"><strong>96 × 7 = 672 sols</strong></p>
+<p data-source-block="2139">while another contains:</p>
+<p data-source-block="2140"><strong>95 × 7 = 665 sols</strong></p>
+<p data-source-block="2141">Every civil year therefore consists of complete seven-sol weeks. The weekly naming sequence remains continuous and recurring dates can retain fixed weekday relationships.</p>
+<p data-source-block="2142">That is an elegant result.</p>
+<p data-source-block="2143">It moves the cost into the year.</p>
+<p data-source-block="2144">The Martian annual target is about 668.6 sols. A 672-sol civil year sits several sols above it; a 665-sol year sits several sols below. A suitable sequence can keep the long-run average aligned, but individual civil years move farther from the astronomical target than Marian's 668- and 669-sol forms.</p>
+<p data-source-block="2145">Šurán therefore protects the week by allowing civil-year correction to occur in seven-sol blocks.</p>
+<p data-source-block="2146">Marian protects tightly bounded individual year lengths by allowing selected terminal civil weeks to end after six weekday positions.</p>
+<p data-source-block="2147">Neither design abolishes the mismatch.</p>
+<p data-source-block="2148">They choose different places to put it.</p>
+<h2 data-source-block="2149">Marian does not solve the week problem</h2>
+<p data-source-block="2150">Modern software weakens one part of the traditional case for perpetual calendars.</p>
+<p data-source-block="2151">A computer does not find it difficult to calculate which weekday 14 March falls on next year. The value of Marian's fixed date–weekday structure is therefore no longer primarily computational.</p>
+<p data-source-block="2152">Its stronger case is that predictable recurrence may still be cognitively and institutionally useful: reusable schedules, stable calendar layouts and dates whose weekday identities are known without lookup.</p>
+<p data-source-block="2153">That benefit has to be weighed against something potentially more fundamental: the social meaning of an uninterrupted weekly cycle.</p>
+<p data-source-block="2154">There is no arithmetic capable of proving which matters more.</p>
+<p data-source-block="2155">Marian's brief gives greater weight to tightly bounded 668/669-sol years, predictable repeating month structure and fixed recurring civil dates than to an uninterrupted civil weekday-label sequence.</p>
+<p data-source-block="2156">That is a design judgement, not an astronomical necessity.</p>
+<p data-source-block="2157">It may be the most contestable decision in Marian.</p>
+<p data-source-block="2158"><strong>Marian does not solve the week problem. It chooses where to put the cost.</strong></p>
+<h2 data-source-block="2159">Four axes explain most of the difference</h2>
+<p data-source-block="2160">Once the individual proposals are placed side by side, much of the field can be understood through four recurring design axes.</p>
+<p data-source-block="2161">The first is <strong>familiar duration versus familiar annual structure</strong>. Darian keeps the primary month near familiar terrestrial duration. Levitt and Marian retain twelve primary annual months. Exodus retains the twelve-month frame and familiar terrestrial nomenclature.</p>
+<p data-source-block="2162">The second is <strong>elapsed regularity versus orbital meaning</strong>. Hargitai gives high priority to repeated elapsed-time blocks. Zubrin gives more weight to orbital progression. Marian keeps civil periods comparatively regular and delegates precise seasonal location to Ls.</p>
+<p data-source-block="2163">The third is <strong>week continuity versus tightly bounded years and fixed recurrence</strong>. Levitt, Darian and Marian accept interruptions in civil weekday naming to keep month starts fixed while individual civil years remain close to the Martian target. Šurán preserves the weekly sequence by moving the correction to whole weeks.</p>
+<p data-source-block="2164">The fourth is <strong>simplicity of hierarchy versus separation of function</strong>. Darian asks its approximately four-week month to remain the primary annual unit. Marian introduces both month and minth because it wants annual orientation and short cadence to remain independently visible.</p>
+<p data-source-block="2165">These axes are more useful than trying to count which calendar contains the fewest unusual features.</p>
+<p data-source-block="2166">An unusual feature is often simply the visible price of something the design chose to protect.</p>
+<h2 data-source-block="2167">Marian as composition</h2>
+<p data-source-block="2168">Historically, Marian is better understood as a composition than as an isolated invention.</p>
+<p data-source-block="2169">From <strong>Levitt</strong>, it takes clear precedent for the twelve-month 56–56–55 macrostructure, equal common-year quarters and shortened terminal civil weeks.</p>
+<p data-source-block="2170">From the <strong>Darian lineage</strong>, it takes seriously the usefulness of a roughly 28-sol human-scale period.</p>
+<p data-source-block="2171">From <strong>Levitt and Darian together</strong>, it inherits the recurrence trade-off: fixed month starts at the cost of uninterrupted weekday naming succession.</p>
+<p data-source-block="2172">From the human-factors problem foregrounded strongly by <strong>Exodus</strong>, it takes seriously the value of recognition and learning burden in calendar design.</p>
+<p data-source-block="2173">From <strong>Zubrin and Hargitai</strong>, the wider comparison makes clear that elapsed duration and orbital representation are different objectives.</p>
+<p data-source-block="2174">From <strong>Šurán</strong>, the field already has strong precedent for treating week continuity and the scale of intercalation as deliberate design choices.</p>
+<p data-source-block="2175">Marian's novelty claim should therefore remain modest.</p>
+<p data-source-block="2176">It is not that nobody previously found twelve long Martian months. They did. It is not that nobody previously used roughly four-week Martian periods, shortened civil weeks, tropical anchoring or familiarity as a design criterion. They did.</p>
+<p data-source-block="2177">The distinctive move lies primarily in the <strong>composition and assignment of functions</strong>.</p>
+<p data-source-block="2178">Four elements of that composition are particularly characteristic.</p>
+<p data-source-block="2179">First, Marian formally separates <strong>annual orientation from short cadence</strong>. Twelve months and twenty-four minths coexist rather than competing for the word <em>month</em>.</p>
+<p data-source-block="2180">Second, it adds the <strong>Sixth</strong> as a standard medium-range interval between the month and the longer quarter.</p>
+<p data-source-block="2181">Third, it treats the calendar explicitly as <strong>operating infrastructure</strong>. Its several civil scales are intended to provide shared coordinates for recurring institutions without prescribing how those institutions must operate.</p>
+<p data-source-block="2182">Fourth, it builds in <strong>Earth–Mars legibility</strong>. The Ls = 15° year origin gives the two twelve-part civil years a useful relationship around the intended founding era, allowing their circular month gap to provide coarse intuition about Earth–Mars orbital phase and communications conditions.</p>
+<p data-source-block="2183">Those features make Marian recognisably its own architecture.</p>
+<p data-source-block="2184">None requires pretending that its components arrived without precedent.</p>
+<p data-source-block="2185">Novelty is not a particularly useful requirement for infrastructure. Nobody asks a bridge to contain entirely original steel. They ask whether the pieces have been assembled coherently for the load the bridge is expected to carry.</p>
+<h2 data-source-block="2186">There is no historical ladder</h2>
+<p data-source-block="2187">It would be easy to turn the history into a progression.</p>
+<p data-source-block="2188">Levitt discovered the long Martian month. Darian improved it. Exodus made it familiar. Marian finally integrated everything properly.</p>
+<p data-source-block="2189">That would be satisfyingly neat.</p>
+<p data-source-block="2190">It would also be false.</p>
+<p data-source-block="2191">These proposals are not software releases marching towards a final version. They protect different relationships.</p>
+<p data-source-block="2192">A design built around familiar-duration primary months naturally moves towards Darian. A design that strongly protects inherited nomenclature may resemble Exodus. A calendar expected to encode more orbital information may look more like Zubrin. A system that treats uninterrupted weekly succession as fundamental should take Šurán and other continuous-week approaches particularly seriously.</p>
+<p data-source-block="2193">Marian becomes coherent under a different cluster of priorities: twelve-part annual orientation, shorter recurring cadence, medium-range structure, fixed recurring dates, tightly bounded civil years, deterministic arithmetic and Earth–Mars legibility are all given significant weight.</p>
+<p data-source-block="2194">That is not a neutral optimisation.</p>
+<p data-source-block="2195">It is a particular design position.</p>
+<h2 data-source-block="2196">Marian's place among them</h2>
+<p data-source-block="2197">So where does Marian sit?</p>
+<p data-source-block="2198">Among the existing Martian calendar tradition, not above it.</p>
+<p data-source-block="2199">Its lineage is visible. The twelve-month frame is strongly Levitt-like. The minth occupies territory associated with Darian's shorter Martian month. Its recurrence mechanism has precedent. Its concern with familiarity has precedent. Its separation of civil regularity from exact orbital representation becomes clearer precisely because Zubrin and Hargitai make different choices.</p>
+<p data-source-block="2200">What Marian contributes is a particular way of putting those ideas together for a particular problem:</p>
+<p data-source-block="2201"><strong>a permanent, technologically complex, still Earth-connected Martian civilisation that may benefit from several standard recurring civil horizons.</strong></p>
+<p data-source-block="2202">That is a coherent proposition.</p>
+<p data-source-block="2203">It is not the mathematically inevitable calendar of Mars.</p>
+<p data-source-block="2204">There is no such thing.</p>
+<p data-source-block="2205">Mars supplies the physical constraints. The calendars differ because their designers assign different weights to the civil properties that must coexist within them.</p>
+<p data-source-block="2206"><strong>A good calendar does not emerge because every alternative is foolish. It emerges because its trade-offs fit the problem it was designed to solve.</strong></p></article><nav aria-label="Previous and next section" class="pager"><a href="chapter-20.html" rel="prev">← Chapter 20: Does Marian Do What It Says?</a><a href="chapter-22.html" rel="next">Chapter 22: What Marian Gives Up →</a></nav></main>
+<footer>© JB Bullock 2026. Book text, cover and illustrations: all rights reserved. Marian Protocol v1.0 is separately licensed.</footer></body></html>

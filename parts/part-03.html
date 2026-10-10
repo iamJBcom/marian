@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="no-referrer" name="referrer"/><meta content="default-src 'none'; style-src 'self'; img-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" http-equiv="Content-Security-Policy"/>
+<title>Part 3 | Marian — An Operating Calendar for Human Mars</title><meta content="Read Part 3. Marian: An Operating Calendar for Human Mars. Written by JB Bullock." name="description"/><link href="../css/book.css" rel="stylesheet"/><link rel="canonical" href="https://iamjbcom.github.io/marian/parts/part-03.html"/><meta property="og:type" content="article"/><meta property="og:title" content="Part 3 | Marian — An Operating Calendar for Human Mars"/><meta property="og:url" content="https://iamjbcom.github.io/marian/parts/part-03.html"/></head>
+<body><a class="skip" href="#main">Skip to reading content</a><header class="mast"><a class="brand" href="../index.html">MARIAN<span>Operating Architecture Series</span></a><nav aria-label="Site"><a href="../index.html">Contents</a></nav></header>
+
+<main class="reading" id="main"><div class="crumbs"><a href="../index.html">Marian</a> / Part 3</div><article class="book-section" data-section="part-03"><h1 class="source-heading" data-source-block="652"><span class="heading-lead">PART III - BUILDING MARIAN</span><br/><span class="heading-sub">An Operating Calendar for Human Mars</span></h1>
+<p data-source-block="653">The previous Part mapped the choices. Marian now has to make them.</p>
+<p data-source-block="654">It does so through one governing design principle: <strong>Functional Separation</strong>.</p>
+<p data-source-block="655">The idea is simple. When an inherited unit or mechanism performs several useful jobs only because Earth happens to let those jobs coincide, Mars gives us no reason to keep them bundled once those relationships come apart. Preserve the functions that matter; give them different mechanisms when one can no longer serve them well.</p>
+<p data-source-block="656">Or more simply:</p>
+<p data-source-block="657"><strong>Different jobs deserve different mechanisms.</strong></p>
+<p data-source-block="658">The clearest example is the month. On Earth, a month can be both roughly four weeks and roughly one twelfth of the year. A quarter can likewise be both one fourth of the year and a useful thirteen-week planning interval.</p>
+<p data-source-block="659">On Mars, those relationships split apart.</p>
+<p data-source-block="660">Marian's central move is not to choose one function and discard the other. It gives them different homes. Minths provide the shorter cadence; months provide twelve-part annual orientation. Sixths offer a medium-range interval; quarters preserve the larger annual fraction.</p>
+<p data-source-block="661">The same principle continues through the rest of the calendar. A complete civil system must also decide how the week recurs, where the year belongs, how the calendar remains aligned with Mars, and how dates retain stable identities across languages and software.</p>
+<p data-source-block="662">Together, these form the <strong>Five Layers of Marian</strong>:</p>
+<p data-source-block="663"><strong>Structure</strong> — what are the units?<br/><strong>Recurrence</strong> — how does the week work?<br/><strong>Anchor</strong> — where does the year belong?<br/><strong>Intercalation</strong> — how does the calendar remain aligned?<br/><strong>Identity</strong> — how are dates represented and preserved?</p>
+<p data-source-block="664">Chapter 9 shows the architecture as a whole. Chapters 10 to 14 then take those five layers apart, one at a time.</p></article><nav aria-label="Previous and next section" class="pager"><a href="../chapters/chapter-08.html" rel="prev">← Chapter 8: Where the Irregularity Goes</a><a href="../chapters/chapter-09.html" rel="next">Chapter 9: The Marian Calendar in One Page →</a></nav></main>
+<footer>© JB Bullock 2026. Book text, cover and illustrations: all rights reserved. Marian Protocol v1.0 is separately licensed.</footer></body></html>

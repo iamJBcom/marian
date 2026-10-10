@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="no-referrer" name="referrer"/><meta content="default-src 'none'; style-src 'self'; img-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" http-equiv="Content-Security-Policy"/>
+<title>Chapter 13: Where the Year Begins | Marian — An Operating Calendar for Human Mars</title><meta content="Read Chapter 13: Where the Year Begins. Marian: An Operating Calendar for Human Mars. Written by JB Bullock." name="description"/><link href="../css/book.css" rel="stylesheet"/><link rel="canonical" href="https://iamjbcom.github.io/marian/chapters/chapter-13.html"/><meta property="og:type" content="article"/><meta property="og:title" content="Chapter 13: Where the Year Begins | Marian — An Operating Calendar for Human Mars"/><meta property="og:url" content="https://iamjbcom.github.io/marian/chapters/chapter-13.html"/></head>
+<body><a class="skip" href="#main">Skip to reading content</a><header class="mast"><a class="brand" href="../index.html">MARIAN<span>Operating Architecture Series</span></a><nav aria-label="Site"><a href="../index.html">Contents</a></nav></header>
+
+<main class="reading" id="main"><div class="crumbs"><a href="../index.html">Marian</a> / Chapter 13: Where the Year Begins</div><article class="book-section" data-section="chapter-13"><h1 class="source-heading" data-source-block="963"><span class="heading-lead">ANCHOR</span><br/><span class="heading-main">13) Where the Year Begins</span><br/><span class="heading-sub">Anchoring Marian to Mars </span></h1>
+<p data-source-block="964">A calendar year turns out to need more than one kind of beginning.</p>
+<p data-source-block="965">It needs an <strong>astronomical anchor</strong> that says where the planet is in its annual cycle, a <strong>civil rollover</strong> at which one date ends and the next begins, and — if the calendar numbers its years — a <strong>historical origin</strong> from which its chronology starts counting.</p>
+<p data-source-block="966">On Earth, those three ideas are so deeply bundled together by inheritance that most people never encounter them as separate choices. New Year arrives at midnight on 1 January because that is what the calendar says. Nobody checks Earth's position in its orbit before opening the champagne.</p>
+<p data-source-block="967">Mars has no such inheritance, so the distinctions have to be made deliberately.</p>
+<p data-source-block="968">Marian therefore answers three different questions:</p>
+<p data-source-block="969"><strong>Where in the Martian year does the regular civil year belong?</strong></p>
+<p data-source-block="970"><strong>At what defined instant does a civil date change?</strong></p>
+<p data-source-block="971"><strong>When does human civil history on Mars begin?</strong></p>
+<p data-source-block="972">Its answers are:</p>
+<p data-source-block="973"><strong>Astronomical anchor — Ls = 15°</strong></p>
+<p data-source-block="974"><strong>Canonical civil rollover — midnight at Airy-0</strong></p>
+<p data-source-block="975"><strong>Historical origin — the recognised first human step on Mars</strong></p>
+<p data-source-block="976">The first human step begins the partial <strong>Marian Year 0</strong>, or MY0. The first complete regular year, <strong>MY1</strong>, begins at the first Airy-0 midnight following Mars's next passage through Ls = 15°.</p>
+<p data-source-block="977">The human event begins the history. The astronomical marker fixes the annual position. The civil boundary turns a continuous astronomical event into a usable date. What initially looks like one question — <em>when does the year begin?</em> — is therefore three different questions with three different answers.</p>
+<p data-source-block="978">Trying to make one event perform all three jobs would be neater on a diagram and less useful in a civilisation.</p>
+<h2 data-source-block="979">Where in the orbit?</h2>
+<p data-source-block="980">Calling a Martian year “one orbit around the Sun” is broadly correct but not precise enough for a civil standard.</p>
+<p data-source-block="981">Mars's seasonal position is commonly described using <strong>areocentric solar longitude</strong>, written Ls. The northern vernal equinox is defined as Ls = 0°, after which the coordinate progresses through the Martian seasonal cycle and eventually returns to the same point.</p>
+<figure class="art" data-editorial-status="AUTHOR_APPROVED_PLACEMENT_AND_CAPTION" id="image21"><img alt="Illustration: Three Beginnings of a Marian Year. Expanded text description follows." decoding="async" height="1024" loading="lazy" src="../assets/image21.webp" width="1536"/><figcaption><strong>Three Beginnings of a Marian Year</strong></figcaption><details class="figure-description"><summary>Detailed figure description</summary><p>A three-stage timeline separates the recognized first human step on Mars, the next qualifying astronomical crossing of Ls = 15 degrees, and the first qualifying Airy-0 midnight. Three explanatory columns distinguish historical origin, astronomical anchoring and civil rollover. The image describes the MY0-to-MY1 rule; it does not show a known landing date or an instantiated MY1 timestamp.</p><p>Editorial note: this is a descriptive summary, not an independently verified transcription of every diagram label. Refer to the surrounding text and the Marian technical specification for authoritative numeric details where applicable.</p></details></figure>
+<p data-source-block="982">That gives a calendar designer a reproducible annual reference. A civil year could begin at Ls = 0°; Darian does exactly that, and an equinox has the obvious advantage of being an established seasonal marker. But an equinox is not compulsory. A civil calendar needs a stable point in the annual cycle, and choosing which point to use remains a design decision.</p>
+<p data-source-block="983">Marian chooses:</p>
+<p data-source-block="984"><strong>Ls = 15°</strong></p>
+<p data-source-block="985">Nothing dramatic happens on Mars at fifteen degrees. The number is not mathematically sacred, and it is not being proposed as a superior definition of Martian spring.</p>
+<p data-source-block="986">The reason is operational.</p>
+<p data-source-block="987">Marian is designed for an early permanent civilisation that remains deeply connected to Earth. That raises a question most terrestrial calendars have never needed to ask: can the Martian annual origin provide useful intuition about the relationship between the two inhabited planets without ceasing to be fundamentally Martian?</p>
+<p data-source-block="988">Around the anticipated founding era, Mars at Ls = 15° lies close to a heliocentric direction of roughly 100°. Earth around the beginning of the Gregorian year lies close to the same general direction.</p>
+<p data-source-block="989">These are different coordinates and should not be confused. <strong>Ls</strong> describes Mars's position within its own seasonal cycle; <strong>heliocentric longitude</strong> describes direction around the Sun within a wider orbital reference frame.</p>
+<p data-source-block="990">The useful feature is simply that the chosen Martian seasonal marker places Mars, around the intended founding era, in approximately the same Sun-centred direction associated with Earth near the start of the Gregorian year.</p>
+<p data-source-block="991">The planets are not necessarily near one another. Their New Years are not simultaneous. Their years are different lengths, and their months advance around the Sun at different rates.</p>
+<p data-source-block="992">What they gain is a broadly shared <strong>directional origin</strong> for their twelve-part annual maps. Later, that supports a coarse Earth–Mars month-gap mental model: the separation between terrestrial and Marian month positions can provide some intuition about relative orbital phase and, very approximately, communications conditions.</p>
+<p data-source-block="993">It is not a navigation system and not a substitute for ephemerides. It is simply useful orientation.</p>
+<h2 data-source-block="994">Martian first, Earth second</h2>
+<p data-source-block="995">Once that Earth-facing relationship appears, there is an obvious temptation to optimise it.</p>
+<p data-source-block="996">The technical analysis found that other starting values can produce slightly stronger statistical relationships under particular measures of Earth–Mars geometry. A value around Ls = 22°, for example, performed somewhat better under one discrete comparison.</p>
+<p data-source-block="997">Marian does not use it.</p>
+<p data-source-block="998">A calendar intended to last should be cautious about optimising a primary civil boundary around a secondary metric whose exact optimum depends on how months are represented, how orbital relationships are measured and which historical interval is analysed.</p>
+<p data-source-block="999">Ls = 15° has a simpler rationale. Around the founding era, it places Marian New Year close to the same broad heliocentric direction associated with Gregorian New Year. That principle can be explained without reopening the analysis notebook.</p>
+<p data-source-block="1000">There is an apparently cleaner alternative still: ignore Ls and define Marian New Year directly by a fixed heliocentric longitude near 100°.</p>
+<p data-source-block="1001">Marian rejects that too.</p>
+<p data-source-block="1002">A fixed inertial direction and a fixed Martian seasonal position are not permanently identical. Over long periods, tying the civil year directly to heliocentric longitude would allow New Year to migrate relative to Mars's tropical seasonal cycle.</p>
+<p data-source-block="1003">Using Ls keeps the annual reference tied to Mars. The Earth relationship is a useful consequence of <strong>which Martian seasonal point</strong> has been chosen, not the reference to which the calendar is ultimately chained.</p>
+<p data-source-block="1004">That establishes the priority:</p>
+<p data-source-block="1005"><strong>Mars comes first.</strong></p>
+<p data-source-block="1006">If the Earth-facing relationship changes gradually over centuries, Marian keeps Ls = 15°. The civil year belongs to Mars; it simply begins at a point chosen to make an early Earth-connected civilisation slightly easier to understand.</p>
+<h2 data-source-block="1007">From an astronomical instant to a civil date</h2>
+<p data-source-block="1008">Selecting Ls = 15° still does not tell us exactly when the date changes. The astronomical anchor answers where the year belongs in Mars's annual cycle; it does not, by itself, provide a practical civil rollover.</p>
+<p data-source-block="1009">Mars passes through that longitude at a precise astronomical instant. Civil calendars need discrete boundaries.</p>
+<p data-source-block="1010">Suppose the crossing occurred halfway through a settlement's afternoon. Marian could declare that the old year ended at that instant and the new one began immediately. That would be astronomically precise and civically awkward.</p>
+<p data-source-block="1011">Birth certificates, contracts, databases, school calendars and accounting systems work better when dates change at defined boundaries rather than halfway through them.</p>
+<p data-source-block="1012">Marian therefore separates the <strong>astronomical anchor</strong> from the <strong>civil rollover</strong>. Its canonical global boundary is:</p>
+<p data-source-block="1013"><strong>midnight at Airy-0</strong></p>
+<p data-source-block="1014">Airy-0 provides the Martian prime-meridian reference already used in contemporary Mars timekeeping, so Marian adopts it rather than inventing a new privileged longitude for calendrical purposes. The benefit is interoperability, not symbolism.</p>
+<p data-source-block="1015">A settlement elsewhere on Mars might use local mean solar time. A larger society might eventually use time zones. A habitat network could adopt one administrative clock across several sites. Marian does not prescribe any of those choices; it defines the canonical planetary date boundary against which they can be converted.</p>
+<p data-source-block="1016">This is an important limit on the calendar's scope. Marian organises sols into civil dates and larger periods. It does not attempt to settle every question about hours, minutes, seconds or local clock regimes.</p>
+<p data-source-block="1017">A calendar is not a time-zone system. They must interoperate, but they do not have to be the same thing.</p>
+<p data-source-block="1018">For the founding transition, the rule is therefore precise: Mars first passes through <strong>Ls = 15°</strong>, and the next <strong>Airy-0 midnight</strong> begins the first complete Marian year.</p>
+<p data-source-block="1019">The astronomical event establishes where the year belongs. The civil boundary decides when the date starts.</p>
+<h2 data-source-block="1020">History begins with arrival</h2>
+<p data-source-block="1021">Astronomy can define a recurring annual reference and civil rules can define a rollover. Neither can tell us which year should be called Year 1.</p>
+<p data-source-block="1022">For that, Marian uses a human event:</p>
+<p data-source-block="1023"><strong>Marian Year 0 begins at the recognised first human step onto the Martian surface.</strong></p>
+<p data-source-block="1024">The choice is deliberately historical rather than astronomical. Before humans arrive, scientific chronology already provides suitable ways to describe Mars. There is little civil value in projecting Marian year numbers backwards through millions of years merely to demonstrate that the arithmetic works.</p>
+<p data-source-block="1025">Marian is intended as civil infrastructure for human settlement, so its era begins when direct human history on Mars begins. The choice has symbolic force, but it is practical as well: the event should be memorable, independently documented and much easier for later generations to identify than an arbitrary calculated epoch chosen centuries before anyone lived there.</p>
+<p data-source-block="1026">There is only one inconvenience. The first person to step onto Mars is vanishingly unlikely to do so at exactly the point where the regular Marian year should begin. Astronauts will have enough to manage without delaying the airlock because a calendar designer would prefer a cleaner epoch.</p>
+<p data-source-block="1027">That is why Marian has <strong>MY0</strong>.</p>
+<h2 data-source-block="1028">The deliberately incomplete Year 0</h2>
+<p data-source-block="1029">Imagine that the first human step occurs halfway through the Martian seasonal cycle. If that moment were declared the start of MY1, one of two undesirable things would follow: either Marian would abandon its Ls = 15° annual reference so that the first year could start immediately, or it would create an irregular first “year” whose internal annual structure pretended to begin at a seasonal point where it did not belong.</p>
+<p data-source-block="1030">Marian instead separates the <strong>historical origin</strong> from the first complete calendar year. The first human step begins <strong>MY0</strong>, which continues until Mars reaches the next Ls = 15° reference and the following Airy-0 midnight. At that midnight, <strong>MY1 begins</strong>.</p>
+<p data-source-block="1031">The sequence is therefore:</p>
+<p data-source-block="1032"><strong>First recognised human step → MY0 begins</strong></p>
+<p data-source-block="1033"><strong>Next passage through Ls = 15°</strong></p>
+<p data-source-block="1034"><strong>First Airy-0 midnight after that passage → MY1 begins</strong></p>
+<p data-source-block="1035"><strong>MY1 → MY2 → MY3 → ...</strong></p>
+<p data-source-block="1036">MY0 is deliberately not a normal 668- or 669-sol Marian year. It is a transitional epoch interval.</p>
+<p data-source-block="1037">During that period, mission-relative sol counts would almost certainly remain operationally important. A crew does not need to abandon the chronology used throughout landing operations merely because somebody has touched the surface and started a civil era.</p>
+<p data-source-block="1038">MY0 therefore bridges two forms of timekeeping: <strong>mission chronology before and during arrival</strong>, and <strong>regular civil chronology after settlement begins</strong>.</p>
+<p data-source-block="1039">There is no need to invent dates for the part of the Martian year before humans arrived simply to make the first calendar diagram rectangular.</p>
+<p data-source-block="1040">History begins where history begins. The bureaucracy can start cleanly afterwards.</p>
+<h2 data-source-block="1041">A future fact cannot yet have a timestamp</h2>
+<p data-source-block="1042">Defining the epoch around a human event leaves one unavoidable blank in a book written before that event occurs. Nobody can yet state the definitive timestamp of MY0, nor can we state the Gregorian date on which MY1 will begin.</p>
+<p data-source-block="1043">The rule can be defined now. Its numerical instantiation must wait for history.</p>
+<p data-source-block="1044">An eventual implementing authority will need an authoritative record of what constitutes the <strong>recognised first human step</strong> and precisely when it occurred. At the level of this calendar architecture, the principle is enough.</p>
+<p data-source-block="1045">Attempting today to specify whether the epoch means first boot contact, first fully weight-bearing step, first exit from a vehicle or some other physically precise definition would manufacture certainty around a landing architecture that does not yet exist. The future standard will need that precision; the present design does not need to invent it.</p>
+<p data-source-block="1046">This is a normal feature of standards built around future events. A specification can define <strong>which fact matters</strong> before the fact itself has occurred.</p>
+<h2 data-source-block="1047">The year does not restart from the sky every time</h2>
+<p data-source-block="1048">After MY1 begins, Marian does not wait each year for an astronomer to announce the next exact passage through Ls = 15° and then start a new civil year at the following midnight. That would make routine chronology dependent upon repeated ephemeris calculation.</p>
+<p data-source-block="1049">Instead, Ls = 15° establishes the <strong>astronomical target</strong> for the calendar. The civil system then proceeds through deterministic integer-sol years of 668 or 669 sols, with intercalation keeping those civil years tracking the astronomical reference over time.</p>
+<p data-source-block="1050">In other words:</p>
+<p data-source-block="1051"><strong>astronomy defines the target; the calendar does the bookkeeping.</strong></p>
+<p data-source-block="1052">This is the same separation of responsibilities that appears throughout Marian. A precise scientific coordinate remains available when precise orbital position matters; the civil date remains simple enough to compute without consulting the sky every New Year.</p>
+<p data-source-block="1053">Choosing Ls = 15° as the annual reference also does <strong>not</strong> mean Marian's twelve months represent equal 30° sectors of Mars's orbit. They do not. Marian months are primarily regular elapsed civil periods of 55 or 56 sols. Because Mars changes speed around its eccentric orbit, equal-duration civil months cover different amounts of Ls.</p>
+<p data-source-block="1054">That is intentional.</p>
+<p data-source-block="1055"><strong>Ls gives precise seasonal position. The Marian date gives regular civil position.</strong></p>
+<p data-source-block="1056">They are complementary coordinates rather than rival attempts to describe the same thing.</p>
+<h2 data-source-block="1057">One year, three beginnings</h2>
+<p data-source-block="1058">What looked at the beginning of the chapter like one question can now be stated more precisely. A Marian year requires three different kinds of beginning because each establishes something different.</p>
+<p data-source-block="1059"><strong>The first human step provides the historical origin.</strong> It answers: <strong>When does human civil history on Mars begin?</strong></p>
+<p data-source-block="1060"><strong>Ls = 15° provides the astronomical anchor.</strong> It answers: <strong>Where in Mars's recurring seasonal cycle does the regular civil year belong?</strong></p>
+<p data-source-block="1061"><strong>Airy-0 midnight provides the canonical civil rollover.</strong> It answers: <strong>At what defined boundary does the date change?</strong></p>
+<p data-source-block="1062">These are different questions, so Marian gives them different answers. Functional Separation applies here just as it does elsewhere in the calendar: there is no advantage in forcing one event to carry three distinct responsibilities merely because the everyday phrase <em>the beginning of the year</em> makes them sound like one thing.</p>
+<p data-source-block="1063">Mars does not return to Ls = 15° after an integer number of sols. The relevant annual cycle is approximately <strong>668.59 sols</strong>, while civil years have to contain whole sols. Marian therefore alternates between 668-sol and 669-sol years so that the civil calendar can remain close to its astronomical reference over time.</p>
+<p data-source-block="1064">The exact intercalation pattern is another piece of machinery. The principle established here is more fundamental.</p>
+<p data-source-block="1065"><strong>The human event begins the history. The sky defines where the year belongs. The calendar decides when the date changes.</strong></p></article><nav aria-label="Previous and next section" class="pager"><a href="chapter-12.html" rel="prev">← Chapter 12: The Missing Sunsol</a><a href="chapter-14.html" rel="next">Chapter 14: Odd Years Leap →</a></nav></main>
+<footer>© JB Bullock 2026. Book text, cover and illustrations: all rights reserved. Marian Protocol v1.0 is separately licensed.</footer></body></html>

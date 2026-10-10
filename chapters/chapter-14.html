@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="no-referrer" name="referrer"/><meta content="default-src 'none'; style-src 'self'; img-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" http-equiv="Content-Security-Policy"/>
+<title>Chapter 14: Odd Years Leap | Marian — An Operating Calendar for Human Mars</title><meta content="Read Chapter 14: Odd Years Leap. Marian: An Operating Calendar for Human Mars. Written by JB Bullock." name="description"/><link href="../css/book.css" rel="stylesheet"/><link rel="canonical" href="https://iamjbcom.github.io/marian/chapters/chapter-14.html"/><meta property="og:type" content="article"/><meta property="og:title" content="Chapter 14: Odd Years Leap | Marian — An Operating Calendar for Human Mars"/><meta property="og:url" content="https://iamjbcom.github.io/marian/chapters/chapter-14.html"/></head>
+<body><a class="skip" href="#main">Skip to reading content</a><header class="mast"><a class="brand" href="../index.html">MARIAN<span>Operating Architecture Series</span></a><nav aria-label="Site"><a href="../index.html">Contents</a></nav></header>
+
+<main class="reading" id="main"><div class="crumbs"><a href="../index.html">Marian</a> / Chapter 14: Odd Years Leap</div><article class="book-section" data-section="chapter-14"><h1 class="source-heading" data-source-block="1068"><span class="heading-lead">INTERCALATION</span><br/><span class="heading-main">14) Odd Years Leap</span><br/><span class="heading-sub">The 59/100 Rule</span></h1>
+<p data-source-block="1069">Mars refuses to fit neatly into whole sols. That is the entire reason leap years exist.</p>
+<p data-source-block="1070">The Marian civil year must contain an integer number of physical Martian days. A common year contains 668 sols and a leap year 669, yet successive passages through the selected seasonal reference, Ls = 15°, recur after approximately 668.59 sols around the intended founding era.</p>
+<p data-source-block="1071">Neither civil year is right on its own. Use 668 every year and the calendar gradually runs early against the Martian seasonal cycle; use 669 every year and it runs late. The solution is intercalation: alternate between the two in the right proportion.</p>
+<p data-source-block="1072">That creates two different design problems. <strong>Leap frequency</strong> asks how many years should receive an additional sol over a long interval. <strong>Leap placement</strong> asks which particular years should receive them. The first is primarily an astronomical problem; the second is partly a civil one.</p>
+<p data-source-block="1073">The mathematics of the frequency is straightforward. The design question is how complicated the placement rule should become in pursuit of a slightly closer fit.</p>
+<p data-source-block="1074">Marian's answer is deliberately plain:</p>
+<p data-source-block="1075"><strong>Odd-numbered years are leap years.</strong></p>
+<p data-source-block="1076"><strong>Years divisible by 10 are also leap years.</strong></p>
+<p data-source-block="1077"><strong>Years divisible by 100 are common years.</strong></p>
+<p data-source-block="1078">The century exception takes precedence.</p>
+<p data-source-block="1079">That produces 59 leap years in every 100 regular Marian years, giving a mean civil year of exactly:</p>
+<p data-source-block="1080"><strong>668.590000 sols</strong></p>
+<p data-source-block="1081">The <strong>frequency</strong> of leap years is chosen to fit the astronomy. Their <strong>placement</strong> is chosen partly for human beings.</p>
+<p data-source-block="1082">That distinction is the point.</p>
+<h2 data-source-block="1083">Why 59 leap years?</h2>
+<p data-source-block="1084">The 668-sol common year already follows from Marian's internal structure. Each common-year quarter contains:</p>
+<p data-source-block="1085"><strong>56 + 56 + 55 = 167 sols</strong></p>
+<p data-source-block="1086">and four such quarters give:</p>
+<p data-source-block="1087"><strong>4 × 167 = 668 sols</strong></p>
+<p data-source-block="1088">That produces the twelve-month structure and the repeating 56–56–55 rhythm.</p>
+<p data-source-block="1089">Mars, however, does not return to Ls = 15° after exactly 668 sols. The technical analysis places the relevant recurrence around the anticipated settlement era very close to <strong>668.590 sols</strong>. The precise estimate varies slightly with the modelling interval and assumptions, but not enough to affect the civil conclusion.</p>
+<p data-source-block="1090">A 668-sol common year is therefore short by roughly:</p>
+<p data-source-block="1091"><strong>668.59 − 668 = 0.59 sol</strong></p>
+<p data-source-block="1092">while a 669-sol leap year is long by roughly:</p>
+<p data-source-block="1093"><strong>669 − 668.59 = 0.41 sol</strong></p>
+<p data-source-block="1094">The calendar consequently needs a leap sol in a little under three years out of every five. Once the common year has been fixed at 668 sols, the required leap fraction is almost visible in the decimal:</p>
+<p data-source-block="1095"><strong>668.59 = 668 + 0.59</strong></p>
+<p data-source-block="1096">So approximately 59 per cent of regular Marian years need the additional sol. A century-scale fraction follows naturally:</p>
+<p data-source-block="1097"><strong>59 / 100</strong></p>
+<p data-source-block="1098">giving:</p>
+<figure class="art" data-editorial-status="AUTHOR_APPROVED_PLACEMENT_AND_CAPTION" id="image10"><img alt="Illustration: 59/100: Frequency Is Not Placement. Expanded text description follows." decoding="async" height="1086" loading="lazy" src="../assets/image10.webp" width="1448"/><figcaption><strong>59/100: Frequency Is Not Placement</strong></figcaption><details class="figure-description"><summary>Detailed figure description</summary><p>The upper chart displays the Marian leap classification across a hundred numbered years, visually distinguishing ordinary leap years, decennial leap years and the century exception. A summary row gives 59 leap years and 41 common years in a century. The lower graph traces fluctuations in cumulative difference from an idealized annual average, illustrating that the chosen rule is memorable but not phase-optimally distributed. Values in the graph are mathematical idealizations, not measured Mars ephemeris errors.</p><p>Editorial note: this is a descriptive summary, not an independently verified transcription of every diagram label. Refer to the surrounding text and the Marian technical specification for authoritative numeric details where applicable.</p></details></figure>
+<p data-source-block="1099"><strong>668 + 59 / 100 = 668.590000 sols</strong></p>
+<p data-source-block="1100">That is extremely close to the selected astronomical recurrence around the intended founding era.</p>
+<p data-source-block="1101">The frequency question is therefore largely settled: approximately 59 leap years are required in every hundred.</p>
+<p data-source-block="1102">The interesting question is where to put them.</p>
+<h2 data-source-block="1103">Counting to 59 without a table</h2>
+<p data-source-block="1104">Marian reaches the required count with three simple tests.</p>
+<p data-source-block="1105">First, odd-numbered years leap. Between MY1 and MY100 there are fifty odd-numbered years, so we begin with 50 leap years.</p>
+<p data-source-block="1106">Second, years divisible by 10 also leap. That adds MY10, MY20, MY30, MY40, MY50, MY60, MY70, MY80, MY90 and MY100:</p>
+<p data-source-block="1107"><strong>50 + 10 = 60</strong></p>
+<p data-source-block="1108">Third, years divisible by 100 are common. MY100 therefore does not leap:</p>
+<p data-source-block="1109"><strong>50 + 10 − 1 = 59</strong></p>
+<p data-source-block="1110">That is the entire century rule. No leap-year table has to be memorised, no astronomical calculation is required and no cumulative sequence needs to be looked up. Leap status follows directly from the year number.</p>
+<div aria-label="Table 1 in Chapter 14: Odd Years Leap; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="1111"><caption class="sr-only">Table 1 in Chapter 14: Odd Years Leap</caption><thead><tr><th scope="col">Marian year</th><th scope="col">Type</th><th scope="col">Reason</th></tr></thead><tbody><tr><td>MY1</td><td>Leap</td><td>Odd</td></tr><tr><td>MY2</td><td>Common</td><td>Even, not divisible by 10</td></tr><tr><td>MY10</td><td>Leap</td><td>Divisible by 10</td></tr><tr><td>MY41</td><td>Leap</td><td>Odd</td></tr><tr><td>MY42</td><td>Common</td><td>Even, not divisible by 10</td></tr><tr><td>MY50</td><td>Leap</td><td>Divisible by 10</td></tr><tr><td>MY51</td><td>Leap</td><td>Odd</td></tr><tr><td>MY99</td><td>Leap</td><td>Odd</td></tr><tr><td>MY100</td><td>Common</td><td>Century exception</td></tr><tr><td>MY101</td><td>Leap</td><td>Odd</td></tr></tbody></table></div>
+<p data-source-block="1112">The adjacent leap years around a decennial boundary are intentional. MY50 leaps because it is divisible by ten; MY51 leaps because it is odd. The sequence is not a perfect alternation between 668 and 669 sols, nor is it supposed to be.</p>
+<p data-source-block="1113">The objective is 59 leap sols per century with a rule that can be reconstructed from a sentence.</p>
+<h2 data-source-block="1114">Frequency and placement are different problems</h2>
+<p data-source-block="1115">Intercalation therefore contains two separate questions:</p>
+<p data-source-block="1116"><strong>How many leap sols should occur over a long interval?</strong></p>
+<p data-source-block="1117">and:</p>
+<p data-source-block="1118"><strong>Where within that interval should they occur?</strong></p>
+<p data-source-block="1119">These are easy to blur together because one leap-year rule eventually answers both. They are nevertheless different design problems.</p>
+<p data-source-block="1120">The <strong>59/100 fraction</strong> answers the frequency question. Across 100 regular years, Marian contains:</p>
+<p data-source-block="1121"><strong>41 × 668 + 59 × 669 = 66,859 sols</strong></p>
+<p data-source-block="1122">which gives:</p>
+<p data-source-block="1123"><strong>66,859 / 100 = 668.590000 sols per year</strong></p>
+<p data-source-block="1124">But that arithmetic does not tell us which 59 years should be leap years. Many different placements could produce exactly the same century average.</p>
+<p data-source-block="1125">The leap years could be spread almost perfectly evenly, placed according to a mathematical sequence, clustered badly, or positioned specifically to keep each successive civil New Year as close as possible to the smooth astronomical target.</p>
+<p data-source-block="1126">Marian deliberately separates the two decisions. <strong>Leap frequency is selected to fit the long-run astronomical recurrence. Leap placement is selected to make the resulting civil rule intelligible, deterministic and memorable.</strong></p>
+<p data-source-block="1127">The 59/100 fraction therefore belongs to the first problem. The odd / decennial / century rule belongs to the second.</p>
+<p data-source-block="1128">That choice has a measurable cost.</p>
+<h2 data-source-block="1129">The calendar moves around the astronomical target</h2>
+<p data-source-block="1130">Imagine an idealised annual recurrence of exactly 668.59 sols. Civil years cannot end after 0.59 of a sol, so Marian alternates between whole-sol years on either side of that target.</p>
+<p data-source-block="1131">After a 668-sol common year, the civil sequence has used about 0.59 sol less than the smooth astronomical interval. A 669-sol leap year then moves the boundary back in the other direction.</p>
+<p data-source-block="1132">The result is a small back-and-forth movement around the astronomical reference rather than perfect coincidence with it every year.</p>
+<p data-source-block="1133">That movement is <strong>phase displacement</strong>.</p>
+<p data-source-block="1134">Whole-sol calendars naturally produce it. The relevant questions are whether the displacement remains bounded and whether the long-run average continues to track the physical cycle.</p>
+<p data-source-block="1135">For Marian, it does.</p>
+<p data-source-block="1136">The technical analysis shows that the mnemonic rule allows somewhat larger intermediate excursions from the smooth astronomical target than a deliberately phase-balanced distribution would. But those excursions do not accumulate indefinitely: the 100-year cycle returns very close to the target because the average year length is right.</p>
+<p data-source-block="1137">That distinction matters.</p>
+<p data-source-block="1138">A temporary phase difference is not the same thing as long-term drift.</p>
+<h2 data-source-block="1139">Could the leap years be placed better?</h2>
+<p data-source-block="1140">Yes.</p>
+<p data-source-block="1141">If the same 59 leap sols were distributed specifically to keep cumulative civil time as close as possible to a smooth rate of 0.59 leap sol per year, the calendar could remain nearer to the astronomical reference throughout the century.</p>
+<p data-source-block="1142">On that narrow metric, a phase-balanced sequence is better.</p>
+<p data-source-block="1143">Marian still does not use one.</p>
+<p data-source-block="1144">That is not because the difference is being denied. It is because civil calendar design has another objective: a rule should be teachable, auditable and recoverable without requiring a generated sequence or lookup table.</p>
+<p data-source-block="1145">The Marian rule can be spoken aloud:</p>
+<p data-source-block="1146"><strong>Odd years leap. Tens leap. Hundreds do not.</strong></p>
+<p data-source-block="1147">Someone encountering a Marian date generations later can reconstruct the leap status from the year number alone.</p>
+<p data-source-block="1148">The trade-off is therefore straightforward:</p>
+<p data-source-block="1149"><strong>phase-balanced placement = better short-period astronomical tracking</strong></p>
+<p data-source-block="1150"><strong>Marian placement = better mnemonic transparency</strong></p>
+<p data-source-block="1151">Marian chooses the second.</p>
+<p data-source-block="1152">The detailed phase analysis belongs in the technical record because it establishes what that choice costs. The civil calendar needs the conclusion rather than every intermediate statistic: <strong>59/100 gets the long-run frequency right, while the mnemonic placement sacrifices some short-period astronomical neatness in exchange for a rule people can reconstruct.</strong></p>
+<h2 data-source-block="1153">Simple does not mean careless</h2>
+<p data-source-block="1154">A still simpler frequency could certainly be chosen. Three leap years in every five would give:</p>
+<p data-source-block="1155"><strong>3 / 5 = 0.6</strong></p>
+<p data-source-block="1156">and therefore an average year of:</p>
+<p data-source-block="1157"><strong>668.600000 sols</strong></p>
+<p data-source-block="1158">That is easier.</p>
+<p data-source-block="1159">It is also noticeably worse.</p>
+<p data-source-block="1160">At the other extreme, more elaborate rational approximations can fit the astronomical estimate extraordinarily closely. But a civil rule is not improved automatically by adding digits to the denominator.</p>
+<p data-source-block="1161">Any leap regime must be taught, implemented, audited and preserved by institutions whose users had nothing to do with its original design. A tiny numerical improvement can therefore be a poor exchange for a rule that becomes difficult to reconstruct without documentation.</p>
+<p data-source-block="1162">The 59/100 scheme occupies a useful middle ground. Its denominator is familiar, its average is extremely close to the target and its verbal rule is short.</p>
+<p data-source-block="1163">Marian still has only two ordinary year forms:</p>
+<p data-source-block="1164"><strong>668-sol common year</strong></p>
+<p data-source-block="1165">and:</p>
+<p data-source-block="1166"><strong>669-sol leap year</strong></p>
+<p data-source-block="1167">Nothing else needs to change.</p>
+<h2 data-source-block="1168">What the leap sol actually changes</h2>
+<p data-source-block="1169">A leap sol appears in exactly one civil position:</p>
+<p data-source-block="1170"><strong>Month 12 · Week 8 · Day 7</strong></p>
+<p data-source-block="1171">In a common year, Month 12 ends after Day 6 of its final civil week. In a leap year, the seventh position exists as the final Sunsol, changing the annual length from 668 sols to 669.</p>
+<p data-source-block="1172">Everything earlier in the year remains identical. Months 1 through 11 do not move. The first 55 sols of Month 12 do not move. No separate intercalary period is inserted between months or outside the ordinary calendar.</p>
+<p data-source-block="1173">The single additional sol means that:</p>
+<ul class="source-list" data-word-list-id="4">
+<li data-source-block="1174">the final week contains seven weekday positions rather than six;</li>
+<li data-source-block="1175">the final minth contains 28 sols rather than 27;</li>
+<li data-source-block="1176">Month 12 contains 56 rather than 55;</li>
+<li data-source-block="1177">Sixth 6 contains 112 rather than 111;</li>
+<li data-source-block="1178">Quarter 4 contains 168 rather than 167.</li>
+</ul>
+<p data-source-block="1179">The entire leap-year difference is concentrated in one possible civil date. A leap year does not require the preceding calendar to be rebuilt, and the first eleven months are identical in both annual forms.</p>
+<p data-source-block="1180">The difference arrives at the final position and nowhere else.</p>
+<h2 data-source-block="1181">Leap years are calculated, not observed</h2>
+<p data-source-block="1182">Once MY1 has been instantiated, users do not need to observe Mars reaching Ls = 15° every year to determine whether the civil year will contain 668 or 669 sols.</p>
+<p data-source-block="1183">Leap status follows from the year number.</p>
+<p data-source-block="1184">Software does not ask, “Has Mars crossed the seasonal reference slightly early this year?” It asks whether the year is odd, whether it is divisible by 10 and whether the century exception applies.</p>
+<p data-source-block="1185">That allows future dates to be calculated deterministically. Long-term contracts can name dates in future Marian years. Software can compute year starts. Archives can reconstruct past dates. An implementation does not need an ephemeris simply to work out whether MY86 contains the final Sunsol.</p>
+<p data-source-block="1186">This is the division of labour established earlier:</p>
+<p data-source-block="1187"><strong>astronomy defines what the calendar is trying to track; intercalation provides the deterministic civil approximation.</strong></p>
+<p data-source-block="1188">Scientific systems remain free to calculate the actual Ls = 15° crossing to whatever precision they require.</p>
+<p data-source-block="1189">A New Year celebration does not need JPL Horizons open in another tab.</p>
+<h2 data-source-block="1190">Accuracy means tracking, not coincidence</h2>
+<p data-source-block="1191">A whole-sol civil calendar cannot make every New Year coincide exactly with a recurrence of 668.59 sols. That is not a defect in Marian. It is what integer-sol intercalation means.</p>
+<p data-source-block="1192">The common year contracts to 668 sols and the leap year expands to 669. Over time, the two forms keep the mean close to the astronomical cycle.</p>
+<p data-source-block="1193">The relationship is therefore not:</p>
+<p data-source-block="1194"><strong>civil year = astronomical year</strong></p>
+<p data-source-block="1195">but:</p>
+<p data-source-block="1196"><strong>the civil sequence tracks the astronomical year through bounded whole-sol adjustments</strong></p>
+<p data-source-block="1197">That avoids a misleading expectation that every civil New Year should fall at the exact astronomical crossing. It cannot, nor does ordinary civil life require it to.</p>
+<p data-source-block="1198">The calendar remains internally exact. A contract dated Month 8, Week 3, Day 5 does not become uncertain because the smooth astronomical reference currently lies some fraction of a sol away.</p>
+<p data-source-block="1199">The phase relationship matters because it tells us whether the civil calendar continues to track its intended physical reference. It does not mean the calendar has “lost” a sol.</p>
+<p data-source-block="1200"><strong>The sky does not know what date it is.</strong></p>
+<p data-source-block="1201">The calendar knows what physical cycle it is approximating.</p>
+<h2 data-source-block="1202">Why not correct the calendar whenever necessary?</h2>
+<p data-source-block="1203">One could build a responsive system instead: calculate the actual Ls = 15° crossing each year, monitor the difference from the civil calendar and add or suppress a leap sol whenever some threshold is reached.</p>
+<p data-source-block="1204">Astronomically, that could be extremely accurate.</p>
+<p data-source-block="1205">Civically, it would be troublesome.</p>
+<p data-source-block="1206">Future calendar structure would no longer follow entirely from the year number. Long-term planning could depend on future astronomical calculations, published tables or decisions by an authority. That conflicts with one of Marian's core requirements: ordinary dates should remain deterministic.</p>
+<p data-source-block="1207">The adjustment regime is therefore designed in advance. People should be able to determine the shape of MY86 without waiting for somebody to publish an ephemeris for it.</p>
+<p data-source-block="1208">Astronomy is not being ignored. The civil approximation has simply been separated from annual observation.</p>
+<h2 data-source-block="1209">A century is not eternity</h2>
+<p data-source-block="1210">The 59/100 rule is not claimed to be permanently exact.</p>
+<p data-source-block="1211">Mars's orbital and seasonal geometry changes slowly over long timescales, and a rational approximation that performs extremely well around the intended founding era will not remain mathematically perfect for geological time.</p>
+<p data-source-block="1212">Trying to solve that now with an elaborate multi-millennial leap rule would be false precision.</p>
+<p data-source-block="1213">Marian therefore treats 59/100 as the initial ordinary intercalation regime. If, centuries later, accumulated phase or improved long-range modelling showed that a rare additional correction was useful, a future standards authority could introduce one without redesigning the everyday calendar.</p>
+<p data-source-block="1214">A sol would still be a sol. Months could remain 55 or 56 sols. Minths, Sixths and quarters could retain their meanings. Ordinary common and leap years could remain 668 and 669 sols.</p>
+<p data-source-block="1215">Long-range steering can be separated from ordinary civil machinery. That is healthier than forcing every user to learn a maintenance rule for a problem their descendants may not encounter for centuries.</p>
+<h2 data-source-block="1216">The rule people actually need</h2>
+<p data-source-block="1217">For ordinary use, almost all of the preceding analysis can be forgotten. A user needs three tests:</p>
+<p data-source-block="1218"><strong>Odd year? Leap.</strong></p>
+<p data-source-block="1219"><strong>Otherwise divisible by 10? Leap.</strong></p>
+<p data-source-block="1220"><strong>Divisible by 100? Common instead.</strong></p>
+<p data-source-block="1221">That is enough.</p>
+<p data-source-block="1222">MY41 — leap<br/>MY42 — common<br/>MY43 — leap<br/>MY50 — leap<br/>MY51 — leap<br/>MY52 — common<br/>MY90 — leap<br/>MY99 — leap<br/>MY100 — common<br/>MY101 — leap</p>
+<p data-source-block="1223">Across every hundred regular years, those tests produce exactly 59 leap sols. Those 59 decisions move the mean civil year from 668 sols to almost exactly the selected Martian tropical recurrence, while the rest of the architecture remains stable.</p>
+<p data-source-block="1224">Every regular year still has twelve months and twenty-four minths. The same Sixths, quarters and weekday structure remain in place. Only the final Sunsol of Month 12 distinguishes the two annual templates.</p>
+<p data-source-block="1225">That is where intercalation belongs in an operating calendar: precise enough to preserve the astronomical relationship, but contained enough that its complexity does not spread through the whole system.</p>
+<p data-source-block="1226">The astronomy is not simple. The civil response can be.</p>
+<h2 data-source-block="1227">What the rule claims</h2>
+<p data-source-block="1228">The 59/100 rule supports three fairly modest claims.</p>
+<p data-source-block="1229">First, <strong>668.590000 sols</strong> is extremely close to the selected Ls = 15° recurrence around the intended founding era.</p>
+<p data-source-block="1230">Second, the mnemonic placement keeps the civil sequence tracking that astronomical reference over time, although a deliberately phase-balanced placement could reduce the intermediate phase variation.</p>
+<p data-source-block="1231">Third, the leap status of an ordinary Marian year can be determined from a short verbal rule without astronomical computation or a lookup table.</p>
+<p data-source-block="1232">It does not claim mathematical optimality. It does not claim that no long-period correction could ever become useful, and it does not turn Marian dates into astronomical coordinates.</p>
+<p data-source-block="1233">When exact seasonal position matters, use Ls. For civil chronology, use the calendar.</p>
+<p data-source-block="1234"><strong>The astronomy determines the leap frequency. Human usability helps determine the leap placement.</strong></p></article><nav aria-label="Previous and next section" class="pager"><a href="chapter-13.html" rel="prev">← Chapter 13: Where the Year Begins</a><a href="chapter-15.html" rel="next">Chapter 15: A Date That Survives Translation →</a></nav></main>
+<footer>© JB Bullock 2026. Book text, cover and illustrations: all rights reserved. Marian Protocol v1.0 is separately licensed.</footer></body></html>

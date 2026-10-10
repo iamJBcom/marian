@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="no-referrer" name="referrer"/><meta content="default-src 'none'; style-src 'self'; img-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" http-equiv="Content-Security-Policy"/>
+<title>Appendix E: Earth-Mars Reference | Marian — An Operating Calendar for Human Mars</title><meta content="Read Appendix E: Earth-Mars Reference. Marian: An Operating Calendar for Human Mars. Written by JB Bullock." name="description"/><link href="../css/book.css" rel="stylesheet"/><link rel="canonical" href="https://iamjbcom.github.io/marian/appendices/appendix-e.html"/><meta property="og:type" content="article"/><meta property="og:title" content="Appendix E: Earth-Mars Reference | Marian — An Operating Calendar for Human Mars"/><meta property="og:url" content="https://iamjbcom.github.io/marian/appendices/appendix-e.html"/></head>
+<body><a class="skip" href="#main">Skip to reading content</a><header class="mast"><a class="brand" href="../index.html">MARIAN<span>Operating Architecture Series</span></a><nav aria-label="Site"><a href="../index.html">Contents</a></nav></header>
+
+<main class="reading" id="main"><div class="crumbs"><a href="../index.html">Marian</a> / Appendix E: Earth-Mars Reference</div><article class="book-section" data-section="appendix-e"><h1 class="source-heading" data-source-block="3683">E - Earth-Mars Reference</h1>
+<p data-source-block="3684"><em>Conversion, Clock Drift and the Month-Gap Heuristic  </em></p>
+<h2 data-source-block="3685">E.1 Purpose</h2>
+<p data-source-block="3686">Marian is a local civil calendar for Mars. It is not intended to isolate Martian chronology from Earth.</p>
+<p data-source-block="3687">Any permanent settlement would remain connected to terrestrial families, organisations, governments, scientific systems, archives and legal frameworks. Marian dates must therefore be capable of deterministic conversion to Earth-referenced chronology while remaining locally meaningful on Mars.</p>
+<p data-source-block="3688">This appendix summarises that relationship.</p>
+<p data-source-block="3689">It covers four distinct issues:</p>
+<ul class="source-list" data-word-list-id="32">
+<li data-source-block="3690">conversion between Marian and terrestrial chronology;</li>
+<li data-source-block="3691">the changing relationship between a Martian sol and UTC;</li>
+<li data-source-block="3692">the changing Earth–Mars communications delay; and</li>
+<li data-source-block="3693">the <strong>circular month-gap heuristic</strong>, which uses the two calendars' twelve-part annual structures to provide coarse intuition about Earth–Mars orbital geometry.</li>
+</ul>
+<p data-source-block="3694">These should not be confused with one another. Calendar conversion can be exact once the epoch is established. The month-gap relationship is deliberately approximate.</p>
+<h2 data-source-block="3695">E.2 Two calendars, one physical timeline</h2>
+<p data-source-block="3696">A single event can legitimately carry several temporal coordinates.</p>
+<p data-source-block="3697">A message transmitted from Mars might be recorded locally as:</p>
+<p data-source-block="3698"><strong>MY42-08-03-05</strong></p>
+<p data-source-block="3699">The same event could also carry:</p>
+<ul class="source-list" data-word-list-id="30">
+<li data-source-block="3700">a Gregorian date;</li>
+<li data-source-block="3701">a UTC or other terrestrial timestamp;</li>
+<li data-source-block="3702">Mars Sol Date;</li>
+<li data-source-block="3703">Ls;</li>
+<li data-source-block="3704">local Martian clock time; and</li>
+<li data-source-block="3705">precise ephemeris information.</li>
+</ul>
+<p data-source-block="3706">These representations answer different questions.</p>
+<p data-source-block="3707">The Marian Civil Date answers:</p>
+<p data-source-block="3708"><strong>Where does this event sit in Mars's civil calendar?</strong></p>
+<p data-source-block="3709">The Gregorian date answers the equivalent civil question for Earth.</p>
+<p data-source-block="3710">A continuous or absolute timescale provides the technical bridge between them.</p>
+<p data-source-block="3711">Interplanetary chronology should therefore be understood as <strong>translation among coordinate systems</strong>, not as one world's calendar replacing the other's.</p>
+<h2 data-source-block="3712">E.3 Conversion requires the Marian epoch</h2>
+<p data-source-block="3713">Absolute conversion cannot be completed until the Marian epoch exists.</p>
+<p data-source-block="3714">MY0 begins at the recognised first human step on Mars. MY1 begins at the first Airy-0 midnight following Mars's next passage through:</p>
+<p data-source-block="3715"><strong>Ls = 15°</strong></p>
+<p data-source-block="3716">The timestamp of that future event is not yet known.</p>
+<p data-source-block="3717">Before the epoch exists, Marian dates may be mapped against synthetic or hypothetical epochs for modelling and testing. They cannot yet be given authoritative Gregorian equivalents.</p>
+<p data-source-block="3718">Once the start of MY1 has been instantiated against an agreed absolute timescale, conversion becomes deterministic.</p>
+<p data-source-block="3719">Conceptually:</p>
+<p data-source-block="3720"><strong>Marian Civil Date → Marian ordinal sol → offset from MY1 → absolute chronology → Gregorian/UTC</strong></p>
+<p data-source-block="3721">and in reverse:</p>
+<p data-source-block="3722"><strong>Gregorian/UTC or absolute chronology → offset from MY1 → Marian ordinal sol → Marian Civil Date</strong></p>
+<p data-source-block="3723">Appendix D defines the Marian integer arithmetic on either side of that bridge.</p>
+<p data-source-block="3724">A future implementation standard will need to define the exact astronomical and timescale conventions used for the bridge itself.</p>
+<h2 data-source-block="3725">E.4 Conversion is not synchronisation</h2>
+<p data-source-block="3726">The ability to convert perfectly between two calendars does not mean that their dates remain aligned.</p>
+<p data-source-block="3727">They cannot.</p>
+<p data-source-block="3728">Earth and Mars have different:</p>
+<ul class="source-list" data-word-list-id="34">
+<li data-source-block="3729">day lengths;</li>
+<li data-source-block="3730">year lengths;</li>
+<li data-source-block="3731">month structures; and</li>
+<li data-source-block="3732">intercalation systems.</li>
+</ul>
+<p data-source-block="3733">A particular Gregorian date therefore moves through the Marian year over time, just as a particular Marian date moves through the Gregorian calendar.</p>
+<p data-source-block="3734">There can be no permanent equivalence such as:</p>
+<p data-source-block="3735"><strong>1 Janiix = 3 January</strong></p>
+<p data-source-block="3736">Any such coincidence would immediately begin to drift.</p>
+<p data-source-block="3737">Cross-world systems therefore need a <strong>conversion function</strong>, not a permanent date lookup table.</p>
+<p data-source-block="3738">That distinction matters for birthdays, holidays, accounting periods, contracts and any institution operating on both planets.</p>
+<h2 data-source-block="3739">E.5 The Martian sol and terrestrial elapsed time</h2>
+<p data-source-block="3740">A Martian mean solar day lasts approximately:</p>
+<p data-source-block="3741"><strong>24 hours, 39 minutes and 35 seconds</strong></p>
+<p data-source-block="3742">of terrestrial elapsed time.</p>
+<p data-source-block="3743">The difference from an Earth day is therefore approximately:</p>
+<p data-source-block="3744"><strong>39 minutes and 35 seconds per sol</strong></p>
+<p data-source-block="3745">or about:</p>
+<p data-source-block="3746"><strong>2.75 per cent</strong></p>
+<p data-source-block="3747">This similarity is enough to make the Martian sol intuitive as a human civil day.</p>
+<p data-source-block="3748">It is not enough to keep Martian and terrestrial clocks synchronised.</p>
+<h2 data-source-block="3749">E.6 Airy-0 midnight drifts through UTC</h2>
+<p data-source-block="3750">Suppose, purely for illustration, that one Airy-0 midnight happened to coincide exactly with:</p>
+<p data-source-block="3751"><strong>00:00 UTC</strong></p>
+<p data-source-block="3752">The following Airy-0 midnight would occur approximately at:</p>
+<p data-source-block="3753"><strong>00:39:35 UTC</strong></p>
+<p data-source-block="3754">The next roughly at:</p>
+<p data-source-block="3755"><strong>01:19 UTC</strong></p>
+<p data-source-block="3756">and the next around:</p>
+<p data-source-block="3757"><strong>01:59 UTC</strong></p>
+<p data-source-block="3758">The offset continues to move because each Martian sol is about forty terrestrial minutes longer than an Earth day.</p>
+<p data-source-block="3759">After approximately <strong>36 to 37 sols</strong>, the Martian daily boundary has moved through an entire terrestrial 24-hour clock. </p>
+<p data-source-block="3760">This cycle then continues.</p>
+<p data-source-block="3761">A Martian local working day therefore has no permanently fixed relationship with London, New York, Tokyo or any other terrestrial time zone.</p>
+<h2 data-source-block="3762">E.7 Operational consequence of clock drift</h2>
+<p data-source-block="3763">An Earth–Mars organisation cannot rely on a fixed rule such as:</p>
+<p data-source-block="3764"><strong>Mars office hours overlap London from 14:00 to 17:00 UTC</strong></p>
+<p data-source-block="3765">The overlap itself moves through the terrestrial day.</p>
+<p data-source-block="3766">At one stage, Martian working hours may align conveniently with Europe. Later they may align better with North America. At another point, the same nominal Martian working day may fall across inconvenient terrestrial night hours.</p>
+<p data-source-block="3767">This is not caused by Marian. It follows from the physical difference between the terrestrial day and the Martian sol.</p>
+<p data-source-block="3768">Software should therefore calculate current local-time relationships rather than relying on a permanent offset.</p>
+<p data-source-block="3769">The infrastructure should perform the conversion.</p>
+<p data-source-block="3770">People should not have to.</p>
+<h2 data-source-block="3771">E.8 Communications delay is a separate problem</h2>
+<p data-source-block="3772">Clock drift is not the dominant constraint on Earth–Mars communication.</p>
+<p data-source-block="3773">The larger difference comes from changing physical separation.</p>
+<p data-source-block="3774">Earth and Mars move independently around the Sun, so their distance varies substantially. In the Marian analysis covering <strong>2031–2120</strong>, modelled one-way light time ranged approximately from:</p>
+<p data-source-block="3775"><strong>3 minutes to 22 minutes</strong>. </p>
+<p data-source-block="3776">A three-minute one-way delay already means that a question and reply require more than six minutes of signal travel before either participant's thinking or response time is included.</p>
+<p data-source-block="3777">At roughly twenty-two minutes each way, the physical minimum for a question-and-answer exchange approaches three quarters of an hour.</p>
+<p data-source-block="3778">This is not a terrestrial video call with unusually bad latency.</p>
+<p data-source-block="3779">It is asynchronous communication.</p>
+<h2 data-source-block="3780">E.9 Two twelve-part annual maps</h2>
+<p data-source-block="3781">Gregorian and Marian calendars share one useful structural property:</p>
+<p data-source-block="3782"><strong>both divide their local years into twelve months.</strong></p>
+<p data-source-block="3783">The months are very different lengths, and the two years do not proceed at the same rate. The shared twelve-part structure nevertheless allows their annual positions to be compared visually.</p>
+<p data-source-block="3784">Marian's annual anchor at <strong>Ls = 15°</strong> was chosen partly because, around the intended founding era, Mars at Marian New Year lies close to the broad heliocentric direction associated with Earth around Gregorian New Year.</p>
+<p data-source-block="3785">Very approximately:</p>
+<p data-source-block="3786"><strong>Gregorian Month 1 and Marian Month 1 begin from similar directions around the Sun.</strong></p>
+<p data-source-block="3787">As the two planets progress around their orbits at different rates, the two month numbers move apart and later return towards one another.</p>
+<p data-source-block="3788">That difference provides a simple mental model of their broad relative orbital phase. </p>
+<h2 data-source-block="3789">E.10 Circular month gap</h2>
+<p data-source-block="3790">Let:</p>
+<p data-source-block="3791"><strong>g = Gregorian month number, from 1 to 12</strong></p>
+<p data-source-block="3792">and:</p>
+<p data-source-block="3793"><strong>m = Marian month number, from 1 to 12</strong></p>
+<p data-source-block="3794">The absolute numeric difference is:</p>
+<p data-source-block="3795"><strong>|g − m|</strong></p>
+<p data-source-block="3796">Because the calendars are circular, the shorter distance around the twelve-position ring is:</p>
+<p data-source-block="3797"><strong>G = min(|g − m|, 12 − |g − m|)</strong></p>
+<p data-source-block="3798">where:</p>
+<p data-source-block="3799"><strong>G = circular month gap</strong></p>
+<p data-source-block="3800">and:</p>
+<p data-source-block="3801"><strong>0 ≤ G ≤ 6</strong></p>
+<p data-source-block="3802">For example:</p>
+<p data-source-block="3803"><strong>Gregorian Month 4, Marian Month 5</strong></p>
+<p data-source-block="3804">gives:</p>
+<p data-source-block="3805"><strong>G = 1</strong></p>
+<p data-source-block="3806">while:</p>
+<p data-source-block="3807"><strong>Gregorian Month 1, Marian Month 7</strong></p>
+<p data-source-block="3808">gives:</p>
+<p data-source-block="3809"><strong>G = 6</strong></p>
+<p data-source-block="3810">The circular treatment matters because:</p>
+<p data-source-block="3811"><strong>Month 12 and Month 1 are one position apart, not eleven.</strong></p>
+<h2 data-source-block="3812">E.11 Month-gap reference table</h2>
+<p data-source-block="3813">The modelling used in Marian found the following median one-way Earth–Mars light times for each circular month gap:</p>
+<div aria-label="Table 1 in Appendix E: Earth-Mars Reference; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="3814"><caption class="sr-only">Table 1 in Appendix E: Earth-Mars Reference</caption><thead><tr><th scope="col">Circular month gap</th><th scope="col">Median one-way light time</th></tr></thead><tbody><tr><td>0</td><td>5.2 min</td></tr><tr><td>1</td><td>7.0 min</td></tr><tr><td>2</td><td>11.2 min</td></tr><tr><td>3</td><td>15.2 min</td></tr><tr><td>4</td><td>18.3 min</td></tr><tr><td>5</td><td>20.3 min</td></tr><tr><td>6</td><td>21.0 min</td></tr></tbody></table></div>
+<p data-source-block="3815">These values come from the underlying Earth–Mars analysis used in the Marian design and should be treated as empirical summary values for that modelling interval, not immutable physical constants. </p>
+<p data-source-block="3816">The progression is nevertheless clear enough to be memorable:</p>
+<p data-source-block="3817"><strong>Gap 0–1 → generally shorter-delay conditions</strong></p>
+<p data-source-block="3818"><strong>Gap 2–4 → intermediate conditions</strong></p>
+<p data-source-block="3819"><strong>Gap 5–6 → generally longer-delay conditions</strong></p>
+<p data-source-block="3820">The heuristic therefore provides broad orientation rather than precision.</p>
+<h2 data-source-block="3821">E.12 Worked examples</h2>
+<p data-source-block="3822">Suppose a display shows:</p>
+<p data-source-block="3823"><strong>Earth: Month 3<br/>Mars: Month 4</strong></p>
+<p data-source-block="3824">Then:</p>
+<p data-source-block="3825"><strong>G = min(|3 − 4|, 12 − |3 − 4|)</strong></p>
+<p data-source-block="3826"><strong>G = 1</strong></p>
+<p data-source-block="3827">The historical modelling suggests that this belongs towards the shorter-delay end of the Earth–Mars communications cycle.</p>
+<p data-source-block="3828">Now suppose:</p>
+<p data-source-block="3829"><strong>Earth: Month 4<br/>Mars: Month 10</strong></p>
+<p data-source-block="3830">Then:</p>
+<p data-source-block="3831"><strong>|4 − 10| = 6</strong></p>
+<p data-source-block="3832">so:</p>
+<p data-source-block="3833"><strong>G = 6</strong></p>
+<p data-source-block="3834">That places the relationship towards the longer-delay end.</p>
+<p data-source-block="3835">A user does not need to know the planets' instantaneous coordinates to acquire a rough expectation that the second situation is likely to involve substantially more latency than the first.</p>
+<h2 data-source-block="3836">E.13 What the heuristic means</h2>
+<p data-source-block="3837">The month-gap relationship works because the two month numbers provide rough annual positions around two heliocentric orbits.</p>
+<p data-source-block="3838">When those annual positions are close, Earth and Mars tend to occupy more similar broad directions from the Sun.</p>
+<p data-source-block="3839">As the circular gap grows, their angular separation generally grows as well.</p>
+<p data-source-block="3840">That broad relationship is reflected in the median light-time data.</p>
+<p data-source-block="3841">The month gap can therefore be useful as:</p>
+<p data-source-block="3842"><strong>a civil orientation heuristic</strong></p>
+<p data-source-block="3843">It should not be treated as:</p>
+<p data-source-block="3844"><strong>a communications instrument</strong></p>
+<p data-source-block="3845">That distinction is essential.</p>
+<h2 data-source-block="3846">E.14 Why the heuristic is approximate</h2>
+<p data-source-block="3847">Several effects prevent month gap from determining exact Earth–Mars distance.</p>
+<p data-source-block="3848">First, Earth and Mars do not travel on perfect circular orbits.</p>
+<p data-source-block="3849">Their heliocentric distances vary, so similar angular relationships can correspond to different physical separations.</p>
+<p data-source-block="3850">Second, neither civil month system divides its orbit into equal angular sectors.</p>
+<p data-source-block="3851">Gregorian months are unequal elapsed periods. Marian months contain 55 or 56 sols.</p>
+<p data-source-block="3852">Third, orbital speed varies throughout both planetary years.</p>
+<p data-source-block="3853">Equal fractions of civil time therefore do not correspond to equal amounts of orbital longitude.</p>
+<p data-source-block="3854">Fourth, the month gap compresses a continuous geometric relationship into only seven possible values:</p>
+<p data-source-block="3855"><strong>0, 1, 2, 3, 4, 5, 6</strong></p>
+<p data-source-block="3856">A large amount of information is deliberately discarded.</p>
+<h2 data-source-block="3857">E.15 The distributions overlap</h2>
+<p data-source-block="3858">The table in Section E.11 gives medians, not deterministic mappings.</p>
+<p data-source-block="3859">A date with:</p>
+<p data-source-block="3860"><strong>G = 1</strong></p>
+<p data-source-block="3861">does not necessarily have a shorter actual light time than every date with:</p>
+<p data-source-block="3862"><strong>G = 2</strong></p>
+<p data-source-block="3863">Likewise, two dates with the same month gap can have materially different communications delays.</p>
+<p data-source-block="3864">The heuristic describes a broad statistical relationship.</p>
+<p data-source-block="3865">It does not determine the instantaneous geometry.</p>
+<p data-source-block="3866">Applications presenting the month gap SHOULD therefore avoid wording that implies a guaranteed delay.</p>
+<h2 data-source-block="3867">E.16 Month gap is not a conjunction warning</h2>
+<p data-source-block="3868">A circular month gap of 6 does not, by itself, identify solar conjunction.</p>
+<p data-source-block="3869">Operational conjunction conditions depend upon the precise geometry among:</p>
+<ul class="source-list" data-word-list-id="36">
+<li data-source-block="3870">Earth;</li>
+<li data-source-block="3871">Mars;</li>
+<li data-source-block="3872">the Sun; and</li>
+<li data-source-block="3873">the communications path.</li>
+</ul>
+<p data-source-block="3874">A high month gap indicates broadly unfavourable Earth–Mars orbital separation in the civil model.</p>
+<p data-source-block="3875">It does not determine link safety, solar interference or operational communications availability.</p>
+<p data-source-block="3876">Those require actual ephemeris and communications data.</p>
+<h2 data-source-block="3877">E.17 Exact latency always wins</h2>
+<p data-source-block="3878">Any operation that depends upon actual communications delay MUST use real orbital geometry.</p>
+<p data-source-block="3879">Examples include:</p>
+<ul class="source-list" data-word-list-id="39">
+<li data-source-block="3880">spacecraft commanding;</li>
+<li data-source-block="3881">communications routing;</li>
+<li data-source-block="3882">network buffering;</li>
+<li data-source-block="3883">link scheduling;</li>
+<li data-source-block="3884">autonomous-system supervision;</li>
+<li data-source-block="3885">time-critical scientific operations; and</li>
+<li data-source-block="3886">remote medical support.</li>
+</ul>
+<p data-source-block="3887">For such applications, the relevant value is ephemeris-derived light time, not a calendar heuristic.</p>
+<p data-source-block="3888">The month-gap model has a different purpose. It allows people to understand, approximately, why communications conditions are currently relatively favourable or unfavourable without requiring them to calculate orbital mechanics.</p>
+<p data-source-block="3889">Its value lies in intuition.</p>
+<p data-source-block="3890">Precision belongs elsewhere.</p>
+<h2 data-source-block="3891">E.18 Why Ls = 15° matters</h2>
+<p data-source-block="3892">The month-gap relationship is related to Marian's choice of:</p>
+<p data-source-block="3893"><strong>Ls = 15°</strong></p>
+<p data-source-block="3894">as its annual anchor.</p>
+<p data-source-block="3895">Around the intended founding era, that seasonal position places Mars close to the broad heliocentric direction associated with Earth around Gregorian New Year.</p>
+<p data-source-block="3896">That helps make the two twelve-position annual maps visually comparable.</p>
+<p data-source-block="3897">The logic should not, however, be reversed.</p>
+<p data-source-block="3898">Marian New Year was not defined solely by maximising the month-gap relationship. The design analysis found that nearby synthetic starting positions could marginally improve particular statistical measures.</p>
+<p data-source-block="3899">The annual anchor remains Ls = 15° because it provides a simple Martian seasonal reference with a useful secondary Earth-facing property.</p>
+<p data-source-block="3900">The year belongs to Mars.</p>
+<p data-source-block="3901">Interplanetary legibility is a benefit, not the master constraint.</p>
+<h2 data-source-block="3902">E.19 The relationship changes over centuries</h2>
+<p data-source-block="3903">Ls = 15° is a fixed Martian seasonal reference.</p>
+<p data-source-block="3904">Its particularly neat relationship with Gregorian New Year is not expected to remain numerically identical forever.</p>
+<p data-source-block="3905">Long-period orbital and seasonal relationships evolve. Marian does not respond by moving New Year in order to preserve the cleanest possible Earth-facing heuristic.</p>
+<p data-source-block="3906">Doing so would make the Martian calendar chase a secondary interface property.</p>
+<p data-source-block="3907">If the relationship becomes less tidy in future centuries, the month-gap calibration can be re-evaluated.</p>
+<p data-source-block="3908">The Martian annual anchor should not casually be moved to rescue it.</p>
+<h2 data-source-block="3909">E.20 Dates and durations must specify their world</h2>
+<p data-source-block="3910">Cross-world legal and institutional documents will need more explicit temporal language than terrestrial documents often require.</p>
+<p data-source-block="3911">A statement such as:</p>
+<p data-source-block="3912"><strong>payment due within 30 days</strong></p>
+<p data-source-block="3913">is ambiguous between worlds unless the intended unit is specified.</p>
+<p data-source-block="3914">Thirty terrestrial days and thirty Martian sols are different durations.</p>
+<p data-source-block="3915">Likewise:</p>
+<p data-source-block="3916"><strong>renewal every year</strong></p>
+<p data-source-block="3917">must identify whether <em>year</em> means a Gregorian year, Marian year or some separately defined contractual interval.</p>
+<p data-source-block="3918">A robust cross-world record may need to identify:</p>
+<ul class="source-list" data-word-list-id="19">
+<li data-source-block="3919">the governing civil calendar;</li>
+<li data-source-block="3920">the civil date;</li>
+<li data-source-block="3921">whether durations use terrestrial days or Martian sols;</li>
+<li data-source-block="3922">the applicable local-time convention;</li>
+<li data-source-block="3923">an absolute timestamp; and</li>
+<li data-source-block="3924">any legal rule governing transmission or receipt across communications delay.</li>
+</ul>
+<p data-source-block="3925">Marian defines the Martian civil coordinate.</p>
+<p data-source-block="3926">It does not define cross-world contract law.</p>
+<h2 data-source-block="3927">E.21 Recommended interoperable event record</h2>
+<p data-source-block="3928">For an event whose precise timing matters across worlds, a robust system might retain several fields:</p>
+<div aria-label="Table 2 in Appendix E: Earth-Mars Reference; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="3929"><caption class="sr-only">Table 2 in Appendix E: Earth-Mars Reference</caption><thead><tr><th scope="col">Field</th><th scope="col">Example purpose</th></tr></thead><tbody><tr><td>Marian Civil Date</td><td>Local Martian civil identity</td></tr><tr><td>Marian local time</td><td>Local operational meaning</td></tr><tr><td>Local-time convention or zone</td><td>Interpretation of displayed clock time</td></tr><tr><td>Absolute timestamp</td><td>Cross-system physical reference</td></tr><tr><td>Gregorian/UTC rendering</td><td>Earth-facing display</td></tr><tr><td>MSD or scientific coordinate</td><td>Scientific use, where required</td></tr><tr><td>Ls</td><td>Precise Martian seasonal position, where required</td></tr><tr><td>Actual one-way light time</td><td>Communications operation, where required</td></tr></tbody></table></div>
+<p data-source-block="3930">Not every application needs every field.</p>
+<p data-source-block="3931">The important principle is not to overload one coordinate with jobs already performed by another.</p>
+<h2 data-source-block="3932">E.22 Earth–Mars date conversion in practice</h2>
+<p data-source-block="3933">Once the MY1 epoch is known, a conversion service can be conceptually simple.</p>
+<p data-source-block="3934">For a Marian date:</p>
+<ol class="source-list" data-word-list-id="27">
+<li data-source-block="3935">validate the Marian Civil Date;</li>
+<li data-source-block="3936">convert it to Marian ordinal sol;</li>
+<li data-source-block="3937">calculate the integer sol offset from the start of MY1;</li>
+<li data-source-block="3938">apply the authoritative Mars–absolute-time bridge;</li>
+<li data-source-block="3939">produce the corresponding terrestrial timestamp and Gregorian display.</li>
+</ol>
+<p data-source-block="3940">For an Earth timestamp:</p>
+<ol class="source-list" data-word-list-id="25">
+<li data-source-block="3941">convert the timestamp through the authoritative absolute chronology;</li>
+<li data-source-block="3942">determine the corresponding Marian sol relative to MY1;</li>
+<li data-source-block="3943">identify the Marian year;</li>
+<li data-source-block="3944">determine the ordinal sol;</li>
+<li data-source-block="3945">derive Month, Week and Day.</li>
+</ol>
+<p data-source-block="3946">The Marian calendar arithmetic is deterministic.</p>
+<p data-source-block="3947">The absolute astronomical bridge is the specialised layer.</p>
+<p data-source-block="3948">This is another application of Functional Separation: <strong>civil dates organise life; continuous timescales connect physical events.</strong></p>
+<h2 data-source-block="3949">E.23 Conversion software should hide the machinery</h2>
+<p data-source-block="3950">Ordinary users should not need to perform these calculations manually.</p>
+<p data-source-block="3951">An interplanetary calendar application could simply display:</p>
+<div aria-label="Table 3 in Appendix E: Earth-Mars Reference; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="3952"><caption class="sr-only">Table 3 in Appendix E: Earth-Mars Reference</caption><thead><tr><th scope="col">Mars</th><th scope="col">Earth</th></tr></thead><tbody><tr><td>MY42-08-03-05</td><td>〈converted Gregorian date〉</td></tr><tr><td>Frisol · Augiix</td><td>〈local terrestrial weekday/month〉</td></tr><tr><td>Local Mars time</td><td>UTC / local Earth time</td></tr><tr><td>Month gap: 2</td><td>Actual one-way light time: 〈ephemeris value〉</td></tr></tbody></table></div>
+<p data-source-block="3953">Before the real MY1 epoch exists, the terrestrial side remains synthetic.</p>
+<p data-source-block="3954">Afterwards, it can become routine.</p>
+<p data-source-block="3955">The ideal end state is unremarkable:</p>
+<p data-source-block="3956"><strong>conversion should be boring.</strong></p>
+<h2 data-source-block="3957">E.24 Earth–Mars reference summary</h2>
+<p data-source-block="3958">The relationship between the two civil systems can be summarised as follows:</p>
+<div aria-label="Table 4 in Appendix E: Earth-Mars Reference; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="3959"><caption class="sr-only">Table 4 in Appendix E: Earth-Mars Reference</caption><thead><tr><th scope="col">Issue</th><th scope="col">Relationship</th><th scope="col">Appropriate tool</th></tr></thead><tbody><tr><td>Civil date</td><td>Different local calendars</td><td>Deterministic calendar conversion</td></tr><tr><td>Physical instant</td><td>Shared underlying event</td><td>Absolute/continuous timescale</td></tr><tr><td>Daily clock</td><td>Constantly changing relative phase</td><td>Time conversion</td></tr><tr><td>Seasonal position</td><td>Different planetary cycles</td><td>Ls / ephemeris</td></tr><tr><td>Communications latency</td><td>Varies with orbital geometry</td><td>Ephemeris-derived light time</td></tr><tr><td>Broad orbital intuition</td><td>Approximate</td><td>Circular month gap</td></tr></tbody></table></div>
+<p data-source-block="3960">The key distinctions are therefore:</p>
+<p data-source-block="3961"><strong>conversion is not synchronisation;</strong></p>
+<p data-source-block="3962"><strong>calendar position is not orbital position;</strong></p>
+<p data-source-block="3963"><strong>month gap is not exact light time;</strong></p>
+<p data-source-block="3964">and:</p>
+<p data-source-block="3965"><strong>interoperability does not require uniformity.</strong></p>
+<p data-source-block="3966">Earth can remain on terrestrial civil time.</p>
+<p data-source-block="3967">Mars can develop its own.</p>
+<p data-source-block="3968">A shared technical chronology can connect them without requiring either world to organise ordinary life around the other's calendar.</p>
+<p data-source-block="3969"><strong>Two local calendars. One physical timeline. A good interface between them.</strong></p></article><nav aria-label="Previous and next section" class="pager"><a href="appendix-d.html" rel="prev">← Appendix D: Dates, Identity &amp; Implementation</a><a href="appendix-f.html" rel="next">Appendix F: Comparative Calendar Reference →</a></nav></main>
+<footer>© JB Bullock 2026. Book text, cover and illustrations: all rights reserved. Marian Protocol v1.0 is separately licensed.</footer></body></html>

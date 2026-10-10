@@ -1,0 +1,109 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Marian: Open Technical Overview: an author-approved technical companion to Marian Protocol v1.0."><title>Marian: Open Technical Overview — Marian</title><style>
+@page{size:A4;margin:20mm 19mm 19mm 19mm; @bottom-right{content:counter(page);font:9pt Georgia,serif;color:#737b86} }
+*{box-sizing:border-box} html{font-size:17px; scroll-behavior:smooth}
+body{margin:0;background:#f9fafb;color:#20242b;font-family:Georgia,'DejaVu Serif',serif;line-height:1.74;-webkit-font-smoothing:antialiased}
+.nav{background:#fff;border-bottom:1px solid #e4e8ed;padding:13px max(25px,calc((100vw - 900px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:system-ui,sans-serif;font-size:13px;flex-wrap:wrap}
+.nav a{color:#365274;text-decoration:none;white-space:nowrap;margin-right:14px}.nav a:hover{text-decoration:underline}
+.wrap{max-width:850px;margin:40px auto 70px;background:white;padding:62px 72px;border:1px solid #edf0f2;box-shadow:0px 6px 25px #0012}
+.meta{font-family:system-ui,sans-serif;color:#6e7887;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid #e0e4e8;padding-bottom:14px;margin-bottom:32px}
+.content h1,.content h2,.content h3{line-height:1.22;color:#1a2535;break-after:avoid;font-family:system-ui,'DejaVu Sans',sans-serif}
+.content h1{font-size:2.1rem;letter-spacing:-.03em;margin:0 0 18px}.content h2{font-size:1.4rem;margin:2.3rem 0 .8rem}.content h3{font-size:1.11rem;margin:1.8rem 0 .5rem}
+.content p{margin:0 0 1.1em}.content ul,.content ol{margin:0 0 1.3em;padding-left:2em}.content li{margin-bottom:.35em}
+.content a{color:#214e7e;text-decoration:underline;text-underline-offset:2px}
+.content strong{font-weight:700}.content blockquote{border-left:3px solid #97a9c4;padding-left:20px;color:#4c596b;margin-left:0}
+.content table{width:100%;border-collapse:collapse;font:13px/1.5 system-ui,'DejaVu Sans',sans-serif;margin:20px 0 27px;page-break-inside:auto}
+.content td,.content th{padding:10px 11px;border:1px solid #e1e6eb;vertical-align:top;overflow-wrap:anywhere}
+.content th{background:#f1f4f7;text-align:left;font-weight:650}.content tr{break-inside:avoid}
+.table-scroll{overflow-x:auto;max-width:100%}
+.content code{font:0.84em 'DejaVu Sans Mono',monospace;background:#f2f4f7;padding:2px 4px;overflow-wrap:anywhere}
+.content pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f2f4f7;padding:14px}
+.footer{font:12px system-ui,sans-serif;color:#747b83;border-top:1px solid #e1e5ea;padding-top:24px;margin-top:40px}
+@media(max-width:700px){body{background:#fff}.wrap{margin:0;border:0;box-shadow:none;padding:28px 22px 45px}.content h1{font-size:1.72rem}.content h2{font-size:1.27rem}.nav{padding:11px 20px}}
+@media print {html{font-size:11pt}body{background:white;line-height:1.53}.nav{display:none}.wrap{padding:0;margin:0;box-shadow:none;border:0;max-width:none}.meta{font-size:9pt}.content h1{font-size:22pt}.content h2{font-size:15pt}.content h3{font-size:12pt}.content table{font-size:8.3pt}.table-scroll{overflow:visible}.content td,.content th{padding:5px 6px}.content p{orphans:3;widows:3}.footer{font-size:9pt}}
+
+@media screen {.content :focus-visible {outline:3px solid #255d94;outline-offset:2px}}
+@media print {.private {display:none}}
+.skip{position:absolute;left:1rem;top:-200px;padding:.65rem;background:white;color:#214e7e;z-index:9999}.skip:focus{top:0}.skip:focus-visible{outline:3px solid #1b4778;outline-offset:2px}
+</style><link rel="canonical" href="https://iamjbcom.github.io/marian/companions/01-technical-overview.html"/><meta property="og:type" content="article"/><meta property="og:title" content="Marian: Open Technical Overview — Marian"/><meta property="og:url" content="https://iamjbcom.github.io/marian/companions/01-technical-overview.html"/><link rel="license" href="https://creativecommons.org/licenses/by/4.0/"/></head><body><a class="skip" href="#main">Skip to main content</a><main id="main"><nav class="nav"><a href="index.html">← Companions</a><span><a href="01-technical-overview.html">Marian: Open Technical Overview</a> <a href="02-evidence-prior-art.html">Marian: Evidence, Prior Art and Claims</a> <a href="03-marian-vs-darian.html">Marian versus Darian: A Comparative Evaluation</a> </span></nav><article class="wrap"><div class="meta">Marian: An Operating Calendar for Human Mars · Author approved 9 October 2026</div><div class="content"><h1>Marian: An Operating Calendar for Human Mars</h1>
+<h2>An open technical overview of Marian Protocol v1.0</h2>
+<p><strong>About this technical companion.</strong> This author-approved explanatory article is subordinate to Marian Protocol v1.0. Original technical prose is licensed under CC BY 4.0; the literary book and illustrations remain all rights reserved.</p><p class="public-license-proposal" role="note"><strong>Licence for original technical companion prose:</strong> Original technical companion prose © Jonathan Bullock 2026, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, with attribution required. This grant does not cover the separate Marian book text, illustrations or third-party material. </p>
+<h3>The problem is human coordination, not Martian time measurement</h3>
+<p>Mars already has accurate systems for counting mission sols, expressing local solar time and locating the planet seasonally by areocentric solar longitude (Ls). But a permanent human settlement needs a <em>civil</em> calendar: repeatable dates for schools, contracts, public services, maintenance, birthdays and institutional planning. That calendar must organise an almost Earth-length day inside a year of approximately 668.6 sols. The near-Earth day makes familiar week-length intervals attractive, but the long year makes an ordinary twelve-month division almost twice as long as an Earth month.</p>
+<p>A design that preserves twelve annual months produces approximately 56-sol units—good for annual orientation, awkward for short administrative cycles. A design that preserves approximately four-week months naturally produces around twenty-four named periods per year—good for cadence, less familiar as a twelve-part annual map. Marian's central response is <strong>functional separation</strong>: the planet's orbit and people's operating rhythms need not be forced into the same calendrical unit.</p>
+<h3>Seven civil scales, with different jobs</h3>
+<p>A Marian year contains <strong>12 months</strong>, <strong>24 minths</strong>, <strong>6 Sixths</strong>, <strong>4 quarters</strong> and <strong>96 nominal civil-week positions</strong>, all built over uninterrupted physical Martian sols. In a common year the month lengths are <strong>56–56–55</strong>, repeated four times. The first minth of every month is 28 sols; the second is 28 or 27. Thus every month contains two minths, and every year has twenty-four. Four 167-sol common-year quarters provide four annual fractions; six Sixths group two months apiece and last 111–112 sols (the last grows to 112 in leap years). A calendar may have overlapping useful partitions: a Sixth can cross a quarter boundary, because the two represent different functions.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Comparison data table"><table>
+<thead>
+<tr>
+  <th>Scale</th>
+  <th>Regular form</th>
+  <th>Civil purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Sol</td>
+  <td>One continuous Martian mean solar day</td>
+  <td>Lived day</td>
+</tr>
+<tr>
+  <td>Civil week</td>
+  <td>Seven nominal weekday positions; some terminal weeks have six</td>
+  <td>Recurrence</td>
+</tr>
+<tr>
+  <td>Minth</td>
+  <td>27 or 28 sols; 24 each year</td>
+  <td>Near-four-week short cadence</td>
+</tr>
+<tr>
+  <td>Month</td>
+  <td>55 or 56 sols; 12 each year</td>
+  <td>Twelve-part annual orientation</td>
+</tr>
+<tr>
+  <td>Sixth</td>
+  <td>111 or 112 sols; 6 each year</td>
+  <td>Medium-range cadence</td>
+</tr>
+<tr>
+  <td>Quarter</td>
+  <td>167 sols, except final leap quarter at 168</td>
+  <td>Four-part annual orientation</td>
+</tr>
+<tr>
+  <td>Year</td>
+  <td>668 or 669 sols</td>
+  <td>Seasonal-year civil frame</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Weeks: the explicit trade-off</h3>
+<p>Marian gives every month eight <em>nominal</em> civil weeks. In a 56-sol month, all eight are seven-position weeks. In a 55-sol month, the eighth ends after weekday 6 (Satsol). The seventh label, Sunsol, <strong>is absent from that terminal civil week</strong>; the next <strong>physical</strong> sol begins the next month as weekday 1 (Monsol). <strong>No physical sol is lost or skipped.</strong> In an ordinary year there are four such short terminal weeks, at the ends of Months 3, 6, 9 and 12. A leap year has only three, because the final Sunsol exists.</p>
+<p>This makes the weekday position of every valid recurring civil date invariant, and allows perpetual printed and software calendar layouts. Its price is interrupted civil weekday succession, which some cultural, religious or work-rest practices may reject. A continuous elapsed seven-sol count remains available separately. Marian presents that as a substantive social trade-off, <strong>not</strong> as an unqualified improvement over calendars with a continuous weekly cycle. Darian and Levitt provide important precedent for shortening terminal weekday sequences.</p>
+<h3>Exact leap arithmetic</h3>
+<p>Marian has 668-sol common years and 669-sol leap years. The mnemonic rule is: <strong>“Odd years leap. Tens leap. Hundreds do not.”</strong> A year is leap if it is not divisible by 100 and is either odd or divisible by 10. Exactly <strong>59 of every 100</strong> regular years are leap, giving <strong>66,859 sols per 100 years</strong> and <strong>668.590000 sols</strong> per mean civil year. Leap status and the identity of any date in MY1 onward can be determined entirely by integer arithmetic, without an ephemeris. The leap sol is the final Sunsol of Month 12; it changes no earlier date.</p>
+<p>The mathematical structure was independently executed and tested in Python and JavaScript using an exhaustive <strong>66,859-sol</strong> first-century ledger. These are calendar-integer verification results, not evidence that the physical Martian year is constant to six decimal places.</p>
+<h3>A Martian year with an Earth-facing benefit</h3>
+<p>The regular year is astronomically referenced to <strong>Ls = 15°</strong>, a fixed point in the Martian <em>seasonal</em> cycle. In the intended reference era, that places the Marian annual origin near the Sun-centred direction of Earth around Gregorian New Year. Thus the two worlds retain comparable <strong>twelve-part annual orientation</strong> without pretending that their years are simultaneous or equal in duration. By design, Marian months do <strong>not</strong> correspond to equal 30° sectors of Mars's orbit; accurate seasonal position remains the business of Ls and ephemerides.</p>
+<p>A related coarse visual heuristic uses the circular separation between contemporaneous Gregorian and Marian month numbers, from 0 to 6. In the author's September 2026 preprint, a synthetic 2031–2120 comparison reports a descriptive Spearman correlation of approximately <strong>0.9403</strong> between this month gap and modelled Earth–Mars <strong>one-way light time (OWLT)</strong>, with checks across 41 synodic cycles. The categories overlap substantially. The heuristic may help a human estimate the <em>general</em> state of Earth–Mars geometry; it <strong>cannot</strong> give a communications window, a safe command delay or an operational OWLT. Spaceflight operations must use actual ephemerides and communications calculations. These findings belong to a modelled study, not to the normative civil-date arithmetic.</p>
+<h3>Identity, language and Martian cultural ownership</h3>
+<p>The normative computer-readable identities are numeric: 12 months, minths 01–24 and explicitly defined date fields. Marian provides A–X as a compact minth shorthand and familiar recommended weekdays, but it does not require a single worldwide poetic vocabulary. Languages and future communities may choose their own human-facing names without changing a stored date or interoperability rule. This creates room for early Martians to participate in naming their own time rather than inherit a complete terrestrial naming settlement.</p>
+<h3>The future founding epoch—and honest limits</h3>
+<p>The recognised first human step on Mars begins transitional <strong>MY0</strong>. The first passage through Ls = 15° strictly after that step, followed by the first strictly subsequent canonical Airy Mean Time midnight, establishes the start of regular <strong>MY1</strong>. Marian Protocol v1.0 specifies a versioned Mars24-derived, TT-based Airy mean-sol clock for this boundary. Since these events have not yet occurred, there is <strong>no real founding timestamp</strong>, authenticated epoch certificate or presently valid absolute Earth↔Marian civil-date bridge. Synthetic epochs are for testing only.</p>
+<p>The Ls = 15° annual recurrence has been checked by two analytic astronomical approaches, but the separate high-precision SPICE-kernel comparison was not completed. Astronomical precision over a far-future settlement era therefore remains conditional. Nor has human preference for minths, Sixths or fixed weekday dates been tested empirically on a Martian population.</p>
+<h3>What is available to reuse</h3>
+<p>Under the separately scoped technical release, the <strong>author-ratified Marian Protocol v1.0</strong> and specifically designated original technical explanations and evidence will be available under <strong>CC BY 4.0</strong>, with original reference software and conformance tools under <strong>Apache 2.0</strong>. The independently readable illustrated book <em>Marian: An Operating Calendar for Human Mars</em> remains <strong>all rights reserved</strong>. No calendar has been adopted by a Martian government or standards authority. The proposal is offered to future builders as transparent operating architecture, not as a claim of cultural authority over their lives.</p>
+<p><strong>Read next:</strong> normative protocol; test and reproducibility suite; evidence/prior-art analysis; Marian–Darian comparison; web book. For the normative implementation, see <a href="https://github.com/iamJBcom/marian">the Marian technical repository</a>; the earlier research preprint and computational archive retain their distinct Zenodo records.</p>
+<hr />
+<h3>M6c source verification notes (editorial annex)</h3>
+<p>These notes document source provenance and do not alter the author-approved analysis. The normative Marian Protocol v1.0 is held in the separate, frozen technical repository; the link must be set to the real public URL at release. The following primary and official sources were checked for the specific facts attributed to them:</p>
+<ul>
+<li>Thomas Gangale, <em>The Darian Calendar</em> (1998), <a href="https://marspapers.org/paper/MAR98095.pdf">original proposal</a>: 24 months, 27/28-sol variation and shortened terminal weeks.</li>
+<li>Thomas Gangale, <em>The Architecture of Time, Part 2: The Darian System for Mars</em> (2006), <a href="https://doi.org/10.4271/2006-01-2249">SAE technical paper</a>: publication and system overview.</li>
+<li>Josef Šurán, <em>A Calendar for Mars</em> (1997), <a href="https://doi.org/10.1016/S0032-0633(97)00033-0">journal record</a>: leap/skip-day and leap/skip-week approaches.</li>
+<li>NASA GISS, <a href="https://www.giss.nasa.gov/tools/mars24/help/algorithm.html">Mars24 calculation documentation</a>, updated 2025: official mean-sol and seasonal-coordinate reference.</li>
+<li>Thomas Gangale, <a href="https://www.researchgate.net/publication/390729531_Expanding_the_Cultural_Relevance_of_the_Darian_Calendar_of_Mars_to_East_Asia">Darian adaptations for East Asian cultural nomenclature</a> (2025): additional names should not be misrepresented as nonexistent.</li>
+</ul>
+<p><strong>Source limitation:</strong> the 1954 Levitt work is credited through the author's research preprint and historical discussion rather than a newly inspected 1954 scan. The 2031–2120 Earth–Mars OWLT figures come from JB Bullock's September 2026 research preprint; M6c reconciles the quotations against that manuscript but does not rerun its 32,872-observation simulation or make the preprint public. External re-evaluation requires release or equivalent reproduction of the corresponding research methods/data. None of these limitations alters the verified integer-calendar rules.</p>
+</div><div class="footer">Original technical companion · CC BY 4.0 intended at public release. The literary book and its illustrations are all rights reserved. The protocol governs in any discrepancy. This companion is licensed separately from the literary book and images.</div></article></main></body></html>

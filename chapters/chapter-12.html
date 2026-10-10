@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="no-referrer" name="referrer"/><meta content="default-src 'none'; style-src 'self'; img-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" http-equiv="Content-Security-Policy"/>
+<title>Chapter 12: The Missing Sunsol | Marian — An Operating Calendar for Human Mars</title><meta content="Read Chapter 12: The Missing Sunsol. Marian: An Operating Calendar for Human Mars. Written by JB Bullock." name="description"/><link href="../css/book.css" rel="stylesheet"/><link rel="canonical" href="https://iamjbcom.github.io/marian/chapters/chapter-12.html"/><meta property="og:type" content="article"/><meta property="og:title" content="Chapter 12: The Missing Sunsol | Marian — An Operating Calendar for Human Mars"/><meta property="og:url" content="https://iamjbcom.github.io/marian/chapters/chapter-12.html"/></head>
+<body><a class="skip" href="#main">Skip to reading content</a><header class="mast"><a class="brand" href="../index.html">MARIAN<span>Operating Architecture Series</span></a><nav aria-label="Site"><a href="../index.html">Contents</a></nav></header>
+
+<main class="reading" id="main"><div class="crumbs"><a href="../index.html">Marian</a> / Chapter 12: The Missing Sunsol</div><article class="book-section" data-section="chapter-12"><h1 class="source-heading" data-source-block="857"><span class="heading-lead">RECURRENCE</span><br/><span class="heading-main">12) The Missing Sunsol</span><br/><span class="heading-sub">Sols, Weeks and Recurring Dates</span></h1>
+<p data-source-block="858">A calendar can do strange things to labels. It cannot do strange things to Mars.</p>
+<p data-source-block="859">That distinction matters in Marian because one of its most visible structural features is easy to describe badly. In a shortened Marian month, the final civil week contains six weekday positions rather than seven, and the next physical sol begins the following month as the first weekday. Mars does not lose a rotation, elapsed time does not jump and human circadian rhythms do not skip a day.</p>
+<p data-source-block="860">The thing being interrupted is much narrower:</p>
+<p data-source-block="861"><strong>the seven-position civil weekday sequence.</strong></p>
+<p data-source-block="862">Once that distinction is clear, the weekly mechanism is straightforward.</p>
+<h2 data-source-block="863">Start with the sol</h2>
+<p data-source-block="864">The fundamental Marian civil unit is the <strong>Martian mean solar day</strong>, conventionally called a <strong>sol</strong>. It lasts approximately 24 hours, 39 minutes and 35 seconds in terrestrial time, close enough to an Earth day to serve naturally as the basic unit of daily civil life.</p>
+<p data-source-block="865">Marian takes the sol as given. It does not define a new Martian second, prescribe how the sol should be divided into hours or minutes, or determine local time zones. Those questions belong to horology and local timekeeping rather than to the calendar itself.</p>
+<p data-source-block="866">For present purposes, one physical sol passes, then another, then another. That sequence is continuous. The calendar assigns civil identities to those sols.</p>
+<p data-source-block="867">This distinction between <strong>physical succession</strong> and <strong>civil labelling</strong> is the key to everything that follows.</p>
+<p data-source-block="868">Marian uses a nominal seven-position civil week. The recommended weekday names are:</p>
+<div aria-label="Table 1 in Chapter 12: The Missing Sunsol; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="869"><caption class="sr-only">Table 1 in Chapter 12: The Missing Sunsol</caption><thead><tr><th scope="col">Position</th><th scope="col">Recommended name</th></tr></thead><tbody><tr><td>Day 1</td><td>Monsol</td></tr><tr><td>Day 2</td><td>Tuesol</td></tr><tr><td>Day 3</td><td>Wedsol</td></tr><tr><td>Day 4</td><td>Thursol</td></tr><tr><td>Day 5</td><td>Frisol</td></tr><tr><td>Day 6</td><td>Satsol</td></tr><tr><td>Day 7</td><td>Sunsol</td></tr></tbody></table></div>
+<p data-source-block="870">The names are deliberately recognisable, but the structural identities are simply Day 1 through Day 7. Future communities could use different names without changing the calendar.</p>
+<p data-source-block="871">For most of the year, the sequence behaves exactly as a seven-day terrestrial week would suggest:</p>
+<p data-source-block="872"><strong>Monsol → Tuesol → Wedsol → Thursol → Frisol → Satsol → Sunsol → Monsol</strong></p>
+<p data-source-block="873">A complete week contains seven consecutive physical sols and seven civil weekday positions. A 56-sol month therefore contains exactly eight complete weeks:</p>
+<p data-source-block="874"><strong>56 = 8 × 7</strong></p>
+<p data-source-block="875">Weeks 1 through 8 each run from Monsol to Sunsol. The Sunsol of Week 8 is the 56th and final sol of the month, and the next physical sol begins the following month as Monsol. In a 56-sol month, physical succession and civil weekday succession therefore align perfectly across the boundary.</p>
+<figure class="art" data-editorial-status="AUTHOR_APPROVED_PLACEMENT_AND_CAPTION" id="image3"><img alt="Illustration: The Missing Sunsol. Expanded text description follows." decoding="async" height="1086" loading="lazy" src="../assets/image3.webp" width="1448"/><figcaption><strong>The Missing Sunsol</strong></figcaption><details class="figure-description"><summary>Detailed figure description</summary><p>The upper pair of calendar grids compares an eight-week 56-sol month with a 55-sol month. In the complete month, Week 8 ends with the seventh weekday, Sunsol. In the shorter month, Week 8 stops at its sixth weekday, Satsol; the following physical sol is the Monsol of the next month. A lower sequence of consecutive numbered physical sols illustrates that elapsed sols are never removed. The lower notes distinguish the missing weekday label from an omitted physical day.</p><p>Editorial note: this is a descriptive summary, not an independently verified transcription of every diagram label. Refer to the surrounding text and the Marian technical specification for authoritative numeric details where applicable.</p></details></figure>
+<p data-source-block="876">The interesting case is the 55-sol month.</p>
+<h2 data-source-block="877">The 55-sol boundary</h2>
+<p data-source-block="878">A 55-sol month is one sol shorter than eight complete seven-sol weeks. The first seven weeks are ordinary:</p>
+<p data-source-block="879"><strong>7 × 7 = 49 sols</strong></p>
+<p data-source-block="880">That leaves six physical sols. They occupy the first six weekday positions of Week 8:</p>
+<div aria-label="Table 2 in Chapter 12: The Missing Sunsol; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="881"><caption class="sr-only">Table 2 in Chapter 12: The Missing Sunsol</caption><thead><tr><th scope="col">Week 8 position</th><th scope="col">Civil weekday</th><th scope="col">Sol within month</th></tr></thead><tbody><tr><td>Day 1</td><td>Monsol</td><td>50</td></tr><tr><td>Day 2</td><td>Tuesol</td><td>51</td></tr><tr><td>Day 3</td><td>Wedsol</td><td>52</td></tr><tr><td>Day 4</td><td>Thursol</td><td>53</td></tr><tr><td>Day 5</td><td>Frisol</td><td>54</td></tr><tr><td>Day 6</td><td>Satsol</td><td>55</td></tr><tr><td>Day 7</td><td>Sunsol</td><td>—</td></tr></tbody></table></div>
+<p data-source-block="882">The month therefore ends on Satsol. The following physical sol begins the next month as:</p>
+<p data-source-block="883"><strong>Week 1 · Monsol · Day 1</strong></p>
+<p data-source-block="884">There is no intervening Sunsol civil label. A 55-sol month terminates after Day 6 of Week 8, and the next physical sol begins the new month at Day 1.</p>
+<p data-source-block="885">Nothing more exotic is happening.</p>
+<p data-source-block="886">To make the boundary explicit, imagine a continuous physical-sol count running underneath the civil calendar:</p>
+<div aria-label="Table 3 in Chapter 12: The Missing Sunsol; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="887"><caption class="sr-only">Table 3 in Chapter 12: The Missing Sunsol</caption><thead><tr><th scope="col">Continuous physical sol</th><th scope="col">Marian civil label</th></tr></thead><tbody><tr><td>1,001</td><td>Month 3 · Week 8 · Monsol</td></tr><tr><td>1,002</td><td>Month 3 · Week 8 · Tuesol</td></tr><tr><td>1,003</td><td>Month 3 · Week 8 · Wedsol</td></tr><tr><td>1,004</td><td>Month 3 · Week 8 · Thursol</td></tr><tr><td>1,005</td><td>Month 3 · Week 8 · Frisol</td></tr><tr><td>1,006</td><td>Month 3 · Week 8 · Satsol</td></tr><tr><td>1,007</td><td>Month 4 · Week 1 · Monsol</td></tr><tr><td>1,008</td><td>Month 4 · Week 1 · Tuesol</td></tr></tbody></table></div>
+<p data-source-block="888">Physical sol 1,007 exists exactly as it would under any other calendar. It lasts the same amount of time; Mars rotates normally and the Sun rises and sets normally. What that sol does <strong>not</strong> receive is the civil label Sunsol. Because a new month has begun, its Marian civil label is Monsol.</p>
+<p data-source-block="889">This is what Marian means by a <strong>shortened terminal civil week</strong>.</p>
+<p data-source-block="890">The physical sequence is continuous. The weekday naming sequence is not.</p>
+<p data-source-block="891">In an ordinary week, the civil positions follow:</p>
+<p data-source-block="892"><strong>Day 1 → Day 2 → Day 3 → Day 4 → Day 5 → Day 6 → Day 7 → Day 1</strong></p>
+<p data-source-block="893">At the end of a 55-sol month, they instead follow:</p>
+<p data-source-block="894"><strong>Day 1 → Day 2 → Day 3 → Day 4 → Day 5 → Day 6 → Day 1</strong></p>
+<p data-source-block="895">Day 7 is not assigned at that boundary. The Marian weekday sequence is therefore not a continuous modulo-seven counter across the entire year.</p>
+<p data-source-block="896">That is the structural fact.</p>
+<p data-source-block="897">The precise statement is:</p>
+<p data-source-block="898"><strong>The Sunsol weekday position is absent from the shortened terminal civil week. The next physical sol is labelled Monsol because it begins the following month.</strong></p>
+<p data-source-block="899">That is a discontinuity in civil weekday naming, not a discontinuity in time.</p>
+<h2 data-source-block="900">What the restart buys</h2>
+<p data-source-block="901">The restart gives Marian its recurring-date structure. Every month begins on Day 1 — conventionally Monsol — so the internal relationship among month, week and weekday does not drift.</p>
+<p data-source-block="902">Week 1, Day 1 is always Monsol. Week 2, Day 4 is always Thursol. Week 5, Day 6 is always Satsol. Wherever a numerical date is valid, its weekday identity is fixed.</p>
+<p data-source-block="903">A recurring Marian date therefore does not need its weekday recalculated each year. A meeting on Month 5, Week 3, Wedsol remains on that weekday. A statutory deadline on Month 8, Week 4, Frisol remains Frisol. A school term beginning on Month 1, Week 1, Monsol always begins at the same weekly position.</p>
+<p data-source-block="904">Every Marian month also has the same basic internal layout: <strong>eight nominal week positions</strong>.</p>
+<p data-source-block="905">A 56-sol month has:</p>
+<p data-source-block="906"><strong>8 × 7 = 56 sols</strong></p>
+<p data-source-block="907">All eight positions are complete.</p>
+<p data-source-block="908">A 55-sol month has:</p>
+<p data-source-block="909"><strong>7 × 7 + 6 = 55 sols</strong></p>
+<p data-source-block="910">Weeks 1 through 7 are complete, while Week 8 contains Days 1 through 6. The two month forms therefore differ at exactly one civil position:</p>
+<p data-source-block="911"><strong>Week 8, Day 7.</strong></p>
+<p data-source-block="912">Everything before it is identical.</p>
+<p data-source-block="913">That is the principal structural benefit of the mechanism. Marian does not require a different weekly layout for every month or every year.</p>
+<h2 data-source-block="914">Common and leap years</h2>
+<p data-source-block="915">A common Marian year contains four 55-sol months: <strong>Months 3, 6, 9 and 12</strong>. Each ends with a six-position terminal civil week. The remaining eight months contain 56 sols and end with complete seven-position weeks.</p>
+<p data-source-block="916">Across the common year, Marian therefore contains:</p>
+<ul class="source-list" data-word-list-id="20">
+<li data-source-block="917"><strong>92 complete seven-sol civil weeks</strong></li>
+<li data-source-block="918"><strong>4 six-position terminal civil weeks</strong></li>
+<li data-source-block="919"><strong>96 nominal week positions</strong></li>
+<li data-source-block="920"><strong>668 physical sols</strong></li>
+</ul>
+<p data-source-block="921">The arithmetic is:</p>
+<p data-source-block="922"><strong>92 × 7 + 4 × 6 = 668</strong></p>
+<p data-source-block="923">This is why saying simply that Marian has “96 weeks” would be imprecise. It has <strong>96 nominal week positions</strong>, four of which are shortened in a common year.</p>
+<p data-source-block="924">A Marian leap year contains one additional sol, and it appears at one place only:</p>
+<p data-source-block="925"><strong>Month 12 · Week 8 · Day 7</strong></p>
+<p data-source-block="926">The normally absent Sunsol at the end of Month 12 therefore exists in a leap year, completing the final terminal week.</p>
+<p data-source-block="927">The leap year consequently contains:</p>
+<ul class="source-list" data-word-list-id="29">
+<li data-source-block="928"><strong>93 complete seven-sol civil weeks</strong></li>
+<li data-source-block="929"><strong>3 six-position terminal civil weeks</strong></li>
+<li data-source-block="930"><strong>96 nominal week positions</strong></li>
+<li data-source-block="931"><strong>669 physical sols</strong></li>
+</ul>
+<p data-source-block="932">The arithmetic is:</p>
+<p data-source-block="933"><strong>93 × 7 + 3 × 6 = 669</strong></p>
+<p data-source-block="934">Months 1 through 11 are unchanged. Months 3, 6 and 9 still end after Satsol of Week 8; Month 12 does not. In a leap year, its Week 8 reaches Sunsol before the new year begins.</p>
+<p data-source-block="935">The leap-year change therefore affects only the final civil date position of the year. Every earlier valid date retains the same structural position in common and leap years.</p>
+<p data-source-block="936">At the weekly level, Marian consequently has only two annual templates:</p>
+<div aria-label="Table 4 in Chapter 12: The Missing Sunsol; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="937"><caption class="sr-only">Table 4 in Chapter 12: The Missing Sunsol</caption><thead><tr><th scope="col">Year type</th><th scope="col">Physical sols</th><th scope="col">Nominal week positions</th><th scope="col">Complete seven-sol weeks</th><th scope="col">Shortened terminal weeks</th></tr></thead><tbody><tr><td>Common</td><td>668</td><td>96</td><td>92</td><td>4</td></tr><tr><td>Leap</td><td>669</td><td>96</td><td>93</td><td>3</td></tr></tbody></table></div>
+<p data-source-block="938">The difference between them is concentrated at the final Sunsol of Month 12.</p>
+<h2 data-source-block="939">Dates carry more structure</h2>
+<p data-source-block="940">The Marian arrangement changes what a date itself can tell us.</p>
+<p data-source-block="941">Consider an Earth date:</p>
+<p data-source-block="942"><strong>14 September 2038</strong></p>
+<p data-source-block="943">The date identifies its position in the year, but it does not tell you its weekday unless you already know or calculate the calendar for 2038.</p>
+<p data-source-block="944">A Marian structural date contains more of that relationship intrinsically. For example:</p>
+<p data-source-block="945"><strong>Month 7 · Week 3 · Day 4</strong></p>
+<p data-source-block="946">Day 4 always occupies the same weekly position. If the recommended names are being used, it is always Thursol. The date therefore identifies both annual position and weekly position without an additional lookup.</p>
+<p data-source-block="947">That difference is less dramatic in an age of software than it would once have been. A phone can calculate the weekday of any Gregorian date almost instantly. But institutions repeat calendars at scale. Schools, maintenance systems, payroll, transport, public administration and contractual schedules repeatedly map dates onto weekly patterns.</p>
+<p data-source-block="948">Marian removes one class of annual variation from those structures.</p>
+<p data-source-block="949">That is what fixed recurrence buys.</p>
+<h2 data-source-block="950">Civil week and continuous seven-sol count</h2>
+<p data-source-block="951">One final distinction prevents unnecessary confusion.</p>
+<p data-source-block="952">A <strong>Marian civil week</strong> is part of the calendar. It has seven possible weekday positions, but selected terminal weeks contain only six of them.</p>
+<p data-source-block="953">A <strong>continuous seven-sol interval</strong> is simply elapsed time. Take any physical sol and count seven consecutive rotations: nothing in Marian prevents that calculation or changes its duration.</p>
+<p data-source-block="954">An institution that required an uninterrupted seven-sol operating count could maintain one independently. It would simply cease to align permanently with Marian weekday names after shortened month boundaries.</p>
+<p data-source-block="955">That possibility does not change the core civil calendar, but it shows why the phrase “Marian breaks the week” needs precision. Marian interrupts <strong>continuous civil weekday succession</strong>. It does not alter the duration of seven physical sols.</p>
+<p data-source-block="956">The whole mechanism can therefore be stated in one sentence:</p>
+<p data-source-block="957"><strong>Physical sols proceed continuously; Marian normally labels them through a seven-position Monsol-to-Sunsol week, but a 55-sol month ends after Satsol of Week 8 and the next physical sol begins the following month as Monsol.</strong></p>
+<p data-source-block="958">Nothing else stops.</p>
+<p data-source-block="959"><strong>Marian changes the labels so that the calendar can repeat. It does not change Mars.</strong></p></article><nav aria-label="Previous and next section" class="pager"><a href="chapter-11.html" rel="prev">← Chapter 11: Two Jobs, Two Scales</a><a href="chapter-13.html" rel="next">Chapter 13: Where the Year Begins →</a></nav></main>
+<footer>© JB Bullock 2026. Book text, cover and illustrations: all rights reserved. Marian Protocol v1.0 is separately licensed.</footer></body></html>

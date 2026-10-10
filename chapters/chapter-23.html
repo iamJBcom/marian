@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="no-referrer" name="referrer"/><meta content="default-src 'none'; style-src 'self'; img-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" http-equiv="Content-Security-Policy"/>
+<title>Chapter 23: When Other Things Depend on It | Marian — An Operating Calendar for Human Mars</title><meta content="Read Chapter 23: When Other Things Depend on It. Marian: An Operating Calendar for Human Mars. Written by JB Bullock." name="description"/><link href="../css/book.css" rel="stylesheet"/><link rel="canonical" href="https://iamjbcom.github.io/marian/chapters/chapter-23.html"/><meta property="og:type" content="article"/><meta property="og:title" content="Chapter 23: When Other Things Depend on It | Marian — An Operating Calendar for Human Mars"/><meta property="og:url" content="https://iamjbcom.github.io/marian/chapters/chapter-23.html"/></head>
+<body><a class="skip" href="#main">Skip to reading content</a><header class="mast"><a class="brand" href="../index.html">MARIAN<span>Operating Architecture Series</span></a><nav aria-label="Site"><a href="../index.html">Contents</a></nav></header>
+
+<main class="reading" id="main"><div class="crumbs"><a href="../index.html">Marian</a> / Chapter 23: When Other Things Depend on It</div><article class="book-section" data-section="chapter-23"><h1 class="source-heading" data-source-block="2352"><span class="heading-lead">BUILD</span><br/><span class="heading-main">23) When Other Things Depend on It</span><br/><span class="heading-sub">From Proposal to Infrastructure</span></h1>
+<p data-source-block="2353">A calendar becomes infrastructure when other things are allowed to depend on it.</p>
+<p data-source-block="2354">That is a much higher bar than having an elegant specification. A paper can say that <strong>MY42-08-03-05</strong> is a valid Marian date. Infrastructure means independently written software agrees about that date; a court can interpret it in a contract; an archive can still decode it decades later; an Earth system can convert it correctly; and a future revision does not quietly change the meaning of records already stored.</p>
+<p data-source-block="2355">None of that requires new calendrical theory. It requires the less glamorous work that turns a design into a standard.</p>
+<p data-source-block="2356">Marian is deliberately suited to that transition. Once MY1 has been instantiated, routine date operations follow deterministic integer rules. Leap status, month length, validity, ordinal conversion and higher-order identity do not require fresh astronomical calculation.</p>
+<p data-source-block="2357">That makes implementation feasible.</p>
+<p data-source-block="2358">Between a proposal and dependable infrastructure, however, lies most of the real work.</p>
+<h2 data-source-block="2359">Make the calendar executable</h2>
+<p data-source-block="2360">The first requirement is a small, dependable software implementation.</p>
+<p data-source-block="2361">Not a Mars-themed app. Not a beautiful website.</p>
+<p data-source-block="2362">A library.</p>
+<p data-source-block="2363">Given a Marian year, it should determine whether that year is common or leap. Given a year and month, it should return the correct month length. Given a Year–Month–Week–Day address, it should determine whether the date exists and convert it to ordinal-sol form. Given an ordinal sol, it should recover the civil date. It should identify the associated minth, Sixth and quarter.</p>
+<p data-source-block="2364">Those are the core operations.</p>
+<p data-source-block="2365">This matters because calendars end up everywhere: operating systems, databases, payroll, medical records, contracts, scheduling software, transport systems, spreadsheets, archives and tiny embedded systems somebody forgot were still running.</p>
+<p data-source-block="2366">A civil calendar whose ordinary arithmetic depended on a live astronomical service would be unnecessarily fragile. Marian avoids that.</p>
+<p data-source-block="2367">Astronomy sits at the edge of the system. <strong>Ls = 15°</strong> defines the annual reference. The epoch ties Marian chronology to physical time. After that, ordinary civil arithmetic runs locally.</p>
+<p data-source-block="2368">That is where the complexity belongs.</p>
+<h2 data-source-block="2369">The epoch is the one missing constant</h2>
+<p data-source-block="2370">At present, any complete implementation has one unavoidable gap.</p>
+<p data-source-block="2371">The real epoch does not yet exist.</p>
+<p data-source-block="2372">MY0 begins with the recognised first human step on Mars. MY1 begins at the first Airy-0 midnight following the next Ls = 15° passage. Until those events occur, software can implement Marian's relative calendar logic perfectly well but cannot provide the final authoritative mapping between Marian chronology and historical Earth-referenced time.</p>
+<p data-source-block="2373">A pre-epoch library can answer:</p>
+<p data-source-block="2374"><strong>Is MY42 a leap year?</strong></p>
+<p data-source-block="2375"><strong>How many sols are in Month 9?</strong></p>
+<p data-source-block="2376"><strong>What is MY42-08-03-05 in ordinal form?</strong></p>
+<p data-source-block="2377"><strong>Which minth contains that date?</strong></p>
+<p data-source-block="2378">It cannot truthfully answer:</p>
+<p data-source-block="2379"><strong>What Gregorian timestamp is MY42-08-03-05?</strong></p>
+<p data-source-block="2380">not until the real MY1 epoch has been instantiated.</p>
+<p data-source-block="2381">Synthetic epochs are entirely useful for simulation, testing and software development. They should simply be labelled synthetic.</p>
+<p data-source-block="2382">When the founding event eventually occurs, an authoritative record will need to establish the recognised first human step, the relevant Ls = 15° passage and the Airy-0 midnight that begins MY1.</p>
+<p data-source-block="2383">At that point, one missing constant becomes real.</p>
+<p data-source-block="2384">The calendar arithmetic itself does not change.</p>
+<figure class="art" data-editorial-status="AUTHOR_APPROVED_PLACEMENT_AND_CAPTION" id="image18"><img alt="Illustration: From Proposal to Infrastructure. Expanded text description follows." decoding="async" height="887" loading="lazy" src="../assets/image18.webp" width="1774"/><figcaption><strong>From Proposal to Infrastructure</strong></figcaption><details class="figure-description"><summary>Detailed figure description</summary><p>A left-to-right illustrated process connects the proposal of a civil calendar with progressively more demanding requirements: documented rules, computation, interoperability, institutional decisions, and eventual habitual adoption. Images and boxes are arranged as an implementation journey, with a Mars settlement scene along the bottom. It presents possible future steps, not a claim that Marian is currently adopted on Mars.</p><p>Editorial note: this is a descriptive summary, not an independently verified transcription of every diagram label. Refer to the surrounding text and the Marian technical specification for authoritative numeric details where applicable.</p></details></figure>
+<h2 data-source-block="2385">A serial layer underneath the civil date</h2>
+<p data-source-block="2386">Software benefits from a simple continuous internal representation.</p>
+<p data-source-block="2387">For Marian, that role can be played by a <strong>Marian Serial Sol</strong>, with Serial Sol 0 at the beginning of MY1.</p>
+<p data-source-block="2388">The conceptual path is:</p>
+<p data-source-block="2389"><strong>Marian Civil Date → Marian Serial Sol → absolute time coordinate → another civil or scientific representation</strong></p>
+<p data-source-block="2390">and in reverse:</p>
+<p data-source-block="2391"><strong>absolute time coordinate → Marian Serial Sol → Marian Civil Date</strong></p>
+<p data-source-block="2392">The serial-sol layer is plumbing. Most users should never need to see it.</p>
+<p data-source-block="2393">A person might read:</p>
+<p data-source-block="2394"><strong>42 Augiix · Week 3 · Frisol</strong></p>
+<p data-source-block="2395">while a system stores:</p>
+<p data-source-block="2396"><strong>MY42-08-03-05</strong></p>
+<p data-source-block="2397">and internally maps that date to a serial-sol position. An Earth-facing service can then attach the corresponding Gregorian date and timestamp.</p>
+<p data-source-block="2398">Each layer has one job. The human representation remains readable. The machine identity remains stable. The conversion path remains deterministic.</p>
+<p data-source-block="2399">That separation is exactly what civil infrastructure needs.</p>
+<h2 data-source-block="2400">One canonical conversion path</h2>
+<p data-source-block="2401">If Marian were implemented seriously, conversion could not be left to individual software vendors to interpret.</p>
+<p data-source-block="2402">Two libraries that disagree about a month boundary by one sol are not alternative implementations.</p>
+<p data-source-block="2403">One of them is wrong.</p>
+<p data-source-block="2404">The standard therefore needs one normative conversion model and a strong set of reference cases. Examples already defined by the architecture include:</p>
+<p data-source-block="2405"><strong>MY2-01-01-01 → MY2-S001</strong></p>
+<p data-source-block="2406"><strong>MY2-03-08-06 → MY2-S167</strong></p>
+<p data-source-block="2407"><strong>MY2-03-08-07 → invalid</strong></p>
+<p data-source-block="2408"><strong>MY1-12-08-07 → valid</strong>, because MY1 is leap</p>
+<p data-source-block="2409"><strong>MY42-08-03-05 → MY42-S409</strong></p>
+<p data-source-block="2410">A proper conformance suite would extend these across ordinary dates, month boundaries, shortened terminal weeks, leap transitions, century exceptions, minth boundaries, Sixth and quarter boundaries, invalid dates and long-range cycle checks.</p>
+<p data-source-block="2411">The point is not to prove the mathematics repeatedly. It is to make implementation mistakes obvious.</p>
+<p data-source-block="2412">Calendars are particularly good places for an off-by-one error to remain unnoticed until somebody's legal deadline lands on it.</p>
+<p data-source-block="2413">Better to embarrass the code in testing.</p>
+<h2 data-source-block="2414">Conformance should mean one thing</h2>
+<p data-source-block="2415">A usable standard needs a precise definition of <strong>Marian-conformant</strong>.</p>
+<p data-source-block="2416">That definition should concern the structure rather than the preferred appearance of an interface. An application should not fail conformance because it displays <strong>Month 8</strong> rather than <strong>Augiix</strong>, nor should a localised implementation become less Marian because it uses different natural-language names.</p>
+<p data-source-block="2417">Core conformance should mean that systems agree on:</p>
+<ul class="source-list" data-word-list-id="1">
+<li data-source-block="2418">year lengths;</li>
+<li data-source-block="2419">leap status;</li>
+<li data-source-block="2420">month lengths;</li>
+<li data-source-block="2421">valid and invalid civil dates;</li>
+<li data-source-block="2422">weekday-position behaviour;</li>
+<li data-source-block="2423">minth identities;</li>
+<li data-source-block="2424">date conversion;</li>
+<li data-source-block="2425">higher-order mappings;</li>
+<li data-source-block="2426">the canonical epoch once it exists.</li>
+</ul>
+<p data-source-block="2427">A database may support only numeric Marian dates. A consumer application may display Janiix and Monsol. Another implementation may use entirely different labels.</p>
+<p data-source-block="2428">All can remain conformant if the underlying date means the same thing.</p>
+<p data-source-block="2429">That distinction between structural identity and presentation becomes increasingly valuable once software exists.</p>
+<h2 data-source-block="2430">Keep the core small; use profiles around it</h2>
+<p data-source-block="2431">Implementation will quickly attract adjacent requirements.</p>
+<p data-source-block="2432">Someone will want standard timestamp notation. Someone else will want Gregorian conversion. Transport systems will want local-time rules. Scheduling software will need recurrence semantics. Different languages will need names and formatting.</p>
+<p data-source-block="2433">The wrong response is to expand the core Marian specification until it becomes an encyclopaedia of every adjacent use case.</p>
+<p data-source-block="2434">A better model is a small core surrounded by <strong>profiles</strong>.</p>
+<p data-source-block="2435">The core defines Marian civil dates. A machine-interchange profile defines serialisation. An Earth-conversion profile defines the relationship to an agreed absolute timescale and terrestrial representations. A localisation profile defines names and formatting without changing canonical identity. A local-time profile can define how a jurisdiction combines Marian dates with its chosen clock regime.</p>
+<p data-source-block="2436">Other domains can add their own rules without rewriting the calendar.</p>
+<p data-source-block="2437">These layers should be able to evolve independently. A new translation should not require Marian v2.0. A changed local time-zone boundary should not alter the meaning of <strong>MY73-04-02-06</strong>. A revised API should not alter the leap rule.</p>
+<p data-source-block="2438">Standards become safer when they distinguish the thing being standardised from the systems built around it.</p>
+<h2 data-source-block="2439">Recurrence rules need explicit semantics</h2>
+<p data-source-block="2440">One implementation problem deserves particular care.</p>
+<p data-source-block="2441">Some Marian positions do not exist in every month. Week 8, Day 7 is absent from every 55-sol month.</p>
+<p data-source-block="2442">The calendar can state whether a date exists. It cannot decide what every application should do when a recurring schedule requests one that does not.</p>
+<p data-source-block="2443">Suppose someone creates:</p>
+<p data-source-block="2444"><strong>Every month · Week 8 · Sunsol</strong></p>
+<p data-source-block="2445">What happens in a 55-sol month?</p>
+<p data-source-block="2446">Skip the occurrence? Move it to Satsol? Move it to the next Monsol? Reject the recurrence rule?</p>
+<p data-source-block="2447">There is no universal answer. A birthday, financial settlement, medication reminder and maintenance event may reasonably want different behaviour.</p>
+<p data-source-block="2448">The correct division of labour is therefore:</p>
+<p data-source-block="2449"><strong>the calendar defines whether the date exists; the scheduling profile defines what happens when it does not.</strong></p>
+<p data-source-block="2450">Defaults should not quietly become policy. If software makes an adjustment, that behaviour should be explicit.</p>
+<h2 data-source-block="2451">Localisation must not fork the calendar</h2>
+<p data-source-block="2452">The naming architecture makes localisation relatively safe.</p>
+<p data-source-block="2453">Month 08 remains Month 08 whether the interface calls it Augiix or something entirely different. Minth 17 remains Minth 17 whether the user sees Q, a local-language equivalent or simply 17. Day 5 remains Day 5 whether the interface displays Frisol or another term.</p>
+<p data-source-block="2454">A language pack can therefore contain labels, abbreviations, pronunciation guidance, grammatical forms and formatting conventions without redefining the civil system.</p>
+<p data-source-block="2455">That is technically useful and helps prevent one founding culture's vocabulary becoming embedded too deeply in the machine layer.</p>
+<p data-source-block="2456">The reference names can be recommended.</p>
+<p data-source-block="2457">They should not become database theology.</p>
+<h2 data-source-block="2458">The standard needs several authoritative artefacts</h2>
+<p data-source-block="2459">A serious Marian implementation ecosystem would require several distinct artefacts.</p>
+<div aria-label="Table 1 in Chapter 23: When Other Things Depend on It; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="2460"><caption class="sr-only">Table 1 in Chapter 23: When Other Things Depend on It</caption><thead><tr><th scope="col">Artefact</th><th scope="col">Purpose</th></tr></thead><tbody><tr><td>Normative specification</td><td>Defines canonical units, epoch rule, intercalation, valid dates, identities and invariants</td></tr><tr><td>Epoch record</td><td>Instantiates MY0 and MY1 against physical time</td></tr><tr><td>Technical record</td><td>Provides derivations, astronomical assumptions, algorithms, datasets and reproducibility</td></tr><tr><td>Conformance suite</td><td>Supplies machine-readable valid, invalid and boundary test cases</td></tr><tr><td>Reference implementations</td><td>Demonstrate correct behaviour in common software environments</td></tr><tr><td>Conversion profiles</td><td>Define relationships with absolute time and other calendars</td></tr><tr><td>Localisation resources</td><td>Map canonical structure to optional human languages and names</td></tr><tr><td>Application profiles</td><td>Define recurrence, local-time and other domain-specific behaviour</td></tr><tr><td>Governance process</td><td>Controls interpretation, maintenance and rare future correction</td></tr><tr><td>Transition guidance</td><td>Covers dual dating, archival preservation and migration</td></tr></tbody></table></div>
+<p data-source-block="2461">These should not be collapsed into one document.</p>
+<p data-source-block="2462">The book explains the architecture. The specification defines it. The technical record justifies and reproduces it. The conformance suite tests implementations. Reference code demonstrates correct behaviour but does not become the source of truth.</p>
+<p data-source-block="2463">The code should implement the specification.</p>
+<p data-source-block="2464">The specification should not be inferred from whichever repository happens to have the most stars.</p>
+<h2 data-source-block="2465">Versioning starts before the first dependency</h2>
+<p data-source-block="2466">Once records depend on Marian, changing the standard becomes expensive.</p>
+<p data-source-block="2467">Versioning therefore needs to distinguish clarification from structural change. A future <strong>v1.1</strong> might improve wording, resolve an ambiguity in prose or add localisation guidance. It should not change the date represented by:</p>
+<p data-source-block="2468"><strong>MY42-08-03-05</strong></p>
+<p data-source-block="2469">A later implementation profile might introduce a new API syntax. That should not alter Month 6.</p>
+<p data-source-block="2470">Changing the leap rule, altering which civil dates exist or moving the annual reference would be different. Those changes would alter the meaning of the calendar itself and would require an explicit major-version boundary, a new intercalation domain or perhaps a separate calendar identity.</p>
+<p data-source-block="2471">Calendar version and software version must also remain distinct. Software release 4.7.2 may still implement Marian Calendar v1.0.</p>
+<p data-source-block="2472">Otherwise every bug fix becomes a constitutional amendment.</p>
+<h2 data-source-block="2473">Long-range maintenance needs governance</h2>
+<p data-source-block="2474">The most foreseeable future maintenance issue is already known.</p>
+<p data-source-block="2475">The 59/100 rule is intended as the initial ordinary intercalation regime. Because the relevant Martian tropical recurrence changes slowly over long periods, a future authority may eventually need to decide whether a rare additional correction is justified.</p>
+<p data-source-block="2476">That decision involves more than arithmetic.</p>
+<p data-source-block="2477">How much phase displacement is acceptable? How far ahead must a correction be announced? Could an adjustment ever alter an already-issued legal date? Which astronomical model is authoritative? How is backward compatibility protected?</p>
+<p data-source-block="2478">Those questions should not be answered casually by whoever happens to maintain the reference library.</p>
+<p data-source-block="2479">A standards process should exist before the first exceptional correction becomes necessary. Its mandate should be conservative: clarify ambiguities, maintain authoritative constants, approve conformance material, coordinate profiles and manage any genuinely necessary long-range correction.</p>
+<p data-source-block="2480">It should not periodically redesign the calendar because a committee has discovered enthusiasm.</p>
+<p data-source-block="2481">Calendars benefit greatly from institutional boredom.</p>
+<h2 data-source-block="2482">Transition is harder than coding</h2>
+<p data-source-block="2483">Writing the library is probably the easy part.</p>
+<p data-source-block="2484">Changing what institutions mean by a date is harder.</p>
+<p data-source-block="2485">A settlement that has already spent years using Gregorian dates, mission-sol counts or another Martian chronology may have accumulated contracts, databases, maintenance histories, medical records, school records and archives inside those systems.</p>
+<p data-source-block="2486">A transition would therefore need to preserve both old and new coordinates.</p>
+<p data-source-block="2487">Documents could display Marian and Gregorian dates together. Software could store an absolute timestamp alongside the local civil representation. Legacy records could retain their original chronology while gaining conversion metadata. New systems could begin using Marian where local recurrence matters while still displaying Earth dates where coordination requires them.</p>
+<p data-source-block="2488">This would not be elegant.</p>
+<p data-source-block="2489">Transitions rarely are.</p>
+<p data-source-block="2490">The alternative — one morning on which every historical record magically becomes Marian — would be considerably worse.</p>
+<h2 data-source-block="2491">Never rewrite the historical coordinate</h2>
+<p data-source-block="2492">This deserves a firm archival rule.</p>
+<p data-source-block="2493">If an event was originally recorded using Gregorian time or mission chronology, that original date should remain part of the record. A converted Marian date can be added, but it should not replace the historical coordinate as though participants used Marian at the time.</p>
+<p data-source-block="2494">The same applies in reverse. An Earth archive dealing with later Marian records should not silently convert them to Gregorian notation and discard the original.</p>
+<p data-source-block="2495">Good archives preserve both the event and the temporal system in which it was recorded.</p>
+<p data-source-block="2496">That means every robust date record needs a <strong>calendar identifier</strong>, not merely a string of numbers.</p>
+<p data-source-block="2497"><strong>42-08-03-05</strong></p>
+<p data-source-block="2498">without saying <em>Marian</em> is not a safe archival date.</p>
+<p data-source-block="2499">Nor, for that matter, is <strong>03/04/42</strong>, which Earth has been demonstrating for some time.</p>
+<p data-source-block="2500">Cross-world infrastructure can learn from the experience.</p>
+<h2 data-source-block="2501">Legal use requires exact definitions</h2>
+<p data-source-block="2502">Once Marian dates enter contracts or legislation, informal wording becomes inadequate.</p>
+<p data-source-block="2503">A legal system would need to define what constitutes a Marian Civil Date, which version of the specification applies, what canonical boundary governs interpretation, how local time relates to that boundary and how non-occurring recurrence positions are handled.</p>
+<p data-source-block="2504">Cross-world agreements would need explicit calendar identifiers. Rules involving age or duration would need to distinguish Marian years from other measures where ambiguity matters.</p>
+<p data-source-block="2505">The founding epoch would also require evidentiary precision. “The recognised first human step” is adequate for defining the architecture, but an authoritative implementation will eventually need a certified event that instantiates MY0 and, through the subsequent Ls = 15° passage and Airy-0 midnight, MY1.</p>
+<p data-source-block="2506">The calendar can define the rule in advance.</p>
+<p data-source-block="2507">History supplies the event.</p>
+<p data-source-block="2508">The implementation records it.</p>
+<h2 data-source-block="2509">Keep the standard open</h2>
+<p data-source-block="2510">A civil calendar intended for broad implementation should not depend on a proprietary algorithm, inaccessible documentation or the continuing survival of one vendor.</p>
+<p data-source-block="2511">The normative rules should be publicly available. Conversion algorithms should be reproducible. Conformance tests should be accessible. Independent implementers should be able to rebuild the calendar without permission from a single provider, and archives should not depend on a particular company remaining in business.</p>
+<p data-source-block="2512">This does not mean every application built around Marian must be open-source.</p>
+<p data-source-block="2513">It means the <strong>civil standard itself</strong> should be open enough to implement, verify and preserve independently.</p>
+<p data-source-block="2514">Nobody should need a licence server to discover what day it is.</p>
+<p data-source-block="2515">Open standards also make divergent implementations easier to identify. A different language is not a fork. A different display order is not necessarily a fork. A different month name is not a fork.</p>
+<p data-source-block="2516">Changing the leap rule, New Year reference or canonical dates is.</p>
+<p data-source-block="2517">The principle is simple:</p>
+<p data-source-block="2518"><strong>If two supposedly conforming systems can assign different canonical Marian dates to the same civil sol under the same epoch, the difference is structural and must be versioned or named explicitly.</strong></p>
+<p data-source-block="2519">Standards should prevent ambiguity.</p>
+<p data-source-block="2520">They do not need to prevent experimentation around the standard.</p>
+<h2 data-source-block="2521">From arithmetic to trust</h2>
+<p data-source-block="2522">Turning Marian into infrastructure changes what has to be trusted.</p>
+<p data-source-block="2523">At first, the question is whether the <strong>reasoning</strong> is sound.</p>
+<p data-source-block="2524">Then whether the <strong>specification</strong> defines every machine-relevant case clearly enough.</p>
+<p data-source-block="2525">Then whether independent <strong>implementations</strong> agree.</p>
+<p data-source-block="2526">Then whether archives, contracts and software can rely on the <strong>standard</strong> remaining stable.</p>
+<p data-source-block="2527">That is a much larger project than designing twelve months.</p>
+<p data-source-block="2528">It is also how infrastructure works.</p>
+<p data-source-block="2529">Arithmetic starts the process. Implementation makes it reproducible. Stability makes it dependable.</p>
+<p data-source-block="2530"><strong>A calendar begins as a proposal. It becomes a standard when other people can implement it independently. It becomes infrastructure when institutions can rely on it.</strong></p></article><nav aria-label="Previous and next section" class="pager"><a href="chapter-22.html" rel="prev">← Chapter 22: What Marian Gives Up</a><a href="chapter-24.html" rel="next">Chapter 24: Home Time →</a></nav></main>
+<footer>© JB Bullock 2026. Book text, cover and illustrations: all rights reserved. Marian Protocol v1.0 is separately licensed.</footer></body></html>

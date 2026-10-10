@@ -1,0 +1,152 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Marian versus Darian: A Comparative Evaluation: an author-approved technical companion to Marian Protocol v1.0."><title>Marian versus Darian: A Comparative Evaluation — Marian</title><style>
+@page{size:A4;margin:20mm 19mm 19mm 19mm; @bottom-right{content:counter(page);font:9pt Georgia,serif;color:#737b86} }
+*{box-sizing:border-box} html{font-size:17px; scroll-behavior:smooth}
+body{margin:0;background:#f9fafb;color:#20242b;font-family:Georgia,'DejaVu Serif',serif;line-height:1.74;-webkit-font-smoothing:antialiased}
+.nav{background:#fff;border-bottom:1px solid #e4e8ed;padding:13px max(25px,calc((100vw - 900px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:system-ui,sans-serif;font-size:13px;flex-wrap:wrap}
+.nav a{color:#365274;text-decoration:none;white-space:nowrap;margin-right:14px}.nav a:hover{text-decoration:underline}
+.wrap{max-width:850px;margin:40px auto 70px;background:white;padding:62px 72px;border:1px solid #edf0f2;box-shadow:0px 6px 25px #0012}
+.meta{font-family:system-ui,sans-serif;color:#6e7887;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid #e0e4e8;padding-bottom:14px;margin-bottom:32px}
+.content h1,.content h2,.content h3{line-height:1.22;color:#1a2535;break-after:avoid;font-family:system-ui,'DejaVu Sans',sans-serif}
+.content h1{font-size:2.1rem;letter-spacing:-.03em;margin:0 0 18px}.content h2{font-size:1.4rem;margin:2.3rem 0 .8rem}.content h3{font-size:1.11rem;margin:1.8rem 0 .5rem}
+.content p{margin:0 0 1.1em}.content ul,.content ol{margin:0 0 1.3em;padding-left:2em}.content li{margin-bottom:.35em}
+.content a{color:#214e7e;text-decoration:underline;text-underline-offset:2px}
+.content strong{font-weight:700}.content blockquote{border-left:3px solid #97a9c4;padding-left:20px;color:#4c596b;margin-left:0}
+.content table{width:100%;border-collapse:collapse;font:13px/1.5 system-ui,'DejaVu Sans',sans-serif;margin:20px 0 27px;page-break-inside:auto}
+.content td,.content th{padding:10px 11px;border:1px solid #e1e6eb;vertical-align:top;overflow-wrap:anywhere}
+.content th{background:#f1f4f7;text-align:left;font-weight:650}.content tr{break-inside:avoid}
+.table-scroll{overflow-x:auto;max-width:100%}
+.content code{font:0.84em 'DejaVu Sans Mono',monospace;background:#f2f4f7;padding:2px 4px;overflow-wrap:anywhere}
+.content pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f2f4f7;padding:14px}
+.footer{font:12px system-ui,sans-serif;color:#747b83;border-top:1px solid #e1e5ea;padding-top:24px;margin-top:40px}
+@media(max-width:700px){body{background:#fff}.wrap{margin:0;border:0;box-shadow:none;padding:28px 22px 45px}.content h1{font-size:1.72rem}.content h2{font-size:1.27rem}.nav{padding:11px 20px}}
+@media print {html{font-size:11pt}body{background:white;line-height:1.53}.nav{display:none}.wrap{padding:0;margin:0;box-shadow:none;border:0;max-width:none}.meta{font-size:9pt}.content h1{font-size:22pt}.content h2{font-size:15pt}.content h3{font-size:12pt}.content table{font-size:8.3pt}.table-scroll{overflow:visible}.content td,.content th{padding:5px 6px}.content p{orphans:3;widows:3}.footer{font-size:9pt}}
+
+@media screen {.content :focus-visible {outline:3px solid #255d94;outline-offset:2px}}
+@media print {.private {display:none}}
+.skip{position:absolute;left:1rem;top:-200px;padding:.65rem;background:white;color:#214e7e;z-index:9999}.skip:focus{top:0}.skip:focus-visible{outline:3px solid #1b4778;outline-offset:2px}
+</style><link rel="canonical" href="https://iamjbcom.github.io/marian/companions/03-marian-vs-darian.html"/><meta property="og:type" content="article"/><meta property="og:title" content="Marian versus Darian: A Comparative Evaluation — Marian"/><meta property="og:url" content="https://iamjbcom.github.io/marian/companions/03-marian-vs-darian.html"/><link rel="license" href="https://creativecommons.org/licenses/by/4.0/"/></head><body><a class="skip" href="#main">Skip to main content</a><main id="main"><nav class="nav"><a href="index.html">← Companions</a><span><a href="01-technical-overview.html">Marian: Open Technical Overview</a> <a href="02-evidence-prior-art.html">Marian: Evidence, Prior Art and Claims</a> <a href="03-marian-vs-darian.html">Marian versus Darian: A Comparative Evaluation</a> </span></nav><article class="wrap"><div class="meta">Marian: An Operating Calendar for Human Mars · Author approved 9 October 2026</div><div class="content"><h1>Marian and Darian: A Serious Comparative Evaluation</h1>
+<h2>What Marian adds, what it gives up, and the best objections to its adoption</h2>
+<p><strong>About this technical companion.</strong> This author-approved explanatory article is subordinate to Marian Protocol v1.0. Original technical prose is licensed under CC BY 4.0; the literary book and illustrations remain all rights reserved.</p><p class="public-license-proposal" role="note"><strong>Licence for original technical companion prose:</strong> Original technical companion prose © Jonathan Bullock 2026, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, with attribution required. This grant does not cover the separate Marian book text, illustrations or third-party material. </p>
+<h3>Two serious calendars, much shared inheritance</h3>
+<p>The Darian Calendar is not an inferior preliminary attempt awaiting Marian's correction. Gangale's design solves a clearly stated Martian civil-time problem: preserve short month-like operating periods, stable dates and a predictable recurring calendar across a 668/669-sol year. Darian's 24 primary months normally last 28 sols, with three or four 27-sol intervals. Its selected terminal weeks omit the seventh weekday label so the next month starts consistently on weekday 1. It uses the northern spring equinox, <strong>Ls = 0°</strong>, as the annual reference. The mechanism predates Marian. The earlier Levitt calendar already offered 12 months arranged <strong>56–56–55</strong> and a shortened terminal-week device. Marian's central claim is <em>architectural composition</em>—a defensible way to organise two useful temporal scales—rather than discovery of either arithmetic pattern.</p>
+<h3>The central choice: keep either twelve or twenty-four? Marian keeps both.</h3>
+<p>Darian calls the near-four-week division a <strong>month</strong>. That protects duration familiar to an Earth-born resident. It also means there are twenty-four primary month positions in one Martian year, so terms like 'the third month' and 'twelve months into the year' no longer carry the familiar fraction of the annual cycle. This can be learned; it is not a logical failure. But it is a real design trade.</p>
+<p>Marian instead supplies <strong>twelve 55/56-sol months</strong> as a stable macro-level annual map and <strong>twenty-four 27/28-sol minths</strong> as a formal short-cycle cadence. Both are first-class <em>structural identities</em>, although they have different civic purposes. A Marian calendar can therefore answer 'Which of twelve annual positions?' and 'Which of twenty-four four-week-like operating periods?' without making one label serve both jobs. It does not pretend its 56-sol month feels like an Earth month; that work is assigned to the minth. In common years, the 24 minths consist of 20 intervals of 28 sols and four of 27, just as the familiar Darian-like short-duration layer would suggest. Darian proponents should recognise this as a shared arithmetic foundation, not a dismissal of their achievement.</p>
+<h3>A stronger middle scale</h3>
+<p>An Earth quarter is both approximately thirteen weeks and one fourth of the terrestrial year. On Mars those roles separate. Marian retains four quarters as annual fractions—167 sols in a common year—and also establishes six <strong>Sixths</strong>, each two months / four minths / about 111–112 sols, for medium-horizon institutional planning. Darian can always define equivalent groupings mathematically, but Marian makes those groupings explicit and interoperable in its protocol. The strength is an optional <em>common vocabulary</em> of planning periods, not a proof that every Martian organisation would use Sixths.</p>
+<h3>A year that belongs to Mars but has a deliberate Earth-facing orientation</h3>
+<p>Darian begins at <strong>Ls = 0°</strong>, the northern vernal equinox: a scientifically recognisable, defensible and easy-to-describe seasonal origin. Marian begins at <strong>Ls = 15°</strong>, also a Martian seasonal coordinate, but chosen to place the annual origin near Earth's <strong>Gregorian-New-Year heliocentric direction</strong> around the envisaged founding-era reference. These New Years are <em>not simultaneous</em>, and a Marian year is much longer than an Earth year. The advantage is a broadly compatible <strong>twelve-position annual mental map</strong>, not a shared clock or common date.</p>
+<p>This is a genuine design differentiator. It accepts a less symbolically obvious Martian New Year in exchange for an additional Earth–Mars wayfinding property, potentially valuable in a settlement that remains institutionally connected to Earth. The Ls = 15° rationale is era-sensitive and model-dependent, not an astronomical theorem that always outperforms an equinox-based calendar.</p>
+<h3>The communications heuristic is a bonus, not magic</h3>
+<p>The September 2026 Marian preprint evaluates the <em>circular gap</em> between contemporaneous Gregorian and synthetic Marian month numbers (0–6) against modelled heliocentric phase and <strong>Earth–Mars one-way light time (OWLT)</strong>. Across <strong>32,872 simulated daily observations in 2031–2120</strong>, it reports Spearman <strong>ρ ≈ 0.9403</strong> for month gap versus OWLT; category medians rise from about <strong>5.21 minutes</strong> at gap 0 to <strong>20.98 minutes</strong> at gap 6. The study reports comparable relationships within <strong>41 complete synodic cycles</strong> and an independent analytical planetary-position cross-check.</p>
+<p>That is evidence of a useful <em>coarse mental orientation</em> in the tested model. It is emphatically <strong>not</strong> evidence that a month number accurately predicts real-time link delay or conjunction blackouts. The gap categories overlap, orbital distances depend on eccentricity, and precise mission communication uses ephemerides and line-of-sight models. The research is also based on a synthetic Marian epoch—not a historically realised one. Marian's explanatory advantage survives these qualifications: a person may gain some intuition from ordinary civil dates without ever treating the calendar as an operational communications instrument. Darian's Ls = 0° design was not, on the evidence reviewed, explicitly optimised for this particular civil-phase metric; that does <strong>not</strong> mean a Darian variant could never provide a comparable heuristic.</p>
+<h3>Openness as an implementation advantage, not a historical put-down</h3>
+<p>Marian Protocol v1.0 has a formally author-ratified specification and reproducible tests, plus proposed publication of its <strong>original technical text under CC BY 4.0</strong> and <strong>reference Python/JavaScript code under Apache 2.0</strong>. That would allow anyone to inspect, adapt, translate and implement the named open components under clear per-file terms. Open conformance tests, schemas, historical verification records and version identifiers reduce uncertainty for a third-party implementer.</p>
+<p>It would be misleading to assert that 'Darian is proprietary', 'Darian cannot be implemented' or 'there is no open Darian code'. Darian has extensive public descriptions and independent software implementations. The comparative claim we can safely make is narrower: <strong>Marian is planned as a unified versioned, openly licensed and test-backed reference release with explicit normative authority and machine conformance materials.</strong> A genuine apples-to-apples openness benchmark against particular Darian implementations would need a separate license and conformance audit. Public availability of a Darian paper, including a copyright notice, is not itself proof of the rights status of every Darian implementation.</p>
+<h3>Names and adoption: lower ambiguity, not proven superiority</h3>
+<p>Darian's original primary month names drew on alternating Latin and Sanskrit zodiac nomenclature; multiple alternatives and translations have been proposed. This provides a rich cultural frame, but a new settler might face learning twenty-four primary proper names before navigating the annual calendar. Marian's <strong>canonical machine identity is numeric</strong>, with 12 numbered months, 24 numbered minths and an A–X shorthand for minths; human-facing names are optional and localisable. Familiar Monsol-to-Sunsol weekday names are offered as a recommended interface, not fixed cultural commandments. Short, reusable number forms can simplify cross-language documentation and technical onboarding.</p>
+<p>This is a <strong>testable usability hypothesis</strong>, not a measured fact. Some communities may prefer Darian's explicit cultural names; some may find the word <em>minth</em> or the added <em>Sixth</em> alien. The stronger Marian argument is architectural: institutions can communicate precise dates now without requiring global agreement on the eventual poetic naming layer. And future Martians have genuine room to ratify the names of months and minths themselves, rather than inheriting a complete human vocabulary from Earth designers.</p>
+<h2>The most serious objections—and Marian's strongest answers</h2>
+<p><strong>Objection 1: “Marian interrupts the seven-day week, which is unacceptable.”</strong> This is serious and not refuted by calendar arithmetic. Darian makes substantially the <em>same</em> choice: a short final civil week preserves recurring dates by omitting one weekday label. Marian does <strong>not</strong> eliminate Darian's social cost. The defence is conscious design: dates carry stable weekday positions, monthly layouts repeat, and no <em>physical</em> sol vanishes. Communities requiring continuous seven-sol religious or industrial counting can maintain it as a separate elapsed cycle. People may still reject this compromise; that remains a legitimate reason to prefer another calendar.</p>
+<p><strong>Objection 2: “Why invent minths when Darian already has 24 months?”</strong> Because an approximately four-week period and one-twelfth of a planetary year are both useful and now diverge. Marian retains Darian-like near-four-week cadence <strong>without giving up</strong> a twelve-month annual coordinate. The question is whether two clearly assigned labels cost less than forcing one label to carry two incompatible functions. Marian's case is strong for institutions with multi-horizon planning, though the extra vocabulary is a real cost.</p>
+<p><strong>Objection 3: “This is just Levitt with Darian months inside it.”</strong> The ancestry is essentially right at the level of the 668-sol partition, and Marian should say so. The more relevant test is whether the <em>explicit layered operating architecture</em>—twelve annual months, 24 minths, six Sixths, canonical data identities, interplanetary phase orientation and a full open conformance record—forms a usable and independently implementable civil system. Combining and evaluating prior ideas can be an original contribution without claiming novelty for each ingredient.</p>
+<p><strong>Objection 4: “Ls = 0° is a more natural Martian New Year.”</strong> It is a perfectly sound candidate. Marian favours Ls = 15° because its intended design brief includes an early Earth-connected society, for which a near-common heliocentric annual direction offers an additional heuristic. That pragmatic advantage must be weighed against the explanatory simplicity and astronomical symbolism of an equinox; it is not objectively superior for every future Mars.</p>
+<p><strong>Objection 5: “The month-gap light-time story is misleading.”</strong> It would be if offered as a flight-operations number. The evidence establishes an approximate <em>distributional</em> monotone association in the synthetic model; neighbouring categories overlap substantially. Marian's published text should lead with those constraints, avoid exact predictions, and always defer operations to ephemeris-based OWLT. The defensible added value is a mental model, not precision.</p>
+<p><strong>Objection 6: “The calendar is harder to teach because it adds terms.”</strong> It adds two useful terms and avoids making 'month' and 'quarter' do two unrelated jobs. Its numeric identities and optional culturally selected names can make the formal system easy to translate and inspect. This is plausible, not experimentally proven; a future Mars usability study should compare Darian and Marian learning time, error rate, scheduling comprehension and user preference directly.</p>
+<p><strong>Objection 7: “Darian already works. Openness cannot make another calendar better.”</strong> Correct that openness cannot change astronomical arithmetic or human taste. It <strong>can</strong> reduce legal and technical barriers to building interoperable software, checking compatibility and revising errors. Marian should be judged on the combination of operating architecture and verifiable implementation, not on an unsupported claim that no one has made open Darian software.</p>
+<h2>Comparative summary</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Comparison data table"><table>
+<thead>
+<tr>
+  <th>Question</th>
+  <th>Darian</th>
+  <th>Marian</th>
+  <th>Fair assessment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Primary annual divisions</td>
+  <td>24 short months</td>
+  <td>12 months plus 24 formal minths</td>
+  <td>Marian exposes both scales; Darian protects shorter primary month duration</td>
+</tr>
+<tr>
+  <td>Typical short operating period</td>
+  <td>27–28 sol month</td>
+  <td>27–28 sol minth</td>
+  <td>Similar underlying scale</td>
+</tr>
+<tr>
+  <td>Intermediate planning coordinate</td>
+  <td>Derivable from month groups</td>
+  <td>Six formally defined Sixths</td>
+  <td>Explicit Marian addition, value untested</td>
+</tr>
+<tr>
+  <td>Quarter fraction</td>
+  <td>Derivable</td>
+  <td>Four protocol-defined quarters</td>
+  <td>Marian gives visible 12-month grouping</td>
+</tr>
+<tr>
+  <td>Weekday labels</td>
+  <td>Selected short terminal weeks</td>
+  <td>Selected short terminal weeks</td>
+  <td><strong>Neither</strong> solves continuous named-week objections</td>
+</tr>
+<tr>
+  <td>Annual reference</td>
+  <td>Ls = 0°</td>
+  <td>Ls = 15°</td>
+  <td>Different design brief, not universal win</td>
+</tr>
+<tr>
+  <td>Cross-world month-gap heuristic</td>
+  <td>Not primary original design objective</td>
+  <td>Explicitly examined in synthetic model</td>
+  <td>Real but approximate and era-dependent</td>
+</tr>
+<tr>
+  <td>Naming</td>
+  <td>Multiple historic month-name systems</td>
+  <td>Canonical numeric identities; optional human labels</td>
+  <td>Marian may be easier to localise; no user-study proof</td>
+</tr>
+<tr>
+  <td>Release/licensing in this project</td>
+  <td>Public Darian literature and independent implementations exist</td>
+  <td>Versioned CC BY technical standard + Apache reference code planned</td>
+  <td>Compare particular artifacts, not caricatures</td>
+</tr>
+<tr>
+  <td>Human cultural ownership</td>
+  <td>Naming variants exist</td>
+  <td>Explicit permission for future local names</td>
+  <td>Both have adaptability; Marian formalises decoupled IDs</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Conclusion: the affirmative case for Marian</h2>
+<p>The strongest case for Marian is not 'Darian got Mars wrong'. Darian helped establish that Martian civil time can have perpetually aligned dates and short recurring periods; its legacy is part of the foundation. <strong>Marian asks a broader operating question:</strong> can the same annual sequence simultaneously provide a twelve-month annual map, a twenty-four-period short cadence, a meaningful mid-range scale, transparent machine identities and a modest Earth-facing orientation advantage—while remaining reproducible, openly specified and adaptable to future Martian language?</p>
+<p>On the current evidence, <strong>yes by construction for the structural properties</strong>; <strong>yes conditionally, in the tested model, for coarse orbital-phase legibility</strong>; and <strong>plausibly, but not yet proven, for easier adoption and institutional use</strong>. That is a substantial and defensible argument for Marian as a serious successor architecture in the Levitt–Darian lineage, without denying the genuine costs of its interrupted civil week or appropriating the cultural choices of people who do not yet live on Mars.</p>
+<h3>Sources and pending checks</h3>
+<ul>
+<li>JB Bullock, <em>The Marian Calendar: Design and Evaluation of a Civil Time Architecture for Mars</em>, September 2026 author preprint, especially §§2.3–2.4, 6.4, 7.5–7.7 and 8.1–8.9. <strong>Publicly archived author preprint; not evidence of peer-reviewed journal acceptance.</strong></li>
+<li>Ratified <em>Marian Protocol v1.0</em>, integer audit and research provenance (author-ratified open technical specification and research-provenance record).</li>
+<li>Thomas Gangale, <em>The Darian Calendar</em> (1998), <a href="https://marspapers.org/paper/MAR98095.pdf">https://marspapers.org/paper/MAR98095.pdf</a> (reviewed primary description; copyright notice retained).</li>
+<li>Thomas Gangale, <em>Expanding the Cultural Relevance of the Darian Calendar of Mars to East Asia</em> (2025), publication copy and copyright to be verified before final citation.</li>
+<li>Additional peer-review check: Darian’s current licence map, month naming alternatives and external code conformance have not been exhaustively audited. Do not claim otherwise.</li>
+</ul>
+<hr />
+<h3>M6c source verification notes (editorial annex)</h3>
+<p>These notes document source provenance and do not alter the author-approved analysis. The normative Marian Protocol v1.0 is held in the separate, frozen technical repository; the link must be set to the real public URL at release. The following primary and official sources were checked for the specific facts attributed to them:</p>
+<ul>
+<li>Thomas Gangale, <em>The Darian Calendar</em> (1998), <a href="https://marspapers.org/paper/MAR98095.pdf">original proposal</a>: 24 months, 27/28-sol variation and shortened terminal weeks.</li>
+<li>Thomas Gangale, <em>The Architecture of Time, Part 2: The Darian System for Mars</em> (2006), <a href="https://doi.org/10.4271/2006-01-2249">SAE technical paper</a>: publication and system overview.</li>
+<li>Josef Šurán, <em>A Calendar for Mars</em> (1997), <a href="https://doi.org/10.1016/S0032-0633(97)00033-0">journal record</a>: leap/skip-day and leap/skip-week approaches.</li>
+<li>NASA GISS, <a href="https://www.giss.nasa.gov/tools/mars24/help/algorithm.html">Mars24 calculation documentation</a>, updated 2025: official mean-sol and seasonal-coordinate reference.</li>
+<li>Thomas Gangale, <a href="https://www.researchgate.net/publication/390729531_Expanding_the_Cultural_Relevance_of_the_Darian_Calendar_of_Mars_to_East_Asia">Darian adaptations for East Asian cultural nomenclature</a> (2025): additional names should not be misrepresented as nonexistent.</li>
+</ul>
+<p><strong>Source limitation:</strong> the 1954 Levitt work is credited through the author's research preprint and historical discussion rather than a newly inspected 1954 scan. The 2031–2120 Earth–Mars OWLT figures come from JB Bullock's September 2026 research preprint; M6c reconciles the quotations against that manuscript but does not rerun its 32,872-observation simulation or make the preprint public. External re-evaluation requires release or equivalent reproduction of the corresponding research methods/data. None of these limitations alters the verified integer-calendar rules.</p>
+</div><div class="footer">Original technical companion · CC BY 4.0 intended at public release. The literary book and its illustrations are all rights reserved. The protocol governs in any discrepancy. This companion is licensed separately from the literary book and images.</div></article></main></body></html>

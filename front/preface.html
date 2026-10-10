@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="no-referrer" name="referrer"/><meta content="default-src 'none'; style-src 'self'; img-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" http-equiv="Content-Security-Policy"/>
+<title>Preface | Marian — An Operating Calendar for Human Mars</title><meta content="Read Preface. Marian: An Operating Calendar for Human Mars. Written by JB Bullock." name="description"/><link href="../css/book.css" rel="stylesheet"/><link rel="canonical" href="https://iamjbcom.github.io/marian/front/preface.html"/><meta property="og:type" content="article"/><meta property="og:title" content="Preface | Marian — An Operating Calendar for Human Mars"/><meta property="og:url" content="https://iamjbcom.github.io/marian/front/preface.html"/></head>
+<body><a class="skip" href="#main">Skip to reading content</a><header class="mast"><a class="brand" href="../index.html">MARIAN<span>Operating Architecture Series</span></a><nav aria-label="Site"><a href="../index.html">Contents</a></nav></header>
+
+<main class="reading" id="main"><div class="crumbs"><a href="../index.html">Marian</a> / Preface</div><article class="book-section" data-section="preface"><h1 class="source-heading" data-source-block="71">Preface: How I Ended Up Designing a Calendar for Mars </h1>
+<p data-source-block="72">I have an engineer’s weakness for systems that line up neatly, and an operator’s experience that they usually do not.</p>
+<p data-source-block="73">Most of my career has been spent inside organisations trying to make complicated things work: strategy, planning, operating rhythms, decision-making, integration, organisational design and all the slightly less glamorous machinery required to turn ambitious ideas into something that functions on a Tuesday morning.</p>
+<p data-source-block="74">I spent a decade at Google, including running its Global Business Strategy &amp; Operations team and working as its first Chief of Staff, followed by four years as Chief Operating Officer of SoftBank International and later operating roles across startups and scale-ups.</p>
+<p data-source-block="75">That career did not obviously point toward Martian calendrics.</p>
+<p data-source-block="76">There was no master plan.</p>
+<p data-source-block="77">I did not leave Google thinking: <em>Next, the calendar of Mars.</em></p>
+<p data-source-block="78">The route was considerably stranger than that.</p>
+<h2 data-source-block="79">It started as fiction</h2>
+<p data-source-block="80">For several years I had been writing <em>The Mars Codex</em>, a future-history series imagining the first century of permanent human civilisation on Mars.</p>
+<p data-source-block="81">The premise was simple enough. Most stories about Mars naturally concentrate on getting there. I was more interested in what happens afterwards.</p>
+<p data-source-block="82">What happens when the flags have been planted, the cameras have gone home and somebody has to run the place?</p>
+<p data-source-block="83">How do settlements organise themselves? How do people work? Govern? Build? Maintain things? Name places? Coordinate across enormous distances? Turn a collection of missions into something that begins to resemble a civilisation?</p>
+<p data-source-block="84">That is much closer to the sort of problem I have spent my professional life thinking about.</p>
+<p data-source-block="85">And somewhere in that process I ran into the calendar.</p>
+<p data-source-block="86">At first it was merely another piece of world-building.</p>
+<p data-source-block="87">Mars has its own day. Its own seasons. Its own orbit. Its own relationship with the Sun. If humans eventually live there permanently, it seemed implausible that centuries later they would still organise every part of civil life as though they were temporarily visiting from Earth.</p>
+<p data-source-block="88">So I needed a Martian calendar.</p>
+<p data-source-block="89">I assumed this would take an afternoon.</p>
+<p data-source-block="90">This was optimistic.</p>
+<h2 data-source-block="91">A fictional detail became a real design problem</h2>
+<p data-source-block="92">The more I looked into Martian time, the more interesting the problem became.</p>
+<p data-source-block="93">There was already a substantial history of serious calendar proposals for Mars, including work by scientists, engineers and calendar designers going back decades. Some were ingenious. Some were elegant. More importantly, they did not all agree, because they were often trying to preserve different things.</p>
+<p data-source-block="94">That caught my attention.</p>
+<p data-source-block="95">This was no longer merely a question of inventing colourful month names for a science-fiction book.</p>
+<p data-source-block="96">It was a systems-design problem.</p>
+<p data-source-block="97">What should a Martian calendar actually optimise for? Which elements of terrestrial civil time remain useful on Mars? Which exist mainly because of accidents of Earth’s astronomy and history? What should be familiar? What should be redesigned?</p>
+<p data-source-block="98">And what should be left entirely to the people who may one day live there?</p>
+<p data-source-block="99">Those are questions I recognise.</p>
+<p data-source-block="100">They are the same sort of questions that arise whenever an inherited system no longer quite fits the environment in which it has to operate.</p>
+<p data-source-block="101">You can preserve everything and accept the friction. You can redesign everything and impose the cost of learning something new. Or you can work out which functions actually matter and rebuild around those.</p>
+<p data-source-block="102">The calendar I developed gradually became <strong>Marian</strong>.</p>
+<p data-source-block="103">The name derives from Mars rather than from me, which is probably worth clarifying before anyone concludes that designing a planetary calendar was not quite enough vanity on its own.</p>
+<h2 data-source-block="104">From the Codex to a serious proposal</h2>
+<p data-source-block="105">For a while Marian remained part of <em>The Mars Codex</em>.</p>
+<p data-source-block="106">That was useful because fiction allowed me to imagine the calendar from the other end of the problem: not merely as a mathematical object, but as something people might actually live inside.</p>
+<p data-source-block="107">What would it feel like to plan a year with it? How would institutions use it? What would happen to birthdays and anniversaries? Which parts would become cultural? Which bits would annoy people?</p>
+<p data-source-block="108">And, perhaps most importantly, which parts would eventually become so ordinary that nobody thought about them at all?</p>
+<p data-source-block="109">But there was an obvious limitation.</p>
+<p data-source-block="110">A future-history narrator can simply tell you that something worked. A serious proposal cannot.</p>
+<p data-source-block="111">So I took Marian back out of the fictional world and subjected it to a rather less forgiving one: definitions, calculations, prior research, astronomical references, comparison with other Martian calendars and explicit design trade-offs.</p>
+<p data-source-block="112">That work eventually became technical papers and standards. This book grew from the same process, but it has a different purpose.</p>
+<p data-source-block="113">The paper asks whether Marian can be formally described and evaluated.</p>
+<p data-source-block="114">This book asks the more interesting human question:</p>
+<p data-source-block="115"><strong>Why would anyone design Mars this way in the first place?</strong></p>
+<h2 data-source-block="116">Why this book</h2>
+<p data-source-block="117">I am not trying to predict what future Martians will choose.</p>
+<p data-source-block="118">Nor do I think a group of people on twenty-first-century Earth should attempt to legislate the culture of a civilisation that does not yet exist.</p>
+<p data-source-block="119">If Mars is ever permanently settled, the people living there will make their own traditions, arguments, jokes and compromises. They should.</p>
+<p data-source-block="120">But technical infrastructure is different. It can be thought about in advance.</p>
+<p data-source-block="121">We can examine the constraints. We can learn from previous proposals. We can make the assumptions explicit. We can test the arithmetic. We can decide where complexity earns its keep and where it does not.</p>
+<p data-source-block="122">That is the spirit in which Marian is offered.</p>
+<p data-source-block="123">It is not a prophecy. It is not the one true calendar of Mars. It is a proposed piece of operating architecture for a civilisation that may one day need one.</p>
+<p data-source-block="124">And, rather unexpectedly, it has become one of my favourite design problems.</p>
+<p data-source-block="125">Perhaps that should not have surprised me. I have spent most of my career thinking about how groups of people coordinate themselves through time.</p>
+<p data-source-block="126">Mars merely gave me the chance to start with a cleaner sheet of paper.</p>
+<p data-source-block="127">Hence this book.</p>
+<p data-source-block="128"><strong>Marian: An Operating Calendar for Human Mars.</strong></p>
+<p data-source-block="129">— <strong>Jonathan Bullock</strong></p>
+<p data-source-block="130"><em>More of my work on operating architecture, organisations and future systems can be found at iamJB.com.</em></p></article><nav aria-label="Previous and next section" class="pager"><a href="dedication.html" rel="prev">← Dedication</a><a href="../parts/part-01.html" rel="next">Part 1 →</a></nav></main>
+<footer>© JB Bullock 2026. Book text, cover and illustrations: all rights reserved. Marian Protocol v1.0 is separately licensed.</footer></body></html>

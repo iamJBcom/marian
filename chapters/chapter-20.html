@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="no-referrer" name="referrer"/><meta content="default-src 'none'; style-src 'self'; img-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" http-equiv="Content-Security-Policy"/>
+<title>Chapter 20: Does Marian Do What It Says? | Marian — An Operating Calendar for Human Mars</title><meta content="Read Chapter 20: Does Marian Do What It Says?. Marian: An Operating Calendar for Human Mars. Written by JB Bullock." name="description"/><link href="../css/book.css" rel="stylesheet"/><link rel="canonical" href="https://iamjbcom.github.io/marian/chapters/chapter-20.html"/><meta property="og:type" content="article"/><meta property="og:title" content="Chapter 20: Does Marian Do What It Says? | Marian — An Operating Calendar for Human Mars"/><meta property="og:url" content="https://iamjbcom.github.io/marian/chapters/chapter-20.html"/></head>
+<body><a class="skip" href="#main">Skip to reading content</a><header class="mast"><a class="brand" href="../index.html">MARIAN<span>Operating Architecture Series</span></a><nav aria-label="Site"><a href="../index.html">Contents</a></nav></header>
+
+<main class="reading" id="main"><div class="crumbs"><a href="../index.html">Marian</a> / Chapter 20: Does Marian Do What It Says?</div><article class="book-section" data-section="chapter-20"><h1 class="source-heading" data-source-block="1952"><span class="heading-lead">FIT</span><br/><span class="heading-main">20) Does Marian Do What It Says?</span><br/><span class="heading-sub">Marian Against the Design Brief</span></h1>
+<p data-source-block="1953">A design brief is useful partly because it prevents one of the easier tricks available to a designer: changing the question after seeing the answer.</p>
+<p data-source-block="1954">Chapter 4 set out what Marian was intended to achieve before the full architecture was introduced. Those requirements were not presented as universal truths about what every future Martian society must want. They described a particular scenario: an early permanent civilisation on Mars, still closely connected to Earth, needing a genuinely local civil calendar capable of supporting recurrent human activity across a 668- or 669-sol year.</p>
+<p data-source-block="1955">We can now return to those requirements with the completed architecture in front of us.</p>
+<p data-source-block="1956">The question is not whether Marian is elegant, whether another calendar could make different choices or whether future Martians would ultimately adopt it. The narrower test is:</p>
+<p data-source-block="1957"><strong>Does Marian actually deliver the properties it was designed to deliver?</strong></p>
+<p data-source-block="1958">That is the purpose of this chapter.</p>
+<h2 data-source-block="1959">The eight requirements</h2>
+<p data-source-block="1960">The audit can be summarised before examining the important qualifications.</p>
+<div aria-label="Table 1 in Chapter 20: Does Marian Do What It Says?; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="1961"><caption class="sr-only">Table 1 in Chapter 20: Does Marian Do What It Says?</caption><thead><tr><th scope="col">Requirement</th><th scope="col">What Marian provides</th><th scope="col">Qualification</th></tr></thead><tbody><tr><td>1. Astronomical anchoring</td><td>Ls = 15° annual reference; 668/669-sol civil years; 59/100 intercalation</td><td>Excellent founding-era approximation, not eternal exactness</td></tr><tr><td>2. Structural regularity</td><td>56–56–55 repeated four times; only 55/56-sol months; equal 167-sol common-year quarters; two annual templates</td><td>Variation remains, but is small and deterministic</td></tr><tr><td>3. Recurring-date stability</td><td>Every valid recurring Month–Week–Day position retains the same weekday identity</td><td>Achieved through shortened terminal civil weeks</td></tr><tr><td>4. Multiple human timescales</td><td>Standard intervals around 7, 28, 56, 111 and 167 sols</td><td>The intervals exist; their eventual usefulness remains empirical</td></tr><tr><td>5. Annual legibility</td><td>12 months, 4 quarters, 6 Sixths and 24 minths create several visible annual scales</td><td>More structure also means more concepts to learn</td></tr><tr><td>6. Deterministic arithmetic</td><td>Integer rules for leap years, month lengths, date validity and conversion</td><td>Absolute historical conversion awaits the real MY1 epoch</td></tr><tr><td>7. Earth–Mars legibility</td><td>Deterministic conversion plus the Ls = 15° twelve-month relationship and month-gap heuristic</td><td>The heuristic is coarse, not operational ephemeris data</td></tr><tr><td>8. Durable structural identity</td><td>Canonical numeric identities independent of optional human names</td><td>The proposed vocabulary remains replaceable and untested</td></tr></tbody></table></div>
+<p data-source-block="1962">This is not a scorecard. Several requirements concern properties that cannot all be maximised simultaneously, and others extend beyond what mathematics alone can establish.</p>
+<p data-source-block="1963">The useful distinction is between what the architecture <strong>demonstrably provides</strong> and what remains a <strong>claim about human use</strong>.</p>
+<h2 data-source-block="1964">1. Astronomical anchoring</h2>
+<p data-source-block="1965">The first requirement was that the Martian civil year should belong physically to Mars rather than being an arbitrary transplantation of Earth's chronology.</p>
+<p data-source-block="1966">Marian does this through the <strong>Ls = 15°</strong> annual reference. The civil calendar approximates the corresponding Martian tropical recurrence using 668-sol common years and 669-sol leap years, with the 59/100 rule producing a mean civil year of:</p>
+<figure class="art" data-editorial-status="AUTHOR_APPROVED_PLACEMENT_AND_CAPTION" id="image11"><img alt="Illustration: Design-Brief Audit. Expanded text description follows." decoding="async" height="1024" loading="lazy" src="../assets/image11.webp" width="1536"/><figcaption><strong>Design-Brief Audit</strong></figcaption><details class="figure-description"><summary>Detailed figure description</summary><p>An eight-row design-brief matrix compares Marian against its eight stated requirements. Columns distinguish the requirement, the response, and the qualification or cost. It covers Martian anchoring, regular structure, recurring dates, multiple timescales, annual legibility, deterministic calculations, Earth–Mars legibility and durable structural identity. The matrix is a qualitative design audit, not an externally certified score.</p><p>Editorial note: this is a descriptive summary, not an independently verified transcription of every diagram label. Refer to the surrounding text and the Marian technical specification for authoritative numeric details where applicable.</p></details></figure>
+<p data-source-block="1967"><strong>668.590000 sols</strong></p>
+<p data-source-block="1968">Around the intended founding era, that is extremely close to the recurrence the calendar is trying to track. Marian therefore has both a defined physical target and a deterministic mechanism for remaining close to it.</p>
+<p data-source-block="1969">The requirement is satisfied.</p>
+<p data-source-block="1970">That does not mean the current intercalation rule is claimed to be mathematically exact for every future century. Mars's orbital and seasonal relationships evolve over long timescales. The relevant point for this audit is narrower: Marian provides a reproducible Martian annual reference and an ordinary civil mechanism capable of tracking it without annual astronomical intervention.</p>
+<h2 data-source-block="1971">2. Structural regularity</h2>
+<p data-source-block="1972">Structural regularity is easier to inspect.</p>
+<p data-source-block="1973">A common Marian year contains twelve months in the pattern:</p>
+<p data-source-block="1974"><strong>56 – 56 – 55 | 56 – 56 – 55 | 56 – 56 – 55 | 56 – 56 – 55</strong></p>
+<p data-source-block="1975">Only two month lengths exist. Months 3, 6, 9 and 12 take the shorter form, so each common-year quarter contains:</p>
+<p data-source-block="1976"><strong>56 + 56 + 55 = 167 sols</strong></p>
+<p data-source-block="1977">A leap year changes only the final possible civil position of Month 12.</p>
+<p data-source-block="1978">Marian therefore does not achieve regularity by making everything identical. It makes the variation <strong>small, repeated and predictable</strong>.</p>
+<p data-source-block="1979">That is exactly what the brief asked for.</p>
+<p data-source-block="1980">The architecture contains irregularity because Mars does. The important result is that users and software do not have to discover where that irregularity has gone each year.</p>
+<h2 data-source-block="1981">3. Recurring-date stability</h2>
+<p data-source-block="1982">The third requirement was that recurring valid dates should retain stable weekly relationships where practical.</p>
+<p data-source-block="1983">Marian delivers that directly.</p>
+<p data-source-block="1984">Every month begins at Day 1. Every valid Month–Week–Day position therefore retains the same weekday identity whenever it occurs. A recurring Frisol remains Frisol; an annual institutional template does not need its date–weekday relationships rebuilt each year.</p>
+<p data-source-block="1985">This property is achieved through the shortened terminal civil weeks already described. At the end of a 55-sol month, Week 8 ends after Day 6 and the following physical sol begins the next month at Day 1.</p>
+<p data-source-block="1986">For the purposes of this audit, the important conclusion is simply that the requirement is real rather than aspirational:</p>
+<p data-source-block="1987"><strong>Marian provides invariant recurring date–weekday relationships.</strong></p>
+<p data-source-block="1988">The design cost of choosing that property belongs to the wider comparison and trade-off analysis. Here, the question is whether the architecture does what the brief asked.</p>
+<p data-source-block="1989">It does.</p>
+<h2 data-source-block="1990">4. Multiple human timescales</h2>
+<p data-source-block="1991">The fourth requirement asked for useful civil structure at more than one scale.</p>
+<p data-source-block="1992">Marian provides principal recurring horizons of approximately:</p>
+<p data-source-block="1993"><strong>7 sols — week</strong></p>
+<p data-source-block="1994"><strong>27–28 sols — minth</strong></p>
+<p data-source-block="1995"><strong>55–56 sols — month</strong></p>
+<p data-source-block="1996"><strong>111–112 sols — Sixth</strong></p>
+<p data-source-block="1997"><strong>167 sols — common-year quarter</strong></p>
+<p data-source-block="1998">These are not merely arbitrary intervals laid on top of one another. Each arises from the same annual architecture, and each can be addressed consistently across institutions and software.</p>
+<p data-source-block="1999">The structural requirement is therefore satisfied.</p>
+<p data-source-block="2000">The stronger proposition — that these particular scales will prove useful to human beings — cannot yet be demonstrated. A minth may become intuitive. Sixths may become valuable institutional periods or remain relatively obscure. Those are human-factors questions.</p>
+<p data-source-block="2001">The distinction is important:</p>
+<p data-source-block="2002"><strong>Marian demonstrably provides multiple standard civil scales. Whether people make substantial use of all of them remains empirical.</strong></p>
+<h2 data-source-block="2003">5. Annual legibility</h2>
+<p data-source-block="2004">The fifth requirement was that a 668-sol year should remain mentally navigable rather than becoming one enormous undifferentiated span.</p>
+<figure class="art" data-editorial-status="AUTHOR_APPROVED_PLACEMENT_AND_CAPTION" id="image16"><img alt="Illustration: Four Kinds of Claim. Expanded text description follows." decoding="async" height="887" loading="lazy" src="../assets/image16.webp" width="1774"/><figcaption><strong>Four Kinds of Claim</strong></figcaption><details class="figure-description"><summary>Detailed figure description</summary><p>A four-column framework separates structural facts, calculated numerical results, design judgments, and hypotheses about future human preferences. Each column has a distinct color, short examples, and an explanation of how that class of statement should be evaluated. The main lesson is that a proven calculation does not prove an untested social preference or establish institutional adoption.</p><p>Editorial note: this is a descriptive summary, not an independently verified transcription of every diagram label. Refer to the surrounding text and the Marian technical specification for authoritative numeric details where applicable.</p></details></figure>
+<p data-source-block="2005">Marian approaches that through several overlapping maps of the same year. Twelve months provide the principal annual sequence. Four quarters provide large fractions. Six Sixths provide a nearer middle scale. Twenty-four minths supply shorter identified positions.</p>
+<p data-source-block="2006">The relationships are easy to recover. Month 6 marks the end of the first half of the annual sequence. Quarter 3 places a date in the third fourth of the year. A Sixth always contains two months. Every minth has one of twenty-four known annual identities.</p>
+<p data-source-block="2007">Structurally, that gives the year considerably more shape than an ordinal-sol count alone.</p>
+<p data-source-block="2008">Whether the resulting architecture feels intuitive is harder to establish. Additional scales improve orientation only if users find the concepts easier than the complexity they introduce.</p>
+<p data-source-block="2009">So again the audit produces two answers.</p>
+<p data-source-block="2010">The architecture provides annual landmarks at several scales.</p>
+<p data-source-block="2011">Whether those landmarks make the year subjectively easier to inhabit remains a human question.</p>
+<h2 data-source-block="2012">6. Deterministic arithmetic</h2>
+<p data-source-block="2013">Computational determinism is one of the cleanest results.</p>
+<p data-source-block="2014">Once the Marian epoch has been instantiated, routine calendar use requires no ephemeris. Leap status follows from the year number. Month length follows from the year type and month number. Date validity follows from fixed arithmetic. Minth, Sixth and quarter identity can all be derived mechanically.</p>
+<p data-source-block="2015">A Marian Civil Date can therefore be mapped into a serial-sol position and reconstructed without asking where Mars happens to be in its orbit at that moment.</p>
+<p data-source-block="2016">The year remains astronomically grounded without making ordinary calendar arithmetic astronomically dependent.</p>
+<p data-source-block="2017"><strong>Astronomy defines the target. The rules operate the calendar.</strong></p>
+<p data-source-block="2018">One historical parameter is necessarily still missing: the absolute physical timestamp of MY1. That cannot yet be known because the event that ultimately instantiates it has not occurred.</p>
+<p data-source-block="2019">The rule is complete.</p>
+<p data-source-block="2020">History has not yet supplied its input.</p>
+<p data-source-block="2021">Once that happens, the limitation disappears. Libraries, schemas and validation tools will still need to be implemented, but those are engineering tasks around a deterministic calendar rather than unresolved architecture.</p>
+<p data-source-block="2022">The requirement is therefore satisfied by design, with one future epoch constant still awaiting history.</p>
+<h2 data-source-block="2023">7. Earth–Mars legibility</h2>
+<p data-source-block="2024">The seventh requirement is unusual because it contains both a straightforward interoperability property and a more distinctive mental model.</p>
+<p data-source-block="2025">At the basic level, Marian can be converted deterministically to Earth chronology once its epoch exists. That establishes the principal requirement.</p>
+<p data-source-block="2026">The choice of <strong>Ls = 15°</strong> adds something else. Around the intended founding era, Marian New Year falls close to the heliocentric direction Earth occupies around Gregorian New Year. Because both civil calendars divide their years into twelve months, the circular difference between Gregorian and Marian month numbers becomes a coarse indicator of Earth–Mars orbital relationship.</p>
+<p data-source-block="2027">The modelling supports the usefulness of that relationship. Small month gaps generally correspond to shorter one-way light times; large gaps generally correspond to longer ones.</p>
+<p data-source-block="2028">The claim does not need to be stronger than that.</p>
+<p data-source-block="2029">The month gap is not an operational communications calculation. Actual light time depends on real orbital geometry and should be obtained from ephemerides. What Marian provides is a human-readable mental model that makes the broad Earth–Mars relationship easier to understand.</p>
+<p data-source-block="2030">The Martian annual reference still comes first. The Earth-facing property is useful because it emerges from the chosen Martian anchor without becoming the master of it.</p>
+<p data-source-block="2031">That satisfies the brief's requirement for Earth–Mars legibility without turning the calendar into a navigation system.</p>
+<h2 data-source-block="2032">8. Durable structural identity</h2>
+<p data-source-block="2033">The eighth requirement separates structural identity from vocabulary.</p>
+<p data-source-block="2034">This works cleanly.</p>
+<p data-source-block="2035">Months have canonical numeric identities. Weekday positions have structural identities. Minths are formally 01–24, with A–X available as optional shorthand. Natural-language names can be translated, changed or abandoned without changing the underlying date.</p>
+<p data-source-block="2036">A machine does not need everybody to agree that Month 8 is <em>Augiix</em>. It needs everybody to agree which interval <strong>Month 08</strong> identifies.</p>
+<p data-source-block="2037">That is the essential requirement, and Marian satisfies it.</p>
+<p data-source-block="2038">Whether <em>Janiix</em>, <em>Monsol</em> or A–X actually help users is a separate interface question. The architecture deliberately isolates that uncertainty in a layer that can be changed without breaking records.</p>
+<p data-source-block="2039">That is exactly the sort of uncertainty a durable standard should prefer.</p>
+<h2 data-source-block="2040">Four kinds of claim</h2>
+<p data-source-block="2041">The audit becomes clearer if Marian's principal claims are separated by evidentiary type.</p>
+<div aria-label="Table 2 in Chapter 20: Does Marian Do What It Says?; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="2042"><caption class="sr-only">Table 2 in Chapter 20: Does Marian Do What It Says?</caption><thead><tr><th scope="col">Claim type</th><th scope="col">Examples</th></tr></thead><tbody><tr><td>Structural fact</td><td>668-sol common year; 56–56–55 month pattern; 24 minths; equal common-year quarters; fixed recurring-date identity</td></tr><tr><td>Calculated result</td><td>668.590000-sol mean under 59/100; phase behaviour; modelled month-gap relationship</td></tr><tr><td>Design judgement</td><td>Preserve twelve months; formalise minths; prefer recurrence to uninterrupted weekday succession; prefer mnemonic leap placement</td></tr><tr><td>Human-factors hypothesis</td><td>Users will find minths intuitive; Sixths will prove useful; names will aid recognition; recurrence will reduce scheduling friction</td></tr></tbody></table></div>
+<p data-source-block="2043">Each category demands a different kind of evidence.</p>
+<p data-source-block="2044">Structural facts can be checked directly against the specification. Calculated results can be reproduced. Design judgements can be examined against the stated brief. Human-factors hypotheses eventually have to encounter human beings.</p>
+<p data-source-block="2045">No amount of better orbital modelling can prove that people will like minths.</p>
+<p data-source-block="2046">That requires a different experiment.</p>
+<h2 data-source-block="2047">What the audit actually establishes</h2>
+<p data-source-block="2048">Seen against its own requirements, Marian performs strongly in the areas that can already be demonstrated.</p>
+<p data-source-block="2049">It has a Martian annual reference without requiring routine astronomical observation. It has predictable 55- and 56-sol months, equal common-year quarters and only two annual templates. Valid recurring dates retain fixed weekday identities. Several subannual civil scales are available. Routine date arithmetic is deterministic. Earth–Mars chronology is convertible and gains a useful coarse orbital mental model. Canonical structural identities remain stable even if the human vocabulary changes.</p>
+<p data-source-block="2050">Those are not aspirations. They are properties of the architecture.</p>
+<p data-source-block="2051">The remaining uncertainty sits mainly where it should: at the human interface. We do not yet know whether users will find the added scales intuitive, whether Sixths will earn their place, whether recurring-date stability proves valuable enough in actual use, or whether the proposed terminology helps rather than hinders.</p>
+<p data-source-block="2052">Those are important questions, but they are not reasons to blur the result of the design audit.</p>
+<p data-source-block="2053">Marian does what the brief asked it to do.</p>
+<p data-source-block="2054">The harder question is whether the brief chose the right things to value.</p>
+<p data-source-block="2055"><strong>Requirements-driven design does not make the requirements sacred. It makes their consequences visible.</strong></p></article><nav aria-label="Previous and next section" class="pager"><a href="../parts/part-05.html" rel="prev">← Part 5</a><a href="chapter-21.html" rel="next">Chapter 21: No Calendar Gets Everything →</a></nav></main>
+<footer>© JB Bullock 2026. Book text, cover and illustrations: all rights reserved. Marian Protocol v1.0 is separately licensed.</footer></body></html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="no-referrer" name="referrer"/><meta content="default-src 'none'; style-src 'self'; img-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" http-equiv="Content-Security-Policy"/>
+<title>Appendix D: Dates, Identity &amp; Implementation | Marian — An Operating Calendar for Human Mars</title><meta content="Read Appendix D: Dates, Identity &amp; Implementation. Marian: An Operating Calendar for Human Mars. Written by JB Bullock." name="description"/><link href="../css/book.css" rel="stylesheet"/><link rel="canonical" href="https://iamjbcom.github.io/marian/appendices/appendix-d.html"/><meta property="og:type" content="article"/><meta property="og:title" content="Appendix D: Dates, Identity &amp; Implementation | Marian — An Operating Calendar for Human Mars"/><meta property="og:url" content="https://iamjbcom.github.io/marian/appendices/appendix-d.html"/></head>
+<body><a class="skip" href="#main">Skip to reading content</a><header class="mast"><a class="brand" href="../index.html">MARIAN<span>Operating Architecture Series</span></a><nav aria-label="Site"><a href="../index.html">Contents</a></nav></header>
+
+<main class="reading" id="main"><div class="crumbs"><a href="../index.html">Marian</a> / Appendix D: Dates, Identity &amp; Implementation</div><article class="book-section" data-section="appendix-d"><h1 class="source-heading" data-source-block="3249">D - Dates, Identity &amp; Implementation</h1>
+<p data-source-block="3250"><em>Canonical Representation, Validation and Conversion </em></p>
+<h2 data-source-block="3251">D.1 Purpose</h2>
+<p data-source-block="3252">This appendix defines how Marian civil dates are represented, validated and converted between equivalent forms.</p>
+<p data-source-block="3253">Its purpose is to ensure that independent implementations can identify the same civil sol in the same way even when their human-facing language, typography or local conventions differ.</p>
+<p data-source-block="3254">The central distinction is between <strong>identity</strong> and <strong>interface</strong>.</p>
+<p data-source-block="3255">Canonical identities belong to the calendar structure. Names and display forms sit above them. A database should not need to know whether Month 08 is displayed as <em>Augiix</em>, translated into another language or given a different local name altogether.</p>
+<p data-source-block="3256">For regular Marian years MY1 onward, all date arithmetic is deterministic from the year number and the structural rules defined in Appendices A and B.</p>
+<p data-source-block="3257">MY0 is a transitional epoch interval and is treated separately in Section D.18.</p>
+<h2 data-source-block="3258">D.2 The canonical Marian Civil Date</h2>
+<p data-source-block="3259">The primary Marian Civil Date contains four components:</p>
+<p data-source-block="3260"><strong>Year · Month · Week · Day</strong></p>
+<p data-source-block="3261">Its structural form is:</p>
+<p data-source-block="3262"><strong>(Y, M, W, D)</strong></p>
+<p data-source-block="3263">The canonical machine-readable representation is:</p>
+<p data-source-block="3264"><strong>MY&lt;year&gt;-&lt;month&gt;-&lt;week&gt;-&lt;day&gt;</strong></p>
+<p data-source-block="3265">For example:</p>
+<p data-source-block="3266"><strong>MY42-08-03-05</strong></p>
+<p data-source-block="3267">means:</p>
+<p data-source-block="3268"><strong>Marian Year 42 · Month 08 · Week 03 · Day 05</strong></p>
+<p data-source-block="3269">The fields have the following meanings:</p>
+<div aria-label="Table 1 in Appendix D: Dates, Identity &amp; Implementation; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="3270"><caption class="sr-only">Table 1 in Appendix D: Dates, Identity &amp; Implementation</caption><thead><tr><th scope="col">Field</th><th scope="col">Meaning</th><th scope="col">Regular range</th></tr></thead><tbody><tr><td>Y</td><td>Marian year</td><td>1 onward</td></tr><tr><td>M</td><td>Month within year</td><td>01–12</td></tr><tr><td>W</td><td>Week position within month</td><td>01–08</td></tr><tr><td>D</td><td>Weekday position within week</td><td>01–07, where valid</td></tr></tbody></table></div>
+<p data-source-block="3271">Month, week and day fields use two decimal digits in canonical interchange.</p>
+<p data-source-block="3272">The year is represented as the decimal Marian year number following the prefix <strong>MY</strong>. The specification does not require a fixed number of year digits.</p>
+<p data-source-block="3273">Thus:</p>
+<p data-source-block="3274"><strong>MY1-01-01-01</strong></p>
+<p data-source-block="3275">is the first regular Marian civil date, while:</p>
+<p data-source-block="3276"><strong>MY142-12-08-06</strong></p>
+<p data-source-block="3277">identifies Month 12, Week 8, Day 6 of MY142.</p>
+<p data-source-block="3278">Canonical strings are intended to be unambiguous identifiers. Implementations requiring lexicographic sorting SHOULD store the component fields separately or apply an agreed fixed-width year representation internally rather than assuming that variable-width display strings will sort correctly as text.</p>
+<h2 data-source-block="3279">D.3 Why Year–Month–Week–Day?</h2>
+<p data-source-block="3280">The use of four components rather than the familiar Gregorian Year–Month–Day form reflects Marian's weekly architecture.</p>
+<p data-source-block="3281">Every regular Marian month contains eight nominal week positions and begins at weekday position 1. A Marian date can therefore expose the week directly:</p>
+<p data-source-block="3282"><strong>MY42-08-03-05</strong></p>
+<p data-source-block="3283">can be read as:</p>
+<p data-source-block="3284"><strong>Year 42 → Month 08 → Week 03 → Day 05</strong></p>
+<p data-source-block="3285">Day 5 is not a weekday label calculated independently from a continuous seven-sol count. It is the fifth weekday position of that civil week by construction.</p>
+<p data-source-block="3286">The same structural address therefore retains the same weekday position in every regular year in which the date exists.</p>
+<p data-source-block="3287">This is one of the principal practical consequences of Marian's recurring-date architecture.</p>
+<h2 data-source-block="3288">D.4 Human-facing forms</h2>
+<p data-source-block="3289">A canonical date may be rendered in many human-readable forms without changing its identity.</p>
+<p data-source-block="3290">For example, the canonical date:</p>
+<p data-source-block="3291"><strong>MY42-08-03-05</strong></p>
+<p data-source-block="3292">may be displayed as:</p>
+<p data-source-block="3293"><strong>MY42 · Month 8 · Week 3 · Day 5</strong></p>
+<p data-source-block="3294">or, using the recommended English-language vocabulary:</p>
+<p data-source-block="3295"><strong>Frisol, Week 3, Augiix, MY42</strong></p>
+<p data-source-block="3296">or:</p>
+<p data-source-block="3297"><strong>42 Augiix · Week 3 · Frisol</strong></p>
+<p data-source-block="3298">These are representations of the same civil sol.</p>
+<p data-source-block="3299">Applications MAY reorder, translate or localise human-facing components according to local conventions. They MUST preserve an unambiguous mapping to the underlying canonical date.</p>
+<h2 data-source-block="3300">D.5 Canonical structural identities</h2>
+<p data-source-block="3301">The following identities are structural:</p>
+<div aria-label="Table 2 in Appendix D: Dates, Identity &amp; Implementation; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="3302"><caption class="sr-only">Table 2 in Appendix D: Dates, Identity &amp; Implementation</caption><thead><tr><th scope="col">Element</th><th scope="col">Canonical identity</th></tr></thead><tbody><tr><td>Year</td><td>MY1, MY2, MY3 ...</td></tr><tr><td>Month</td><td>01–12</td></tr><tr><td>Week within month</td><td>01–08</td></tr><tr><td>Weekday position</td><td>01–07</td></tr><tr><td>Minth</td><td>01–24</td></tr><tr><td>Quarter</td><td>Q1–Q4</td></tr><tr><td>Sixth</td><td>S1–S6</td></tr></tbody></table></div>
+<p data-source-block="3303">These identities remain unchanged when names are translated or replaced.</p>
+<p data-source-block="3304">For example:</p>
+<p data-source-block="3305"><strong>Month 08 remains Month 08.</strong></p>
+<p data-source-block="3306"><strong>Minth 17 remains Minth 17.</strong></p>
+<p data-source-block="3307"><strong>Day 05 remains weekday position 5.</strong></p>
+<p data-source-block="3308">This structural layer is the basis for machine interoperability.</p>
+<h2 data-source-block="3309">D.6 Recommended weekday vocabulary</h2>
+<p data-source-block="3310">The canonical weekday positions are numeric. Marian recommends the following English-language display names:</p>
+<div aria-label="Table 3 in Appendix D: Dates, Identity &amp; Implementation; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="3311"><caption class="sr-only">Table 3 in Appendix D: Dates, Identity &amp; Implementation</caption><thead><tr><th scope="col">Position</th><th scope="col">Recommended name</th></tr></thead><tbody><tr><td>D1</td><td>Monsol</td></tr><tr><td>D2</td><td>Tuesol</td></tr><tr><td>D3</td><td>Wedsol</td></tr><tr><td>D4</td><td>Thursol</td></tr><tr><td>D5</td><td>Frisol</td></tr><tr><td>D6</td><td>Satsol</td></tr><tr><td>D7</td><td>Sunsol</td></tr></tbody></table></div>
+<p data-source-block="3312">These names are an interface, not the underlying identity.</p>
+<p data-source-block="3313">A localised implementation may replace <em>Frisol</em> while preserving <strong>D5</strong>. Software exchanging canonical dates need not exchange the human-readable weekday name at all.</p>
+<h2 data-source-block="3314">D.7 Recommended month vocabulary</h2>
+<p data-source-block="3315">The twelve canonical months are numbered 01–12.</p>
+<p data-source-block="3316">The reference English-language vocabulary is:</p>
+<div aria-label="Table 4 in Appendix D: Dates, Identity &amp; Implementation; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="3317"><caption class="sr-only">Table 4 in Appendix D: Dates, Identity &amp; Implementation</caption><thead><tr><th scope="col">Month</th><th scope="col">Recommended name</th></tr></thead><tbody><tr><td>01</td><td>Janiix</td></tr><tr><td>02</td><td>Febiix</td></tr><tr><td>03</td><td>Mariix</td></tr><tr><td>04</td><td>Apriix</td></tr><tr><td>05</td><td>Mayiix</td></tr><tr><td>06</td><td>Juniix</td></tr><tr><td>07</td><td>Juliix</td></tr><tr><td>08</td><td>Augiix</td></tr><tr><td>09</td><td>Sepiix</td></tr><tr><td>10</td><td>Octiix</td></tr><tr><td>11</td><td>Noviix</td></tr><tr><td>12</td><td>Deciix</td></tr></tbody></table></div>
+<p data-source-block="3318">The names preserve recognisable January-to-December ordering while signalling that Marian months are not terrestrial months.</p>
+<p data-source-block="3319">They are not required for machine interoperability. A future community may translate or replace them without changing the calendar structure.</p>
+<h2 data-source-block="3320">D.8 Minth identity</h2>
+<p data-source-block="3321">The canonical identities of the twenty-four minths are:</p>
+<p data-source-block="3322"><strong>01 through 24</strong></p>
+<p data-source-block="3323">Their relationship to months is deterministic:</p>
+<div aria-label="Table 5 in Appendix D: Dates, Identity &amp; Implementation; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="3324"><caption class="sr-only">Table 5 in Appendix D: Dates, Identity &amp; Implementation</caption><thead><tr><th scope="col">Month</th><th scope="col">Minths</th></tr></thead><tbody><tr><td>01</td><td>01–02</td></tr><tr><td>02</td><td>03–04</td></tr><tr><td>03</td><td>05–06</td></tr><tr><td>04</td><td>07–08</td></tr><tr><td>05</td><td>09–10</td></tr><tr><td>06</td><td>11–12</td></tr><tr><td>07</td><td>13–14</td></tr><tr><td>08</td><td>15–16</td></tr><tr><td>09</td><td>17–18</td></tr><tr><td>10</td><td>19–20</td></tr><tr><td>11</td><td>21–22</td></tr><tr><td>12</td><td>23–24</td></tr></tbody></table></div>
+<p data-source-block="3325">Marian also recommends the compact human shorthand:</p>
+<p data-source-block="3326"><strong>A through X</strong></p>
+<p data-source-block="3327">with the direct mapping:</p>
+<p data-source-block="3328"><strong>A = 01, B = 02, ... X = 24</strong></p>
+<p data-source-block="3329">Thus:</p>
+<p data-source-block="3330"><strong>MY42 · Minth Q</strong></p>
+<p data-source-block="3331">means:</p>
+<p data-source-block="3332"><strong>MY42 · Minth 17</strong></p>
+<p data-source-block="3333">The A–X layer is recommended shorthand rather than canonical machine identity. Other scripts or communities may use different human shorthand while retaining Minths 01–24 underneath.</p>
+<p data-source-block="3334">Chapter 14's underlying principle is therefore preserved: canonical numbers define semantic identity; letters and names provide interfaces. </p>
+<h2 data-source-block="3335">D.9 Date validity</h2>
+<p data-source-block="3336">A syntactically well-formed Marian date is not necessarily a valid Marian date.</p>
+<p data-source-block="3337">An implementation MUST validate the actual civil position.</p>
+<p data-source-block="3338">For MY1 onward:</p>
+<ul class="source-list" data-word-list-id="14">
+<li data-source-block="3339">Month MUST be 01–12.</li>
+<li data-source-block="3340">Week MUST be 01–08.</li>
+<li data-source-block="3341">Day MUST be 01–07.</li>
+<li data-source-block="3342">The requested weekday position MUST exist within the actual length of that month in that year.</li>
+</ul>
+<p data-source-block="3343">The day position within a month is:</p>
+<p data-source-block="3344"><strong>P = 7 × (W − 1) + D</strong></p>
+<p data-source-block="3345">The date is valid if:</p>
+<p data-source-block="3346"><strong>P ≤ month length</strong></p>
+<p data-source-block="3347">For example:</p>
+<p data-source-block="3348"><strong>MY2-03-08-06</strong></p>
+<p data-source-block="3349">gives:</p>
+<p data-source-block="3350"><strong>7 × 7 + 6 = 55</strong></p>
+<p data-source-block="3351">Month 3 contains 55 sols, so the date is valid.</p>
+<p data-source-block="3352">By contrast:</p>
+<p data-source-block="3353"><strong>MY2-03-08-07</strong></p>
+<p data-source-block="3354">gives:</p>
+<p data-source-block="3355"><strong>7 × 7 + 7 = 56</strong></p>
+<p data-source-block="3356">Month 3 contains only 55 sols, so that date does not exist.</p>
+<p data-source-block="3357">An invalid date MUST NOT be silently converted into the following civil date.</p>
+<h2 data-source-block="3358">D.10 Month-length function</h2>
+<p data-source-block="3359">For any regular Marian year <strong>Y</strong> and month <strong>M</strong>, month length can be determined without a lookup table.</p>
+<p data-source-block="3360">In language-neutral pseudocode:</p>
+<p data-source-block="3361">function isLeapYear(Y):</p>
+<p data-source-block="3362">    if Y mod 100 = 0:</p>
+<p data-source-block="3363">        return false</p>
+<p data-source-block="3364">    if Y mod 2 = 1:</p>
+<p data-source-block="3365">        return true</p>
+<p data-source-block="3366">    if Y mod 10 = 0:</p>
+<p data-source-block="3367">        return true</p>
+<p data-source-block="3368">    return false</p>
+<p data-source-block="3369">Month length is then:</p>
+<p data-source-block="3370">function monthLength(Y, M):</p>
+<p data-source-block="3371">    if M = 3 or M = 6 or M = 9:</p>
+<p data-source-block="3372">        return 55</p>
+<p data-source-block="3374">    if M = 12 and not isLeapYear(Y):</p>
+<p data-source-block="3375">        return 55</p>
+<p data-source-block="3377">    return 56</p>
+<p data-source-block="3378">Thus Months 3, 6 and 9 always contain 55 sols. Month 12 contains 55 in a common year and 56 in a leap year. All other months contain 56.</p>
+<h2 data-source-block="3379">D.11 Date-validation algorithm</h2>
+<p data-source-block="3380">A canonical implementation may validate a date as follows:</p>
+<p data-source-block="3381">function validDate(Y, M, W, D):</p>
+<p data-source-block="3382">    if Y &lt; 1:</p>
+<p data-source-block="3383">        return false</p>
+<p data-source-block="3385">    if M &lt; 1 or M &gt; 12:</p>
+<p data-source-block="3386">        return false</p>
+<p data-source-block="3388">    if W &lt; 1 or W &gt; 8:</p>
+<p data-source-block="3389">        return false</p>
+<p data-source-block="3391">    if D &lt; 1 or D &gt; 7:</p>
+<p data-source-block="3392">        return false</p>
+<p data-source-block="3394">    position = 7 × (W - 1) + D</p>
+<p data-source-block="3396">    return position &lt;= monthLength(Y, M)</p>
+<p data-source-block="3397">The only possible invalid weekday position inside otherwise valid month/week ranges is therefore <strong>Week 8, Day 7</strong> of a 55-sol month.</p>
+<p data-source-block="3398">As shown in Appendix B, this position is always absent in Months 3, 6 and 9, and is absent in Month 12 only in a common year.</p>
+<h2 data-source-block="3399">D.12 Ordinal-sol representation</h2>
+<p data-source-block="3400">Marian also supports an ordinal representation identifying a sol by its position within the year.</p>
+<p data-source-block="3401">The canonical form is:</p>
+<p data-source-block="3402"><strong>MY&lt;year&gt;-S&lt;ordinal&gt;</strong></p>
+<p data-source-block="3403">For example:</p>
+<p data-source-block="3404"><strong>MY42-S409</strong></p>
+<p data-source-block="3405">means:</p>
+<p data-source-block="3406"><strong>the 409th sol of Marian Year 42</strong></p>
+<p data-source-block="3407">Ordinal fields use three decimal digits for ordinary Marian years:</p>
+<p data-source-block="3408"><strong>S001 through S668</strong></p>
+<p data-source-block="3409">in a common year, and:</p>
+<p data-source-block="3410"><strong>S001 through S669</strong></p>
+<p data-source-block="3411">in a leap year.</p>
+<p data-source-block="3412">The ordinal count resets at the beginning of every regular Marian year.</p>
+<p data-source-block="3413">The civil date:</p>
+<p data-source-block="3414"><strong>MY42-08-03-05</strong></p>
+<p data-source-block="3415">and the ordinal date:</p>
+<p data-source-block="3416"><strong>MY42-S409</strong></p>
+<p data-source-block="3417">identify the same civil sol.</p>
+<p data-source-block="3418">The main manuscript already establishes this dual representation and its distinction from Mars Sol Date. </p>
+<h2 data-source-block="3419">D.13 Civil date to ordinal sol</h2>
+<p data-source-block="3420">Let:</p>
+<p data-source-block="3421"><strong>P = 7 × (W − 1) + D</strong></p>
+<p data-source-block="3422">be the position within Month M.</p>
+<p data-source-block="3423">The ordinal sol is:</p>
+<p data-source-block="3424"><strong>S = sum of the lengths of Months 1 through M−1 + P</strong></p>
+<p data-source-block="3425">In pseudocode:</p>
+<p data-source-block="3426">function civilToOrdinal(Y, M, W, D):</p>
+<p data-source-block="3427">    if not validDate(Y, M, W, D):</p>
+<p data-source-block="3428">        error "invalid Marian date"</p>
+<p data-source-block="3430">    S = 7 × (W - 1) + D</p>
+<p data-source-block="3432">    for m from 1 to M - 1:</p>
+<p data-source-block="3433">        S = S + monthLength(Y, m)</p>
+<p data-source-block="3435">    return S</p>
+<p data-source-block="3436">For:</p>
+<p data-source-block="3437"><strong>MY42-08-03-05</strong></p>
+<p data-source-block="3438">Month 8 begins at ordinal Sol 391.</p>
+<p data-source-block="3439">Week 3, Day 5 is the nineteenth sol of the month:</p>
+<p data-source-block="3440"><strong>7 × 2 + 5 = 19</strong></p>
+<p data-source-block="3441">so:</p>
+<p data-source-block="3442"><strong>391 + 18 = 409</strong></p>
+<p data-source-block="3443">giving:</p>
+<p data-source-block="3444"><strong>MY42-S409</strong></p>
+<h2 data-source-block="3445">D.14 Ordinal sol to civil date</h2>
+<p data-source-block="3446">Conversion in the opposite direction first identifies the month containing the ordinal sol.</p>
+<p data-source-block="3447">function ordinalToCivil(Y, S):</p>
+<p data-source-block="3448">    maxSol = 669 if isLeapYear(Y) else 668</p>
+<p data-source-block="3450">    if S &lt; 1 or S &gt; maxSol:</p>
+<p data-source-block="3451">        error "invalid ordinal sol"</p>
+<p data-source-block="3453">    M = 1</p>
+<p data-source-block="3454">    remaining = S</p>
+<p data-source-block="3456">    while remaining &gt; monthLength(Y, M):</p>
+<p data-source-block="3457">        remaining = remaining - monthLength(Y, M)</p>
+<p data-source-block="3458">        M = M + 1</p>
+<p data-source-block="3460">    W = floor((remaining - 1) / 7) + 1</p>
+<p data-source-block="3461">    D = ((remaining - 1) mod 7) + 1</p>
+<p data-source-block="3463">    return (Y, M, W, D)</p>
+<p data-source-block="3464">Because shortened weeks occur only at the ends of 55-sol months, the procedure cannot generate a nonexistent Day 7. A remaining value in such a month never exceeds 55.</p>
+<h2 data-source-block="3465">D.15 Deriving minth, quarter and Sixth</h2>
+<p data-source-block="3466">Minth, quarter and Sixth identities need not be stored independently when the Marian Civil Date is known. They can be derived deterministically.</p>
+<p data-source-block="3467">First calculate the position within the month:</p>
+<p data-source-block="3468"><strong>P = 7 × (W − 1) + D</strong></p>
+<p data-source-block="3469">The minth is then:</p>
+<p data-source-block="3470">if P &lt;= 28:</p>
+<p data-source-block="3471">    minth = 2 × M - 1</p>
+<p data-source-block="3472">else:</p>
+<p data-source-block="3473">    minth = 2 × M</p>
+<p data-source-block="3474">The quarter is:</p>
+<p data-source-block="3475">quarter = floor((M - 1) / 3) + 1</p>
+<p data-source-block="3476">The Sixth is:</p>
+<p data-source-block="3477">sixth = floor((M - 1) / 2) + 1</p>
+<p data-source-block="3478">For <strong>MY42-08-03-05</strong>, the month position is 19, so the date lies in the first minth of Month 8:</p>
+<p data-source-block="3479"><strong>Minth 15 / O</strong></p>
+<p data-source-block="3480">Month 8 also lies in:</p>
+<p data-source-block="3481"><strong>Quarter 3</strong></p>
+<p data-source-block="3482">and:</p>
+<p data-source-block="3483"><strong>Sixth 4</strong></p>
+<p data-source-block="3484">These are additional structural views of the same date rather than independent dates.</p>
+<h2 data-source-block="3485">D.16 Nominal week position within the year</h2>
+<p data-source-block="3486">Where useful, the nominal week position within a Marian year can also be derived:</p>
+<p data-source-block="3487"><strong>annual week position = 8 × (M − 1) + W</strong></p>
+<p data-source-block="3488">This produces values from:</p>
+<p data-source-block="3489"><strong>1 through 96</strong></p>
+<p data-source-block="3490">Every regular Marian year contains all 96 nominal week positions.</p>
+<p data-source-block="3491">The term <em>nominal</em> is important. A terminal week in a shortened month contains only six occupied weekday positions, so 96 nominal weeks do not imply 672 physical sols.</p>
+<p data-source-block="3492">Applications SHOULD therefore avoid treating the annual week position as a continuous count of seven-sol intervals.</p>
+<h2 data-source-block="3493">D.17 Counting leap years before a given year</h2>
+<p data-source-block="3494">Deterministic long-range conversion requires knowing how many leap sols have occurred before a particular Marian year.</p>
+<p data-source-block="3495">For years MY1 onward, the number of leap years from MY1 through MYN inclusive is:</p>
+<p data-source-block="3496"><strong>L(N) = floor((N + 1) / 2) + floor(N / 10) − floor(N / 100)</strong></p>
+<p data-source-block="3497">The three terms count:</p>
+<ul class="source-list" data-word-list-id="13">
+<li data-source-block="3498">odd-numbered years;</li>
+<li data-source-block="3499">additional years divisible by 10; and</li>
+<li data-source-block="3500">century years removed by the exception.</li>
+</ul>
+<p data-source-block="3501">For example:</p>
+<p data-source-block="3502"><strong>L(100) = 50 + 10 − 1 = 59</strong></p>
+<p data-source-block="3503">For conversion purposes, the number of leap years preceding MY Y is therefore:</p>
+<p data-source-block="3504"><strong>Lbefore(Y) = floor(Y / 2) + floor((Y − 1) / 10) − floor((Y − 1) / 100)</strong></p>
+<p data-source-block="3505">Thus the number of complete sols between the start of MY1 and the start of MY Y is:</p>
+<p data-source-block="3506"><strong>Δ(Y) = 668 × (Y − 1) + Lbefore(Y)</strong></p>
+<p data-source-block="3507">This provides the basis for deterministic conversion across Marian years without iterating through every preceding year.</p>
+<h2 data-source-block="3508">D.18 Marian epoch-sol offset</h2>
+<p data-source-block="3509">For implementation, it is useful to define an internal zero-based sol offset from the beginning of MY1.</p>
+<p data-source-block="3510">Let:</p>
+<p data-source-block="3511"><strong>E = the canonical Airy-0 midnight beginning MY1</strong></p>
+<p data-source-block="3512">and let:</p>
+<p data-source-block="3513"><strong>S</strong> be the ordinal sol within year Y.</p>
+<p data-source-block="3514">Then the zero-based number of completed Marian sols from E to the beginning of that civil sol is:</p>
+<p data-source-block="3515"><strong>Δsol = 668 × (Y − 1) + Lbefore(Y) + (S − 1)</strong></p>
+<p data-source-block="3516">This quantity is an implementation intermediate, not a new public calendar notation.</p>
+<p data-source-block="3517">For example, the first sol of MY1 has:</p>
+<p data-source-block="3518"><strong>Δsol = 0</strong></p>
+<p data-source-block="3519">The second has:</p>
+<p data-source-block="3520"><strong>Δsol = 1</strong></p>
+<p data-source-block="3521">and the first sol of MY2 follows the 669 sols of leap MY1.</p>
+<p data-source-block="3522">Once the historical MY1 epoch has actually occurred and its absolute timestamp has been authoritatively recorded, this offset provides the discrete civil bridge between Marian chronology and external time systems.</p>
+<h2 data-source-block="3523">D.19 Converting a sol offset back to Marian date</h2>
+<p data-source-block="3524">Given a non-negative number of completed sols <strong>Δsol</strong> since the beginning of MY1, an implementation must first identify the Marian year containing that sol.</p>
+<p data-source-block="3525">A convenient initial estimate is:</p>
+<p data-source-block="3526">Y = floor(Δsol / 668.59) + 1</p>
+<p data-source-block="3527">Because this is only an estimate, the implementation then adjusts against exact civil year boundaries:</p>
+<p data-source-block="3528">while startOffset(Y) &gt; Δsol:</p>
+<p data-source-block="3529">    Y = Y - 1</p>
+<p data-source-block="3531">while startOffset(Y + 1) &lt;= Δsol:</p>
+<p data-source-block="3532">    Y = Y + 1</p>
+<p data-source-block="3533">where:</p>
+<p data-source-block="3534">startOffset(Y) =</p>
+<p data-source-block="3535">    668 × (Y - 1)</p>
+<p data-source-block="3536">    + leapYearsBefore(Y)</p>
+<p data-source-block="3537">The ordinal sol is then:</p>
+<p data-source-block="3538">S = Δsol - startOffset(Y) + 1</p>
+<p data-source-block="3539">and Section D.14 converts that ordinal sol into Month–Week–Day form.</p>
+<p data-source-block="3540">The approximate divisor is therefore only a search shortcut. The final result MUST be determined using the integer calendar rules.</p>
+<h2 data-source-block="3541">D.20 MY0</h2>
+<p data-source-block="3542">MY0 does not use the ordinary regular-year conversion formulas.</p>
+<p data-source-block="3543">It begins at the <strong>recognised first human step on Mars</strong> and ends at the Airy-0 midnight that begins MY1 following the next passage through Ls = 15°.</p>
+<p data-source-block="3544">Its length will depend upon when the historical landing event occurs within the Martian annual cycle.</p>
+<p data-source-block="3545">MY0 is therefore a transitional epoch interval, not a 668- or 669-sol regular year.</p>
+<p data-source-block="3546">Until the historical event occurs, no definitive mapping can exist between an MY0 position and an absolute timestamp.</p>
+<p data-source-block="3547">A future implementation standard will need to define how civil dates, mission-relative sols or other records are represented during MY0. That decision SHOULD preserve the recognised first-step epoch without pretending that the partial interval possesses the normal twelve-month structure before that structure actually begins.</p>
+<p data-source-block="3548">Regular Marian date algorithms in this appendix therefore apply from <strong>MY1 onward</strong>.</p>
+<h2 data-source-block="3549">D.21 Marian ordinal sol is not Mars Sol Date</h2>
+<p data-source-block="3550">The Marian ordinal representation:</p>
+<p data-source-block="3551"><strong>MY42-S409</strong></p>
+<p data-source-block="3552">must not be confused with <strong>Mars Sol Date (MSD)</strong>.</p>
+<p data-source-block="3553">They solve different problems.</p>
+<div aria-label="Table 6 in Appendix D: Dates, Identity &amp; Implementation; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="3554"><caption class="sr-only">Table 6 in Appendix D: Dates, Identity &amp; Implementation</caption><thead><tr><th scope="col">System</th><th scope="col">Example</th><th scope="col">Meaning</th></tr></thead><tbody><tr><td>Marian Civil Date</td><td>MY42-08-03-05</td><td>Civil year, month, week and weekday position</td></tr><tr><td>Marian ordinal sol</td><td>MY42-S409</td><td>Sol 409 within Marian Year 42</td></tr><tr><td>Mars Sol Date</td><td>MSD …</td><td>Continuous scientific Martian sol count</td></tr></tbody></table></div>
+<p data-source-block="3555">The Marian ordinal number resets at every Marian New Year.</p>
+<p data-source-block="3556">MSD does not.</p>
+<p data-source-block="3557">An implementation MUST NOT label a Marian ordinal-sol value as MSD.</p>
+<p data-source-block="3558">Where scientific and civil coordinates are both required, they should be carried as separate fields.</p>
+<h2 data-source-block="3559">D.22 Conversion to external calendars and timestamps</h2>
+<p data-source-block="3560">Marian chronology is fully deterministic internally from MY1 onward, but absolute conversion to Gregorian dates, UTC, TAI, MSD or another external chronology requires an externally defined bridge.</p>
+<p data-source-block="3561">That bridge cannot be completed before the Marian epoch exists.</p>
+<p data-source-block="3562">A future authoritative implementation will require, at minimum:</p>
+<ol class="source-list" data-word-list-id="37">
+<li data-source-block="3563">the agreed physical timestamp of the recognised first human step;</li>
+<li data-source-block="3564">the resulting determination of the first subsequent Ls = 15° passage;</li>
+<li data-source-block="3565">the canonical Airy-0 midnight beginning MY1; and</li>
+<li data-source-block="3566">an agreed astronomical/timekeeping model for relating Martian mean solar boundaries to the external timescale being used.</li>
+</ol>
+<p data-source-block="3567">Once the MY1 epoch is fixed, conversion can proceed conceptually as:</p>
+<p data-source-block="3568"><strong>Marian Civil Date → Marian ordinal sol → sol offset from MY1 → absolute chronology → target civil calendar</strong></p>
+<p data-source-block="3569">and in reverse:</p>
+<p data-source-block="3570"><strong>absolute chronology → sol offset from MY1 → Marian year and ordinal sol → Marian Civil Date</strong></p>
+<p data-source-block="3571">The integer Marian portion of that conversion is fully specified here.</p>
+<p data-source-block="3572">The astronomical bridge between an Airy-0 sol boundary and terrestrial continuous timescales belongs to the implementation standard and Earth–Mars conversion work described in Appendix E.</p>
+<h2 data-source-block="3573">D.23 Do not convert using an approximate sol length</h2>
+<p data-source-block="3574">A Martian mean solar day is commonly described as approximately 24 hours, 39 minutes and 35 seconds of terrestrial elapsed time.</p>
+<p data-source-block="3575">That approximation is useful for human intuition. It is not, by itself, a sufficient high-precision conversion standard.</p>
+<p data-source-block="3576">Software SHOULD NOT convert long spans between Marian dates and terrestrial timestamps merely by multiplying the number of sols by a rounded value such as 24:39:35.</p>
+<p data-source-block="3577">Authoritative conversion should use the agreed Martian time model and epoch definition appropriate to the required precision.</p>
+<p data-source-block="3578">For ordinary calendar arithmetic within Marian itself, none of this is necessary. Integer sol counts are sufficient.</p>
+<h2 data-source-block="3579">D.24 Recurring dates and absent positions</h2>
+<p data-source-block="3580">Marian contains several structurally absent civil positions.</p>
+<p data-source-block="3581">For example:</p>
+<p data-source-block="3582"><strong>Month 03 · Week 08 · Day 07</strong></p>
+<p data-source-block="3583">does not exist.</p>
+<p data-source-block="3584">A recurrence rule requesting such a position therefore requires an explicit application-level policy.</p>
+<p data-source-block="3585">Possible policies might include skipping the occurrence, moving it to the preceding valid position or moving it to the next civil date. Marian itself does not choose among those behaviours.</p>
+<p data-source-block="3586">The calendar specification defines only that the requested date is <strong>invalid</strong>.</p>
+<p data-source-block="3587">A conforming core implementation MUST NOT silently reinterpret an invalid Marian date as another valid date. Any adjustment policy belongs to the scheduling, legal or institutional application using the calendar and should be made explicit.</p>
+<p data-source-block="3588">This distinction prevents different software systems from quietly giving different meanings to the same nominal recurrence.</p>
+<h2 data-source-block="3589">D.25 Date arithmetic</h2>
+<p data-source-block="3590">Date arithmetic should distinguish between <strong>civil coordinates</strong> and <strong>elapsed duration</strong>.</p>
+<p data-source-block="3591">Adding one sol to a valid Marian date means advancing to the next physical civil sol, including across shortened terminal weeks.</p>
+<p data-source-block="3592">For example, in a 55-sol month:</p>
+<p data-source-block="3593"><strong>M3 · W8 · D6</strong></p>
+<p data-source-block="3594">plus one sol becomes:</p>
+<p data-source-block="3595"><strong>M4 · W1 · D1</strong></p>
+<p data-source-block="3596">It does <strong>not</strong> become the nonexistent:</p>
+<p data-source-block="3597"><strong>M3 · W8 · D7</strong></p>
+<p data-source-block="3598">Similarly, adding a fixed number of sols is not always the same operation as adding one minth, month, Sixth, quarter or year.</p>
+<p data-source-block="3599">Applications SHOULD therefore specify the intended arithmetic operation explicitly.</p>
+<p data-source-block="3600">“Add 28 sols” is an elapsed-duration operation.</p>
+<p data-source-block="3601">“Advance to the same position next minth” is a civil recurrence operation and may require validity handling.</p>
+<p data-source-block="3602">This distinction is familiar in terrestrial date software and becomes particularly important in a calendar with deliberately shortened terminal civil weeks.</p>
+<h2 data-source-block="3603">D.26 Comparison and ordering</h2>
+<p data-source-block="3604">Two Marian Civil Dates can be chronologically compared by converting each to:</p>
+<p data-source-block="3605"><strong>year-start offset + ordinal sol</strong></p>
+<p data-source-block="3606">For dates within the same year, ordinal sol is sufficient.</p>
+<p data-source-block="3607">For dates across regular years:</p>
+<p data-source-block="3608"><strong>absolute Marian sol index = Δ(Y) + S − 1</strong></p>
+<p data-source-block="3609">where Δ(Y) is defined in Section D.17.</p>
+<p data-source-block="3610">The earlier date has the smaller index.</p>
+<p data-source-block="3611">This comparison does not require astronomical computation once MY1 exists.</p>
+<h2 data-source-block="3612">D.27 Storage recommendations</h2>
+<p data-source-block="3613">A robust implementation should distinguish between canonical semantic fields and display strings.</p>
+<p data-source-block="3614">A database record might store:</p>
+<div aria-label="Table 7 in Appendix D: Dates, Identity &amp; Implementation; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="3615"><caption class="sr-only">Table 7 in Appendix D: Dates, Identity &amp; Implementation</caption><thead><tr><th scope="col">Field</th><th scope="col">Example</th></tr></thead><tbody><tr><td>Marian year</td><td>42</td></tr><tr><td>Month</td><td>8</td></tr><tr><td>Week</td><td>3</td></tr><tr><td>Day</td><td>5</td></tr><tr><td>Ordinal sol</td><td>409, derived or cached</td></tr><tr><td>Minth</td><td>15, derived</td></tr><tr><td>Quarter</td><td>3, derived</td></tr><tr><td>Sixth</td><td>4, derived</td></tr></tbody></table></div>
+<p data-source-block="3616">Human-facing software may then render:</p>
+<p data-source-block="3617"><strong>Frisol, Week 3, Augiix, MY42</strong></p>
+<p data-source-block="3618">without making <em>Frisol</em> or <em>Augiix</em> database keys.</p>
+<p data-source-block="3619">Derived fields need not be permanently stored if they can be calculated reliably from the canonical tuple.</p>
+<p data-source-block="3620">Where both a Marian date and a precise event time are required, applications SHOULD store the civil date alongside the relevant local-time convention and an appropriate absolute timestamp rather than attempting to encode all temporal information inside the Marian date string.</p>
+<h2 data-source-block="3621">D.28 Parsing rules</h2>
+<p data-source-block="3622">A parser for canonical Marian Civil Dates SHOULD:</p>
+<ol class="source-list" data-word-list-id="2">
+<li data-source-block="3623">require the MY prefix;</li>
+<li data-source-block="3624">parse the following positive decimal integer as the Marian year;</li>
+<li data-source-block="3625">require three hyphen-separated two-digit structural fields;</li>
+<li data-source-block="3626">interpret those fields as Month, Week and Day;</li>
+<li data-source-block="3627">validate each numeric range;</li>
+<li data-source-block="3628">calculate the applicable month length from the year and month;</li>
+<li data-source-block="3629">reject any civil position beyond that length.</li>
+</ol>
+<p data-source-block="3630">Thus:</p>
+<p data-source-block="3631"><strong>MY42-08-03-05</strong></p>
+<p data-source-block="3632">is valid.</p>
+<p data-source-block="3633"><strong>MY42-13-03-05</strong></p>
+<p data-source-block="3634">is invalid because Month 13 does not exist.</p>
+<p data-source-block="3635"><strong>MY42-08-09-05</strong></p>
+<p data-source-block="3636">is invalid because Week 09 does not exist.</p>
+<p data-source-block="3637"><strong>MY42-09-08-07</strong></p>
+<p data-source-block="3638">is invalid because Month 09 contains only 55 sols.</p>
+<p data-source-block="3639">Parsers SHOULD distinguish malformed syntax from a structurally well-formed but nonexistent date where their error model permits it.</p>
+<h2 data-source-block="3640">D.29 Formatting rules</h2>
+<p data-source-block="3641">Canonical interchange uses:</p>
+<p data-source-block="3642"><strong>MY42-08-03-05</strong></p>
+<p data-source-block="3643">rather than:</p>
+<p data-source-block="3644"><strong>MY42-8-3-5</strong></p>
+<p data-source-block="3645">The leading zeros make the three structural subdivisions visually stable and remove avoidable formatting variation.</p>
+<p data-source-block="3646">Human-facing interfaces MAY omit them:</p>
+<p data-source-block="3647"><strong>MY42 · Month 8 · Week 3 · Day 5</strong></p>
+<p data-source-block="3648">Natural-language interfaces MAY omit redundant structural information where context makes the date clear.</p>
+<p data-source-block="3649">No human display convention changes the underlying canonical tuple.</p>
+<h2 data-source-block="3650">D.30 Identity survives localisation</h2>
+<p data-source-block="3651">The reference vocabulary is intentionally replaceable.</p>
+<p data-source-block="3652">An English-language settlement may display <em>Augiix</em>. Another community may translate it. A third may replace the month names entirely. All three still share the same civil date if they exchange:</p>
+<p data-source-block="3653"><strong>MY42-08-03-05</strong></p>
+<p data-source-block="3654">The same applies to weekday and minth names.</p>
+<p data-source-block="3655">This is why Marian standardises the structure more strongly than its vocabulary. As Chapter 14 puts it, the aim is for the calendar to survive translation and cultural change while retaining stable machine identity. </p>
+<h2 data-source-block="3656">D.31 What a Marian Civil Date does not encode</h2>
+<p data-source-block="3657">A Marian Civil Date identifies a <strong>civil sol</strong>.</p>
+<p data-source-block="3658">It does not by itself encode:</p>
+<ul class="source-list" data-word-list-id="35">
+<li data-source-block="3659">time within that sol;</li>
+<li data-source-block="3660">a local Martian time zone;</li>
+<li data-source-block="3661">longitude;</li>
+<li data-source-block="3662">Ls;</li>
+<li data-source-block="3663">Mars Sol Date;</li>
+<li data-source-block="3664">a terrestrial timestamp;</li>
+<li data-source-block="3665">Earth–Mars light time; or</li>
+<li data-source-block="3666">the physical position of either planet.</li>
+</ul>
+<p data-source-block="3667">Those quantities may be associated with the same event, but they are separate coordinates.</p>
+<p data-source-block="3668">A scientific observation may therefore carry a Marian Civil Date, local or canonical Martian time, an absolute timestamp, MSD and ephemeris information simultaneously.</p>
+<p data-source-block="3669">That is not duplication. Each field answers a different question.</p>
+<h2 data-source-block="3670">D.32 Minimum implementation test set</h2>
+<p data-source-block="3671">A useful reference implementation should at least verify the following cases:</p>
+<div aria-label="Table 8 in Appendix D: Dates, Identity &amp; Implementation; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="3672"><caption class="sr-only">Table 8 in Appendix D: Dates, Identity &amp; Implementation</caption><thead><tr><th scope="col">Test</th><th scope="col">Expected result</th></tr></thead><tbody><tr><td>MY1</td><td>Leap</td></tr><tr><td>MY2</td><td>Common</td></tr><tr><td>MY10</td><td>Leap</td></tr><tr><td>MY100</td><td>Common</td></tr><tr><td>MY101</td><td>Leap</td></tr><tr><td>MY2-03-08-06</td><td>Valid</td></tr><tr><td>MY2-03-08-07</td><td>Invalid</td></tr><tr><td>MY2-12-08-07</td><td>Invalid</td></tr><tr><td>MY1-12-08-07</td><td>Valid</td></tr><tr><td>MY42-08-03-05</td><td>MY42-S409</td></tr><tr><td>MY42-S409</td><td>MY42-08-03-05</td></tr><tr><td>M03 W8 D6 + 1 sol</td><td>M04 W1 D1</td></tr><tr><td>Common-year S668 + 1 sol</td><td>Next year S001</td></tr><tr><td>Leap-year S669 + 1 sol</td><td>Next year S001</td></tr></tbody></table></div>
+<p data-source-block="3673">A complete conformance suite should extend this set across century boundaries, all shortened months and both year templates.</p>
+<h2 data-source-block="3674">D.33 Implementation summary</h2>
+<p data-source-block="3675">For regular years MY1 onward, Marian requires only a small set of deterministic operations:</p>
+<div aria-label="Table 9 in Appendix D: Dates, Identity &amp; Implementation; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="3676"><caption class="sr-only">Table 9 in Appendix D: Dates, Identity &amp; Implementation</caption><thead><tr><th scope="col">Operation</th><th scope="col">Required information</th></tr></thead><tbody><tr><td>Determine year type</td><td>Marian year number</td></tr><tr><td>Determine month length</td><td>Year type + month</td></tr><tr><td>Validate civil date</td><td>Year + month + week + day</td></tr><tr><td>Convert to ordinal sol</td><td>Month lengths + position within month</td></tr><tr><td>Convert from ordinal sol</td><td>Year template</td></tr><tr><td>Determine minth</td><td>Month + position within month</td></tr><tr><td>Determine quarter</td><td>Month</td></tr><tr><td>Determine Sixth</td><td>Month</td></tr><tr><td>Compare dates</td><td>Year-start offset + ordinal sol</td></tr><tr><td>Convert externally</td><td>Above + authoritative MY1 epoch/time model</td></tr></tbody></table></div>
+<p data-source-block="3677">The calendar does not require an ephemeris to perform ordinary civil arithmetic.</p>
+<p data-source-block="3678">Once MY1 is established, the structural calendar can be implemented using integer arithmetic alone.</p>
+<p data-source-block="3679">That is the intended result of separating scientific time, civil chronology and human-facing vocabulary. The underlying machinery remains stable; interfaces can evolve around it.</p>
+<p data-source-block="3680"><strong>A Marian date should survive a change of language, software or settlement without ceasing to identify the same sol.</strong></p></article><nav aria-label="Previous and next section" class="pager"><a href="appendix-c.html" rel="prev">← Appendix C: Intercalation &amp; Astronomical Alignment</a><a href="appendix-e.html" rel="next">Appendix E: Earth-Mars Reference →</a></nav></main>
+<footer>© JB Bullock 2026. Book text, cover and illustrations: all rights reserved. Marian Protocol v1.0 is separately licensed.</footer></body></html>

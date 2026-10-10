@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="no-referrer" name="referrer"/><meta content="default-src 'none'; style-src 'self'; img-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" http-equiv="Content-Security-Policy"/>
+<title>Appendix C: Intercalation &amp; Astronomical Alignment | Marian — An Operating Calendar for Human Mars</title><meta content="Read Appendix C: Intercalation &amp; Astronomical Alignment. Marian: An Operating Calendar for Human Mars. Written by JB Bullock." name="description"/><link href="../css/book.css" rel="stylesheet"/><link rel="canonical" href="https://iamjbcom.github.io/marian/appendices/appendix-c.html"/><meta property="og:type" content="article"/><meta property="og:title" content="Appendix C: Intercalation &amp; Astronomical Alignment | Marian — An Operating Calendar for Human Mars"/><meta property="og:url" content="https://iamjbcom.github.io/marian/appendices/appendix-c.html"/></head>
+<body><a class="skip" href="#main">Skip to reading content</a><header class="mast"><a class="brand" href="../index.html">MARIAN<span>Operating Architecture Series</span></a><nav aria-label="Site"><a href="../index.html">Contents</a></nav></header>
+
+<main class="reading" id="main"><div class="crumbs"><a href="../index.html">Marian</a> / Appendix C: Intercalation &amp; Astronomical Alignment</div><article class="book-section" data-section="appendix-c"><h1 class="source-heading" data-source-block="3026">C - Intercalation &amp; Astronomical Alignment</h1>
+<p data-source-block="3027"><em>Derivation, Tracking and Annual Reference </em></p>
+<h2 data-source-block="3028">C.1 Purpose</h2>
+<p data-source-block="3029">The Marian Calendar uses integer-sol civil years to track a Martian astronomical cycle whose duration is not an integer number of sols.</p>
+<p data-source-block="3030">This appendix explains the resulting intercalation system. It covers four related questions:</p>
+<ul class="source-list" data-word-list-id="3">
+<li data-source-block="3031">why Marian uses <strong>668-sol common years</strong> and <strong>669-sol leap years</strong>;</li>
+<li data-source-block="3032">why the ordinary leap frequency is <strong>59 leap years per 100 regular years</strong>;</li>
+<li data-source-block="3033">why Marian separates <strong>leap frequency</strong> from <strong>leap placement</strong>; and</li>
+<li data-source-block="3034">why the annual astronomical anchor is <strong>Ls = 15°</strong>.</li>
+</ul>
+<p data-source-block="3035">The calendar's structural rules are normative in Appendix A. This appendix explains the astronomical and numerical reasoning behind them.</p>
+<h2 data-source-block="3036">C.2 The underlying problem</h2>
+<p data-source-block="3037">A civil calendar needs years containing whole sols.</p>
+<p data-source-block="3038">Mars does not provide an annual seasonal recurrence that conveniently contains a whole number of them.</p>
+<p data-source-block="3039">Marian defines the regular civil year relative to the recurrence of:</p>
+<p data-source-block="3040"><strong>Ls = 15°</strong></p>
+<p data-source-block="3041">where <strong>Ls</strong>, areocentric solar longitude, describes Mars's position in its seasonal cycle.</p>
+<p data-source-block="3042">Around the intended founding era, successive passages through that reference recur after approximately:</p>
+<p data-source-block="3043"><strong>668.59 sols</strong></p>
+<p data-source-block="3044">The precise astronomical value depends slightly on the interval and modelling assumptions used. That variation does not affect the basic civil design problem: the target lies between 668 and 669 sols.</p>
+<p data-source-block="3045">A calendar using only 668-sol years would therefore run progressively early relative to the selected seasonal reference. A calendar using only 669-sol years would run progressively late.</p>
+<p data-source-block="3046">Marian uses both.</p>
+<h2 data-source-block="3047">C.3 Why the common year contains 668 sols</h2>
+<p data-source-block="3048">The 668-sol common year is not derived by rounding the astronomical year downward and stopping there. It also falls naturally out of Marian's internal civil structure.</p>
+<p data-source-block="3049">The common-year month pattern is:</p>
+<p data-source-block="3050"><strong>56 – 56 – 55, repeated four times</strong></p>
+<p data-source-block="3051">Each three-month group contains:</p>
+<p data-source-block="3052"><strong>56 + 56 + 55 = 167 sols</strong></p>
+<p data-source-block="3053">and four such groups contain:</p>
+<p data-source-block="3054"><strong>4 × 167 = 668 sols</strong></p>
+<p data-source-block="3055">This produces four equal common-year quarters while preserving the twelve-month and twenty-four-minth structure described elsewhere.</p>
+<p data-source-block="3056">The civil architecture therefore establishes <strong>668 sols</strong> as the natural common-year template. Intercalation then determines how frequently a 669th sol must be added to keep that structure aligned with Mars.</p>
+<h2 data-source-block="3057">C.4 Deriving the leap frequency</h2>
+<p data-source-block="3058">Let the target annual recurrence be approximated for civil purposes as:</p>
+<p data-source-block="3059"><strong>668.59 sols</strong></p>
+<p data-source-block="3060">A 668-sol common year falls short by approximately:</p>
+<p data-source-block="3061"><strong>668.59 − 668 = 0.59 sol</strong></p>
+<p data-source-block="3062">A 669-sol leap year exceeds the target by approximately:</p>
+<p data-source-block="3063"><strong>669 − 668.59 = 0.41 sol</strong></p>
+<p data-source-block="3064">If every regular year begins with a 668-sol base, the calendar therefore needs approximately <strong>0.59 additional sol per year</strong> on average.</p>
+<p data-source-block="3065">Over 100 years, that becomes:</p>
+<p data-source-block="3066"><strong>100 × 0.59 = 59 leap sols</strong></p>
+<p data-source-block="3067">Hence:</p>
+<p data-source-block="3068"><strong>41 common years × 668 sols</strong></p>
+<p data-source-block="3069">plus:</p>
+<p data-source-block="3070"><strong>59 leap years × 669 sols</strong></p>
+<p data-source-block="3071">gives:</p>
+<p data-source-block="3072"><strong>66,859 sols per 100 years</strong></p>
+<p data-source-block="3073">and therefore a mean civil year of:</p>
+<p data-source-block="3074"><strong>66,859 / 100 = 668.590000 sols</strong></p>
+<p data-source-block="3075">The ordinary Marian leap frequency is consequently:</p>
+<p data-source-block="3076"><strong>59 / 100</strong></p>
+<p data-source-block="3077">This is the first intercalation problem: <strong>how many leap sols are required?</strong></p>
+<p data-source-block="3078">It is primarily an astronomical question.</p>
+<h2 data-source-block="3079">C.5 Frequency is not placement</h2>
+<p data-source-block="3080">Knowing that 59 leap sols are required in a century does not determine which 59 years should receive them.</p>
+<p data-source-block="3081">A century containing 59 leap years could be arranged in many ways while preserving exactly the same mean civil-year length. Leap years could be distributed nearly uniformly, generated by a mathematical sequence, clustered unevenly, or selected specifically to minimise the instantaneous difference between civil and astronomical time.</p>
+<p data-source-block="3082">These arrangements have the same <strong>frequency</strong> but different <strong>placement</strong>.</p>
+<p data-source-block="3083">Marian therefore treats the two as separate design decisions:</p>
+<div aria-label="Table 1 in Appendix C: Intercalation &amp; Astronomical Alignment; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="3084"><caption class="sr-only">Table 1 in Appendix C: Intercalation &amp; Astronomical Alignment</caption><thead><tr><th scope="col">Question</th><th scope="col">Marian answer</th><th scope="col">Primary objective</th></tr></thead><tbody><tr><td>How many leap years?</td><td>59 per 100</td><td>Long-run astronomical tracking</td></tr><tr><td>Which years leap?</td><td>Odd / decennial / century rule</td><td>Civil intelligibility and determinism</td></tr></tbody></table></div>
+<p data-source-block="3085">This distinction is important because a numerically optimal distribution is not automatically the best civil rule.</p>
+<h2 data-source-block="3086">C.6 The Marian placement rule</h2>
+<p data-source-block="3087">For regular Marian years MY1 onward:</p>
+<ul class="source-list" data-word-list-id="6">
+<li data-source-block="3088">odd-numbered years leap;</li>
+<li data-source-block="3089">years divisible by 10 also leap;</li>
+<li data-source-block="3090">years divisible by 100 are common;</li>
+<li data-source-block="3091">the century exception takes precedence.</li>
+</ul>
+<p data-source-block="3092">Between MY1 and MY100:</p>
+<p data-source-block="3093"><strong>50 odd years</strong></p>
+<p data-source-block="3094">plus:</p>
+<p data-source-block="3095"><strong>10 years divisible by 10</strong></p>
+<p data-source-block="3096">minus:</p>
+<p data-source-block="3097"><strong>MY100, removed by the century exception</strong></p>
+<p data-source-block="3098">gives:</p>
+<p data-source-block="3099"><strong>50 + 10 − 1 = 59 leap years</strong></p>
+<p data-source-block="3100">The rule can therefore be reconstructed from the year number alone.</p>
+<p data-source-block="3101">Its compact verbal form is:</p>
+<p data-source-block="3102"><strong>Odd years leap. Tens leap. Hundreds do not.</strong></p>
+<p data-source-block="3103">The placement is not designed to produce a perfectly alternating sequence. Adjacent leap years occur around some decennial boundaries; for example, MY50 and MY51 are both leap years.</p>
+<p data-source-block="3104">That is intentional.</p>
+<p data-source-block="3105">The objective is not visual alternation. It is to place the required 59 leap sols using a rule that remains easy to remember, audit and implement.</p>
+<h2 data-source-block="3106">C.7 A phase-balanced alternative</h2>
+<p data-source-block="3107">A different placement rule could use the same 59 leap sols while distributing them specifically to minimise cumulative displacement from an idealised 668.59-sol recurrence.</p>
+<p data-source-block="3108">Such a sequence would generally keep civil New Year closer to the smooth astronomical target throughout the century.</p>
+<p data-source-block="3109">On that single metric, it would outperform the Marian mnemonic rule.</p>
+<p data-source-block="3110">Marian does not deny that trade-off. It chooses a different optimisation.</p>
+<p data-source-block="3111">A civil intercalation rule must survive long after its designer has disappeared. It should be possible for a person, archive or software implementation to determine whether MY86 is a leap year from the year number itself, without consulting an externally generated table.</p>
+<p data-source-block="3112">Marian therefore accepts somewhat larger intermediate phase excursions than a deliberately phase-balanced sequence in exchange for <strong>mnemonic transparency and deterministic reconstruction</strong>.</p>
+<p data-source-block="3113">The distinction can be summarised as:</p>
+<div aria-label="Table 2 in Appendix C: Intercalation &amp; Astronomical Alignment; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="3114"><caption class="sr-only">Table 2 in Appendix C: Intercalation &amp; Astronomical Alignment</caption><thead><tr><th scope="col">Approach</th><th scope="col">Advantage</th><th scope="col">Cost</th></tr></thead><tbody><tr><td>Phase-balanced placement</td><td>Tighter short-period astronomical tracking</td><td>Less memorable; potentially requires generated sequence or table</td></tr><tr><td>Marian placement</td><td>Simple, deterministic and reconstructable</td><td>Somewhat larger intermediate phase displacement</td></tr></tbody></table></div>
+<p data-source-block="3115">The long-run mean is determined by the <strong>59/100 frequency</strong>, not by which of these placement strategies is chosen.</p>
+<h2 data-source-block="3116">C.8 Phase displacement</h2>
+<p data-source-block="3117">Suppose, for illustration, that the astronomical target were exactly:</p>
+<p data-source-block="3118"><strong>668.59 sols per recurrence</strong></p>
+<p data-source-block="3119">A 668-sol common year consumes approximately <strong>0.59 sol less</strong> than that target. A 669-sol leap year consumes approximately <strong>0.41 sol more</strong>.</p>
+<p data-source-block="3120">The civil boundary consequently moves back and forth around the smooth astronomical reference.</p>
+<p data-source-block="3121">This difference is referred to here as <strong>phase displacement</strong>.</p>
+<p data-source-block="3122">It is important to distinguish phase displacement from long-term drift.</p>
+<p data-source-block="3123">A temporary difference of part of a sol, or even a larger bounded intermediate excursion generated by the placement rule, does not mean the calendar is drifting indefinitely away from Mars. Long-term drift occurs when the <strong>mean civil year</strong> differs systematically from the physical cycle being tracked.</p>
+<p data-source-block="3124">Marian's ordinary mean is:</p>
+<p data-source-block="3125"><strong>668.590000 sols</strong></p>
+<p data-source-block="3126">which is deliberately chosen to lie extremely close to the selected Ls = 15° recurrence around the intended founding era.</p>
+<p data-source-block="3127">The mnemonic placement rule affects the path taken around that mean. It does not alter the mean itself.</p>
+<h2 data-source-block="3128">C.9 Tracking rather than coincidence</h2>
+<p data-source-block="3129">Marian does not claim that every civil New Year coincides exactly with the astronomical passage through Ls = 15°.</p>
+<p data-source-block="3130">That would be impossible with ordinary years restricted to whole sols unless the physical recurrence itself happened to contain an integer number of sols.</p>
+<p data-source-block="3131">The intended relationship is therefore not:</p>
+<p data-source-block="3132"><strong>civil New Year = exact Ls = 15° crossing every year</strong></p>
+<p data-source-block="3133">but:</p>
+<p data-source-block="3134"><strong>the deterministic civil sequence tracks the recurring Ls = 15° reference over time</strong></p>
+<p data-source-block="3135">This is an important distinction.</p>
+<p data-source-block="3136">The astronomical reference is continuous. Civil dates are discrete.</p>
+<p data-source-block="3137">Intercalation is the mechanism that keeps those two systems associated without making routine civil chronology depend on continuous astronomical observation.</p>
+<h2 data-source-block="3138">C.10 Astronomy defines the target; the calendar does the bookkeeping</h2>
+<p data-source-block="3139">Ls = 15° is used to establish where the Marian year belongs within the Martian seasonal cycle.</p>
+<p data-source-block="3140">After MY1 has been instantiated, Marian does not wait for a fresh observation or ephemeris calculation every year before deciding when the next civil year begins. The calendar advances according to the predetermined sequence of 668- and 669-sol years.</p>
+<p data-source-block="3141">In practical terms:</p>
+<p data-source-block="3142"><strong>astronomy defines the target; the calendar does the bookkeeping.</strong></p>
+<p data-source-block="3143">This allows future Marian dates to be calculated deterministically.</p>
+<p data-source-block="3144">Contracts can refer to future dates. Software can calculate year boundaries. Archives can reconstruct past dates. Civil systems do not need access to an astronomical ephemeris merely to discover whether a particular year contains the final Sunsol.</p>
+<p data-source-block="3145">Scientific users remain free to calculate the actual Ls value at any instant to whatever precision their work requires.</p>
+<h2 data-source-block="3146">C.11 Why Ls?</h2>
+<p data-source-block="3147">The Marian annual reference must remain fundamentally Martian.</p>
+<p data-source-block="3148">Areocentric solar longitude provides an established way to describe Mars's position through its seasonal cycle. By convention:</p>
+<p data-source-block="3149"><strong>Ls = 0°</strong> corresponds to the northern vernal equinox,</p>
+<p data-source-block="3150">with Ls increasing through the annual cycle until returning to the same reference.</p>
+<p data-source-block="3151">A civil calendar could reasonably choose Ls = 0° as its annual origin. Darian, for example, uses an equinoctial starting point.</p>
+<p data-source-block="3152">Marian instead chooses:</p>
+<p data-source-block="3153"><strong>Ls = 15°</strong></p>
+<p data-source-block="3154">The choice is not based on a claim that anything uniquely significant happens on Mars at fifteen degrees. It is a civil design choice within the Martian seasonal coordinate system.</p>
+<h2 data-source-block="3155">C.12 Why 15 degrees?</h2>
+<p data-source-block="3156">Marian is intended initially for a human civilisation on Mars that remains closely connected to Earth.</p>
+<p data-source-block="3157">That creates an unusual opportunity. Around the anticipated founding era, Mars at approximately <strong>Ls = 15°</strong> lies in roughly the same broad heliocentric direction associated with Earth near the beginning of the Gregorian year.</p>
+<p data-source-block="3158">This gives the terrestrial and Marian twelve-part annual maps a broadly comparable directional origin.</p>
+<p data-source-block="3159">The relationship must be stated carefully.</p>
+<p data-source-block="3160"><strong>Ls and heliocentric longitude are not the same coordinate.</strong></p>
+<p data-source-block="3161">Ls measures Mars's position in its own seasonal cycle. A heliocentric longitude expresses orbital direction within a wider Sun-centred reference frame.</p>
+<p data-source-block="3162">Nor do Gregorian and Marian New Year occur simultaneously, and selecting Ls = 15° does not imply that Earth and Mars are physically close together at their respective New Years.</p>
+<p data-source-block="3163">The benefit is more modest: their annual maps begin from broadly comparable Sun-centred directions around the founding era.</p>
+<p data-source-block="3164">That shared orientation supports the approximate Earth–Mars month-gap heuristic described in Appendix E.</p>
+<h2 data-source-block="3165">C.13 Why not optimise the Earth relationship further?</h2>
+<p data-source-block="3166">Technical investigation found that nearby starting values can perform slightly better under particular statistical measures of Earth–Mars geometry. A value around <strong>Ls = 22°</strong>, for example, performed somewhat better under one discrete comparison used during design work.</p>
+<p data-source-block="3167">Marian does not adopt that value.</p>
+<p data-source-block="3168">The reason is that a durable civil calendar should be cautious about optimising a primary annual reference against a secondary relationship whose apparent optimum depends upon the modelling period, the representation of the two calendars and the metric selected.</p>
+<p data-source-block="3169">Ls = 15° offers a simpler civil rationale: around the intended founding era, it gives the Marian year an annual origin broadly aligned in heliocentric direction with that associated with Gregorian New Year.</p>
+<p data-source-block="3170">The principle is understandable without reproducing the optimisation analysis.</p>
+<h2 data-source-block="3171">C.14 Why not use a fixed heliocentric longitude?</h2>
+<p data-source-block="3172">An apparently cleaner alternative would be to abandon Ls and define Marian New Year directly against a fixed heliocentric direction, for example approximately 100°.</p>
+<p data-source-block="3173">Marian does not do this.</p>
+<p data-source-block="3174">A fixed inertial orbital direction and a fixed Martian seasonal position are not permanently identical. Over sufficiently long timescales, orbital precession and related effects alter their relationship.</p>
+<p data-source-block="3175">A civil year tied directly to an inertial longitude would therefore be capable of migrating relative to Mars's own seasonal cycle.</p>
+<p data-source-block="3176">Marian gives priority to Mars.</p>
+<p data-source-block="3177">The annual anchor remains:</p>
+<p data-source-block="3178"><strong>Ls = 15°</strong></p>
+<p data-source-block="3179">The Earth-facing directional relationship is a useful property of that choice around the founding era, not the physical reference to which the calendar is ultimately attached.</p>
+<h2 data-source-block="3180">C.15 Seasonal coordinate and civil month are different things</h2>
+<p data-source-block="3181">Choosing Ls = 15° as the annual anchor does not mean the twelve Marian months represent equal 30° divisions of Ls.</p>
+<p data-source-block="3182">They do not.</p>
+<p data-source-block="3183">Marian months are principally elapsed civil periods of 55 or 56 sols. Mars travels at different orbital speeds at different parts of its eccentric orbit, so equal-duration civil periods correspond to unequal changes in Ls.</p>
+<p data-source-block="3184">The two coordinates therefore answer different questions:</p>
+<div aria-label="Table 3 in Appendix C: Intercalation &amp; Astronomical Alignment; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="3185"><caption class="sr-only">Table 3 in Appendix C: Intercalation &amp; Astronomical Alignment</caption><thead><tr><th scope="col">Coordinate</th><th scope="col">Question answered</th></tr></thead><tbody><tr><td>Marian civil date</td><td>Where are we in the regular civil calendar?</td></tr><tr><td>Ls</td><td>Where is Mars in its seasonal/orbital cycle?</td></tr></tbody></table></div>
+<p data-source-block="3186">When precise seasonal position is required, <strong>use Ls</strong>.</p>
+<p data-source-block="3187">When a stable civil date is required, <strong>use Marian</strong>.</p>
+<p data-source-block="3188">Trying to make the civil date reproduce precise orbital geometry would ask it to perform a scientific function for which a scientific coordinate already exists.</p>
+<h2 data-source-block="3189">C.16 Establishing MY1</h2>
+<p data-source-block="3190">The astronomical anchor alone is not a civil date boundary.</p>
+<p data-source-block="3191">Mars may pass through Ls = 15° at any time within an Airy-0 civil sol. Marian therefore uses a separate canonical rollover rule.</p>
+<p data-source-block="3192">Following the first human landing epoch, the sequence is:</p>
+<p data-source-block="3193"><strong>recognised first human step → MY0 begins</strong></p>
+<p data-source-block="3194">then:</p>
+<p data-source-block="3195"><strong>next passage through Ls = 15°</strong></p>
+<p data-source-block="3196">then:</p>
+<p data-source-block="3197"><strong>first Airy-0 midnight after that passage → MY1 begins</strong></p>
+<p data-source-block="3198">The Ls crossing establishes the astronomical position. The following Airy-0 midnight converts that continuous astronomical event into a discrete civil boundary.</p>
+<p data-source-block="3199">Subsequent years proceed according to the intercalation rule rather than by re-performing this astronomical rollover process annually.</p>
+<h2 data-source-block="3200">C.17 Century behaviour</h2>
+<p data-source-block="3201">Across a complete 100-year ordinary intercalation cycle, Marian contains:</p>
+<div aria-label="Table 4 in Appendix C: Intercalation &amp; Astronomical Alignment; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="3202"><caption class="sr-only">Table 4 in Appendix C: Intercalation &amp; Astronomical Alignment</caption><thead><tr><th scope="col">Year type</th><th scope="col">Count</th><th scope="col">Sols each</th><th scope="col">Total sols</th></tr></thead><tbody><tr><td>Common</td><td>41</td><td>668</td><td>27,388</td></tr><tr><td>Leap</td><td>59</td><td>669</td><td>39,471</td></tr><tr><td>Total</td><td>100</td><td> </td><td>66,859</td></tr></tbody></table></div>
+<p data-source-block="3203">The resulting mean is:</p>
+<p data-source-block="3204"><strong>66,859 / 100 = 668.590000 sols</strong></p>
+<p data-source-block="3205">If the true mean recurrence over a particular astronomical interval is represented by <strong>R</strong> sols, then the mean annual residual of the ordinary Marian rule is:</p>
+<p data-source-block="3206"><strong>668.590000 − R</strong></p>
+<p data-source-block="3207">and the nominal residual accumulated over 100 years is approximately:</p>
+<p data-source-block="3208"><strong>100 × (668.590000 − R)</strong></p>
+<p data-source-block="3209">This formulation is preferable to presenting an apparently timeless numerical drift rate. The physical recurrence itself varies slowly, and any quoted residual depends upon the astronomical model and interval used to estimate <strong>R</strong>.</p>
+<p data-source-block="3210">The important civil conclusion is that 668.590000 is a close approximation around the intended founding era.</p>
+<h2 data-source-block="3211">C.18 Long-term behaviour</h2>
+<p data-source-block="3212">No fixed rational intercalation rule should be assumed to remain astronomically perfect indefinitely.</p>
+<p data-source-block="3213">Mars's orbital and rotational relationships evolve over long timescales. A rule that is extremely good for the centuries surrounding initial human settlement may eventually require adjustment.</p>
+<p data-source-block="3214">Marian therefore distinguishes ordinary intercalation from possible <strong>long-range steering</strong>.</p>
+<p data-source-block="3215">The ordinary civil machinery remains:</p>
+<p data-source-block="3216"><strong>668-sol common year</strong></p>
+<p data-source-block="3217"><strong>669-sol leap year</strong></p>
+<p data-source-block="3218"><strong>59 leap years per 100 regular years</strong></p>
+<p data-source-block="3219">Any correction that might become desirable after many centuries should, where practical, be implemented as a rare higher-order adjustment rather than by changing the basic meanings of months, minths, Sixths, quarters or ordinary year types.</p>
+<p data-source-block="3220">No specific long-period correction is prescribed in this edition because the design does not claim enough information to justify one.</p>
+<p data-source-block="3221">That is deliberate restraint rather than an omission.</p>
+<h2 data-source-block="3222">C.19 What the astronomical analysis does and does not establish</h2>
+<p data-source-block="3223">The intercalation design supports the following claims.</p>
+<p data-source-block="3224">First, a mean civil year of:</p>
+<p data-source-block="3225"><strong>668.590000 sols</strong></p>
+<p data-source-block="3226">is extremely close to the selected Ls = 15° recurrence around the intended founding era.</p>
+<p data-source-block="3227">Second, 59 leap sols per 100 regular years provide the required ordinary leap <strong>frequency</strong>.</p>
+<p data-source-block="3228">Third, the Marian odd / decennial / century rule places those leap years using a deterministic and easily reconstructable civil rule.</p>
+<p data-source-block="3229">Fourth, that mnemonic placement produces somewhat larger intermediate phase excursions than a sequence designed purely to minimise phase error, but the distinction is one of short-period tracking rather than a different century-scale mean.</p>
+<p data-source-block="3230">Fifth, Ls = 15° keeps the annual anchor tied to Mars while also providing a useful approximate directional relationship with Gregorian New Year around the founding era.</p>
+<p data-source-block="3231">The analysis does <strong>not</strong> establish that:</p>
+<ul class="source-list" data-word-list-id="26">
+<li data-source-block="3232">Ls = 15° is the only legitimate Martian annual origin;</li>
+<li data-source-block="3233">the 59/100 placement is mathematically optimal;</li>
+<li data-source-block="3234">every Marian New Year coincides exactly with Ls = 15°;</li>
+<li data-source-block="3235">the rule will remain perfectly aligned over geological timescales;</li>
+<li data-source-block="3236">a Marian month identifies precise seasonal longitude; or</li>
+<li data-source-block="3237">the Earth–Mars directional relationship replaces proper ephemeris calculation.</li>
+</ul>
+<p data-source-block="3238">These limitations are part of the design, not exceptions to it.</p>
+<h2 data-source-block="3239">C.20 The design in one view</h2>
+<p data-source-block="3240">The astronomical and civil logic can ultimately be reduced to four stages.</p>
+<div aria-label="Table 5 in Appendix C: Intercalation &amp; Astronomical Alignment; horizontally scrollable" class="table-scroll" role="region" tabindex="0"><table data-source-block="3241"><caption class="sr-only">Table 5 in Appendix C: Intercalation &amp; Astronomical Alignment</caption><thead><tr><th scope="col">Stage</th><th scope="col">Question</th><th scope="col">Marian answer</th></tr></thead><tbody><tr><td>Annual anchor</td><td>What physical cycle is being tracked?</td><td>Recurrence of Ls = 15°</td></tr><tr><td>Civil templates</td><td>What whole-sol years are available?</td><td>668 and 669 sols</td></tr><tr><td>Leap frequency</td><td>How many 669-sol years are required?</td><td>59 per 100</td></tr><tr><td>Leap placement</td><td>Which years receive them?</td><td>Odd / decennial / century rule</td></tr></tbody></table></div>
+<p data-source-block="3242">The first two arise from Mars and the architecture of the calendar. The third fits the civil mean to the astronomical recurrence. The fourth converts that mathematical requirement into a rule usable by people and machines.</p>
+<p data-source-block="3243">That distinction is the heart of Marian intercalation:</p>
+<p data-source-block="3244"><strong>the astronomy determines the leap frequency; human usability helps determine the leap placement.</strong></p>
+<p data-source-block="3245">And beneath the whole system sits the broader division of responsibility established throughout Marian:</p>
+<p data-source-block="3246"><strong>the sky defines what the calendar is trying to track; the calendar provides a stable civil approximation.</strong></p></article><nav aria-label="Previous and next section" class="pager"><a href="appendix-b.html" rel="prev">← Appendix B: Marian Calendar Tables</a><a href="appendix-d.html" rel="next">Appendix D: Dates, Identity &amp; Implementation →</a></nav></main>
+<footer>© JB Bullock 2026. Book text, cover and illustrations: all rights reserved. Marian Protocol v1.0 is separately licensed.</footer></body></html>
